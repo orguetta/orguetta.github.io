@@ -1,6 +1,6 @@
 !(function () {
-  'use strict';
-  ((t) => {
+  "use strict";
+  (t => {
     const {
         screen: { width: e, height: a },
         navigator: { language: r },
@@ -10,23 +10,23 @@
       } = t,
       { hostname: s, href: o, origin: u } = n,
       { currentScript: l, referrer: d } = i,
-      h = o.startsWith('data:') ? void 0 : t.localStorage;
+      h = o.startsWith("data:") ? void 0 : t.localStorage;
     if (!l) return;
-    const f = 'data-',
+    const f = "data-",
       m = l.getAttribute.bind(l),
-      p = m(f + 'website-id'),
-      g = m(f + 'host-url'),
-      y = m(f + 'tag'),
-      b = 'false' !== m(f + 'auto-track'),
-      v = 'true' === m(f + 'exclude-search'),
-      S = m(f + 'domains') || '',
-      w = S.split(',').map((t) => t.trim()),
-      N = `${(g || '' || l.src.split('/').slice(0, -1).join('/')).replace(/\/$/, '')}/api/send`,
+      p = m(f + "website-id"),
+      g = m(f + "host-url"),
+      y = m(f + "tag"),
+      b = "false" !== m(f + "auto-track"),
+      v = "true" === m(f + "exclude-search"),
+      S = m(f + "domains") || "",
+      w = S.split(",").map(t => t.trim()),
+      N = `${(g || "" || l.src.split("/").slice(0, -1).join("/")).replace(/\/$/, "")}/api/send`,
       T = `${e}x${a}`,
       A = /data-umami-event-([\w-_]+)/,
-      x = f + 'umami-event',
+      x = f + "umami-event",
       O = 300,
-      U = (t) => {
+      U = t => {
         if (t) {
           try {
             const e = decodeURI(t);
@@ -37,12 +37,12 @@
           return encodeURI(t);
         }
       },
-      j = (t) => {
+      j = t => {
         try {
           const { pathname: e, search: a, hash: r } = new URL(t, n.href);
           t = e + a + r;
         } catch (t) {}
-        return v ? t.split('?')[0] : t;
+        return v ? t.split("?")[0] : t;
       },
       k = () => ({
         website: p,
@@ -58,16 +58,16 @@
         a && ((_ = W), (W = j(a.toString())), W !== _ && setTimeout(K, O));
       },
       L = () =>
-        !p || (h && h.getItem('umami.disabled')) || (S && !w.includes(s)),
-      $ = async (t, e = 'event') => {
+        !p || (h && h.getItem("umami.disabled")) || (S && !w.includes(s)),
+      $ = async (t, e = "event") => {
         if (L()) return;
         const a = {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         };
-        void 0 !== B && (a['x-umami-cache'] = B);
+        void 0 !== B && (a["x-umami-cache"] = B);
         try {
           const r = await fetch(N, {
-              method: 'POST',
+              method: "POST",
               body: JSON.stringify({
                 type: e,
                 payload: t,
@@ -86,14 +86,14 @@
               const r = t[e];
               return (...e) => (a.apply(null, e), r.apply(t, e));
             };
-            ((c.pushState = t(c, 'pushState', E)),
-              (c.replaceState = t(c, 'replaceState', E)));
+            ((c.pushState = t(c, "pushState", E)),
+              (c.replaceState = t(c, "replaceState", E)));
           })(),
           (() => {
             const t = new MutationObserver(([t]) => {
                 q = t && t.target ? t.target.text : void 0;
               }),
-              e = i.querySelector('head > title');
+              e = i.querySelector("head > title");
             e &&
               t.observe(e, {
                 subtree: !0,
@@ -102,16 +102,16 @@
               });
           })(),
           i.addEventListener(
-            'click',
-            async (t) => {
-              const e = (t) => ['BUTTON', 'A'].includes(t),
-                a = async (t) => {
+            "click",
+            async t => {
+              const e = t => ["BUTTON", "A"].includes(t),
+                a = async t => {
                   const e = t.getAttribute.bind(t),
                     a = e(x);
                   if (a) {
                     const r = {};
                     return (
-                      t.getAttributeNames().forEach((t) => {
+                      t.getAttributeNames().forEach(t => {
                         const a = t.match(A);
                         a && (r[a[1]] = e(t));
                       }),
@@ -134,9 +134,9 @@
                 const { href: e, target: r } = i,
                   c = i.getAttribute(x);
                 if (c)
-                  if ('A' === i.tagName) {
+                  if ("A" === i.tagName) {
                     const s =
-                      '_blank' === r ||
+                      "_blank" === r ||
                       t.ctrlKey ||
                       t.shiftKey ||
                       t.metaKey ||
@@ -148,7 +148,7 @@
                           s || (n.href = e);
                         })
                       );
-                  } else if ('BUTTON' === i.tagName) return a(i);
+                  } else if ("BUTTON" === i.tagName) return a(i);
               }
             },
             !0
@@ -157,15 +157,15 @@
       },
       K = (t, e) =>
         $(
-          'string' == typeof t
-            ? { ...k(), name: t, data: 'object' == typeof e ? e : void 0 }
-            : 'object' == typeof t
+          "string" == typeof t
+            ? { ...k(), name: t, data: "object" == typeof e ? e : void 0 }
+            : "object" == typeof t
               ? t
-              : 'function' == typeof t
+              : "function" == typeof t
                 ? t(k())
                 : k()
         ),
-      R = (t) => $({ ...k(), data: t }, 'identify');
+      R = t => $({ ...k(), data: t }, "identify");
     t.umami ||
       (t.umami = {
         track: K,
@@ -174,12 +174,12 @@
     let B,
       D,
       W = j(o),
-      _ = d.startsWith(u) ? '' : d,
+      _ = d.startsWith(u) ? "" : d,
       q = i.title;
     b &&
       !L() &&
-      ('complete' === i.readyState
+      ("complete" === i.readyState
         ? I()
-        : i.addEventListener('readystatechange', I, !0));
+        : i.addEventListener("readystatechange", I, !0));
   })(window);
 })();
