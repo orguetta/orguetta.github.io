@@ -14,7 +14,7 @@ export const SITE = {
   editPost: {
     enabled: true,
     text: "Edit page",
-    url: "https://github.com/orguetta/astro-blog/edit/main/src/data/blog/",
+    url: "https://github.com/orguetta/edit/main/src/data/blog/",
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
