@@ -146,7 +146,7 @@ const structuredData = {
       // Umami analytics script
       umamiWebsiteId && umamiUrl && (
         <script
-          async
+          defer
           src={`${umamiUrl}/script.js`}
           data-website-id={umamiWebsiteId}
           is:inline
