@@ -9,7 +9,8 @@ tags:
   - NetScaler
   - Hardening
   - Best-Practices
-description: This document consolidates recommendations and best practices for securing and hardening a NetScaler ADC environment. The recommendations are based on official Citrix documentation, leading community guides, and established security protocols.
+description: This document consolidates recommendations and best practices for securing and hardening a NetScaler ADC environment. The recommendations are based on official Citrix documentation, leading community best practices, and real-world experience.
+pubDatetime: 2025-07-23T00:00:00Z
 ---
 
 This document consolidates recommendations and best practices for securing and hardening a NetScaler ADC environment. The recommendations are based on official Citrix documentation, leading community guides, and established security protocols.
