@@ -1,4 +1,10 @@
-# Get NetScaler Unused Objects
+---
+title: "Get NetScaler Unused Objects"
+description: "Instructions and scripts to find and remove unused objects in NetScaler ADC configurations."
+date: "2025-09-12"
+pubDatetime: 2025-07-23T00:00:00Z
+---
+## Get NetScaler Unused Objects
 
 Note: Give the configuration file as first parameter for Linux
 

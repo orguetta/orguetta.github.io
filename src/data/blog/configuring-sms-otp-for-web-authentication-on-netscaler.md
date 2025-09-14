@@ -12,6 +12,7 @@ tags:
   - Cybersecurity
   - AAA
 description: "Learn how to configure SMS OTP for web authentication on NetScaler to enhance security and user verification."
+pubDatetime: 2025-07-23T00:00:00Z
 ---
 
 # Configure SMS OTP for Web Authentication on NetScaler

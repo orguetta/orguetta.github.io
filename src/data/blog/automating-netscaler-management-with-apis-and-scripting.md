@@ -12,6 +12,7 @@ tags:
   - scripting
   - devops
 description: "Learn how to streamline NetScaler administration using REST APIs and scripting to automate configurations, monitoring, and security policies."
+pubDatetime: 2025-07-23T00:00:00Z
 ---
 
 Managing NetScaler manually can be time-consuming and error-prone, especially in large-scale environments. Automating routine tasks using REST APIs and scripting improves efficiency, reduces human errors, and ensures consistency in configurations.
