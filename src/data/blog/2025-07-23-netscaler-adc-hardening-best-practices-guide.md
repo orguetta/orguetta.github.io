@@ -23,39 +23,39 @@ The management plane is the most sensitive target. Protecting it properly is cri
 
 ### Isolate the Management Network
 
-* Never expose management interfaces (NSIP, LOM) to the public internet.
-* Place management interfaces on a separate, isolated VLAN protected by a firewall.
+- Never expose management interfaces (NSIP, LOM) to the public internet.
+- Place management interfaces on a separate, isolated VLAN protected by a firewall.
 
 ### Restrict Access to Management Interfaces
 
-* Use Access Control Lists (ACLs) to limit access to the NSIP and any SNIPs with management access. Only authorized IP addresses (like admin workstations and monitoring servers) should be allowed.
-* Configure the GUI to operate in secure-only mode (HTTPS).
+- Use Access Control Lists (ACLs) to limit access to the NSIP and any SNIPs with management access. Only authorized IP addresses (like admin workstations and monitoring servers) should be allowed.
+- Configure the GUI to operate in secure-only mode (HTTPS).
 
-```cli
+```plaintext
 set ns ip <NSIP_ADDRESS> -gui SECUREONLY -restrictAccess ENABLED
 ```
 
 ### User and Password Management
 
-* **nsroot Password:** Immediately change the default `nsroot` user password to a strong, complex password upon installation.
-* **Centralized Authentication:** Prefer using centralized authentication (LDAPS, RADIUS, TACACS+) for appliance management over local accounts.
-* **Role-Based Access Control (RBAC):** Define user groups with the minimum permissions required for their roles (e.g., `read-only`, `operator`). Do not grant `superuser` permissions to all administrators.
-* **Restrict nsroot:** Disable the ability for the `nsroot` account to authenticate against external servers to prevent a takeover via an AD account with the same name.
+- **nsroot Password:** Immediately change the default `nsroot` user password to a strong, complex password upon installation.
+- **Centralized Authentication:** Prefer using centralized authentication (LDAPS, RADIUS, TACACS+) for appliance management over local accounts.
+- **Role-Based Access Control (RBAC):** Define user groups with the minimum permissions required for their roles (e.g., `read-only`, `operator`). Do not grant `superuser` permissions to all administrators.
+- **Restrict nsroot:** Disable the ability for the `nsroot` account to authenticate against external servers to prevent a takeover via an AD account with the same name.
 
-```cli
+```plaintext
 set system user nsroot -externalAuth DISABLED
 ```
 
 ### Secure Management Protocols
 
-* **SSH:** Use SSH keys for authentication instead of passwords. Disable SSH access if not required.
-* **SNMP:** If required, use SNMPv3, which offers authentication and encryption. Restrict access to known monitoring servers only.
+- **SSH:** Use SSH keys for authentication instead of passwords. Disable SSH access if not required.
+- **SNMP:** If required, use SNMPv3, which offers authentication and encryption. Restrict access to known monitoring servers only.
 
 ### Encrypt HA Communication
 
 Secure the communication between HA nodes using a strong RPC password and encryption.
 
-```cli
+```plaintext
 set rpcNode <PEER_NSIP_ADDRESS> -password <A_SECURE_RPC_PASSWORD> -secure YES
 ```
 
@@ -71,7 +71,7 @@ These settings affect the traffic passing through the Virtual Servers.
 
 Disable old and insecure protocols like SSLv3, TLS 1.0, and TLS 1.1 on all virtual servers.
 
-```cli
+```plaintext
 set ssl vserver <VSERVER_NAME> -ssl3 DISABLED -tls1 DISABLED -tls11 DISABLED
 ```
 
@@ -89,22 +89,22 @@ Enable HSTS to enforce the use of HTTPS on browsers.
 
 ### Global HTTP Parameters
 
-* Drop non-RFC compliant HTTP requests to prevent attacks like HTTP Desync and Request Smuggling.
+- Drop non-RFC compliant HTTP requests to prevent attacks like HTTP Desync and Request Smuggling.
 
-```cli
+```plaintext
 set ns httpparam -dropInvalReqs ENABLED
 ```
 
-* Set the cookie version to 1 to prevent compatibility issues.
+- Set the cookie version to 1 to prevent compatibility issues.
 
-```cli
+```plaintext
 set ns param -cookieversion 1
 ```
 
 ### Application Protections
 
-* **Rate Limiting:** Configure rate limiting on sensitive services to prevent Denial of Service (DoS) and brute-force attacks.
-* **NetScaler AppFirewall (WAF):** For critical applications, use the WAF to protect against common attacks like SQL Injection, Cross-Site Scripting (XSS), and CSRF. Start with a `basic` profile and harden as needed.
+- **Rate Limiting:** Configure rate limiting on sensitive services to prevent Denial of Service (DoS) and brute-force attacks.
+- **NetScaler AppFirewall (WAF):** For critical applications, use the WAF to protect against common attacks like SQL Injection, Cross-Site Scripting (XSS), and CSRF. Start with a `basic` profile and harden as needed.
 
 ---
 
@@ -112,20 +112,20 @@ set ns param -cookieversion 1
 
 ### Firmware Updates
 
-* Keep the appliance updated to the latest recommended and stable firmware version. Follow Citrix security bulletins and apply critical security patches promptly.
+- Keep the appliance updated to the latest recommended and stable firmware version. Follow Citrix security bulletins and apply critical security patches promptly.
 
 ### Monitoring, Logging, and Alerting
 
-* **NTP:** Ensure Network Time Protocol (NTP) is configured and active to guarantee accurate timestamps in logs.
-* **Logging:** Send all logs (Audit, System Events) to a central, secure Syslog server (like a SIEM) for analysis, retention, and incident response.
-* **SNMP Alerts:** Configure alerts (Traps) for critical events such as high CPU/Memory usage, HA failover, and disk failures.
+- **NTP:** Ensure Network Time Protocol (NTP) is configured and active to guarantee accurate timestamps in logs.
+- **Logging:** Send all logs (Audit, System Events) to a central, secure Syslog server (like a SIEM) for analysis, retention, and incident response.
+- **SNMP Alerts:** Configure alerts (Traps) for critical events such as high CPU/Memory usage, HA failover, and disk failures.
 
 ### Backup and Recovery
 
-* Perform full backups of the NetScaler configuration regularly and store them in a secure, separate location. Test the recovery process periodically.
+- Perform full backups of the NetScaler configuration regularly and store them in a secure, separate location. Test the recovery process periodically.
 
 ### Configuration Hygiene
 
-* **Disable Interfaces:** Disable any physical network interfaces that are not in use.
-* **Remove Old Configurations:** Delete unused virtual servers, policies, and accounts to reduce the attack surface.
-* **Periodic Audits:** Run security scans (like Qualys SSL Labs) on external-facing services and conduct regular internal security audits.
+- **Disable Interfaces:** Disable any physical network interfaces that are not in use.
+- **Remove Old Configurations:** Delete unused virtual servers, policies, and accounts to reduce the attack surface.
+- **Periodic Audits:** Run security scans (like Qualys SSL Labs) on external-facing services and conduct regular internal security audits.
