@@ -1,6 +1,11 @@
 ---
+author: Or Guetta
+pubDatetime: 2025-11-26
+modDatetime: 2025-11-26
 title: Open Source Library Scanning Tools You Can Use Today for Free
 ogImage: Open Source Library Scanning Tools You Can Use Today for Free
+featured: false
+draft: false
 description: This note introduces useful tools that scan the libraries your
   developers use and alert you if a vulnerability is found in a library or one
   of its dependent libraries.
