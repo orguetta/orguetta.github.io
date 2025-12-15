@@ -16,6 +16,7 @@ description: Brute force attacks on NetScaler Gateways can be mitigated by
   measures, organizations can effectively protect their gateways from
   unauthorized access attempts while maintaining optimal performance.
 ---
+
 In today’s landscape, external-facing systems like NetScaler Gateways are prime targets for brute force and denial-of-service (DoS) attacks.
 
 Brute force attacks on external gateways can compromise security, leading to unauthorized access and potential data breaches. Implementing rate limiting and intelligent policies on your NetScaler Gateway is a proactive way to mitigate these threats.
@@ -26,12 +27,9 @@ This blog demonstrates how to configure your NetScaler Gateway to block brute fo
 
 A brute force attack systematically attempts various username-password combinations to gain access to your gateway. Attackers might target your gateway using:
 
-*   **Direct Public IP Access**: Attackers bypass the DNS and directly target your public IP.
-    
-*   **Mismatched Hostname Requests**: Requests that don’t use your configured Fully Qualified Domain Name (FQDN).
-    
-*   **Suspicious URLs or Cookies**: Targeted exploitation of login URLs or manipulation of cookies to bypass authentication.
-    
+- **Direct Public IP Access**: Attackers bypass the DNS and directly target your public IP.
+- **Mismatched Hostname Requests**: Requests that don’t use your configured Fully Qualified Domain Name (FQDN).
+- **Suspicious URLs or Cookies**: Targeted exploitation of login URLs or manipulation of cookies to bypass authentication.
 
 These vulnerabilities can lead to repeated login attempts, bypassing standard controls. However, using NetScaler’s Responder Policies, you can effectively block such attempts.
 
@@ -39,18 +37,15 @@ These vulnerabilities can lead to repeated login attempts, bypassing standard co
 
 The following configuration drops packets that meet any of the following conditions:
 
-*   The request comes with the **public IP** instead of the FQDN.
-    
-*   The request does not match the configured **gateway hostname**.
-    
-*   The request targets `/cgi/login` and includes a malicious `NSC_TASS` cookie value.
-    
+- The request comes with the **public IP** instead of the FQDN.
+- The request does not match the configured **gateway hostname**.
+- The request targets `/cgi/login` and includes a malicious `NSC_TASS` cookie value.
 
 Here’s the CLI configuration to implement:
 
 ```
 add responder policy brute_block "HTTP.REQ.HOSTNAME.CONTAINS(\"gateway public IP\")||HTTP.REQ.HOSTNAME.EQ(\"gateway host name\").NOT||((HTTP.REQ.URL.TO_LOWER.EQ(\"/cgi/login\") && HTTP.REQ.COOKIE.CONTAINS(\"NSC_TASS=/No%20Page\")))" DROP
- 
+
 bind vpn vserver Gateway_vserver_name -policy brute_block -priority 1 -gotoPriorityExpression END -type AAA_REQUEST
 ```
 
@@ -58,19 +53,14 @@ bind vpn vserver Gateway_vserver_name -policy brute_block -priority 1 -gotoPrior
 
 **Responder Policy**:
 
-*   **Condition 1**: Drops requests where the hostname contains the public IP.
-    
-*   **Condition 2**: Drops requests where the hostname doesn’t match the FQDN
-    
-*   **Condition 3**: Drops requests targeting `/cgi/login` and containing a suspicious `NSC_TASS` cookie value.This policy ensures that only legitimate traffic targeting your gateway FQDN can proceed.
-    
+- **Condition 1**: Drops requests where the hostname contains the public IP.
+- **Condition 2**: Drops requests where the hostname doesn’t match the FQDN
+- **Condition 3**: Drops requests targeting `/cgi/login` and containing a suspicious `NSC_TASS` cookie value.This policy ensures that only legitimate traffic targeting your gateway FQDN can proceed.
 
 **Binding the Policy**:
 
-*   The policy is bound to the VPN virtual server handling external requests.
-    
-*   It ensures a high priority (`priority 1`) for evaluation.
-    
+- The policy is bound to the VPN virtual server handling external requests.
+- It ensures a high priority (`priority 1`) for evaluation.
 
 ### **Advanced Rate Limiting for NetScaler Gateway: Configuration Guide**
 
@@ -80,12 +70,9 @@ To further enhance your NetScaler Gateway’s defenses against brute force and d
 
 The configuration ensures:
 
-*   Monitoring and limiting client request rates based on URL and client IP.
-    
-*   Logging and auditing abnormal activity for proactive threat analysis.
-    
-*   Providing meaningful feedback to users when blocked due to rate limits.
-    
+- Monitoring and limiting client request rates based on URL and client IP.
+- Logging and auditing abnormal activity for proactive threat analysis.
+- Providing meaningful feedback to users when blocked due to rate limits.
 
 Here’s the detailed step-by-step guide to implement this configuration:
 
@@ -143,18 +130,13 @@ bind vpn vserver nsg_remote_external -policy res_rateLimitBlockPolicy -priority 
 
 #### **How It Works**
 
-*   **Monitoring**: The `rate_limiting_selector` monitors requests by tracking the client’s IP and requested URL.
-    
-*   **Threshold Enforcement**: If a client exceeds the defined threshold (20 requests in 10 seconds), the `res_rateLimitBlockPolicy` is triggered.
-    
-*   **Action on Violation**:
-    
-    *   The user receives a message: _“Your request has been blocked due to unusual activity. For further assistance, contact the Support Team.”_
-        
-    *   The incident is logged for auditing and proactive threat analysis.
-        
-*   **Syslog Integration**: Logs are sent to the configured syslog server for monitoring and alerting.
-    
+- **Monitoring**: The `rate_limiting_selector` monitors requests by tracking the client’s IP and requested URL.
+- **Threshold Enforcement**: If a client exceeds the defined threshold (20 requests in 10 seconds), the `res_rateLimitBlockPolicy` is triggered.
+- **Action on Violation**:
+  - The user receives a message: _“Your request has been blocked due to unusual activity. For further assistance, contact the Support Team.”_
+  - The incident is logged for auditing and proactive threat analysis.
+
+- **Syslog Integration**: Logs are sent to the configured syslog server for monitoring and alerting.
 
 #### **Conclusion**
 

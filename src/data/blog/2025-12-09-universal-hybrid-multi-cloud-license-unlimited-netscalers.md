@@ -14,13 +14,14 @@ description: NetScaler can be used as a cost-effective alternative to F5,
   used to migrate third-party apps to the cloud, reduce cloud costs, and enrich
   cloud-based applications. ​
 ---
-**_Scenario 1: I have an F5 solution on-premises, and I use NetScaler only as a Citrix Gateway_** 
+
+***Scenario 1: I have an F5 solution on-premises, and I use NetScaler only as a Citrix Gateway*** 
 
 F5 can be migrated to NetScaler and me and Xenit can help you to do this. This will give you a significantly lower cost over time. NetScaler has an advanced architecture and you can improve your configuration while doing this. We have built the competence and experience from multiple projects.
 
 NetScaler can be setup with no extra licensing cost in your cloud environments and your remote datacentres. Because of NetScaler´s highly flexible architecture it can also be used together with F5 (in case you want to keep it) and fill in the weak spots where F5 might not deliver the same value as NetScaler can do.
 
-#### **_Scenario 2: I already have NetScaler setup on-premises but nowhere else_** 
+#### ***Scenario 2: I already have NetScaler setup on-premises but nowhere else*** 
 
 Well, that is good news, you can then build out with virtual NetScaler’s in your cloud environments, in your remote datacentres, in your Kubernetes or docker solution with CPX and on your Linux based servers with BLX. 
 

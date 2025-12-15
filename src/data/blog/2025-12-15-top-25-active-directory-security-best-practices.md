@@ -6,7 +6,9 @@ title: Top 25 Active Directory Security Best Practices
 ogImage: Top 25 Active Directory Security Best Practices
 featured: false
 draft: false
+description: "This is the most comprehensive list of Active Directory Security Best Practices online. Learn how to secure your AD environment with these 25 essential tips and strategies."
 ---
+
 This is the most comprehensive list of Active Directory Security Best Practices online.
 
 In this guide, I’ll share my recommendations for Active Directory Security and how you can improve the security of your Windows domain environment.
@@ -16,57 +18,47 @@ You don’t have to spend a fortune to improve security there are many no cost a
 AD Security topics covered in this guide:
 
 1.  [Limit the use of Domain Admins and other Privileged Groups](https://activedirectorypro.com/active-directory-security-best-practices/#limit-domain-admins)
-    
 2.  [Use at least two accounts](https://activedirectorypro.com/active-directory-security-best-practices/#use-two-accounts)
-    
 3.  [Secure the domain administrator account](https://activedirectorypro.com/active-directory-security-best-practices/#secure-domain-admins)
-    
 4.  [Disable the local administrator account (on all computers)](https://activedirectorypro.com/active-directory-security-best-practices/#disable-local-administrator)
-    
 5.  [Use Laps](https://activedirectorypro.com/active-directory-security-best-practices/#use-laps)
-    
 6.  [Use a secure admin workstation (SAW)](https://activedirectorypro.com/active-directory-security-best-practices/#use-secure-saw)
-    
 7.  [Enable audit policy settings with group policy](https://activedirectorypro.com/active-directory-security-best-practices/#enable-audit-policy)
-    
 8.  [Monitor for signs of compromise](https://activedirectorypro.com/active-directory-security-best-practices/#monitor-for-compromise)
-    
 9.  [Password complexity sucks (use passphrases)](https://activedirectorypro.com/active-directory-security-best-practices/#password-complexity)
-    
-10.  [Use descriptive security group names](https://activedirectorypro.com/active-directory-security-best-practices/#descriptive-security-groups)
-    
-11.  [Find and remove unused user and computer accounts](https://activedirectorypro.com/active-directory-security-best-practices/#stale-accounts)
-    
-12.  [Remove Users from the Local Administrator Group](https://activedirectorypro.com/active-directory-security-best-practices/#remove-local-admin-group)
-    
-13.  [Do not install additional software or server roles on DCs](https://activedirectorypro.com/active-directory-security-best-practices/#additional-software)
-    
-14.  [Patch management and vulnerability scanning](https://activedirectorypro.com/active-directory-security-best-practices/#patch-management)
-    
-15.  [Use secure DNS services to block malicious domains](https://activedirectorypro.com/active-directory-security-best-practices/#secure-dns)
-    
-16.  [Run supported operating systems](https://activedirectorypro.com/active-directory-security-best-practices/#supported-systems)
-    
-17.  [Use two factor for office 365 and remote access](https://activedirectorypro.com/active-directory-security-best-practices/#two-factor)
-    
-18.  [Monitor DHCP logs for connected devices](https://activedirectorypro.com/active-directory-security-best-practices/#monitor-dhcp-logs)
-    
-19.  [Monitor DNS logs for malicious network activity](https://activedirectorypro.com/active-directory-security-best-practices/#monitor-dns-logs)
-    
-20.  [Use latest ADFS and azure security features](https://activedirectorypro.com/active-directory-security-best-practices/#adfs)
-    
-21.  [Use office 365 secure score](https://activedirectorypro.com/active-directory-security-best-practices/#office-secure-score)
-    
-22.  [Have a recovery plan](https://activedirectorypro.com/active-directory-security-best-practices/#recovery-plan)
-    
-23.  [Document delegation to Active Directory](https://activedirectorypro.com/active-directory-security-best-practices/#delegation)
-    
-24.  [Lock down service accounts](https://activedirectorypro.com/active-directory-security-best-practices/#lock-service-accounts)
-    
-25.  [Use security baselines and benchmarks](https://activedirectorypro.com/active-directory-security-best-practices/#security-baselines)
-    
-26.  [Active Directory Security Checklist](https://activedirectorypro.com/active-directory-security-best-practices/#ad-security-checklist)
-    
+10. [Use descriptive security group names](https://activedirectorypro.com/active-directory-security-best-practices/#descriptive-security-groups)
+
+11. [Find and remove unused user and computer accounts](https://activedirectorypro.com/active-directory-security-best-practices/#stale-accounts)
+
+12. [Remove Users from the Local Administrator Group](https://activedirectorypro.com/active-directory-security-best-practices/#remove-local-admin-group)
+
+13. [Do not install additional software or server roles on DCs](https://activedirectorypro.com/active-directory-security-best-practices/#additional-software)
+
+14. [Patch management and vulnerability scanning](https://activedirectorypro.com/active-directory-security-best-practices/#patch-management)
+
+15. [Use secure DNS services to block malicious domains](https://activedirectorypro.com/active-directory-security-best-practices/#secure-dns)
+
+16. [Run supported operating systems](https://activedirectorypro.com/active-directory-security-best-practices/#supported-systems)
+
+17. [Use two factor for office 365 and remote access](https://activedirectorypro.com/active-directory-security-best-practices/#two-factor)
+
+18. [Monitor DHCP logs for connected devices](https://activedirectorypro.com/active-directory-security-best-practices/#monitor-dhcp-logs)
+
+19. [Monitor DNS logs for malicious network activity](https://activedirectorypro.com/active-directory-security-best-practices/#monitor-dns-logs)
+
+20. [Use latest ADFS and azure security features](https://activedirectorypro.com/active-directory-security-best-practices/#adfs)
+
+21. [Use office 365 secure score](https://activedirectorypro.com/active-directory-security-best-practices/#office-secure-score)
+
+22. [Have a recovery plan](https://activedirectorypro.com/active-directory-security-best-practices/#recovery-plan)
+
+23. [Document delegation to Active Directory](https://activedirectorypro.com/active-directory-security-best-practices/#delegation)
+
+24. [Lock down service accounts](https://activedirectorypro.com/active-directory-security-best-practices/#lock-service-accounts)
+
+25. [Use security baselines and benchmarks](https://activedirectorypro.com/active-directory-security-best-practices/#security-baselines)
+
+26. [Active Directory Security Checklist](https://activedirectorypro.com/active-directory-security-best-practices/#ad-security-checklist)
 
 ## **Why Securing Active Directory is Essential**
 
@@ -146,33 +138,21 @@ By simply using a regular account you can increase security and avoid causing se
 
 Here are some common tasks that can be delegated to a secondary admin account.
 
-*   Rights to Active Directory Users and Computers
-    
-*   DNS
-    
-*   DHCP
-    
-*   Local admin rights on servers
-    
-*   Group Policy
-    
-*   Exchange
-    
-*   Local admin rights on workstations
-    
-*   Vsphere or Hyper-v Administration
-    
+- Rights to Active Directory Users and Computers
+- DNS
+- DHCP
+- Local admin rights on servers
+- Group Policy
+- Exchange
+- Local admin rights on workstations
+- Vsphere or Hyper-v Administration
 
 Some organizations use more than two accounts and use a tiered approach. This is defiantly more secure but may be an inconvenience to some.
 
-*   Regular account
-    
-*   Account for Server Administration
-    
-*   Account for Network Administration
-    
-*   Account for Workstation Administration
-    
+- Regular account
+- Account for Server Administration
+- Account for Network Administration
+- Account for Workstation Administration
 
 ## **3\. Secure the Domain Administrator Account**
 
@@ -186,18 +166,12 @@ No one should know the Domain Administrator account password. Set a really long 
 
 In addition, Microsoft has several recommendations for securing the built-in Administrator Account.  These settings can be applied to group policy and applied to all computers.
 
-*   Enable the Account is sensitive and cannot be delegated.
-    
-*   Enable the smart card is required for interactive logon
-    
-*   Deny access to this computer from the network
-    
-*   Deny logon as batch job
-    
-*   Deny log on as a service
-    
-*   Deny log on through RDP
-    
+- Enable the Account is sensitive and cannot be delegated.
+- Enable the smart card is required for interactive logon
+- Deny access to this computer from the network
+- Deny logon as batch job
+- Deny log on as a service
+- Deny log on through RDP
 
 For more details on securing the Domain Administrator account see this Microsoft article, [Securing Built in Administrator Accounts in Active Directory](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
@@ -216,9 +190,7 @@ You should be using an individual account that has the necessary rights to compl
 Two Problems.
 
 1.  It is a well-known account, even if you rename it the SID is the same and is well-known by attackers.
-    
 2.  It’s often configured with the same password on every computer in the domain.
-    
 
 Attackers just need to compromise one system and now they have local admin rights on every domain-joined computer. They could then use this account to pivot to another system with the goal of finding domain admin access.
 
@@ -232,14 +204,10 @@ What if the network is down or the NIC card died, what if you need to drop it fr
 
 If you cannot disable the account here are recommendations for securing the account. **A better alternative is to use the Microsoft LAPS tool (Covered below in tip #5)**
 
-*   Deny access to this computer from the network
-    
-*   Deny log on as a batch job
-    
-*   Deny log on as a service
-    
-*   Deny log on through RDP
-    
+- Deny access to this computer from the network
+- Deny log on as a batch job
+- Deny log on as a service
+- Deny log on through RDP
 
 For more details see the following article, [Securing local administrator accounts and groups](https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-h--securing-local-administrator-accounts-and-groups)
 
@@ -273,18 +241,12 @@ It should not be used for checking email or browsing the internet. In fact… it
 
 **What tasks would you do on a SAW?** 
 
-*   Active Directory administration
-    
-*   Group Policy
-    
-*   Managing DNS & DHCP Servers
-    
-*   Any task that requires admin rights on servers
-    
-*   Admin rights to Management Systems such as VMware, Hyper-v, Citrix
-    
-*   Office 365 Administration
-    
+- Active Directory administration
+- Group Policy
+- Managing DNS & DHCP Servers
+- Any task that requires admin rights on servers
+- Admin rights to Management Systems such as VMware, Hyper-v, Citrix
+- Office 365 Administration
 
 You get the idea.
 
@@ -296,33 +258,21 @@ Due to the continuous threats and changes to technology the methodology on how t
 
 Here are some tips to help get you started:
 
-*   Use a clean OS install (use the latest Windows OS)
-    
-*   Apply hardening security baseline (See tip#25)
-    
-*   Enable full disk encryption
-    
-*   Restrict USB ports
-    
-*   Enable the [Windows Firewall](https://activedirectorypro.com/windows-firewall-best-practices/)
-    
-*   Block internet
-    
-*   Use a VM – Terminal Server works well
-    
-*   Minimal software installed
-    
-*   Use two factor or smart card for access
-    
-*   Restrict systems to only accept connections from the SAW
-    
+- Use a clean OS install (use the latest Windows OS)
+- Apply hardening security baseline (See tip#25)
+- Enable full disk encryption
+- Restrict USB ports
+- Enable the [Windows Firewall](https://activedirectorypro.com/windows-firewall-best-practices/)
+- Block internet
+- Use a VM – Terminal Server works well
+- Minimal software installed
+- Use two factor or smart card for access
+- Restrict systems to only accept connections from the SAW
 
 Here is my typical workflow using a SAW:
 
 1.  Log into my computer with my regular account to check email and view new support requests.
-    
 2.  If I have some administrative task I will log into my SAW with my privileged account that has rights to modify AD group membership and add the user to the necessary AD security group.
-    
 
 Pretty straightforward right?
 
@@ -394,22 +344,14 @@ You should be monitoring the following Active Directory events to help detect co
 
 Here are some events you should be monitoring and reviewing on a weekly basis.
 
-*   Changes to privileged groups such as Domain Admins, Enterprise Admins, and Schema Admins
-    
-*   A spike in bad password attempts
-    
-*   A spike in locked out accounts
-    
-*   Account lockouts
-    
-*   Disabled or removal of antivirus software
-    
-*   All actives performed by privileged accounts
-    
-*   Logon/Logoff events
-    
-*   Use of local administrator accounts
-    
+- Changes to privileged groups such as Domain Admins, Enterprise Admins, and Schema Admins
+- A spike in bad password attempts
+- A spike in locked out accounts
+- Account lockouts
+- Disabled or removal of antivirus software
+- All actives performed by privileged accounts
+- Logon/Logoff events
+- Use of local administrator accounts
 
 ### **How do you monitor events in Active Directory?**
 
@@ -419,16 +361,11 @@ Some log analyzers come pre-built with Active Directory security reports and oth
 
 Here are some of the most popular log analyzers.
 
-*   [Elk Stack](https://www.elastic.co/solutions/logging)
-    
-*   [Lepid](https://www.lepide.com/lepideauditor/active-directory-auditing.html)
-    
-*   [Splunk](https://www.splunk.com/)
-    
-*   [ManageEngine ADAudit Plus](https://www.manageengine.com/products/active-directory-audit/)
-    
-*   [Windows Event Forwarding](https://docs.microsoft.com/en-us/windows/security/threat-protection/use-windows-event-forwarding-to-assist-in-intrusion-detection)
-    
+- [Elk Stack](https://www.elastic.co/solutions/logging)
+- [Lepid](https://www.lepide.com/lepideauditor/active-directory-auditing.html)
+- [Splunk](https://www.splunk.com/)
+- [ManageEngine ADAudit Plus](https://www.manageengine.com/products/active-directory-audit/)
+- [Windows Event Forwarding](https://docs.microsoft.com/en-us/windows/security/threat-protection/use-windows-event-forwarding-to-assist-in-intrusion-detection)
 
 With a good log analyzer, you will be able to quickly spot suspicious activity in your Active Directory environment.
 
@@ -458,14 +395,10 @@ Long passwords and using the passphrase technique make it more difficult for pas
 
 ### **Better Password Policy**
 
-*   Set 12 character passwords
-    
-*   Remember 10 password history
-    
-*   use passphrases
-    
-*   Lockout policy 5 attempts
-    
+- Set 12 character passwords
+- Remember 10 password history
+- use passphrases
+- Lockout policy 5 attempts
 
 The key to using passphrases is to be totally random with each word, you don’t want to type out a sentence where the next word can be guessed.
 
@@ -500,11 +433,11 @@ And there is no easy way to see where security groups are being used. Yes, there
 
 Here is an example
 
-IT\_Local is very generic. Just by looking at the name, I don’t know what this is used for. Yes, it’s probably used by the IT department but where?
+IT_Local is very generic. Just by looking at the name, I don’t know what this is used for. Yes, it’s probably used by the IT department but where?
 
 This is how permissions can get out of control and you could end up giving people access to things they shouldn’t have access to. Some sysadmin might get a request for access to the IT department network share and add users to this group. But what he doesn’t know is that the group might be used on other systems. Now he just gave some users full permissions to some other systems.
 
-When you use a descriptive name like the “N Drive HR\_Training” group you can look at the name and have a good idea of what it is for. In this example, it’s for the N drive, it’s for HR, and has something to do with Training. Your IT staff should have a good idea of what this is just by the name.
+When you use a descriptive name like the “N Drive HR_Training” group you can look at the name and have a good idea of what it is for. In this example, it’s for the N drive, it’s for HR, and has something to do with Training. Your IT staff should have a good idea of what this is just by the name.
 
 **Here is a real-world example of how bad group names can lead to issues.**
 
@@ -590,16 +523,11 @@ There are a large number of vulnerability and scanning tools available, see my l
 
 ### **Tips for Continues Vulnerability Management**
 
-*   Scan all systems at least once a month to identify all potential vulnerabilities. If you can scan more frequently that’s even better.
-    
-*   Prioritize the finding of the vulnerability scans and first fix the ones that have known vulnerabilities in the wild.
-    
-*   Deploy automated software updates to operating systems
-    
-*   Deploy automated updates to 3rd party software
-    
-*   Identify out-of-date software that is no longer supported and get it updated.
-    
+- Scan all systems at least once a month to identify all potential vulnerabilities. If you can scan more frequently that’s even better.
+- Prioritize the finding of the vulnerability scans and first fix the ones that have known vulnerabilities in the wild.
+- Deploy automated software updates to operating systems
+- Deploy automated updates to 3rd party software
+- Identify out-of-date software that is no longer supported and get it updated.
 
 ## **15\. Use Secure DNS Services to Block Malicious Domains**
 
@@ -627,12 +555,9 @@ In the above example since the DNS query returned a block, no malicious traffic 
 
 Here are some of the most popular secure DNS services.
 
-*   [Quad9](https://www.quad9.net/)
-    
-*   [OpenDNS](https://www.opendns.com/)
-    
-*   [Comodo Secure DNS](https://www.comodo.com/secure-dns/)
-    
+- [Quad9](https://www.quad9.net/)
+- [OpenDNS](https://www.opendns.com/)
+- [Comodo Secure DNS](https://www.comodo.com/secure-dns/)
 
 I’m currently using Quad9, it’s free and easy to setup.
 
@@ -646,16 +571,11 @@ Just staying on the latest OS will increase overall security.
 
 New Security Features in Server 2022:
 
-*   Secured-core Server
-    
-*   Hardware root of trust
-    
-*   Firmware protection
-    
-*   UEFI secure boot
-    
-*   Virtualization based security
-    
+- Secured-core Server
+- Hardware root of trust
+- Firmware protection
+- UEFI secure boot
+- Virtualization based security
 
 Here is a video from Robert McMillen on Security features in server 2002.
 
@@ -679,12 +599,9 @@ If you are using Office 365 and depending on what package you have MFA may be in
 
 Popular two-factor authentication solutions
 
-*   [DUO](https://duo.com/)
-    
-*   [RSA](https://www.rsa.com/en-us/products/rsa-securid-suite/rsa-securid-access)
-    
-*   [Office 365 MFA Setup](https://activedirectorypro.com/365-mfa-setup/)
-    
+- [DUO](https://duo.com/)
+- [RSA](https://www.rsa.com/en-us/products/rsa-securid-suite/rsa-securid-access)
+- [Office 365 MFA Setup](https://activedirectorypro.com/365-mfa-setup/)
 
 ## **18\. Monitor DHCP logs for connected devices**
 
@@ -746,20 +663,13 @@ Microsoft does improve and add new features at every level (At least this is wha
 
 Here are some features that are worth looking into:
 
-*   Smart Lockout – Uses algorithms to spot unusual sign on activity.
-    
-*   IP Lockout – Uses Microsoft’s database of known malicious IP addresses to block sign on ins.
-    
-*   Attack Simulations – You should be doing regular phishing tests to help train end users. Microsoft will be releasing phish simulator software very soon.
-    
-*   MFA Authentication – Microsoft’s 2 factor solution
-    
-*   Banned passwords – Checks passwords against a known list
-    
-*   Azure AD Connect Health – Provides several good reports
-    
-*   Custom bad passwords – Ability to add custom banned passwords to check against.
-    
+- Smart Lockout – Uses algorithms to spot unusual sign on activity.
+- IP Lockout – Uses Microsoft’s database of known malicious IP addresses to block sign on ins.
+- Attack Simulations – You should be doing regular phishing tests to help train end users. Microsoft will be releasing phish simulator software very soon.
+- MFA Authentication – Microsoft’s 2 factor solution
+- Banned passwords – Checks passwords against a known list
+- Azure AD Connect Health – Provides several good reports
+- Custom bad passwords – Ability to add custom banned passwords to check against.
 
 I’m currently running a hybrid office 365 setup. In azure, I can see several risky sign on reports.
 
@@ -799,12 +709,9 @@ Refer to my article [Office 365 Security best practices](https://activedirectory
 
 If your network was compromised today or hit with RansomWare, what would you do?
 
-*   Do you have a response policy?
-    
-*   Have you tested and trained staff on how to handle such an event?
-    
-*   Do you have a [system state backup of active directory](https://activedirectorypro.com/backup-active-directory/)? This is a must have incase you need to restore your domain from a backup.
-    
+- Do you have a response policy?
+- Have you tested and trained staff on how to handle such an event?
+- Do you have a [system state backup of active directory](https://activedirectorypro.com/backup-active-directory/)? This is a must have incase you need to restore your domain from a backup.
 
 Cyber attacks can shut down systems and bring business operations to a halt.
 
@@ -816,18 +723,12 @@ A good incident response plan could have limited the impact and enabled services
 
 Here are a few things to include in an incident response plan
 
-*   Create an incident response policy and plan
-    
-*   Create procedures for performing incident handling and reporting
-    
-*   Establish procedures for communicating with outside parties
-    
-*   Establish  response teams and leaders
-    
-*   Prioritize servers
-    
-*   Walkthrough and training
-    
+- Create an incident response policy and plan
+- Create procedures for performing incident handling and reporting
+- Establish procedures for communicating with outside parties
+- Establish  response teams and leaders
+- Prioritize servers
+- Walkthrough and training
 
 NIST has a great [computer security incident handling guide](https://nvlpubs.nist.gov/nistpubs/specialpublications/nist.sp.800-61r2.pdf) that I recommend looking at.
 
@@ -857,22 +758,14 @@ Don’t allow that to happen, there are ways to make it work without DA access.
 
 Here are some tips for locking down service accounts.
 
-*   Use [Managed Service Accounts instead](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/service-accounts-standalone-managed)
-    
-*   Use long Strong passwords
-    
-*   Give access to only what is needed
-    
-*   Try to avoid granting local administrator rights
-    
-*   Do not put in Domain Admins
-    
-*   Deny logon locally
-    
-*   Deny logon as a batch
-    
-*   Require vendors to make their software work without domain admin rights
-    
+- Use [Managed Service Accounts instead](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/service-accounts-standalone-managed)
+- Use long Strong passwords
+- Give access to only what is needed
+- Try to avoid granting local administrator rights
+- Do not put in Domain Admins
+- Deny logon locally
+- Deny logon as a batch
+- Require vendors to make their software work without domain admin rights
 
 ## **25\. Use Security Baselines and Benchmarks**
 

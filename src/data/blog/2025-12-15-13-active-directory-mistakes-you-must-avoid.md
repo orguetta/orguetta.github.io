@@ -6,37 +6,29 @@ title: 13 Active Directory Mistakes You Must Avoid
 ogImage: 13 Active Directory Mistakes You Must Avoid
 featured: false
 draft: true
+description: "Avoid these common Active Directory mistakes to enhance security and efficiency in your AD environment. Learn best practices for managing users, groups, and permissions effectively."
 ---
+
 Active Directory (AD) is critical for managing users and resources, but mistakes can lead to security risks and inefficiencies. From stale accounts to misconfigured permissions, common incorrect settings can disrupt operations and compliance. In this article, I walk through the most common AD mistakes to avoid and my recommendations.
 
 **In this article**
 
 1.  [Adding too many users to Privileged Groups](https://activedirectorypro.com/active-directory-mistakes/#too-many-admin) (Domain Admins)
-    
 2.  [Using Privileged accounts for Daily Tasks](https://activedirectorypro.com/active-directory-mistakes/#using-admin-account-daily)
-    
 3.  [Configuring Multiple Password Policies](https://activedirectorypro.com/active-directory-mistakes/#multiple-pw-policies)
-    
 4.  [No Naming Convention for all AD objects](https://activedirectorypro.com/active-directory-mistakes/#naming-convention)
-    
 5.  [Not using the description field](https://activedirectorypro.com/active-directory-mistakes/#description-field)
-    
 6.  [Flat OU Design](https://activedirectorypro.com/active-directory-mistakes/#flat-ou)
-    
 7.  [Unconstrained Delegation Enabled](https://activedirectorypro.com/active-directory-mistakes/#unconstrained-delegation)
-    
 8.  [Kerberos pre–authentication disabled](https://activedirectorypro.com/active-directory-mistakes/#kerberos-pre-auth)
-    
 9.  [Not cleaning up stale accounts](https://activedirectorypro.com/active-directory-mistakes/#no-cleanup)
-    
-10.  [DNS Misconfigurations](https://activedirectorypro.com/active-directory-mistakes/#dns)
-    
-11.  [No System State Backup](https://activedirectorypro.com/active-directory-mistakes/#no-system-state)
-    
-12.  [Default Domain Policy Excessive Use](https://activedirectorypro.com/active-directory-mistakes/#default-domain)
-    
-13.  [Auditing Not Enabled](https://activedirectorypro.com/active-directory-mistakes/#auditing-not-enabled)
-    
+10. [DNS Misconfigurations](https://activedirectorypro.com/active-directory-mistakes/#dns)
+
+11. [No System State Backup](https://activedirectorypro.com/active-directory-mistakes/#no-system-state)
+
+12. [Default Domain Policy Excessive Use](https://activedirectorypro.com/active-directory-mistakes/#default-domain)
+
+13. [Auditing Not Enabled](https://activedirectorypro.com/active-directory-mistakes/#auditing-not-enabled)
 
 ## **Adding too many users to Privileged Groups (Domain Admins)**
 
@@ -46,12 +38,9 @@ Several other built-in privileged groups in Active Directory should follow the s
 
 ### **Solution**
 
-*   Review members of the domain admin and other privileged groups.
-    
-*   Reduce the members of these groups to only administrative staff. Regular users should not be members of these groups.
-    
-*   Follow principle of least privilege, Admins should have separate accounts for daily tasks and privileged operations.
-    
+- Review members of the domain admin and other privileged groups.
+- Reduce the members of these groups to only administrative staff. Regular users should not be members of these groups.
+- Follow principle of least privilege, Admins should have separate accounts for daily tasks and privileged operations.
 
 ## **Using Privileged Accounts for Daily Tasks**
 
@@ -85,33 +74,24 @@ A standardized naming convention for Active Directory objects (such as users, co
 
 ### **Solution**
 
-*   Implement a naming convection for Active Directory objects (users, computers, groups, OUs, group policy and service accounts). Be as descriptive as possible, it’s helpful to look at an object and quickly know what and where its being used.
-    
+- Implement a naming convection for Active Directory objects (users, computers, groups, OUs, group policy and service accounts). Be as descriptive as possible, it’s helpful to look at an object and quickly know what and where its being used.
 
 **Examples**
 
 These are just examples, you can come up with your own naming conventions.
 
-*   **Username**: FirstName.LastName (robert.allen)
-    
-*   **Service Accounts**: Use a prefix like SVC (SVC\_lansweeper)
-    
-*   **Groups**
-    
-    *   Prefix, department or location, purpose, scope
-        
-    *   Example, SG-SA-FolderAccess-D
-        
-*   **Computers**
-    
-    *   Type, department/location, ID
-        
-    *   Example: W-IT-001
-        
-*   **Group Policy**
-    
-    *   Example: Computer – LAPS All
-        
+- **Username**: FirstName.LastName (robert.allen)
+- **Service Accounts**: Use a prefix like SVC (SVC_lansweeper)
+- **Groups**
+  - Prefix, department or location, purpose, scope
+  - Example, SG-SA-FolderAccess-D
+
+- **Computers**
+  - Type, department/location, ID
+  - Example: W-IT-001
+
+- **Group Policy**
+  - Example: Computer – LAPS All
 
 <img src="https://activedirectorypro.com/wp-content/uploads/2025/07/naming-convention.webp" alt="user naming convention" class="wp-image-58897" style="box-sizing: border-box; height: auto; max-width: 100%; padding-bottom: 1.5rem; vertical-align: bottom;" width="652" height="175">
 
@@ -151,30 +131,20 @@ Implement a hierarchical OU Design.
 
 A hierarchical OU design uses nested OUs to reflect organizational structure (e.g., by department, location, or function), allowing for granular GPO application and delegation. For example:
 
-*   OU: ADPro Users
-    
-    *   OU: Accounting
-        
-    *   OU: Legal
-        
-    *   OU: Management
-        
-*   OU: ADPro Goups
-    
-    *   OU: Accounting
-        
-    *   OU: Legal
-        
-    *   OU: Management
-        
-*   OU: ADPro Computers
-    
-    *   OU: Accounting
-        
-    *   OU: Legal
-        
-    *   OU: Management
-        
+- OU: ADPro Users
+  - OU: Accounting
+  - OU: Legal
+  - OU: Management
+
+- OU: ADPro Goups
+  - OU: Accounting
+  - OU: Legal
+  - OU: Management
+
+- OU: ADPro Computers
+  - OU: Accounting
+  - OU: Legal
+  - OU: Management
 
 Here is a screenshot from my test lab. You can see I put users, groups and computers into their own OUs and then add nested OUs for each department or function.
 
@@ -224,10 +194,8 @@ Stale accounts in Active Directory are user or computer accounts that have been 
 
 ### **Solution**
 
-*   Audit your AD environment for stale accounts on a regular basis (every 30 days). You can identify stale accounts by checking the lastLogonTimestamp attribute.
-    
-*   Temporarily disable stale accounts for 90 days before deleting.
-    
+- Audit your AD environment for stale accounts on a regular basis (every 30 days). You can identify stale accounts by checking the lastLogonTimestamp attribute.
+- Temporarily disable stale accounts for 90 days before deleting.
 
 Example PowerShell command to find stale user accounts
 
@@ -251,22 +219,15 @@ Configuring domain controllers to use external DNS servers and using the loopbac
 
 Microsoft recommends pointing the preferred DNS server to another DNS server and the alternate to the loopback address. Let’s take two domain controllers for example.
 
-*   DC1
-    
-    *   IP: 192.168.100.10
-        
-    *   Preferred DNS server: 192.168.100.11
-        
-    *   Alternate DNS server: 127.0.0.1
-        
-*   DC2
-    
-    *   IP: 192.168.100.11
-        
-    *   Preferred DNS server: 192.168.100.10
-        
-    *   Alternate DNS server: 127.0.0.1
-        
+- DC1
+  - IP: 192.168.100.10
+  - Preferred DNS server: 192.168.100.11
+  - Alternate DNS server: 127.0.0.1
+
+- DC2
+  - IP: 192.168.100.11
+  - Preferred DNS server: 192.168.100.10
+  - Alternate DNS server: 127.0.0.1
 
 ### **2\. Pointing clients or servers to external DNS servers**
 
@@ -296,18 +257,12 @@ Active Directory backups from 3rd party vendors might not be supported by Micros
 
 A system state backup includes the critical components needed to restore Active Directory from a complete failure. This includes components such as:
 
-*   Active Directory database (NTDS.DIT)
-    
-*   SYSVOL folder
-    
-*   Registry
-    
-*   System files
-    
-*   Boot files
-    
-*   Certificate database
-    
+- Active Directory database (NTDS.DIT)
+- SYSVOL folder
+- Registry
+- System files
+- Boot files
+- Certificate database
 
 ### **Solution**
 
@@ -315,16 +270,11 @@ Run a system state backup on the domain controller on a regular schedule. If you
 
 How to run a system state backup
 
-*   Install the Windows Server Backup feature via Server Manager.
-    
-*   Create a backup schedule
-    
-*   Choose VSS full backup
-    
-*   Select schedule
-    
-*   Select destination
-    
+- Install the Windows Server Backup feature via Server Manager.
+- Create a backup schedule
+- Choose VSS full backup
+- Select schedule
+- Select destination
 
 To see full details check out my article on [how to backup active directory](https://activedirectorypro.com/backup-active-directory/).
 
@@ -334,20 +284,13 @@ The default domain policy should only be used for account policy settings, passw
 
 **Key issues with excessive use of Default Domain Policy**
 
-*   Creates a cluttered mess
-    
-*   Difficult to troubleshoot
-    
-*   Applies settings to all users and computers
-    
-*   Can impact performance
-    
-*   No granular control
-    
-*   Misconfigurations
-    
-*   Confusion
-    
+- Creates a cluttered mess
+- Difficult to troubleshoot
+- Applies settings to all users and computers
+- Can impact performance
+- No granular control
+- Misconfigurations
+- Confusion
 
 ### **Solution**
 

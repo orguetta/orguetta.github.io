@@ -9,6 +9,7 @@ featured: false
 draft: false
 description: OpenSSL Cheat Sheet
 ---
+
 # **OpenSSL Cheat Sheet**
 
 **Verify if a private key matches a certificate**
@@ -119,7 +120,7 @@ openssl req -x509 -newkey rsa:4096 -subj "/C=XX/ST=XX/L=XX/O=XX/OU=REDDIT/CN=OSC
   -days 3650 -nodes -sha256
 ```
 
-* * *
+---
 
 **Certificate management**
 

@@ -6,57 +6,45 @@ title: Create Managed Service Accounts in Active Directory
 ogImage: Create Managed Service Accounts in Active Directory
 featured: false
 draft: true
+description: "Learn how to create and use Managed Service Accounts (MSAs) in Active Directory for enhanced security and simplified password management. This step-by-step guide covers the creation, association, and installation of MSAs."
 ---
+
 In this article, I’ll show you how to install and use Managed Service Accounts in Active Directory.
 
 ## **Managed Service Accounts (MSAs) vs Regular Service Accounts**
 
-*   **Managed Service Accounts (MSAs)**
-    
-    *   These are a special type of Active Directory accounts designed specifically to run services, applications, or tasks on Windows server.
-        
-    *   Passwords are automatically generated and rotated by default every 30 days.
-        
-    *   Can only be used on one computer unless group managed service accounts (gMSAs) is configured.
-        
-    *   Much more secure by default compared to regular service accounts.
-        
-*   **Regular Service Accounts**
-    
-    *   These are regular Active Directory user accounts that are used to run a service or scheduled task
-        
-    *   You set and manage the password manually
-        
-    *   Can be used on multiple computers by default
-        
-    *   Passwords are often set to never expire and often never changed (increase security risk)
-        
-    *   Often poorly managed and difficult to track where they’re in use
-        
-*   **Group Managed Service Accounts (gMSAs)**
-    
-    *   gMSAs extend the functionality of MSAs by allowing multiple computers to use the same managed service account.
-        
+- **Managed Service Accounts (MSAs)**
+  - These are a special type of Active Directory accounts designed specifically to run services, applications, or tasks on Windows server.
+  - Passwords are automatically generated and rotated by default every 30 days.
+  - Can only be used on one computer unless group managed service accounts (gMSAs) is configured.
+  - Much more secure by default compared to regular service accounts.
+
+- **Regular Service Accounts**
+  - These are regular Active Directory user accounts that are used to run a service or scheduled task
+  - You set and manage the password manually
+  - Can be used on multiple computers by default
+  - Passwords are often set to never expire and often never changed (increase security risk)
+  - Often poorly managed and difficult to track where they’re in use
+
+- **Group Managed Service Accounts (gMSAs)**
+  - gMSAs extend the functionality of MSAs by allowing multiple computers to use the same managed service account.
 
 ## **Comparison Table**
 
-| **Feature** | **Managed Service Account** | **Regular Service Account** |
-| --- | --- | --- |
-| Password Management | Automatic | Manual |
-| Can be used on multiple computers | No, requires gMSA | Yes |
-| Created via ADUC | No, Powershell only | Yes |
-| Interactive Logon Allowed | No  | Yes |
-| Track where used | Yes | No  |
-| Security | High | Low |
+| **Feature**                       | **Managed Service Account** | **Regular Service Account** |
+| --------------------------------- | --------------------------- | --------------------------- |
+| Password Management               | Automatic                   | Manual                      |
+| Can be used on multiple computers | No, requires gMSA           | Yes                         |
+| Created via ADUC                  | No, Powershell only         | Yes                         |
+| Interactive Logon Allowed         | No                          | Yes                         |
+| Track where used                  | Yes                         | No                          |
+| Security                          | High                        | Low                         |
 
 ## **Requirements**
 
-*   Domain Controller running Windows Server 2008 R2 or later
-    
-*   Active Directory module for Windows PowerShell
-    
-*   The computer using the MSA must be a domain joined computer
-    
+- Domain Controller running Windows Server 2008 R2 or later
+- Active Directory module for Windows PowerShell
+- The computer using the MSA must be a domain joined computer
 
 ## **How to create and Use Managed Service Accounts (MSAs)**
 
