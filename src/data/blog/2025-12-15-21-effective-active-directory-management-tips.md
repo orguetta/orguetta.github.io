@@ -5,7 +5,7 @@ modDatetime: 2024-03-26
 title: 21 Effective Active Directory Management Tips
 ogImage: 21 Effective Active Directory Management Tips
 featured: false
-draft: false
+draft: true
 ---
 This is the most comprehensive list of Active Directory Management Tips online.
 
@@ -604,7 +604,7 @@ Domain joined computers will by default sync with the PDC.
 Additional resources
 
 [https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd363553(v=ws.10)  
-https://blogs.technet.microsoft.com/nepapfe/2013/03/01/its-simple-time-configuration-in-active-directory/](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd363553\(v=ws.10\)￼https://blogs.technet.microsoft.com/nepapfe/2013/03/01/its-simple-time-configuration-in-active-directory/)
+https://blogs.technet.microsoft.com/nepapfe/2013/03/01/its-simple-time-configuration-in-active-directory/](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd363553\(v=ws.10\)%EF%BF%BChttps://blogs.technet.microsoft.com/nepapfe/2013/03/01/its-simple-time-configuration-in-active-directory/)
 
 ## **18\. Document Active Directory & Group Policy**
 
