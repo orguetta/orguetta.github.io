@@ -22,7 +22,7 @@ export default defineConfig({
     umami({
       id: "1ead39d5-6f8a-4775-8437-f97dfa686d49",
       endpointUrl: "https://orguetta.github.io",
-      trackerScriptName: "umami.js",
+      trackerScriptName: "script.js",
       hostUrl: "https://umami.guetta.tech",
     }),
   ],
