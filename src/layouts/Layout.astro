@@ -142,17 +142,6 @@ const structuredData = {
       )
     }
 
-    {
-      // Umami analytics script
-      umamiWebsiteId && umamiUrl && (
-        <script
-          defer
-          src={`${umamiUrl}/script.js`}
-          data-website-id={umamiWebsiteId}
-          is:inline
-        />
-      )
-    }
 
     <script is:inline src="/toggle-theme.js"></script>
   </head>

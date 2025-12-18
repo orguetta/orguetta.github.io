@@ -9,6 +9,7 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
+import umami from "@yeskunall/astro-umami";
 import { SITE } from "./src/config";
 
 // https://astro.build/config
@@ -17,6 +18,12 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
+    }),
+    umami({
+      id: "1ead39d5-6f8a-4775-8437-f97dfa686d49",
+      endpointUrl: "https://orguetta.github.io",
+      trackerScriptName: "umami.js",
+      hostUrl: "https://umami.guetta.tech",
     }),
   ],
   markdown: {

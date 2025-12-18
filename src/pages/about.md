@@ -1,41 +1,41 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "About Or Guetta"
 ---
 
-Welcome to my cybersecurity blog! I'm Or Guetta, a cybersecurity expert and application security specialist who's passionate about making the digital world more secure.
+Welcome to my technical hub. I'm Or Guetta, a cybersecurity engineer and application delivery specialist focused on building, hardening, and securing large-scale infrastructure and web applications.
 
-## Who Am I?
+## Technical Expertise
 
-I'm a digital nomad combining my love for technology with travel, currently focused on:
+I specialize in defensive architecture and infrastructure security, with a deep focus on:
 
-- **Cybersecurity** - Protecting applications and infrastructure from threats
-- **Application Security** - Implementing secure coding practices and architecture
-- **NetScaler Expertise** - Advanced configuration, optimization, and security hardening
-- **DevSecOps** - Integrating security into development and deployment pipelines
-- **Cloud Security** - Securing cloud infrastructure and applications
+- **NetScaler / Citrix ADC** - Advanced configuration, SSL/TLS optimization, and security hardening.
+- **WAF & Traffic Management** - Implementing AppExpert policies, Responder, and Rewrite rules for real-world threat mitigation.
+- **Defensive Architecture** - Designing redundant, high-performance, and secure application delivery environments.
+- **Cybersecurity Engineering** - Hardening systems against the OWASP Top 10 and real-world attack vectors.
+- **Infrastructure as Code** - Automating security configurations and management using APIs and scripting.
 
-## My Approach
+## Engineering Principles
 
-I believe in a practical, hands-on approach to cybersecurity:
+My approach to engineering is driven by three core principles:
 
-- **Build secure** applications from the ground up
-- **Break things** responsibly to find vulnerabilities before attackers do
-- **Automate security** processes to improve efficiency and consistency
-- **Share knowledge** through detailed technical articles and real-world examples
+1. **Precision & Accuracy** - In technical environments, details matter. I focus on exact configurations and verified security patterns.
+2. **Defensive by Design** - Security is not an afterthought; applications must be built and delivered within a secure-by-default architecture.
+3. **Operational Efficiency** - Technical depth should be paired with automation to ensure security is scalable and maintainable.
 
-## What You'll Find Here
+## What I Share Here
 
-This blog focuses on practical cybersecurity topics, including:
+This site serves as a technical knowledge base for engineers. You will find:
 
-- NetScaler configuration and security best practices
-- Application security implementation guides
-- Automation scripts and API usage
-- Security architecture and design patterns
-- Real-world case studies and lessons learned
+- **Hands-on Guides** - Practical NetScaler and AppSec configurations.
+- **Technical Tools** - Calculators and scripts used in daily security operations.
+- **Deep Dives** - Opinionated analysis of networking and security technologies.
+- **Practical Guides** - Real-world solutions for infrastructure hardening.
 
-## Get In Touch
+## Professional Contact
 
-Have questions about cybersecurity, need help with a security implementation, or want to discuss technology? Feel free to reach out through my social links below.
+If you require technical consultation or wish to discuss engineering principles:
 
-Let's make the web more secure, one application at a time! �
+- **LinkedIn**: [linkedin.com/in/orguetta](https://www.linkedin.com/in/orguetta/)
+- **Email**: [or@guetta.tech](mailto:or@guetta.tech)
+- **GitHub**: [github.com/orguetta](https://github.com/orguetta)
