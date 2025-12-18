@@ -20,7 +20,7 @@ export default defineConfig({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
     }),
     umami({
-      id: "1ead39d5-6f8a-4775-8437-f97dfa686d49",
+      id: "0e73fa08-4ca0-4e4e-9e70-a0f39bea1081",
       endpointUrl: "https://umami.guetta.tech",
       trackerScriptName: "script.js",
       hostUrl: "https://umami.guetta.tech",
