@@ -4,6 +4,15 @@ import { SITE } from "@/config";
 
 export const BLOG_PATH = "src/data/blog";
 
+const now = defineCollection({
+  loader: glob({ pattern: "now.md", base: "./src/data" }),
+  schema: z.object({
+    updatedAt: z.date().optional(),
+    title: z.string().default("Now"),
+    description: z.string().optional(),
+  }),
+});
+
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
   schema: ({ image }) =>
@@ -23,4 +32,4 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+export const collections = { blog, now };

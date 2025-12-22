@@ -1,0 +1,53 @@
+---
+import { getEntry, render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Main from "@/layouts/Main.astro";
+import Hr from "@/components/Hr.astro";
+import { SITE } from "@/config";
+
+const nowEntry = await getEntry("now", "now").catch(() => null);
+const rendered = nowEntry ? await render(nowEntry) : null;
+const updatedAtRaw = nowEntry?.data.updatedAt;
+const updatedAt = updatedAtRaw
+  ? new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(updatedAtRaw)
+  : undefined;
+const pageTitle = nowEntry?.data.title ?? "Now";
+const pageDesc =
+  nowEntry?.data.description ??
+  "What I’m focused on at the moment. Updated when priorities shift, not daily.";
+---
+
+<Layout
+  title={`${pageTitle} | ${SITE.title}`}
+  description="What I'm focused on right now — a living snapshot inspired by nownownow.com/about."
+>
+  <Header />
+  <Main pageTitle={pageTitle} pageDesc={pageDesc}>
+    {updatedAt && <p class="text-sm opacity-70">Last updated: {updatedAt}</p>}
+
+    {rendered ? (
+      <article class="app-prose mt-6 space-y-6">
+        <rendered.Content />
+      </article>
+    ) : (
+      <p class="mt-6 text-sm opacity-80">
+        This now page is not ready yet. Add <code>src/data/now.md</code> to
+        publish it.
+      </p>
+    )}
+
+    <section class="mt-10 space-y-3">
+      <Hr />
+      <p class="text-sm opacity-75">
+        Inspired by the <a
+          href="https://nownownow.com/about"
+          class="underline underline-offset-4 hover:text-accent"
+          >now page movement</a
+        >—a simple snapshot of what I’d tell a friend I haven’t seen in a while.
+      </p>
+    </section>
+  </Main>
+  <Footer />
+</Layout>
