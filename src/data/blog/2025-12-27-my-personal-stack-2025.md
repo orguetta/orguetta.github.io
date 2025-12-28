@@ -44,7 +44,7 @@ This post is part of a short series. The next parts will cover:
 
 *   [**My personal infrastructure stack (cloud, containers, and observability)**](https://or.guetta.tech/posts/2025-12-28-my-infrastructure-stack-2025/)
     
-*   **Productivity and knowledge management**
+*   **Productivity and automation stack – notes, tasks, and workflows**
     
 *   **Security and privacy choices**
     
