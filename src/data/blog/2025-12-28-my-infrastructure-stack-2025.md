@@ -3,8 +3,12 @@ author: Or Guetta
 pubDatetime: 2025-12-28
 modDatetime: 2025-12-28
 title: My Infrastructure Stack – 2025
+slug: 2025-12-28-my-infrastructure-stack-2025
 featured: false
 draft: false
+description: A look at the cloud and self-hosted infrastructure behind my
+  personal stack in 2025, including containers, networking, monitoring, and
+  access control.
 ---
 ### This post is the second part of my personal stack series. Here I focus only on the infrastructure side: where things run, how they are exposed, and how I keep the setup simple enough to manage alone.
 
