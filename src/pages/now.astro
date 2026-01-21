@@ -7,15 +7,22 @@ import Main from "@/layouts/Main.astro";
 import Hr from "@/components/Hr.astro";
 import { SITE } from "@/config";
 
-const nowEntry = await getEntry("now", "now").catch(() => null);
+let nowEntry;
+try {
+  const result = await getEntry("now", "now");
+  nowEntry = result || null;
+} catch {
+  nowEntry = null;
+}
+
 const rendered = nowEntry ? await render(nowEntry) : null;
-const updatedAtRaw = nowEntry?.data.updatedAt;
+const updatedAtRaw = nowEntry?.data?.updatedAt;
 const updatedAt = updatedAtRaw
   ? new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(updatedAtRaw)
   : undefined;
-const pageTitle = nowEntry?.data.title ?? "Now";
+const pageTitle = nowEntry?.data?.title ?? "Now";
 const pageDesc =
-  nowEntry?.data.description ??
+  nowEntry?.data?.description ??
   "What I’m focused on at the moment. Updated when priorities shift, not daily.";
 ---
 
