@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About Or Guetta"
+title: "About me"
 ---
 
 Welcome to my technical hub. I'm Or Guetta, a cybersecurity engineer and application delivery specialist focused on building, hardening, and securing large-scale infrastructure and web applications.
