@@ -14,7 +14,7 @@ function svgToPngBlob(svg: string): Blob {
   const resvg = new Resvg(svg);
   const pngData = resvg.render().asPng(); // Uint8Array/Buffer
   // Use ArrayBuffer to satisfy DOM typings for Blob parts
-  const ab = toArrayBuffer(pngData);
+  const ab = toArrayBuffer(new Uint8Array(pngData));
   return new Blob([ab], { type: "image/png" });
 }
 
