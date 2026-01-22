@@ -34,16 +34,18 @@ const pageDesc =
   <Main pageTitle={pageTitle} pageDesc={pageDesc}>
     {updatedAt && <p class="text-sm opacity-70">Last updated: {updatedAt}</p>}
 
-    {rendered ? (
-      <article class="app-prose mt-6 space-y-6">
-        <rendered.Content />
-      </article>
-    ) : (
-      <p class="mt-6 text-sm opacity-80">
-        This now page is not ready yet. Add <code>src/data/now.md</code> to
-        publish it.
-      </p>
-    )}
+    {
+      rendered ? (
+        <article class="app-prose mt-6 space-y-6">
+          <rendered.Content />
+        </article>
+      ) : (
+        <p class="mt-6 text-sm opacity-80">
+          This now page is not ready yet. Add <code>src/data/now.md</code> to
+          publish it.
+        </p>
+      )
+    }
 
     <section class="mt-10 space-y-3">
       <Hr />

@@ -1,7 +1,6 @@
 @plugin "@tailwindcss/typography";
 
 @layer base {
-
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
     @apply prose;
@@ -25,11 +24,11 @@
     figcaption,
     table,
     code {
-      @apply text-foreground leading-relaxed;
+      @apply leading-relaxed text-foreground;
     }
 
     a {
-      @apply break-words text-accent decoration-accent/30 underline decoration-1 underline-offset-4 transition-colors hover:decoration-accent focus-visible:no-underline;
+      @apply break-words text-accent underline decoration-accent/30 decoration-1 underline-offset-4 transition-colors hover:decoration-accent focus-visible:no-underline;
     }
 
     ul {
@@ -53,7 +52,6 @@
     }
 
     table {
-
       th,
       td {
         @apply border border-border p-2;

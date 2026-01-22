@@ -1,5 +1,4 @@
 ---
-
 export interface Props {
   tag: string;
   tagName: string;
@@ -9,18 +8,15 @@ export interface Props {
 const { tag, tagName, size = "sm" } = Astro.props;
 ---
 
-<li
-  class:list={[
-    "group inline-block",
-    size === "sm" ? "m-1" : "m-2",
-  ]}
->
+<li class:list={["group inline-block", size === "sm" ? "m-1" : "m-2"]}>
   <a
     href={`/tags/${tag}/`}
     transition:name={tag}
     class:list={[
       "flex items-center rounded-md border border-accent/20 bg-accent/5 px-2 py-1 text-accent transition-all hover:bg-accent hover:text-background",
-      size === "sm" ? "text-xs px-2 py-0.5" : "text-base px-3 py-1.5 font-medium",
+      size === "sm"
+        ? "px-2 py-0.5 text-xs"
+        : "px-3 py-1.5 text-base font-medium",
     ]}
   >
     <span>{tagName}</span>

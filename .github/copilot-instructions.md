@@ -14,11 +14,13 @@
 **Location**: `src/data/blog/**/*.md` (defined in `src/content.config.ts`)
 
 **Frontmatter schema** (required fields):
+
 - `title`: String
 - `description`: String (used for SEO meta, RSS, card snippets)
 - `pubDatetime`: Date
 
 **Optional frontmatter**:
+
 - `modDatetime`: Date | null
 - `tags`: string[] (default: `["others"]`, auto-slugified)
 - `ogImage`: Image | string (falls back to dynamic generation if `SITE.dynamicOgImage` is true)
@@ -30,6 +32,7 @@
 - `author`: string (defaults to `SITE.author`)
 
 **Publishing rules**:
+
 1. Posts in `_`-prefixed folders are ignored by the content loader
 2. `draft: true` posts are excluded via `postFilter` utility
 3. Scheduled posts only appear after `pubDatetime - SITE.scheduledPostMargin` (15 minutes), except in dev mode (`import.meta.env.DEV`)
@@ -82,6 +85,7 @@
 ## Utilities & Helpers
 
 **Core helpers** (in `src/utils/`):
+
 - `getSortedPosts`: Sort by `pubDatetime` descending, then `modDatetime`
 - `postFilter`: Filters drafts and respects `scheduledPostMargin`
 - `getPostsByTag`: Returns posts for a specific tag
@@ -90,6 +94,7 @@
 - `loadGoogleFont`: Fetches Google Fonts for OG image rendering (satori requirement)
 
 **Slugification rules**:
+
 - Use provided `slugify` utilities instead of reimplementing
 - Tags are auto-slugified when displayed/filtered
 - Path segments are slugified by `getPath`
@@ -97,11 +102,13 @@
 ## Environment & Analytics
 
 **Public env vars** (declared in `astro.config.ts` env schema):
+
 - `PUBLIC_GOOGLE_SITE_VERIFICATION`: Google Search Console verification
 - `PUBLIC_UMAMI_WEBSITE_ID`: Umami analytics site ID
 - `PUBLIC_UMAMI_URL`: Umami tracker endpoint
 
 **Umami config** (in `astro.config.ts`):
+
 - ID: `0e73fa08-4ca0-4e4e-9e70-a0f39bea1081`
 - Endpoint: `https://umami.guetta.tech`
 - Script name: `script.js` (served from `public/script.js`)
@@ -111,6 +118,7 @@
 **Package manager**: pnpm (see `package.json`)
 
 **Common commands**:
+
 - `pnpm run dev`: Start dev server
 - `pnpm run build`: Full build pipeline (TypeScript check → Astro build → Pagefind indexing → copy Pagefind bundle to `public/`)
 - `pnpm run preview`: Preview production build
