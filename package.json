@@ -19,7 +19,7 @@
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "4.1.18",
     "@yeskunall/astro-umami": "^0.0.7",
-    "astro": "^5.17.1",
+    "astro": "^5.17.2",
     "dayjs": "1.11.19",
     "lodash.kebabcase": "^4.1.1",
     "remark-collapse": "^0.1.2",
