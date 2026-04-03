@@ -12,7 +12,6 @@ description: A personal look at the stack I use in 2025. From Apple-first client
   tools to self-hosted services in the cloud, this post sets the context for a
   short series on how I run my personal setup.
 ---
-
 ### I often see people share the tools they use every day. This post is my version of that, but with a bit more context.
 
 This is not a list of “the best tools”. It’s simply the stack that supports how I work, learn, and experiment in 2025. It reflects my daily habits, my preference for simplicity, and my bias toward owning my setup where it makes sense.
@@ -43,8 +42,8 @@ I try to avoid chasing new tools unless they clearly replace something or simpli
 
 This post is part of a short series. The next parts will cover:
 
-- [**My personal infrastructure stack (cloud, containers, and observability)**](https://or.guetta.tech/posts/2025-12-28-my-infrastructure-stack-2025/)
-- **Productivity and automation stack – notes, tasks, and workflows**
+- **[My personal infrastructure stack (cloud, containers, and observability)](https://or.guetta.tech/posts/2025-12-28-my-infrastructure-stack-2025/)**
+- **[Productivity and automation stack – notes, tasks, and workflows](https://or.guetta.tech/posts/2025-12-29-my-productivity-and-automation-stack-2025/)**
 - **Security and privacy choices**
 
 If you’re building your own personal stack, take this as inspiration, not a blueprint. The right stack is the one that quietly supports your life and work.
