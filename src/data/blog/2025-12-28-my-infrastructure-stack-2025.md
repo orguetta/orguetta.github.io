@@ -11,9 +11,9 @@ description: A look at the cloud and self-hosted infrastructure behind my
   access control.
 ---
 
-### This post Is the Second Part of My Personal Stack Series. Here I Focus Only on the Infrastructure Side: Where Things Run, How They Are Exposed, and How I Keep the Setup Simple Enough to Manage Alone
+## This is the infrastructure side of my stack
 
-This is not a production-grade platform and not meant to impress. It’s a personal lab that I actually use every day.
+This is not a production-grade platform and not meant to impress. It’s a personal lab I actually use every day.
 
 ## Base Setup
 
@@ -35,7 +35,7 @@ For authentication and access control, I use [Authentik](https://github.com/goau
 
 This is one of those tools that quietly becomes critical once it’s in place.
 
-Observability and Monitoring
+### Observability and Monitoring
 
 I prefer to know when things break instead of discovering it by accident.
 
@@ -74,9 +74,9 @@ Most of these services are used daily. If something isn’t useful anymore, it g
 
 ### Why This Works for Me
 
-This setup stays intentionally boring. No Kubernetes, no complex service mesh, no unnecessary layers.
+This setup stays intentionally boring. No Kubernetes, no complex service mesh, no extra layers I don’t need.
 
-Docker Compose, a small number of VMs, and clear boundaries are enough for what I need right now. The goal is learning and control, not scale.
+Docker Compose, a small number of VMs, and clear boundaries are enough for me right now. The goal is learning and control, not scale.
 
 ## What’s Next
 

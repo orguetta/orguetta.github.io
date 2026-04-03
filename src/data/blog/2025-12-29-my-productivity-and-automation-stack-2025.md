@@ -11,7 +11,7 @@ description: A simple 2025 productivity stack centered on Obsidian, Reminders,
   overhead.
 ---
 
-## This is the third part of my personal stack series. After covering my tools and infrastructure, this post focuses on how I actually move information, automate small tasks, and avoid unnecessary friction
+## This is the part where I keep things moving without overthinking them
 
 The goal here is not maximum productivity. It’s clarity and low mental overhead.
 
@@ -47,7 +47,7 @@ I use a few simple bots, mostly on Telegram. They do very specific things and st
 
 If a bot grows beyond a single purpose, it usually means it should be a proper service or be deleted.
 
-How Information Flows
+### How Information Flows
 
 I try to keep clear boundaries:
 

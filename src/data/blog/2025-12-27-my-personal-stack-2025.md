@@ -13,9 +13,9 @@ description: A personal look at the stack I use in 2025. From Apple-first client
   short series on how I run my personal setup.
 ---
 
-### I Often See People Share the Tools They Use Every Day. This post Is My Version of That, but with a Bit More Context
+## This is my personal stack
 
-This is not a list of “the best tools”. It’s simply the stack that supports how I work, learn, and experiment in 2025. It reflects my daily habits, my preference for simplicity, and my bias toward owning my setup where it makes sense.
+This is not a list of “the best tools”. It’s just my setup for work, learning, and testing ideas in 2025. It reflects how I like to keep things simple and under my control when it makes sense.
 
 ### Client Side
 
@@ -27,7 +27,7 @@ For browsing and development, I switch between Safari and Chrome, use Warp as my
 
 ### Self-Hosted and Cloud
 
-Behind the scenes, a big part of my personal stack runs on my own infrastructure.
+A big part of my personal stack runs on my own infrastructure.
 
 I run multiple containers on virtual machines in Oracle Cloud. Most services are self-hosted, mainly for learning, control, and long-term flexibility. This setup powers things like RSS, bookmarks, automation, monitoring, and various internal tools.
 
@@ -35,9 +35,9 @@ I’ll go deeper into the infrastructure, security, and automation pieces in the
 
 ### Why This Stack
 
-This stack works for me because it stays boring where it should and flexible where it matters. I rely on stable, familiar tools for daily work, and experiment freely on the backend.
+This stack works for me because it stays boring where it should and flexible where it matters.
 
-I try to avoid chasing new tools unless they clearly replace something or simplify my flow. When something stops serving me, I drop it.
+I try not to chase new tools unless they clearly help. When something stops being useful, I drop it.
 
 ## **What’s Next**
 
