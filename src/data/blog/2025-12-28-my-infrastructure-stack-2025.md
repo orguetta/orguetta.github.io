@@ -11,7 +11,7 @@ description: A look at the cloud and self-hosted infrastructure behind my
   access control.
 ---
 
-### This post is the second part of my personal stack series. Here I focus only on the infrastructure side: where things run, how they are exposed, and how I keep the setup simple enough to manage alone.
+### This post Is the Second Part of My Personal Stack Series. Here I Focus Only on the Infrastructure Side: Where Things Run, How They Are Exposed, and How I Keep the Setup Simple Enough to Manage Alone
 
 This is not a production-grade platform and not meant to impress. It’s a personal lab that I actually use every day.
 
