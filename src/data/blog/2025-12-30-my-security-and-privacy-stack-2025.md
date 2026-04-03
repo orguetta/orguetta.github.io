@@ -4,7 +4,7 @@ modDatetime: 2025-12-30
 title: My Security and Privacy Stack – 2025
 slug: 2025-12-30-my-security-and-privacy-stack-2025
 featured: false
-draft: true
+draft: false
 description: "An in-depth look at my 2025 security and privacy stack, focusing on a balanced approach to protection and simplicity through Authentik, Tailscale, and Cloudflare."
 ---
 
