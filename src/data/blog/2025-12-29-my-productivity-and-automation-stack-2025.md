@@ -6,6 +6,9 @@ title: My Productivity and Automation Stack – 2025
 slug: 2025-29-12-my-productivity-and-automation-stack-2025
 featured: false
 draft: false
+description: A simple 2025 productivity stack centered on Obsidian, Reminders,
+  Miniflux, Linkwarden, and n8n automations designed for clarity and low mental
+  overhead.
 ---
 ## This is the third part of my personal stack series. After covering my tools and infrastructure, this post focuses on how I actually move information, automate small tasks, and avoid unnecessary friction.
 
