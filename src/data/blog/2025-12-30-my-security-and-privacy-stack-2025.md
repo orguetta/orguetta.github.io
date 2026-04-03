@@ -7,7 +7,8 @@ featured: false
 draft: true
 description: "An in-depth look at my 2025 security and privacy stack, focusing on a balanced approach to protection and simplicity through Authentik, Tailscale, and Cloudflare."
 ---
-## This is the fourth part of my personal stack series. After covering tools, infrastructure, and workflows, this post focuses on how I think about security and privacy in my setup.
+
+## This Is the Fourth Part of My Personal Stack Series. After Covering Tools, Infrastructure, and Workflows, This post Focuses on How I Think About Security and Privacy in My Setup
 
 This is not a complete security model. It’s a practical approach that balances protection with simplicity.
 
