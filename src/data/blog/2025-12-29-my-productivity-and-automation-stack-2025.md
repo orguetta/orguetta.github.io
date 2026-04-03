@@ -3,7 +3,7 @@ author: Or Guetta
 pubDatetime: 2025-12-29
 modDatetime: 2025-12-29
 title: My Productivity and Automation Stack – 2025
-slug: 2026-04-03-my-productivity-and-automation-stack-2025
+slug: 2025-29-12-my-productivity-and-automation-stack-2025
 featured: false
 draft: false
 ---
