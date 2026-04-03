@@ -1,0 +1,56 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Main from "@/layouts/Main.astro";
+import { SITE } from "@/config";
+---
+
+<Layout
+  title={`Privacy Policy | ${SITE.title}`}
+  description="Privacy policy for guetta.tech including analytics usage and data handling practices."
+>
+  <Header />
+  <Main
+    pageTitle="Privacy Policy"
+    pageDesc="How this site collects and uses technical usage data."
+  >
+    <article class="app-prose space-y-6">
+      <p>
+        The administrators of <strong>or.guetta.tech</strong> are committed to protecting
+        user privacy. By using this site, you agree to the practices described below.
+      </p>
+
+      <h2>Analytics</h2>
+      <p>
+        This site uses <a href="https://umami.is/?ref=or.guetta.tech">Umami</a>
+        for privacy-focused analytics. Collected statistics are used to improve the
+        site experience and are not sold for targeted advertising.
+      </p>
+
+      <h2>Data We May Process</h2>
+      <ul>
+        <li>
+          Technical usage data (browser type, pages viewed, session timing)
+        </li>
+        <li>Network metadata such as anonymized IP information</li>
+        <li>Contact information voluntarily submitted by users</li>
+      </ul>
+
+      <h2>Cookies and Similar Technologies</h2>
+      <p>
+        Functional and analytics cookies may be used to support core site
+        behavior and aggregate usage insights.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        For privacy questions, contact
+        <a href="mailto:privacy@guetta.tech">privacy@guetta.tech</a>.
+      </p>
+
+      <p><strong>Last Updated:</strong> April 03, 2026</p>
+    </article>
+  </Main>
+  <Footer />
+</Layout>
