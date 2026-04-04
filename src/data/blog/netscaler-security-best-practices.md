@@ -20,7 +20,7 @@ NetScaler is a powerful application delivery controller (ADC) that plays a criti
 
 A properly configured WAF is essential for protecting applications from common web vulnerabilities such as SQL injection (SQLi), cross-site scripting (XSS), and OWASP Top 10 threats.
 
-### Key WAF Best Practices:
+### Key WAF Best Practices
 
 - **Enable and Fine-Tune Signatures:** Keep security signatures updated and customize them to reduce false positives and negatives.
 - **Use Positive Security Model:** Define allowed request patterns instead of relying solely on blocklists.
@@ -32,7 +32,7 @@ A properly configured WAF is essential for protecting applications from common w
 
 Rate limiting helps prevent brute-force attacks, API abuse, and DoS attempts by restricting the number of requests per user within a specified timeframe.
 
-### Effective Rate Limiting Strategies:
+### Effective Rate Limiting Strategies
 
 - **Per-User Rate Limits:** Apply limits based on user IPs or session tokens.
 - **Geo-Based Restrictions:** Block or throttle traffic from high-risk regions.
@@ -43,7 +43,7 @@ Rate limiting helps prevent brute-force attacks, API abuse, and DoS attempts by 
 
 Hardening your NetScaler appliance minimizes its attack surface and strengthens its overall security posture.
 
-### Key Hardening Steps:
+### Key Hardening Steps
 
 - **Disable Unused Services:** Turn off unnecessary features and services to reduce exposure.
 - **Enable TLS 1.2/1.3:** Enforce strong encryption and disable outdated protocols like TLS 1.0/1.1.
