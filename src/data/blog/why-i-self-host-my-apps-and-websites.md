@@ -1,11 +1,14 @@
 ---
-title: "Why I Self-Host My Apps and Websites"
-description: A practical overview of self-hosting a website, including the benefits, trade-offs, and a straightforward path to get started securely.
+author: Or Guetta
 pubDatetime: 2024-04-16
 modDatetime: 2024-04-16
-ogImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDExfHxzZXJ2ZXJzfGVufDB8fHx8MTcxMzI4ODg4MHww&ixlib=rb-4.0.3&q=80&w=2000"
+title: Why I Self-Host My Apps and Websites
+slug: why-i-self-host-my-apps-and-websites
+featured: false
+draft: false
+description: A practical overview of self-hosting a website, including the
+  benefits, trade-offs, and a straightforward path to get started securely.
 ---
-
 **Introduction:**
 
 I like owning my own setup, and self-hosting is part of that. This post is about why I like it and what it takes to run your own site.
