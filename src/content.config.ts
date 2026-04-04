@@ -1,5 +1,4 @@
 /// <reference types="astro" />
-// @ts-expect-error - z is deprecated from astro:content but works in practice
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import { SITE } from "@/config";
