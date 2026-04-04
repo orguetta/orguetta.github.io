@@ -1,0 +1,52 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Main from "@/layouts/Main.astro";
+import { SITE } from "@/config";
+---
+
+<Layout
+  title={`Security | ${SITE.title}`}
+  description="How to report security issues for guetta.tech properties."
+>
+  <Header />
+  <Main
+    pageTitle="Security"
+    pageDesc="Vulnerability disclosure and reporting for guetta.tech services."
+  >
+    <article class="app-prose space-y-6">
+      <p>
+        Security issues affecting <strong>guetta.tech</strong>,
+        <strong>www.guetta.tech</strong>, or <strong>or.guetta.tech</strong>
+        should be reported responsibly.
+      </p>
+
+      <h2>Report a Vulnerability</h2>
+      <p>
+        Please send details to
+        <a href="mailto:security@guetta.tech">security@guetta.tech</a>. Include
+        impact, reproduction steps, and affected URL/path.
+      </p>
+
+      <h2>Disclosure Policy</h2>
+      <ul>
+        <li>Do not access or modify data that does not belong to you.</li>
+        <li>Do not disrupt availability or degrade service performance.</li>
+        <li>
+          Give us reasonable time to validate and remediate before public
+          disclosure.
+        </li>
+      </ul>
+
+      <h2>Additional Security Metadata</h2>
+      <p>
+        Machine-readable policy details are available in
+        <a href="/.well-known/security.txt"> security.txt</a>.
+      </p>
+
+      <p><strong>Last Updated:</strong> April 04, 2026</p>
+    </article>
+  </Main>
+  <Footer />
+</Layout>

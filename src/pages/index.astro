@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
@@ -12,30 +11,31 @@ import getSortedPosts from "@/utils/getSortedPosts";
 import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
-import { SOCIALS } from "@/constants";
 
 const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const featuredPreviewPosts = featuredPosts.slice(0, 1);
+const recentPreviewPosts = recentPosts.slice(0, Math.min(SITE.postPerIndex, 4));
 ---
 
 <Layout>
   <Header />
   <main id="main-content" data-layout="index">
-    <section id="hero" class="ui-prose pt-8 pb-6">
+    <section id="hero" class="ui-prose pt-10 pb-6">
       <SectionHeader
         level="h1"
         title="Or Guetta"
-        subtitle="Cybersecurity engineering, infrastructure hardening, and secure application delivery."
+        subtitle="Practical security engineering notes on hardening, application delivery, and defensive automation."
       >
         <a
           slot="action"
           target="_blank"
           rel="noopener noreferrer"
           href="/rss.xml"
-          class="inline-flex items-center text-accent"
+          class="ui-control ui-control--secondary ui-control--icon"
           aria-label="rss feed"
           title="RSS Feed"
         >
@@ -43,64 +43,22 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           <span class="sr-only">RSS Feed</span>
         </a>
       </SectionHeader>
-      <p class="max-w-3xl">
-        Technical hub with practical playbooks for NetScaler/ADC, WAF strategy,
-        cloud security hardening, and defensive automation.
-      </p>
-      <div class="mt-5 flex flex-wrap gap-3">
+      <div class="mt-6 flex flex-wrap items-center gap-3">
         <LinkButton href="/posts" variant="primary">Read Guides</LinkButton>
-        <LinkButton href="/resume" variant="secondary">View Resume</LinkButton>
-        <LinkButton href="/tools" variant="ghost">Explore Tools</LinkButton>
+        <LinkButton href="/tools" variant="secondary">Explore Tools</LinkButton>
+        <LinkButton href="/resume" variant="ghost">View Resume</LinkButton>
       </div>
-      <div class="mt-5 grid gap-3 sm:grid-cols-3">
-        <a
-          href="/posts"
-          class="rounded-md border border-border bg-surface-2 p-3"
-        >
-          <h3 class="font-semibold text-primary">Hands-on Guides</h3>
-          <p class="mt-1 text-sm text-text-2">
-            NetScaler, WAF, and AppSec implementation patterns.
-          </p>
-        </a>
-        <a
-          href="/tools"
-          class="rounded-md border border-border bg-surface-2 p-3"
-        >
-          <h3 class="font-semibold text-primary">Engineering Tools</h3>
-          <p class="mt-1 text-sm text-text-2">
-            Calculators and utilities for daily security operations.
-          </p>
-        </a>
-        <a
-          href="/resume"
-          class="rounded-md border border-border bg-surface-2 p-3"
-        >
-          <h3 class="font-semibold text-primary">Professional Profile</h3>
-          <p class="mt-1 text-sm text-text-2">
-            Experience, certifications, and delivery focus areas.
-          </p>
-        </a>
-      </div>
-      {
-        // only display if at least one social link is enabled
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
-            <Socials />
-          </div>
-        )
-      }
     </section>
 
     <Hr />
 
     {
-      featuredPosts.length > 0 && (
+      featuredPreviewPosts.length > 0 && (
         <>
-          <section id="featured" class="pt-12 pb-6">
+          <section id="featured" class="pt-10 pb-6">
             <SectionHeader title="Featured" />
             <ul>
-              {featuredPosts.map(data => (
+              {featuredPreviewPosts.map(data => (
                 <Card variant="post" {...data} />
               ))}
             </ul>
@@ -112,15 +70,12 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
     {
       recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-12 pb-6">
+        <section id="recent-posts" class="pt-10 pb-6">
           <SectionHeader title="Recent Posts" />
           <ul>
-            {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && (
-                  <Card variant="compact" {...data} />
-                )
-            )}
+            {recentPreviewPosts.map(data => (
+              <Card variant="compact" {...data} />
+            ))}
           </ul>
         </section>
       )

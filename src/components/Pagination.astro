@@ -14,30 +14,34 @@ const { page } = Astro.props;
 
 {
   page.lastPage > 1 && (
-    <nav class="mt-auto mb-8 flex justify-center" aria-label="Pagination">
-      <LinkButton
-        disabled={!page.url.prev}
-        href={page.url.prev as string}
-        variant="secondary"
-        size="sm"
-        class:list={["me-4 select-none", { "opacity-50": !page.url.prev }]}
-        ariaLabel="Previous"
-      >
-        <IconArrowLeft class="inline-block rtl:rotate-180" />
-        Prev
-      </LinkButton>
-      {page.currentPage} / {page.lastPage}
-      <LinkButton
-        disabled={!page.url.next}
-        href={page.url.next as string}
-        variant="secondary"
-        size="sm"
-        class:list={["ms-4 select-none", { "opacity-50": !page.url.next }]}
-        ariaLabel="Next"
-      >
-        Next
-        <IconArrowRight class="inline-block rtl:rotate-180" />
-      </LinkButton>
+    <nav class="mt-auto mb-10 flex justify-center" aria-label="Pagination">
+      <div class="ui-surface--soft inline-flex items-center gap-2 px-3 py-2 sm:gap-3">
+        <LinkButton
+          disabled={!page.url.prev}
+          href={page.url.prev as string}
+          variant="secondary"
+          size="sm"
+          class:list={["me-4 select-none", { "opacity-50": !page.url.prev }]}
+          ariaLabel="Previous"
+        >
+          <IconArrowLeft class="inline-block rtl:rotate-180" />
+          Prev
+        </LinkButton>
+        <span class="ui-chip" aria-live="polite">
+          {page.currentPage} / {page.lastPage}
+        </span>
+        <LinkButton
+          disabled={!page.url.next}
+          href={page.url.next as string}
+          variant="secondary"
+          size="sm"
+          class:list={["ms-4 select-none", { "opacity-50": !page.url.next }]}
+          ariaLabel="Next"
+        >
+          Next
+          <IconArrowRight class="inline-block rtl:rotate-180" />
+        </LinkButton>
+      </div>
     </nav>
   )
 }

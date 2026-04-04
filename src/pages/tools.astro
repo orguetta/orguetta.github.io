@@ -3,21 +3,25 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Hr from "@/components/Hr.astro";
+import Main from "@/layouts/Main.astro";
 import Card from "@/components/Card.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
 ---
 
 <Layout title="Tools | Or Guetta">
   <Header />
-  <main id="main-content">
-    <section id="tools" class="ui-prose pt-8 pb-6">
+  <Main
+    pageTitle="Technical Tools"
+    pageDesc="Scripts and calculators for cybersecurity and infrastructure operations."
+  >
+    <section id="tools" class="ui-prose pb-2">
       <SectionHeader
-        level="h1"
-        title="Technical Tools"
-        subtitle="Scripts and calculators for cybersecurity and infrastructure operations."
+        level="h2"
+        title="Available Tools"
+        subtitle="Built for practical daily operations and quick validation workflows."
       />
 
-      <ul class="mt-8 grid gap-6 sm:grid-cols-2">
+      <ul class="mt-6 grid gap-6 sm:grid-cols-2">
         <Card
           variant="tool"
           href="/PermCalc/"
@@ -35,6 +39,6 @@ import SectionHeader from "@/components/SectionHeader.astro";
       </ul>
     </section>
     <Hr />
-  </main>
+  </Main>
   <Footer />
 </Layout>

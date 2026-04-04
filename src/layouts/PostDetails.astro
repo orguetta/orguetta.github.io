@@ -37,10 +37,8 @@ const {
   hideEditPost,
 } = post.data;
 
-const readingTimeMinutes = Math.max(
-  1,
-  Math.round(post.body.split(/\s+/u).filter(Boolean).length / 200)
-);
+const postWordCount = (post.body ?? "").split(/\s+/u).filter(Boolean).length;
+const readingTimeMinutes = Math.max(1, Math.round(postWordCount / 200));
 
 const { Content } = await render(post);
 
@@ -104,28 +102,24 @@ const nextPost =
   >
     <h1
       transition:name={slugifyStr(title)}
-      class="inline-block text-2xl font-bold text-accent sm:text-3xl"
+      class="inline-block text-2xl font-bold tracking-tight text-primary sm:text-3xl"
     >
       {title}
     </h1>
 
-    <section class="mt-4 rounded-lg border border-border bg-surface-2 p-4">
+    <section class="ui-surface mt-5 p-4 sm:p-5">
       <div class="flex flex-wrap items-center gap-2 text-sm text-text-2">
-        <span
-          class="rounded-full border border-border bg-background px-2.5 py-1"
-        >
+        <span class="ui-chip">
           {readingTimeMinutes} min read
         </span>
-        <span
-          class="rounded-full border border-border bg-background px-2.5 py-1"
-        >
+        <span class="ui-chip">
           {tags.length} topic{tags.length === 1 ? "" : "s"}
         </span>
       </div>
 
       {
         keyTakeaways && keyTakeaways.length > 0 && (
-          <div class="mt-3">
+          <div class="ui-surface--soft mt-3 p-3 sm:p-4">
             <p class="text-sm font-semibold text-primary">Key takeaways</p>
             <ul class="mt-2 list-disc space-y-1 ps-5 text-sm text-text-2">
               {keyTakeaways.map(point => (
@@ -137,7 +131,7 @@ const nextPost =
       }
     </section>
 
-    <div class="my-2 flex items-center gap-2">
+    <div class="my-3 flex items-center gap-2">
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
       <span
         aria-hidden="true"
@@ -150,12 +144,12 @@ const nextPost =
     </div>
     <article
       id="article"
-      class="reading-prose app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mx-auto mt-8"
+      class="reading-prose app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mx-auto mt-9"
     >
       <Content />
     </article>
 
-    <section class="mt-10 rounded-lg border border-border bg-surface-2 p-5">
+    <section class="ui-surface mt-12 p-5 sm:p-6">
       <SectionHeader
         title="Post Actions"
         subtitle="Continue exploring, share this post, or jump back to key sections."
@@ -180,7 +174,7 @@ const nextPost =
           prevPost && (
             <a
               href={getPath(prevPost.id, prevPost.filePath)}
-              class="flex w-full gap-1 rounded-md border border-border/70 bg-background px-3 py-2 transition-colors hover:border-accent/40"
+              class="ui-surface--soft ui-hover-lift flex w-full gap-1 px-3 py-2"
             >
               <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
               <div>
@@ -194,7 +188,7 @@ const nextPost =
           nextPost && (
             <a
               href={getPath(nextPost.id, nextPost.filePath)}
-              class="flex w-full justify-end gap-1 rounded-md border border-border/70 bg-background px-3 py-2 text-end transition-colors hover:border-accent/40 sm:col-start-2"
+              class="ui-surface--soft ui-hover-lift flex w-full justify-end gap-1 px-3 py-2 text-end sm:col-start-2"
             >
               <div>
                 <span class="text-sm text-text-2">Next Post</span>

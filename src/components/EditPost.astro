@@ -14,10 +14,10 @@ const { hideEditPost, post, class: className = "" } = Astro.props;
 const editBase = SITE.editPost.url.endsWith("/")
   ? SITE.editPost.url
   : `${SITE.editPost.url}/`;
-const normalizedPath = post.filePath.replace(/^\.?\/+/, "");
+const normalizedPath = (post.filePath ?? "").replace(/^\.?\/+/, "");
 const href = new URL(normalizedPath, editBase).toString();
 const showEditPost =
-  SITE.editPost.enabled && !hideEditPost && href.trim() !== "";
+  SITE.editPost.enabled && !hideEditPost && normalizedPath !== "";
 ---
 
 {

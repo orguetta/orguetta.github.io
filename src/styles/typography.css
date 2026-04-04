@@ -190,6 +190,54 @@
     scroll-margin-top: 1.5rem;
   }
 
+  /* ===== Domain-specific content blocks ===== */
+  .app-prose .risk-control,
+  .reading-prose .risk-control {
+    border: 1px solid color-mix(in srgb, var(--danger), transparent 75%);
+    background: color-mix(in srgb, var(--danger), transparent 94%);
+    border-radius: 0.625rem;
+    padding: 0.9rem 1rem;
+    margin-block: 1rem;
+  }
+
+  .app-prose .risk-control strong:first-child,
+  .reading-prose .risk-control strong:first-child {
+    color: var(--danger);
+  }
+
+  .app-prose .hardening-checklist,
+  .reading-prose .hardening-checklist {
+    border: 1px solid color-mix(in srgb, var(--success), transparent 72%);
+    background: color-mix(in srgb, var(--success), transparent 94%);
+    border-radius: 0.625rem;
+    padding: 0.9rem 1rem;
+    margin-block: 1rem;
+  }
+
+  .app-prose .hardening-checklist ul,
+  .reading-prose .hardening-checklist ul {
+    margin-top: 0.35rem;
+    padding-inline-start: 1.25rem;
+  }
+
+  .app-prose .cli-snippet-title,
+  .reading-prose .cli-snippet-title {
+    margin-bottom: 0;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 0.625rem 0.625rem 0 0;
+    background: color-mix(in srgb, var(--surface-3), var(--background) 30%);
+    font-size: 0.85rem;
+    color: var(--text-2);
+  }
+
+  .app-prose .cli-snippet-title + pre,
+  .reading-prose .cli-snippet-title + pre {
+    margin-top: 0;
+    border-radius: 0 0 0.625rem 0.625rem;
+  }
+
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
     display: flex;

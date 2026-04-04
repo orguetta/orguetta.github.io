@@ -1,0 +1,533 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import Hr from "@/components/Hr.astro";
+
+const colorTokens = {
+  light: {
+    "surface-1": "#fafaf0",
+    "surface-2": "#f3f2e7",
+    "surface-3": "#ecebdd",
+    "text-1": "#1f2430",
+    "text-2": "#4b5260",
+    "text-3": "#727a89",
+    primary: "#1b2b4d",
+    accent: "#7b8a4b",
+    border: "#d1d1ca",
+  },
+  dark: {
+    "surface-1": "#121212",
+    "surface-2": "#171a20",
+    "surface-3": "#1f2430",
+    "text-1": "#eceff6",
+    "text-2": "#c5cbda",
+    "text-3": "#99a2b6",
+    primary: "#fafaf0",
+    accent: "#7b8a4b",
+    border: "#333333",
+  },
+};
+
+const semanticTokens = {
+  light: {
+    success: "#2e7d32",
+    warning: "#b26a00",
+    danger: "#c62828",
+    info: "#1565c0",
+  },
+  dark: {
+    success: "#66bb6a",
+    warning: "#f2a93b",
+    danger: "#ef5350",
+    info: "#64b5f6",
+  },
+};
+
+const spacingTokens = [
+  { name: "space-1", value: "0.25rem", px: "4px" },
+  { name: "space-2", value: "0.5rem", px: "8px" },
+  { name: "space-3", value: "0.75rem", px: "12px" },
+  { name: "space-4", value: "1rem", px: "16px" },
+  { name: "space-5", value: "1.5rem", px: "24px" },
+  { name: "space-6", value: "2rem", px: "32px" },
+];
+
+const radiusTokens = [
+  { name: "radius-sm", value: "0.375rem" },
+  { name: "radius-md", value: "0.625rem" },
+  { name: "radius-lg", value: "0.875rem" },
+];
+
+const fonts = [
+  {
+    name: "Montserrat",
+    usage: "Headings",
+    url: "https://fonts.google.com/specimen/Montserrat",
+  },
+  {
+    name: "Inter",
+    usage: "Body & UI",
+    url: "https://fonts.google.com/specimen/Inter",
+  },
+  {
+    name: "Fira Code",
+    usage: "Code blocks",
+    url: "https://fonts.google.com/specimen/Fira+Code",
+  },
+];
+---
+
+<Layout
+  title="Design System"
+  description="Complete design system documentation"
+>
+  <main class="space-y-12">
+    <!-- Header -->
+    <section>
+      <h1 class="text-3xl font-bold text-primary">Design System</h1>
+      <p class="mt-2 text-text-2">
+        Or Guetta v2.0 — Complete visual language documentation
+      </p>
+    </section>
+
+    <Hr />
+
+    <!-- Colors: Light -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">
+        Color Palette — Light Mode
+      </h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          Object.entries(colorTokens.light).map(([name, hex]) => (
+            <div class="rounded-lg border border-border p-4 transition-all hover:border-accent/50">
+              <div
+                class="mb-4 h-24 rounded-md border border-border/50 shadow-sm"
+                style={{ backgroundColor: hex }}
+              />
+              <p class="font-mono text-sm font-semibold text-text-1">
+                --{name}
+              </p>
+              <p class="font-mono text-xs text-text-3">{hex}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Colors: Dark -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">
+        Color Palette — Dark Mode
+      </h2>
+      <div class="rounded-lg border border-border/50 bg-surface-3 p-8">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            Object.entries(colorTokens.dark).map(([name, hex]) => (
+              <div class="rounded-lg border border-border/30 bg-surface-2 p-4 transition-all hover:border-accent/50">
+                <div
+                  class="mb-4 h-24 rounded-md border border-border/50 shadow-sm"
+                  style={{ backgroundColor: hex }}
+                />
+                <p class="font-mono text-sm font-semibold text-text-1">
+                  --{name}
+                </p>
+                <p class="font-mono text-xs text-text-3">{hex}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic Colors -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Semantic Tokens</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div>
+          <h3 class="mb-4 text-lg font-semibold text-text-1">Light Mode</h3>
+          <div class="space-y-3">
+            {
+              Object.entries(semanticTokens.light).map(([name, hex]) => (
+                <div class="flex items-center gap-4 rounded-lg border border-border/30 p-3">
+                  <div
+                    class="h-12 w-16 rounded-md border border-border/50"
+                    style={{ backgroundColor: hex }}
+                  />
+                  <div>
+                    <p class="font-mono text-sm font-semibold text-text-1">
+                      --{name}
+                    </p>
+                    <p class="font-mono text-xs text-text-3">{hex}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="rounded-lg border border-border/50 bg-surface-3 p-8">
+          <h3 class="mb-4 text-lg font-semibold text-text-1">Dark Mode</h3>
+          <div class="space-y-3">
+            {
+              Object.entries(semanticTokens.dark).map(([name, hex]) => (
+                <div class="flex items-center gap-4 rounded-lg border border-border/30 bg-surface-2 p-3">
+                  <div
+                    class="h-12 w-16 rounded-md border border-border/50"
+                    style={{ backgroundColor: hex }}
+                  />
+                  <div>
+                    <p class="font-mono text-sm font-semibold text-text-1">
+                      --{name}
+                    </p>
+                    <p class="font-mono text-xs text-text-3">{hex}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Hr />
+
+    <!-- Typography -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Typography</h2>
+      <div class="grid gap-4 lg:grid-cols-3">
+        {
+          fonts.map(font => (
+            <a
+              href={font.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ui-surface ui-hover-lift p-6"
+            >
+              <h3 class="font-bold text-text-1">
+                {font.name === "Montserrat" && (
+                  <span style={{ fontFamily: "Montserrat, serif" }}>
+                    {font.name}
+                  </span>
+                )}
+                {font.name === "Inter" && (
+                  <span style={{ fontFamily: "Inter, sans-serif" }}>
+                    {font.name}
+                  </span>
+                )}
+                {font.name === "Fira Code" && (
+                  <span style={{ fontFamily: "Fira Code, monospace" }}>
+                    {font.name}
+                  </span>
+                )}
+              </h3>
+              <p class="mt-2 text-sm text-text-2">{font.usage}</p>
+            </a>
+          ))
+        }
+      </div>
+
+      <div class="mt-8 space-y-6">
+        <div>
+          <p class="mb-2 text-sm font-semibold text-text-2">
+            Heading Example (Montserrat Bold)
+          </p>
+          <h2
+            style={{
+              fontFamily: "Montserrat, serif",
+              fontWeight: "700",
+              letterSpacing: "0.01em",
+            }}
+            class="text-4xl text-primary"
+          >
+            The quick brown fox jumps over the lazy dog
+          </h2>
+        </div>
+
+        <div>
+          <p class="mb-2 text-sm font-semibold text-text-2">
+            Body Example (Inter Regular, 1.75 line height)
+          </p>
+          <p
+            class="text-base leading-[1.75] text-text-1"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            The quick brown fox jumps over the lazy dog. Clarity over
+            noise—every screen should be understandable within 3–5 seconds.
+            Defensive by design, practical depth.
+          </p>
+        </div>
+
+        <div>
+          <p class="mb-2 text-sm font-semibold text-text-2">
+            Code Example (Fira Code Monospace)
+          </p>
+          <pre
+            class="overflow-x-auto rounded-md border border-border bg-surface-3 p-4 font-mono text-sm text-text-1"
+            style={{
+              fontFamily: "Fira Code, monospace",
+            }}><code>const token = '--surface-1'; /* Clarity over noise */</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <Hr />
+
+    <!-- Spacing Scale -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Spacing Scale</h2>
+      <div class="space-y-4">
+        {
+          spacingTokens.map(token => (
+            <div class="flex items-center gap-4">
+              <div class="w-32">
+                <p class="font-mono text-sm font-semibold text-text-1">
+                  --{token.name}
+                </p>
+                <p class="font-mono text-xs text-text-3">
+                  {token.value} ({token.px})
+                </p>
+              </div>
+              <div
+                class="rounded-md border border-accent/30 bg-accent/8"
+                style={{ width: token.px, height: "32px" }}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <Hr />
+
+    <!-- Border Radius -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Border Radius</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          radiusTokens.map(token => (
+            <div>
+              <p class="mb-3 font-mono text-sm font-semibold text-text-1">
+                --{token.name}
+              </p>
+              <div
+                class="h-24 border-2 border-border bg-surface-3"
+                style={{ borderRadius: token.value }}
+              />
+              <p class="mt-2 font-mono text-xs text-text-3">{token.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <Hr />
+
+    <!-- Components: Buttons -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Button Variants</h2>
+      <div class="space-y-8">
+        <div>
+          <p class="mb-3 text-sm font-semibold text-text-2">
+            Primary (Accent Background)
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <LinkButton href="#" variant="primary" size="md">
+              Primary Button
+            </LinkButton>
+            <LinkButton href="#" variant="primary" size="md" disabled>
+              Disabled
+            </LinkButton>
+          </div>
+        </div>
+
+        <div>
+          <p class="mb-3 text-sm font-semibold text-text-2">
+            Secondary (Outline)
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <LinkButton href="#" variant="secondary" size="md">
+              Secondary Button
+            </LinkButton>
+            <LinkButton href="#" variant="secondary" size="md" disabled>
+              Disabled
+            </LinkButton>
+          </div>
+        </div>
+
+        <div>
+          <p class="mb-3 text-sm font-semibold text-text-2">Ghost (Minimal)</p>
+          <div class="flex flex-wrap gap-3">
+            <LinkButton href="#" variant="ghost" size="md">
+              Ghost Button
+            </LinkButton>
+            <LinkButton href="#" variant="ghost" size="md" disabled>
+              Disabled
+            </LinkButton>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components: Cards -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Card Surfaces</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="ui-surface p-6 transition-all hover:border-accent/50">
+          <h3 class="font-semibold text-text-1">.ui-surface</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Standard elevated surface with subtle shadow and mixed background
+          </p>
+        </div>
+
+        <div class="ui-surface--soft p-6 transition-all hover:border-accent/50">
+          <h3 class="font-semibold text-text-1">.ui-surface--soft</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Softer surface for secondary content with lighter background
+          </p>
+        </div>
+
+        <div class="ui-surface ui-hover-lift cursor-pointer p-6">
+          <h3 class="font-semibold text-text-1">.ui-surface.ui-hover-lift</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Interactive surface with -2px lift on hover (hover me)
+          </p>
+        </div>
+
+        <div class="ui-panel p-6">
+          <h3 class="font-semibold text-text-1">.ui-panel</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Panel for grouped content with border and surface-3 background
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components: Tags & Chips -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Tags & Chips</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="ui-chip">cybersecurity</span>
+        <span class="ui-chip">netscaler</span>
+        <span class="ui-chip">cloud-security</span>
+        <span class="ui-chip">infrastructure</span>
+        <span class="ui-chip">automation</span>
+        <span class="ui-chip">waf</span>
+      </div>
+    </section>
+
+    <Hr />
+
+    <!-- Motion & Duration -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Motion & Duration</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="ui-surface p-6">
+          <p class="mb-2 font-semibold text-text-1">--duration-fast: 120ms</p>
+          <p class="text-sm text-text-2">
+            Used for quick interactions, hover states, brief feedback
+          </p>
+        </div>
+        <div class="ui-surface p-6">
+          <p class="mb-2 font-semibold text-text-1">--duration-base: 200ms</p>
+          <p class="text-sm text-text-2">
+            Standard transition duration for most UI changes
+          </p>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-text-3">
+        Motion rule: subtle only. No heavy animations.
+      </p>
+    </section>
+
+    <Hr />
+
+    <!-- Focus States -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">
+        Focus & Accessibility
+      </h2>
+      <div class="space-y-4">
+        <div class="ui-surface p-6">
+          <p class="mb-3 font-semibold text-text-1">
+            Focus States (Tab to test)
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <button
+              class="ui-control ui-control"
+              style="background-color: var(--accent); color: var(--surface-1);"
+            >
+              Focus this button
+            </button>
+            <a
+              href="#focus-link"
+              class="ui-control ui-control"
+              style="background-color: var(--primary); color: var(--surface-1);"
+            >
+              Focus this link
+            </a>
+            <input
+              type="text"
+              placeholder="Focus this input"
+              class="rounded-md border border-border px-3 py-2 focus:border-accent"
+            />
+          </div>
+        </div>
+        <p class="text-xs text-text-3">
+          Focus ring: 3px color-mix with accent color at 60%/50% transparency.
+          All interactive elements have keyboard support.
+        </p>
+      </div>
+    </section>
+
+    <Hr />
+
+    <!-- Brand Principles -->
+    <section>
+      <h2 class="mb-6 text-2xl font-bold text-primary">Brand Principles</h2>
+      <div class="grid gap-4 lg:grid-cols-3">
+        <div class="ui-panel p-6">
+          <h3 class="font-semibold text-text-1">Clarity over Noise</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Every screen should be understandable within 3–5 seconds
+          </p>
+        </div>
+        <div class="ui-panel p-6">
+          <h3 class="font-semibold text-text-1">Defensive by Design</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Convey trust, stability, and professional accountability
+          </p>
+        </div>
+        <div class="ui-panel p-6">
+          <h3 class="font-semibold text-text-1">Practical Depth</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Fewer buzzwords, more playbooks, checklists, real configs
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <Hr />
+
+    <!-- Footer Info -->
+    <section class="mb-12 text-center">
+      <p class="text-sm text-text-3">
+        Design System v2.0 — Last updated April 4, 2026
+      </p>
+      <p class="mt-1 text-xs text-text-3">
+        This page is not linked in navigation (hidden but accessible)
+      </p>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: 3rem auto;
+    max-width: 96rem;
+    padding: 0 1rem;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>

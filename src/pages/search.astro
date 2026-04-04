@@ -11,11 +11,11 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
 
 <Layout title={`Search | ${SITE.title}`}>
   <Header />
-  <Main pageTitle="Search" pageDesc="Search any article ...">
-    <p
-      id="search-status"
-      class="mb-3 rounded-md border border-border bg-surface-2 p-3 text-sm text-text-2"
-    >
+  <Main
+    pageTitle="Search"
+    pageDesc="Find posts by topic, protocol, tool name, or keyword."
+  >
+    <p id="search-status" class="ui-surface--soft mb-4 p-3 text-sm text-text-2">
       Type a keyword to search posts by title and content.
     </p>
     <div id="pagefind-search" transition:persist data-backurl={backUrl}></div>
