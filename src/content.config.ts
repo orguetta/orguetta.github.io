@@ -1,4 +1,6 @@
-import { defineCollection, z } from "astro:content";
+/// <reference types="astro" />
+import { defineCollection } from "astro:content";
+import { z } from "zod";
 import { glob } from "astro/loaders";
 import { SITE } from "@/config";
 
@@ -15,7 +17,8 @@ const now = defineCollection({
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
-  schema: ({ image }) =>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  schema: ({ image }: any) =>
     z.object({
       author: z.string().default(SITE.author),
       pubDatetime: z.date(),
