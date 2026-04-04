@@ -1,6 +1,28 @@
 @layer base {
+  .ui-prose {
+    max-width: 88ch;
+    color: var(--text-1);
+    line-height: 1.65;
+  }
+
+  .ui-prose :is(h1, h2, h3) {
+    color: var(--primary);
+    letter-spacing: 0.01em;
+  }
+
+  .ui-prose p {
+    color: var(--text-2);
+  }
+
+  .reading-prose {
+    max-width: 76ch;
+    color: var(--foreground);
+    line-height: 1.75;
+  }
+
   /* ===== Override default Tailwind Typography styles ===== */
-  .app-prose {
+  .app-prose,
+  .reading-prose {
     max-width: none;
     color: var(--foreground);
     line-height: 1.75;
@@ -162,6 +184,10 @@
       outline-color: var(--accent);
       outline-style: dashed;
     }
+  }
+
+  .reading-prose :is(h2, h3, h4) {
+    scroll-margin-top: 1.5rem;
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */

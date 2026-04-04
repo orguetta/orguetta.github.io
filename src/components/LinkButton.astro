@@ -6,6 +6,8 @@ export interface Props {
   ariaLabel?: string;
   title?: string;
   disabled?: boolean;
+  variant?: "primary" | "secondary" | "ghost";
+  size?: "sm" | "md";
 }
 
 const {
@@ -15,14 +17,34 @@ const {
   ariaLabel,
   title,
   disabled = false,
+  variant = "ghost",
+  size = "md",
 } = Astro.props;
+
+const baseClass =
+  "group inline-flex items-center justify-center gap-2 rounded-md border border-transparent transition-colors duration-[var(--duration-base)]";
+const sizeClass =
+  size === "sm" ? "px-3 py-1.5 text-sm font-medium" : "px-4 py-2 font-medium";
+const variantClass = {
+  primary:
+    "bg-accent text-background shadow-sm hover:brightness-105 hover:text-background",
+  secondary:
+    "border-border bg-surface-2 text-foreground hover:border-accent/40 hover:text-accent",
+  ghost: "text-foreground hover:text-accent",
+}[variant];
 ---
 
 {
   disabled ? (
     <span
       id={id}
-      class:list={["group inline-block", className]}
+      class:list={[
+        baseClass,
+        sizeClass,
+        variantClass,
+        "cursor-not-allowed opacity-50",
+        className,
+      ]}
       title={title}
       aria-disabled={disabled}
     >
@@ -32,7 +54,7 @@ const {
     <a
       id={id}
       {href}
-      class:list={["group inline-block hover:text-accent", className]}
+      class:list={[baseClass, sizeClass, variantClass, className]}
       aria-label={ariaLabel}
       title={title}
     >

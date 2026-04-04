@@ -7,6 +7,7 @@ import Tag from "@/components/Tag.astro";
 import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
 import ShareLinks from "@/components/ShareLinks.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
 import { getPath } from "@/utils/getPath";
@@ -32,8 +33,14 @@ const {
   modDatetime,
   timezone,
   tags,
+  keyTakeaways,
   hideEditPost,
 } = post.data;
+
+const readingTimeMinutes = Math.max(
+  1,
+  Math.round(post.body.split(/\s+/u).filter(Boolean).length / 200)
+);
 
 const { Content } = await render(post);
 
@@ -79,7 +86,9 @@ const currentPostIndex = allPosts.findIndex(a => a.id === post.id);
 
 const prevPost = currentPostIndex !== 0 ? allPosts[currentPostIndex - 1] : null;
 const nextPost =
-  currentPostIndex !== allPosts.length ? allPosts[currentPostIndex + 1] : null;
+  currentPostIndex !== allPosts.length - 1
+    ? allPosts[currentPostIndex + 1]
+    : null;
 ---
 
 <Layout {...layoutProps}>
@@ -88,7 +97,7 @@ const nextPost =
   <main
     id="main-content"
     class:list={[
-      "mx-auto w-full max-w-app px-4 pb-12",
+      "mx-auto max-w-app px-4 pb-12",
       { "mt-8": !SITE.showBackButton },
     ]}
     data-pagefind-body
@@ -99,6 +108,35 @@ const nextPost =
     >
       {title}
     </h1>
+
+    <section class="mt-4 rounded-lg border border-border bg-surface-2 p-4">
+      <div class="flex flex-wrap items-center gap-2 text-sm text-text-2">
+        <span
+          class="rounded-full border border-border bg-background px-2.5 py-1"
+        >
+          {readingTimeMinutes} min read
+        </span>
+        <span
+          class="rounded-full border border-border bg-background px-2.5 py-1"
+        >
+          {tags.length} topic{tags.length === 1 ? "" : "s"}
+        </span>
+      </div>
+
+      {
+        keyTakeaways && keyTakeaways.length > 0 && (
+          <div class="mt-3">
+            <p class="text-sm font-semibold text-primary">Key takeaways</p>
+            <ul class="mt-2 list-disc space-y-1 ps-5 text-sm text-text-2">
+              {keyTakeaways.map(point => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </section>
+
     <div class="my-2 flex items-center gap-2">
       <Datetime {pubDatetime} {modDatetime} {timezone} size="lg" />
       <span
@@ -112,56 +150,62 @@ const nextPost =
     </div>
     <article
       id="article"
-      class="app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mx-auto mt-8 max-w-app"
+      class="reading-prose app-prose prose-pre:bg-(--shiki-light-bg) dark:prose-pre:bg-(--shiki-dark-bg) mx-auto mt-8"
     >
       <Content />
     </article>
 
-    <hr class="my-8 border-dashed" />
+    <section class="mt-10 rounded-lg border border-border bg-surface-2 p-5">
+      <SectionHeader
+        title="Post Actions"
+        subtitle="Continue exploring, share this post, or jump back to key sections."
+        level="h2"
+        class="mb-2"
+      />
 
-    <EditPost class="sm:hidden" {hideEditPost} {post} />
+      <EditPost class="mt-4 sm:hidden" {hideEditPost} {post} />
 
-    <ul class="mt-4 mb-8 sm:my-8">
-      {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} />)}
-    </ul>
+      <ul class="mt-4 mb-5">
+        {tags.map(tag => <Tag tag={slugifyStr(tag)} tagName={tag} />)}
+      </ul>
 
-    <BackToTopButton />
+      <ShareLinks />
+      <BackToTopButton />
 
-    <ShareLinks />
-
-    <hr class="my-6 border-dashed" />
-
-    <!-- Previous/Next Post Buttons -->
-    <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-      {
-        prevPost && (
-          <a
-            href={getPath(prevPost.id, prevPost.filePath)}
-            class="flex w-full gap-1 hover:opacity-75"
-          >
-            <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
-            <div>
-              <span>Previous Post</span>
-              <div class="text-sm text-accent/85">{prevPost.title}</div>
-            </div>
-          </a>
-        )
-      }
-      {
-        nextPost && (
-          <a
-            href={getPath(nextPost.id, nextPost.filePath)}
-            class="flex w-full justify-end gap-1 text-end hover:opacity-75 sm:col-start-2"
-          >
-            <div>
-              <span>Next Post</span>
-              <div class="text-sm text-accent/85">{nextPost.title}</div>
-            </div>
-            <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
-          </a>
-        )
-      }
-    </div>
+      <div
+        data-pagefind-ignore
+        class="mt-6 grid grid-cols-1 gap-5 border-t border-border pt-5 sm:grid-cols-2"
+      >
+        {
+          prevPost && (
+            <a
+              href={getPath(prevPost.id, prevPost.filePath)}
+              class="flex w-full gap-1 rounded-md border border-border/70 bg-background px-3 py-2 transition-colors hover:border-accent/40"
+            >
+              <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
+              <div>
+                <span class="text-sm text-text-2">Previous Post</span>
+                <div class="text-sm text-accent/85">{prevPost.title}</div>
+              </div>
+            </a>
+          )
+        }
+        {
+          nextPost && (
+            <a
+              href={getPath(nextPost.id, nextPost.filePath)}
+              class="flex w-full justify-end gap-1 rounded-md border border-border/70 bg-background px-3 py-2 text-end transition-colors hover:border-accent/40 sm:col-start-2"
+            >
+              <div>
+                <span class="text-sm text-text-2">Next Post</span>
+                <div class="text-sm text-accent/85">{nextPost.title}</div>
+              </div>
+              <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
+            </a>
+          )
+        }
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>
@@ -211,10 +255,17 @@ const nextPost =
   /** Attaches links to headings in the document,
    *  allowing sharing of sections easily */
   function addHeadingLinks() {
+    const article = document.querySelector("#article");
+    if (!article) return;
+
     const headings = Array.from(
-      document.querySelectorAll("h2, h3, h4, h5, h6")
+      article.querySelectorAll("h2[id], h3[id], h4[id], h5[id], h6[id]")
     );
+
     for (const heading of headings) {
+      if (!heading.id.trim()) continue;
+      if (heading.querySelector(".heading-link")) continue;
+
       heading.classList.add("group");
       const link = document.createElement("a");
       link.className =

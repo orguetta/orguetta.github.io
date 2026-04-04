@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 import Hr from "@/components/Hr.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import IconRss from "@/assets/icons/IconRss.svg";
@@ -23,35 +24,63 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 <Layout>
   <Header />
   <main id="main-content" data-layout="index">
-    <section id="hero" class="pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Or Guetta
-      </h1>
-      <a
-        target="_blank"
-        href="/rss.xml"
-        class="inline-block"
-        aria-label="rss feed"
-        title="RSS Feed"
+    <section id="hero" class="ui-prose pt-8 pb-6">
+      <SectionHeader
+        level="h1"
+        title="Or Guetta"
+        subtitle="Cybersecurity engineering, infrastructure hardening, and secure application delivery."
       >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
-
-      <p>
-        Technical hub for cybersecurity engineering, infrastructure security,
-        and application delivery. This site serves as a knowledge base for
-        hands-on guides, defensive architecture patterns, and practical
-        engineering scripts.
+        <a
+          slot="action"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="/rss.xml"
+          class="inline-flex items-center text-accent"
+          aria-label="rss feed"
+          title="RSS Feed"
+        >
+          <IconRss width={20} height={20} class="stroke-3 rtl:-rotate-90" />
+          <span class="sr-only">RSS Feed</span>
+        </a>
+      </SectionHeader>
+      <p class="max-w-3xl">
+        Technical hub with practical playbooks for NetScaler/ADC, WAF strategy,
+        cloud security hardening, and defensive automation.
       </p>
-      <p class="mt-4">
-        Deep dives into NetScaler/ADC, WAF implementations, cloud infrastructure
-        hardening, and automated security workflows.
-      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <LinkButton href="/posts" variant="primary">Read Guides</LinkButton>
+        <LinkButton href="/resume" variant="secondary">View Resume</LinkButton>
+        <LinkButton href="/tools" variant="ghost">Explore Tools</LinkButton>
+      </div>
+      <div class="mt-5 grid gap-3 sm:grid-cols-3">
+        <a
+          href="/posts"
+          class="rounded-md border border-border bg-surface-2 p-3"
+        >
+          <h3 class="font-semibold text-primary">Hands-on Guides</h3>
+          <p class="mt-1 text-sm text-text-2">
+            NetScaler, WAF, and AppSec implementation patterns.
+          </p>
+        </a>
+        <a
+          href="/tools"
+          class="rounded-md border border-border bg-surface-2 p-3"
+        >
+          <h3 class="font-semibold text-primary">Engineering Tools</h3>
+          <p class="mt-1 text-sm text-text-2">
+            Calculators and utilities for daily security operations.
+          </p>
+        </a>
+        <a
+          href="/resume"
+          class="rounded-md border border-border bg-surface-2 p-3"
+        >
+          <h3 class="font-semibold text-primary">Professional Profile</h3>
+          <p class="mt-1 text-sm text-text-2">
+            Experience, certifications, and delivery focus areas.
+          </p>
+        </a>
+      </div>
       {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
@@ -69,10 +98,10 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       featuredPosts.length > 0 && (
         <>
           <section id="featured" class="pt-12 pb-6">
-            <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
+            <SectionHeader title="Featured" />
             <ul>
               {featuredPosts.map(data => (
-                <Card variant="h3" {...data} />
+                <Card variant="post" {...data} />
               ))}
             </ul>
           </section>
@@ -84,11 +113,13 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     {
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
-          <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
+          <SectionHeader title="Recent Posts" />
           <ul>
             {recentPosts.map(
               (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} />
+                index < SITE.postPerIndex && (
+                  <Card variant="compact" {...data} />
+                )
             )}
           </ul>
         </section>
@@ -96,7 +127,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     }
 
     <div class="my-8 text-center">
-      <LinkButton href="/posts/">
+      <LinkButton href="/posts/" variant="secondary">
         All Posts
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
