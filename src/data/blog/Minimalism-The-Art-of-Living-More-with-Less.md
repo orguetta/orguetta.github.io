@@ -1,12 +1,17 @@
 ---
-title: "Minimalism: The Art of Living More with Less"
-slug: minimalism-the-art-of-living-more-with-less
-description: A practical, personal take on minimalism for digital nomads, including mindset shifts, benefits, and simple steps to reduce physical and digital clutter.
+author: Or Guetta
 pubDatetime: 2025-03-27
 modDatetime: 2025-03-27
-ogImage: "https://images.unsplash.com/photo-1522199710521-72d69614c702?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDR8fHN1aXRjYXNlfGVufDB8fHx8MTc0MzA3NjA1MHww&ixlib=rb-4.0.3&q=80&w=2000"
+title: "Minimalism: The Art of Living More with Less"
+slug: minimalism-the-art-of-living-more-with-less
+featured: false
+draft: false
+tags:
+  - minimalism
+description: A practical, personal take on minimalism for digital nomads,
+  including mindset shifts, benefits, and simple steps to reduce physical and
+  digital clutter.
 ---
-
 Stuff piles up fast. And when you move around a lot, every extra thing matters.
 
 So for me, minimalism is pretty simple: keep what I really need, keep what I actually like, and drop the rest.
