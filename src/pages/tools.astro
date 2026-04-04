@@ -24,23 +24,26 @@ const publicRepositories = await getGitHubRepositories();
         subtitle="Automatically synced from GitHub so this page stays current without manual updates."
       />
 
-      {publicRepositories.length > 0 ? (
-        <ul class="mt-6 grid gap-6 sm:grid-cols-2">
-          {publicRepositories.map(repository => (
-            <Card
-              variant="tool"
-              href={repository.homepage ?? repository.htmlUrl}
-              title={repository.name}
-              description={repository.description}
-              external
-            />
-          ))}
-        </ul>
-      ) : (
-        <p class="mt-6 text-text-2">
-          GitHub repositories could not be loaded right now. Please try again later.
-        </p>
-      )}
+      {
+        publicRepositories.length > 0 ? (
+          <ul class="mt-6 grid gap-6 sm:grid-cols-2">
+            {publicRepositories.map(repository => (
+              <Card
+                variant="tool"
+                href={repository.homepage ?? repository.htmlUrl}
+                title={repository.name}
+                description={repository.description}
+                external
+              />
+            ))}
+          </ul>
+        ) : (
+          <p class="mt-6 text-text-2">
+            GitHub repositories could not be loaded right now. Please try again
+            later.
+          </p>
+        )
+      }
     </section>
     <Hr />
   </Main>

@@ -52,7 +52,7 @@ export async function getGitHubRepositories(): Promise<GitHubRepository[]> {
           Accept: "application/vnd.github+json",
           "X-GitHub-Api-Version": "2022-11-28",
         },
-      },
+      }
     );
 
     if (!response.ok) {
@@ -79,13 +79,16 @@ export async function getGitHubRepositories(): Promise<GitHubRepository[]> {
         })
         .map(repository => ({
           name: repository.name,
-          description: toToolDescription(repository.description, repository.archived),
+          description: toToolDescription(
+            repository.description,
+            repository.archived
+          ),
           homepage: repository.homepage,
           htmlUrl: repository.html_url,
           language: repository.language,
           updatedAt: repository.updated_at,
           archived: repository.archived,
-        })),
+        }))
     );
 
     if (pageRepositories.length < PAGE_SIZE) {
@@ -94,6 +97,6 @@ export async function getGitHubRepositories(): Promise<GitHubRepository[]> {
   }
 
   return repositories.sort(
-    (left, right) => Date.parse(right.updatedAt) - Date.parse(left.updatedAt),
+    (left, right) => Date.parse(right.updatedAt) - Date.parse(left.updatedAt)
   );
 }
