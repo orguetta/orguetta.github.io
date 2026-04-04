@@ -19,7 +19,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -57,6 +57,27 @@ jobs:
 
       - name: "📝 Check code format"
         run: pnpm run format:check
+
+      - name: "🔧 Install Pandoc and wkhtmltopdf"
+        run: |
+          wget https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-amd64.deb
+          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+          sudo apt update && sudo apt install -y ./pandoc-3.6.4-1-amd64.deb ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+
+      - name: "📑 Generate Resume PDF"
+        run: |
+          node scripts/generate-pandoc-resume.mjs
+          pandoc temp-resume.md -f markdown -t html -c public/resume/resume-stylesheet.css -s -o resume.html
+          wkhtmltopdf --enable-local-file-access resume.html public/resume.pdf
+
+      - name: "📦 Commit Updated PDF"
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add public/resume.pdf
+          git commit -m "Auto-generate resume PDF" || echo "No changes to commit"
+          git push
 
       - name: "🔧 Setup Pages"
         id: pages
