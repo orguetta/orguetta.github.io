@@ -452,7 +452,7 @@ html,
 body {
   margin: auto;
   max-width: 54em;
-  color: #2B2B2B;
+  color: #2b2b2b;
   line-height: 1.5;
 }
 
@@ -483,12 +483,12 @@ p {
 }
 
 a {
-  color: #7B8A4B;
+  color: #7b8a4b;
   text-decoration: none;
 }
 
 body {
-  background-color: #FAFAF0;
+  background-color: #fafaf0;
   padding: 15px 30px;
   margin: 0;
   font-size: 13px;
@@ -523,14 +523,14 @@ h6 {
 
 h1 {
   font-size: 37px;
-  color: #1B2B4D;
+  color: #1b2b4d;
   text-align: center;
 }
 
 h2 {
   font-size: 18px;
-  border-bottom: 2px solid #7B8A4B;
-  color: #1B2B4D;
+  border-bottom: 2px solid #7b8a4b;
+  color: #1b2b4d;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 18px;
@@ -538,7 +538,7 @@ h2 {
 
 h3 {
   font-size: 15px;
-  color: #7B8A4B;
+  color: #7b8a4b;
   margin-top: 10px;
   margin-bottom: 4px;
 }

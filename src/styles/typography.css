@@ -121,7 +121,11 @@
     blockquote {
       border-inline-start-width: 1px;
       border-inline-start-style: solid;
-      border-inline-start-color: color-mix(in srgb, var(--accent), transparent 20%);
+      border-inline-start-color: color-mix(
+        in srgb,
+        var(--accent),
+        transparent 20%
+      );
       overflow-wrap: break-word;
       opacity: 0.8;
     }
