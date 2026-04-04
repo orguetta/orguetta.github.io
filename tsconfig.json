@@ -4,7 +4,6 @@
   "exclude": ["dist", "public/pagefind"],
   "compilerOptions": {
     "ignoreDeprecations": "5.0",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
