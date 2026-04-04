@@ -1168,110 +1168,132 @@ sub {
   display: none;
 }
 
-/* Resume PDF one-page overrides (Pandoc + wkhtmltopdf) */
+/* Resume PDF redesign (Pandoc + wkhtmltopdf) */
 @page {
   size: A4 portrait;
-  margin: 7mm 8mm;
+  margin: 8mm 9mm;
 }
 
 html,
 body {
   max-width: none !important;
   width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-size: 11.2px !important;
-  line-height: 1.24 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  color: #111 !important;
-  letter-spacing: 0.002em !important;
+  --resume-ink: #15284f;
+  --resume-text: #1e2430;
+  --resume-muted: #5d6574;
+  --resume-accent: #7f9451;
+  --resume-divider: #d6dbe6;
+  font-family:
+    "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.32 !important;
+  color: var(--resume-text) !important;
+  background: #fff !important;
 }
 
 h1 {
-  font-size: 36px !important;
-  margin: 0 0 6px !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.01em !important;
+  font-size: 54px !important;
+  line-height: 0.98 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--resume-ink) !important;
+  text-align: center !important;
+  margin: 0 0 8px !important;
+}
+
+/* Contact line injected by generate-pandoc-resume.mjs */
+div[style*="text-align: center"] {
+  margin: 0 0 12px !important;
+  font-size: 10.6px !important;
+  color: var(--resume-muted) !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.01em !important;
 }
 
 h2 {
-  font-size: 15px !important;
-  margin: 8px 0 4px !important;
-  line-height: 1.12 !important;
-  border-bottom-width: 1px !important;
-  letter-spacing: 0.04em !important;
+  font-size: 18px !important;
+  line-height: 1.15 !important;
+  margin: 12px 0 6px !important;
+  padding: 0 0 3px !important;
+  color: var(--resume-ink) !important;
+  border-bottom: 1px solid var(--resume-divider) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.045em !important;
   page-break-after: avoid;
   break-after: avoid;
 }
 
 h3 {
-  font-size: 11.8px !important;
-  margin: 4px 0 2px !important;
+  font-size: 13.2px !important;
   line-height: 1.2 !important;
+  margin: 7px 0 1px !important;
+  color: var(--resume-accent) !important;
+  font-weight: 700 !important;
   page-break-after: avoid;
   break-after: avoid;
+}
+
+h3 + p {
+  margin: 0 0 2px !important;
+  font-size: 11.6px !important;
+  line-height: 1.2 !important;
+  color: var(--resume-ink) !important;
+  font-weight: 600 !important;
 }
 
 h4,
 h5,
 h6 {
-  font-size: 11px !important;
   margin: 2px 0 1px !important;
+  font-size: 11.4px !important;
   line-height: 1.2 !important;
+  color: var(--resume-ink) !important;
 }
 
-p,
-blockquote,
-table,
-pre {
-  margin: 2px 0 !important;
+p {
+  margin: 3px 0 !important;
 }
 
 ul,
 ol {
-  margin: 2px 0 4px !important;
+  margin: 2px 0 5px !important;
   padding-left: 17px !important;
 }
 
 li {
   margin-bottom: 1px !important;
-  line-height: 1.2 !important;
+  line-height: 1.24 !important;
   page-break-inside: avoid;
   break-inside: avoid;
 }
 
-/* Contact line injected by generate-pandoc-resume.mjs */
-div[style*="text-align: center"] {
-  margin-top: 0 !important;
-  margin-bottom: 8px !important;
-  font-size: 10px !important;
-  line-height: 1.2 !important;
+a {
+  color: var(--resume-accent) !important;
+  text-decoration: none !important;
 }
 
-hr {
-  display: none !important;
+em {
+  color: var(--resume-muted) !important;
 }
 
 strong {
-  font-weight: 600 !important;
+  color: #101726 !important;
+  font-weight: 700 !important;
+}
+
+hr,
+blockquote,
+pre,
+table {
+  display: none !important;
 }
 
 @media print {
   html {
-    zoom: 0.97;
-  }
-
-  body {
-    background: #fff !important;
-  }
-
-  a {
-    color: inherit !important;
-    text-decoration: none !important;
+    zoom: 0.98;
   }
 }

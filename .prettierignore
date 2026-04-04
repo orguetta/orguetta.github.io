@@ -1,16 +1,5 @@
-# Ignore everything
+# Ignore this file
 /pnpm-lock.yaml
 /pnpm-workspace.yaml
 /node_modules
 
-# Except these files & folders
-!/src
-!/public
-!/.github
-!tsconfig.json
-!astro.config.ts
-!.prettierrc.mjs
-!package.json
-!.prettierrc
-!eslint.config.js
-!README.md
