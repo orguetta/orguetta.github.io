@@ -7,7 +7,7 @@ content:
     type: collection
     path: src/data/blog
     view:
-      fields: [ title, draft, date ]
+      fields: [title, draft, date]
     fields:
       - { name: author, label: Author, type: string }
       - { name: pubDatetime, label: Date, type: date }
@@ -24,6 +24,16 @@ content:
     type: file
     path: src/pages/about.md
     fields:
-      - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
+      - {
+          name: layout,
+          type: string,
+          hidden: true,
+          default: "../layouts/AboutLayout.astro",
+        }
       - { name: title, label: Title, type: string }
-      - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }
+      - {
+          name: body,
+          label: Body,
+          type: rich-text,
+          options: { input: public/assets, output: /assets },
+        }

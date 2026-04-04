@@ -1,5 +1,7 @@
 # Ignore everything
-/*
+/pnpm-lock.yaml
+/pnpm-workspace.yaml
+/node_modules
 
 # Except these files & folders
 !/src

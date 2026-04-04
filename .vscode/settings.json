@@ -1,4 +1,4 @@
 {
-    "snyk.advanced.autoSelectOrganization": true,
-    "js/ts.tsdk.path": "node_modules/typescript/lib"
+  "snyk.advanced.autoSelectOrganization": true,
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }
