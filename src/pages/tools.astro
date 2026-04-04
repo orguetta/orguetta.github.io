@@ -6,6 +6,9 @@ import Hr from "@/components/Hr.astro";
 import Main from "@/layouts/Main.astro";
 import Card from "@/components/Card.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
+import { getGitHubRepositories } from "@/utils/getGitHubRepositories";
+
+const publicRepositories = await getGitHubRepositories();
 ---
 
 <Layout title="Tools | Or Guetta">
@@ -14,29 +17,30 @@ import SectionHeader from "@/components/SectionHeader.astro";
     pageTitle="Technical Tools"
     pageDesc="Scripts and calculators for cybersecurity and infrastructure operations."
   >
-    <section id="tools" class="ui-prose pb-2">
+    <section id="github-repos" class="ui-prose pb-2">
       <SectionHeader
         level="h2"
-        title="Available Tools"
-        subtitle="Built for practical daily operations and quick validation workflows."
+        title="Public GitHub Repositories"
+        subtitle="Automatically synced from GitHub so this page stays current without manual updates."
       />
 
-      <ul class="mt-6 grid gap-6 sm:grid-cols-2">
-        <Card
-          variant="tool"
-          href="/PermCalc/"
-          title="Permission Calculator"
-          description="Calculate and visualize Unix file permissions and access control logic."
-          external
-        />
-        <Card
-          variant="tool"
-          href="/IPSubCalc/"
-          title="IP Subnet Calculator"
-          description="CIDR subnet calculation for network planning and infrastructure design."
-          external
-        />
-      </ul>
+      {publicRepositories.length > 0 ? (
+        <ul class="mt-6 grid gap-6 sm:grid-cols-2">
+          {publicRepositories.map(repository => (
+            <Card
+              variant="tool"
+              href={repository.homepage ?? repository.htmlUrl}
+              title={repository.name}
+              description={repository.description}
+              external
+            />
+          ))}
+        </ul>
+      ) : (
+        <p class="mt-6 text-text-2">
+          GitHub repositories could not be loaded right now. Please try again later.
+        </p>
+      )}
     </section>
     <Hr />
   </Main>
