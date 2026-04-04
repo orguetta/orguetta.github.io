@@ -46,7 +46,7 @@ jobs:
           wkhtmltopdf --enable-local-file-access resume.html public/resume.pdf
 
       - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: resume-pdf
           path: public/resume.pdf
