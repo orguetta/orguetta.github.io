@@ -1,0 +1,4 @@
+Contact: mailto:security@guetta.tech
+Policy: https://or.guetta.tech/security
+Preferred-Languages: en, he
+Canonical: https://or.guetta.tech/.well-known/security.txt
