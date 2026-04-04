@@ -48,9 +48,26 @@ jobs:
         with:
           node-version: "22"
           cache: "pnpm"
+          cache-dependency-path: "pnpm-lock.yaml"
 
       - name: "📦 Install dependencies"
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
+
+      - name: "💾 Cache resume PDF tool installers"
+        id: cache-pdf-tools
+        uses: actions/cache@v4
+        with:
+          path: .cache/ci-tools
+          key: ${{ runner.os }}-ci-tools-pandoc-3.6.4-wkhtmltox-0.12.6.1-2
+
+      - name: "⬇️ Download PDF tool installers (cache miss)"
+        if: steps.cache-pdf-tools.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p .cache/ci-tools
+          wget -O .cache/ci-tools/pandoc-3.6.4-1-amd64.deb \
+            https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-amd64.deb
+          wget -O .cache/ci-tools/wkhtmltox_0.12.6.1-2.jammy_amd64.deb \
+            https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 
       - name: "🔎 Lint code"
         run: pnpm run lint
@@ -60,9 +77,10 @@ jobs:
 
       - name: "🔧 Install Pandoc and wkhtmltopdf"
         run: |
-          wget https://github.com/jgm/pandoc/releases/download/3.6.4/pandoc-3.6.4-1-amd64.deb
-          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
-          sudo apt update && sudo apt install -y ./pandoc-3.6.4-1-amd64.deb ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+          sudo apt update
+          sudo apt install -y \
+            ./.cache/ci-tools/pandoc-3.6.4-1-amd64.deb \
+            ./.cache/ci-tools/wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 
       - name: "📑 Generate Resume PDF"
         run: |
