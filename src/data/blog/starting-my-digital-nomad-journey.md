@@ -1,16 +1,18 @@
 ---
-title: "Starting My Digital Nomad Journey"
-slug: starting-my-digital-nomad-journey
-description: A personal reflection on starting a digital nomad lifestyle, with practical tips, trade-offs, and lessons from working remotely while traveling.
+author: Or Guetta
 pubDatetime: 2024-04-16
 modDatetime: 2024-04-16
+title: Starting My Digital Nomad Journey
+slug: starting-my-digital-nomad-journey
+featured: false
+draft: false
 tags:
   - lifestyle
   - remote-work
   - travel
-ogImage: "https://images.unsplash.com/photo-1596457596405-2c3ea4502d67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxkaWdpdGFsJTIwbm9tYWR8ZW58MHx8fHwxNzEzMjg3NDczfDA&ixlib=rb-4.0.3&q=80&w=2000"
+description: A personal reflection on starting a digital nomad lifestyle, with
+  practical tips, trade-offs, and lessons from working remotely while traveling.
 ---
-
 **Introduction:**
 
 I like the freedom that comes with remote work and moving around. This post is about that side of life — travel, flexibility, and keeping things open.
