@@ -3,6 +3,7 @@ author: Or Guetta
 pubDatetime: 2026-04-04
 modDatetime: 2026-04-04
 title: JWT Explained Simply
+description: A practical guide to JWTs covering structure, trust model, common pitfalls, and a simple hardening checklist.
 slug: jwt-complete-guide
 featured: false
 draft: false
