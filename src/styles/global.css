@@ -60,7 +60,7 @@ html[data-theme="dark"] {
 }
 
 @utility max-w-app {
-  @apply max-w-3xl;
+  @apply max-w-3xl lg:max-w-6xl;
 }
 
 .active-nav {

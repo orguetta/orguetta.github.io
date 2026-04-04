@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "npm" # For Node.js/JavaScript projects
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     open-pull-requests-limit: 10
     reviewers:
       - "orguetta"
@@ -22,7 +22,7 @@ updates:
   - package-ecosystem: "github-actions" # For GitHub Actions workflows
     directory: "/" # Location of workflow files
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     open-pull-requests-limit: 5
     reviewers:
       - "orguetta"
