@@ -12,6 +12,7 @@ description: A practical, personal take on minimalism for digital nomads,
   including mindset shifts, benefits, and simple steps to reduce physical and
   digital clutter.
 ---
+
 Stuff piles up fast. And when you move around a lot, every extra thing matters.
 
 So for me, minimalism is pretty simple: keep what I really need, keep what I actually like, and drop the rest.

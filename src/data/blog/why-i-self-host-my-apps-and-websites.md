@@ -9,6 +9,7 @@ draft: false
 description: A practical overview of self-hosting a website, including the
   benefits, trade-offs, and a straightforward path to get started securely.
 ---
+
 **Introduction:**
 
 I like owning my own setup, and self-hosting is part of that. This post is about why I like it and what it takes to run your own site.

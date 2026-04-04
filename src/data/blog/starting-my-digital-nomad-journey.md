@@ -13,6 +13,7 @@ tags:
 description: A personal reflection on starting a digital nomad lifestyle, with
   practical tips, trade-offs, and lessons from working remotely while traveling.
 ---
+
 **Introduction:**
 
 I like the freedom that comes with remote work and moving around. This post is about that side of life — travel, flexibility, and keeping things open.
