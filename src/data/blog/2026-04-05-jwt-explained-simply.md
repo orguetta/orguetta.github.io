@@ -7,6 +7,7 @@ slug: jwt-complete-guide
 featured: false
 draft: false
 ---
+
 I got into JWT while working with customers on NetScaler and API Gateway flows through NetScaler to end users.
 
 In almost every project, the same questions came up:
@@ -132,7 +133,7 @@ If you do only these steps, you remove most JWT risk fast.
 ### 1) Allowlist algorithms explicitly
 
 ```javascript
-verify(token, secret, { algorithms: ['HS256'] })
+verify(token, secret, { algorithms: ["HS256"] });
 ```
 
 Do not let library defaults decide for you.
