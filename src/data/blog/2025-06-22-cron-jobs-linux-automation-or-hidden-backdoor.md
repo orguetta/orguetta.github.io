@@ -2,7 +2,8 @@
 author: Or Guetta
 pubDatetime: 2025-06-22T06:55:18Z
 modDatetime: 2025-06-22T06:55:18Z
-title: Cron Jobs in Linux: The Ultimate Automation Tool — or a Hidden Backdoor?
+title: "Cron Jobs in Linux: The Ultimate Automation Tool — or a Hidden Backdoor?"
+slug: cron-jobs-linux-automation-or-hidden-backdoor
 featured: false
 draft: false
 tags:

@@ -1,10 +1,9 @@
 ---
-title: Unleashing Freedom: The Power of Self-Hosting Your Website
-slug: unleashing-freedom-the-power-of-self-hosting-your-website
-createdAt: 2024-04-16T17:35:10.000Z
-updatedAt: 2024-04-16T17:35:56.000Z
-publishedAt: 2024-04-16T17:35:56.000Z
-FeatureImage: https://images.unsplash.com/photo-1550751827-4bd374c3f58b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDExfHxzZXJ2ZXJzfGVufDB8fHx8MTcxMzI4ODg4MHww&ixlib=rb-4.0.3&q=80&w=2000
+title: "Why I Self-Host My Apps and Websites"
+description: A practical overview of self-hosting a website, including the benefits, trade-offs, and a straightforward path to get started securely.
+pubDatetime: 2024-04-16
+modDatetime: 2024-04-16
+ogImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDExfHxzZXJ2ZXJzfGVufDB8fHx8MTcxMzI4ODg4MHww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
 
 **Introduction:**

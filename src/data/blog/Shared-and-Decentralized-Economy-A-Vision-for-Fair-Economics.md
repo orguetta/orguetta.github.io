@@ -1,10 +1,10 @@
 ---
-title: Shared and Decentralized Economy: A Vision for Fair Economics
+title: "Shared and Decentralized Economy: A Vision for Fair Economics"
 slug: shared-and-decentralized-economy-a-vision-for-fair-economics
-createdAt: 2024-10-10T12:36:21.000Z
-updatedAt: 2024-10-10T12:41:38.000Z
-publishedAt: 2024-10-10T12:40:04.000Z
-FeatureImage: https://images.unsplash.com/photo-1636953099671-481a72803051?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMyfHwlMjBibG9ja2NoYWlufGVufDB8fHx8MTcyODU2MzY0Mnww&ixlib=rb-4.0.3&q=80&w=2000
+description: A high-level exploration of how decentralized economic systems could distribute value more fairly through shared infrastructure and digital coordination.
+pubDatetime: 2024-10-10
+modDatetime: 2024-10-10
+ogImage: "https://images.unsplash.com/photo-1636953099671-481a72803051?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDMyfHwlMjBibG9ja2NoYWlufGVufDB8fHx8MTcyODU2MzY0Mnww&ixlib=rb-4.0.3&q=80&w=2000"
 ---
 
 ## What is a Shared and Decentralized Economy?
