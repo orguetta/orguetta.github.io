@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/ResumeLayout.astro
-title: "Resume"
+title: "Or Guetta"
 description: "Professional Resume of Or Guetta, Senior Cybersecurity & Infrastructure Engineer."
 contact:
   email: "or@guetta.tech"

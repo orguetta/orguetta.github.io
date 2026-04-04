@@ -182,15 +182,16 @@ const { frontmatter } = Astro.props;
 
   /* Main Content Styling */
   .resume-main :global(h2) {
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--accent);
     padding-bottom: 0.5rem;
-    color: var(--foreground);
+    color: var(--primary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
   }
 
   .resume-main :global(h2:first-of-type) {
@@ -198,6 +199,7 @@ const { frontmatter } = Astro.props;
   }
 
   .resume-main :global(h3) {
+    font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 700;
     margin-top: 1.5rem;
@@ -241,14 +243,15 @@ const { frontmatter } = Astro.props;
   }
 
   .sidebar-section h3 {
+    font-family: var(--font-heading);
     font-size: 0.85rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--foreground);
+    letter-spacing: 0.15em;
+    color: var(--primary);
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--accent);
   }
 
   .contact-list {
@@ -294,15 +297,17 @@ const { frontmatter } = Astro.props;
     text-align: center;
     padding: 0.75rem;
     background-color: var(--accent);
-    color: var(--background);
+    color: #FAFAF0;
     border-radius: 0.5rem;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.95rem;
-    transition: opacity 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: filter 0.2s;
   }
 
   .download-btn:hover {
-    opacity: 0.9;
+    filter: brightness(1.1);
   }
 
   .skill-group {
@@ -335,11 +340,13 @@ const { frontmatter } = Astro.props;
     border: 1px solid var(--border);
     white-space: nowrap;
     transition: all 0.2s;
+    font-weight: 500;
   }
 
   .skill-chip:hover {
     border-color: var(--accent);
-    color: var(--accent);
+    background-color: var(--accent);
+    color: #FAFAF0;
   }
 
   .education-list {

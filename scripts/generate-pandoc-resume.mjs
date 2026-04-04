@@ -12,19 +12,28 @@ if (!fs.existsSync(resumePath)) {
 const fileContent = fs.readFileSync(resumePath, 'utf8');
 const { data, content } = matter(fileContent);
 
+// Start with Name as H1 (centered by CSS)
 let pandocContent = `---\ntitle: ${data.title}\n---\n\n`;
 
-// Add Contact info at the top if it exists
+// Centered Contact Block
 if (data.contact) {
-  pandocContent += `###### [${data.contact.email}](mailto:${data.contact.email}) . [github.com/${data.contact.github}](https://github.com/${data.contact.github}) . [linkedin.com/in/${data.contact.linkedin}](https://linkedin.com/in/${data.contact.linkedin})\n\n`;
+  const contactParts = [];
+  if (data.contact.email) contactParts.push(`[${data.contact.email}](mailto:${data.contact.email})`);
+  if (data.contact.phone) contactParts.push(`${data.contact.phone}`);
+  if (data.contact.linkedin) contactParts.push(`[LinkedIn](https://linkedin.com/in/${data.contact.linkedin})`);
+  if (data.contact.github) contactParts.push(`[GitHub](https://github.com/${data.contact.github})`);
+  
+  pandocContent += `<div style="text-align: center; margin-top: -10px; margin-bottom: 20px; font-size: 0.9em;">\n`;
+  pandocContent += contactParts.join('  •  ');
+  pandocContent += `\n</div>\n\n`;
 }
 
-// Add the body content
+// Add the body content (Summary, Experience, Projects)
 pandocContent += content;
 
-// Append Skills
+// Append Skills (Categorized)
 if (data.skills) {
-  pandocContent += `\n\n## Skills\n\n`;
+  pandocContent += `\n\n## Technical Skills\n\n`;
   data.skills.forEach(group => {
     pandocContent += `**${group.category}**: ${group.items.join(', ')}  \n`;
   });
@@ -32,20 +41,20 @@ if (data.skills) {
 
 // Append Education
 if (data.education) {
-  pandocContent += `\n\n## Education\n\n`;
+  pandocContent += `\n\n## Education & Certifications\n\n`;
   data.education.forEach(edu => {
-    pandocContent += `### ${edu.title}\n`;
-    pandocContent += `${edu.date} ${edu.org ? `· ${edu.org}` : ''}  \n\n`;
+    pandocContent += `**${edu.title}** ${edu.org ? `(${edu.org})` : ''}  \n`;
+    pandocContent += `${edu.date}  \n\n`;
   });
 }
 
-// Append Languages
+// Append Languages (Compact)
 if (data.languages) {
+  const langParts = data.languages.map(lang => `**${lang.name}** (${lang.level})`);
   pandocContent += `\n\n## Languages\n\n`;
-  data.languages.forEach(lang => {
-    pandocContent += `**${lang.name}**: ${lang.level}  \n`;
-  });
+  pandocContent += langParts.join('  •  ');
+  pandocContent += `\n`;
 }
 
 fs.writeFileSync(outputPath, pandocContent);
-console.log(`Generated ${outputPath} for Pandoc.`);
+console.log(`Generated ${outputPath} for Pandoc with optimized professional layout.`);
