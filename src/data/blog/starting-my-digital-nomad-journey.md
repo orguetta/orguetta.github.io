@@ -5,9 +5,9 @@ description: A personal reflection on starting a digital nomad lifestyle, with p
 pubDatetime: 2024-04-16
 modDatetime: 2024-04-16
 tags:
-	- lifestyle
-	- remote-work
-	- travel
+  - lifestyle
+  - remote-work
+  - travel
 ogImage: "https://images.unsplash.com/photo-1596457596405-2c3ea4502d67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxkaWdpdGFsJTIwbm9tYWR8ZW58MHx8fHwxNzEzMjg3NDczfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
 
