@@ -6,10 +6,10 @@ on:
     branches:
       - main
     paths:
-      - 'src/pages/resume.md'
-      - 'public/resume/resume-stylesheet.css'
-      - '.github/workflows/resume-pdf.yml'
-      - 'scripts/generate-pandoc-resume.mjs'
+      - "src/pages/resume.md"
+      - "public/resume/resume-stylesheet.css"
+      - ".github/workflows/resume-pdf.yml"
+      - "scripts/generate-pandoc-resume.mjs"
 
 jobs:
   build_pdf:
@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
 
       - name: Install dependencies
         run: npm install gray-matter

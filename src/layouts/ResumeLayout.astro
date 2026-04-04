@@ -42,7 +42,7 @@ const { frontmatter } = Astro.props;
 >
   <Header />
   <main id="main-content" class="mx-auto px-4">
-    <div class="resume-container max-w-app mx-auto mt-12 mb-24">
+    <div class="resume-container mx-auto mt-12 mb-24 max-w-app">
       <div class="resume-grid">
         <!-- Main Column -->
         <article class="resume-main">
@@ -53,85 +53,109 @@ const { frontmatter } = Astro.props;
 
         <!-- Sidebar -->
         <aside class="resume-sidebar">
-          {frontmatter.contact && (
-            <section class="sidebar-section">
-              <h3>Contact</h3>
-              <ul class="contact-list">
-                <li>
-                  <a href={`mailto:${frontmatter.contact.email}`}>
-                    <IconMail class="icon" />
-                    <span>{frontmatter.contact.email}</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={`https://github.com/${frontmatter.contact.github}`} target="_blank">
-                    <IconGitHub class="icon" />
-                    <span>github.com/{frontmatter.contact.github}</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={`https://linkedin.com/in/${frontmatter.contact.linkedin}`} target="_blank">
-                    <IconLinkedin class="icon" />
-                    <span>linkedin.com/in/{frontmatter.contact.linkedin}</span>
-                  </a>
-                </li>
-                {frontmatter.contact.phone && (
+          {
+            frontmatter.contact && (
+              <section class="sidebar-section">
+                <h3>Contact</h3>
+                <ul class="contact-list">
                   <li>
-                    <a href={`tel:${frontmatter.contact.phone}`}>
-                      <span class="icon phone-icon">📱</span>
-                      <span>{frontmatter.contact.phone}</span>
+                    <a href={`mailto:${frontmatter.contact.email}`}>
+                      <IconMail class="icon" />
+                      <span>{frontmatter.contact.email}</span>
                     </a>
                   </li>
-                )}
-              </ul>
-              <a href="/resume.pdf" class="download-btn">Download PDF</a>
-            </section>
-          )}
+                  <li>
+                    <a
+                      href={`https://github.com/${frontmatter.contact.github}`}
+                      target="_blank"
+                    >
+                      <IconGitHub class="icon" />
+                      <span>github.com/{frontmatter.contact.github}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={`https://linkedin.com/in/${frontmatter.contact.linkedin}`}
+                      target="_blank"
+                    >
+                      <IconLinkedin class="icon" />
+                      <span>
+                        linkedin.com/in/{frontmatter.contact.linkedin}
+                      </span>
+                    </a>
+                  </li>
+                  {frontmatter.contact.phone && (
+                    <li>
+                      <a href={`tel:${frontmatter.contact.phone}`}>
+                        <span class="icon phone-icon">📱</span>
+                        <span>{frontmatter.contact.phone}</span>
+                      </a>
+                    </li>
+                  )}
+                </ul>
+                <a href="/resume.pdf" class="download-btn">
+                  Download PDF
+                </a>
+              </section>
+            )
+          }
 
-          {frontmatter.skills && (
-            <section class="sidebar-section">
-              <h3>Skills</h3>
-              <div class="skills-grid">
-                {frontmatter.skills.map(group => (
-                  <div class="skill-group">
-                    <h4>{group.category}</h4>
-                    <div class="skill-chips">
-                      {group.items.map(skill => (
-                        <span class="skill-chip">{skill}</span>
-                      ))}
+          {
+            frontmatter.skills && (
+              <section class="sidebar-section">
+                <h3>Skills</h3>
+                <div class="skills-grid">
+                  {frontmatter.skills.map(group => (
+                    <div class="skill-group">
+                      <h4>{group.category}</h4>
+                      <div class="skill-chips">
+                        {group.items.map(skill => (
+                          <span class="skill-chip">{skill}</span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+                  ))}
+                </div>
+              </section>
+            )
+          }
 
-          {frontmatter.education && (
-            <section class="sidebar-section">
-              <h3>Education</h3>
-              <ul class="education-list">
-                {frontmatter.education.map(edu => (
-                  <li>
-                    <div class="edu-title">{edu.title}</div>
-                    <div class="edu-meta">{edu.date} {edu.org && `· ${edu.org}`}</div>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          {
+            frontmatter.education && (
+              <section class="sidebar-section">
+                <h3>Education</h3>
+                <ul class="education-list">
+                  {frontmatter.education.map(edu => (
+                    <li>
+                      <div class="edu-title">{edu.title}</div>
+                      <div class="edu-meta">
+                        {edu.date} {edu.org && `· ${edu.org}`}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )
+          }
 
-          {frontmatter.languages && (
-            <section class="sidebar-section">
-              <h3>Languages</h3>
-              <ul class="language-list">
-                {frontmatter.languages.map(lang => (lang.name && lang.level) && (
-                  <li>
-                    <strong>{lang.name}:</strong> {lang.level}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
+          {
+            frontmatter.languages && (
+              <section class="sidebar-section">
+                <h3>Languages</h3>
+                <ul class="language-list">
+                  {frontmatter.languages.map(
+                    lang =>
+                      lang.name &&
+                      lang.level && (
+                        <li>
+                          <strong>{lang.name}:</strong> {lang.level}
+                        </li>
+                      )
+                  )}
+                </ul>
+              </section>
+            )
+          }
         </aside>
       </div>
     </div>
@@ -344,7 +368,9 @@ const { frontmatter } = Astro.props;
 
   /* Print Styles */
   @media print {
-    :global(header), :global(footer), .download-btn {
+    :global(header),
+    :global(footer),
+    .download-btn {
       display: none !important;
     }
 
@@ -363,7 +389,7 @@ const { frontmatter } = Astro.props;
       background-color: #f0f0f0 !important;
       border: 1px solid #ddd;
     }
-    
+
     #main-content {
       max-width: 100% !important;
       padding: 0 !important;

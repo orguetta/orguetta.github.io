@@ -9,11 +9,41 @@ contact:
   phone: "+972-54-2407406"
 skills:
   - category: "Security & Networking"
-    items: ["NetScaler ADC (WAF, Gateway, GSLB)", "IAM", "PKI", "SSO (SAML, OAuth2, LDAP)", "CyberArk PAS", "FortiGate", "WAF Rules"]
+    items:
+      [
+        "NetScaler ADC (WAF, Gateway, GSLB)",
+        "IAM",
+        "PKI",
+        "SSO (SAML, OAuth2, LDAP)",
+        "CyberArk PAS",
+        "FortiGate",
+        "WAF Rules",
+      ]
   - category: "Infrastructure & Cloud"
-    items: ["VMware vSphere", "AWS", "Azure", "Linux (RHEL, Ubuntu)", "Windows Server", "Active Directory", "Citrix", "MDM"]
+    items:
+      [
+        "VMware vSphere",
+        "AWS",
+        "Azure",
+        "Linux (RHEL, Ubuntu)",
+        "Windows Server",
+        "Active Directory",
+        "Citrix",
+        "MDM",
+      ]
   - category: "DevSecOps & Automation"
-    items: ["Terraform", "Ansible", "PowerShell", "Bash", "Docker", "Kubernetes", "CI/CD", "Python", "Monitoring"]
+    items:
+      [
+        "Terraform",
+        "Ansible",
+        "PowerShell",
+        "Bash",
+        "Docker",
+        "Kubernetes",
+        "CI/CD",
+        "Python",
+        "Monitoring",
+      ]
 education:
   - title: "DevSecOps Program"
     date: "2023 – 2024"
@@ -41,6 +71,7 @@ Senior Cybersecurity and Infrastructure Engineer with over 7 years of experience
 ## Professional Experience
 
 ### Senior Network & Cyber Security Engineer
+
 **Integrity Software | May 2022 – Present**
 
 - **Architected and deployed** secure NetScaler ADC environments focusing on Gateway, Load Balancing, and complex rewrite policies for enterprise web applications.
@@ -49,6 +80,7 @@ Senior Cybersecurity and Infrastructure Engineer with over 7 years of experience
 - **Optimized Application Delivery** solutions to improve both security posture and application performance across diverse client environments.
 
 ### Professional Services Engineer
+
 **Securenet (AMAN Group) | Feb 2021 – May 2022**
 
 - **Engineered CyberArk PAS solutions** including Vault, CPM, and PSM modules for major financial institutions.
@@ -57,6 +89,7 @@ Senior Cybersecurity and Infrastructure Engineer with over 7 years of experience
 - **Conducted server and system hardening** on critical infrastructure to meet strict compliance and internal audit standards.
 
 ### System & Security Administrator
+
 **Altshuler Shaham | Aug 2019 – Dec 2020**
 
 - **Managed a 600+ VM infrastructure** using VMware vSphere while maintaining mission-critical Citrix and Exchange environments.
@@ -65,6 +98,7 @@ Senior Cybersecurity and Infrastructure Engineer with over 7 years of experience
 - **Deployed MDM and IAM systems** to secure endpoint access and streamline identity management.
 
 ### System & Security Administrator
+
 **EDP Group | Mar 2018 – Aug 2019**
 
 - **Maintained complex IT environments** for multiple high-profile clients, ensuring 99.9% uptime for core communications.
@@ -72,6 +106,7 @@ Senior Cybersecurity and Infrastructure Engineer with over 7 years of experience
 - **Executed database migrations** and managed Priority ERP deployments on MS-SQL Server environments.
 
 ### IT & Communications Specialist
+
 **Israeli Air Force | Mar 2015 – Mar 2018**
 
 - **Led a specialized technical team** responsible for the 24/7 operation of mission-critical communication and intelligence systems.
@@ -81,12 +116,16 @@ Senior Cybersecurity and Infrastructure Engineer with over 7 years of experience
 ## Projects
 
 ### NetScaler OAuth Client – [GitHub Repo](https://github.com/orguetta/netscaler-oauth-client)
-*A modular reverse proxy sidecar for validating OAuth2 tokens in NetScaler Gateway environments.*
+
+_A modular reverse proxy sidecar for validating OAuth2 tokens in NetScaler Gateway environments._
+
 - Designed for modern SSO environments to handle app-layer authentication seamlessly.
 - Built with extensibility and containerization in mind (Docker-ready).
 
 ### Infrastructure-as-Code (IaC) Portfolio
-*Personal repository of enterprise-grade security scripts and automation tools.*
+
+_Personal repository of enterprise-grade security scripts and automation tools._
+
 - Includes Terraform and Ansible playbooks for Infrastructure deployment.
 - WAF rule sets and NetScaler policy automation in Bash and PowerShell.
 
