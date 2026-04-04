@@ -1,10 +1,14 @@
 ---
-title: Embracing the Digital Nomad Journey: A New Chapter Begins
-slug: embracing-the-digital-nomad-journey-a-new-chapter-begins
-createdAt: 2024-04-16T17:18:54.000Z
-updatedAt: 2024-04-16T17:21:13.000Z
-publishedAt: 2024-04-16T17:19:48.000Z
-FeatureImage: https://images.unsplash.com/photo-1596457596405-2c3ea4502d67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxkaWdpdGFsJTIwbm9tYWR8ZW58MHx8fHwxNzEzMjg3NDczfDA&ixlib=rb-4.0.3&q=80&w=2000
+title: "Starting My Digital Nomad Journey"
+slug: starting-my-digital-nomad-journey
+description: A personal reflection on starting a digital nomad lifestyle, with practical tips, trade-offs, and lessons from working remotely while traveling.
+pubDatetime: 2024-04-16
+modDatetime: 2024-04-16
+tags:
+	- lifestyle
+	- remote-work
+	- travel
+ogImage: "https://images.unsplash.com/photo-1596457596405-2c3ea4502d67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDEyfHxkaWdpdGFsJTIwbm9tYWR8ZW58MHx8fHwxNzEzMjg3NDczfDA&ixlib=rb-4.0.3&q=80&w=2000"
 ---
 
 **Introduction:**
