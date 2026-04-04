@@ -6,6 +6,9 @@ title: "Shared and Decentralized Economy: A Vision for Fair Economics"
 slug: shared-and-decentralized-economy-a-vision-for-fair-economics
 featured: false
 draft: false
+tags:
+  - Decentralized
+  - Economy
 description: A high-level exploration of how decentralized economic systems
   could distribute value more fairly through shared infrastructure and digital
   coordination.
