@@ -2,7 +2,7 @@
 author: Or Guetta
 pubDatetime: 2026-06-10
 modDatetime: 2026-06-10
-title: TrustOps in Action: Bridging the Dissonance Between Cyber and Business
+title: 'TrustOps in Action: Bridging the Dissonance Between Cyber and Business'
 description: A methodology to resolve the growing dissonance between organizations and their cyber security departments by shifting from 'blocker' to 'trusted advisor'.
 slug: trustops-in-action-complete
 featured: false

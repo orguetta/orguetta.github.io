@@ -2,7 +2,7 @@
 author: Or Guetta
 pubDatetime: 2026-06-10
 modDatetime: 2026-06-10
-title: Shell Scripting for SysAdmins: From Basics to Automation
+title: 'Shell Scripting for SysAdmins: From Basics to Automation'
 description: A practical guide to shell scripting, covering variables, control structures, and automation for system administrators.
 slug: shell-scripting-for-sysadmins
 featured: false

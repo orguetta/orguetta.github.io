@@ -2,7 +2,7 @@
 author: Or Guetta
 pubDatetime: 2026-06-10
 modDatetime: 2026-06-10
-title: Cloud Free Tier Overview: A Pragmatic Guide
+title: 'Cloud Free Tier Overview: A Pragmatic Guide'
 description: Navigating cloud free tiers—what is actually useful, what is a marketing trap, and where to build your stack.
 slug: cloud-free-tier-overview
 featured: false
