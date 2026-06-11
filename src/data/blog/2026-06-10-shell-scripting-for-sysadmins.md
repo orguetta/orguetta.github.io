@@ -2,13 +2,13 @@
 author: Or Guetta
 pubDatetime: 2026-06-10
 modDatetime: 2026-06-10
-title: 'Shell Scripting for SysAdmins: From Basics to Automation'
-description: A practical guide to shell scripting, covering variables, control structures, and automation for system administrators.
+title: "Shell Scripting for SysAdmins: From Basics to Automation"
 slug: shell-scripting-for-sysadmins
 featured: false
-draft: true
+draft: false
+description: A practical guide to shell scripting, covering variables, control
+  structures, and automation for system administrators.
 ---
-
 I see shell scripting everywhere in my work, from managing cloud infrastructure to automating simple daily tasks. 
 
 For many, shell scripting is the bridge between just "using" a system and actually "managing" it. It is how you move from manual tasks to reliable, repeatable automation.
@@ -41,6 +41,7 @@ Avoid complexity. If you are doing complex types, you probably need a different 
 Real automation makes decisions. Use `if` and `loop` constructs to handle system state.
 
 ### Directory check (Very common)
+
 ```bash
 if [ -d "$dir" ]; then
     echo "Directory exists."
@@ -50,6 +51,7 @@ fi
 ```
 
 ### Simple Loops
+
 ```bash
 for i in {1..5}; do
     echo "Iteration $i"
@@ -61,9 +63,11 @@ done
 As you scale from one-off tasks to managed automation, standardizing your approach is crucial.
 
 ### 1) Use functions
+
 Group code to keep your scripts clean and maintainable.
 
 ### 2) Error handling is not optional
+
 Check the exit status of every critical command. `$?` is your best friend.
 
 ```bash
@@ -82,9 +86,11 @@ If it failed, fail fast. Don't let the script continue in a broken state.
 The goal is to stop running scripts manually. `cron` is the standard tool for scheduled tasks.
 
 `crontab -e` lets you set the timing:
+
 ```cron
 0 3 * * * /path/to/script.sh
 ```
+
 *(Runs at 3 AM every day)*
 
 ## NetScaler and Infrastructure Note
