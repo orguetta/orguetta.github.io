@@ -55,7 +55,7 @@ jobs:
 
       - name: "💾 Cache resume PDF tool installers"
         id: cache-pdf-tools
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: .cache/ci-tools
           key: ${{ runner.os }}-ci-tools-pandoc-3.6.4-wkhtmltox-0.12.6.1-2
