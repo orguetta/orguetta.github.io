@@ -9,35 +9,35 @@ draft: false
 description: A pragmatic look at ICMP filtering. Why blocking all ICMP causes silent network failures, breaks PMTUD, and what you should do instead.
 ---
 
-מנהלי רשת רבים חושבים ש-ICMP הוא סיכון אבטחי שצריך לחסום באופן גורף בפיירוול. זו טעות נפוצה שמובילה לתקלות מוזרות שקשה מאוד לאבחן. 
+Many network administrators assume ICMP is an inherent security risk and enforce a blanket block at the firewall. This is a common reflex that leads to bizarre, hard-to-diagnose network failures. 
 
-הבעיה היא לא עצם קיומו של ICMP, אלא חסימה עיוורת בלי להבין מה הפרוטוקול עושה מאחורי הקלעים.
-
----
-
-## 1. הבעיה המרכזית: Path MTU Discovery (PMTUD)
-הסיבה הקריטית ביותר לא לחסום ICMP קשורה ל-TCP ולגודל החבילות. 
-
-כאשר שני מארחים מתקשרים ומעבירים נתונים, הם צריכים להתאים את ה-**Maximum Segment Size (MSS)** ל-**MTU** הקטן ביותר במסלול הרשת ביניהם. 
-* ב-IPv4 (כאשר דגל DF מופעל) וב-IPv6 (שבו נתבים לא עושים Fragmentation), נתב שנתקל בחבילה גדולה מדי יזרוק אותה וישלח חזרה הודעת ICMP מסוג **Fragmentation Needed / Packet Too Big**.
-* אם תחסמו את הודעות ה-ICMP הללו בפיירוול, השולח לא ידע שהחבילה הייתה גדולה מדי. התוצאה: **TCP Black Hole**. לחיצת היד (Handshake) תעבור בהצלחה כי החבילות קטנות, אבל ברגע שיעברו נתונים אמיתיים – הסשן יתקע לחלוטין.
-
-## 2. מה לגבי Ping (Echo Request / Reply)?
-כולנו מכירים את הכלי הזה. כן, הוא הופך את המארח שלכם למזוהה ברשת, אבל שרת הווב שלכם כבר האזין בפורט 80 או 443 בכל מקרה. 
-
-אפשר לחסום פינגים בגבול ה-DMZ החיצוני אם ממש חייבים, אבל חסימה גורפת *בתוך* הרשת הפנימית רק מתסכלת את צוות ה-IT בזמן אבחון תקלות ("Can you ping your default gateway?").
-
-## 3. Time Exceeded ו-Traceroute
-רוצים לאבחן נתיבי רשת עם `traceroute`? המנגנון הזה שולח חבילות עם TTL עולה ומסתמך על הודעות ICMP Time Exceeded כדי למצוא כל הوب בדרך. חסימת ICMP הופכת את ה-Traceroute לשחור מוחלט ומקשה על פתרון בעיות ניתוב.
-
-## 4. IPv6 תלוי ב-ICMP
-בניגוד ל-IPv4 שהשתמש ב-ARP, ב-IPv6 פרוטוקול ה-**Neighbour Discovery Protocol (NDP)** וכן **SLAAC** (הקצאת כתובות אוטומטית) יושבים ישירות על גבי ICMPv6. אם תחסמו ICMP ברשת ה-IPv6 הפנימית שלכם – הרשת פשוט תפסיק לתפקד.
+The problem isn't ICMP itself. It's blind filtering without understanding what the protocol actually does under the hood.
 
 ---
 
-## השורה התחתונה
-אל תחסמו ICMP בצורה עיוורת. 
+## 1. The Core Issue: Path MTU Discovery (PMTUD)
+The most critical reason not to block ICMP is TCP packet fragmentation. 
 
-1. **תנו לזה לעבור:** אפשרו הודעות קריטיות כמו Fragmentation Needed ו-Time Exceeded, לצד תעבורת NDP ב-IPv6.
-2. **הפעילו Rate Limiting:** אל תאפשרו הצפת פינגים בלתי מבוקרת (Ping Floods) שתטוחן את ה-CPU של הנתבים, אבל שמרו על הפונקציונליות. 
-3. **אל תהיו קיצוניים:** אבטחה לא שווה חסימת כל מה שאתם לא מבינים.
+When two hosts communicate, they must adapt their **Maximum Segment Size (MSS)** to the smallest **MTU** along the path between them. 
+* In IPv4 (when the DF bit is set) and IPv6 (where routers do not perform fragmentation), a router that encounters an oversized packet will drop it and return an ICMP **Fragmentation Needed / Packet Too Big** message.
+* If your firewall drops these ICMP messages, the sender remains blind to the issue. The result: a **TCP Black Hole**. The initial handshake succeeds because packets are small, but as soon as bulk data transmission starts, the session stalls completely.
+
+## 2. What About Ping (Echo Request / Reply)?
+We all know it. Yes, responding to echo requests makes your host discoverable, but your web server is already listening on ports 80 and 443 anyway. 
+
+Feel free to block pings at your external DMZ border if you want, but blocking ping traffic internally only frustrates your IT team during troubleshooting ("Can you ping your default gateway?").
+
+## 3. Time Exceeded and Traceroute
+Trying to diagnose a network path using `traceroute`? The tool sends packets with incrementing TTLs and relies on ICMP **Time Exceeded** messages from intermediate hops to map the route. Blocking these ICMP messages turns traceroutes into black boxes and breaks network debugging.
+
+## 4. IPv6 Relies on ICMP
+Unlike IPv4 which used ARP, IPv6 handles layer 2 to 3 mappings via the **Neighbour Discovery Protocol (NDP)** and **SLAAC** (Stateless Address Autoconfiguration), both of which run directly on top of ICMPv6. Block ICMP inside an IPv6 network, and the network simply stops working.
+
+---
+
+## The Bottom Line
+Don't block ICMP blindly. 
+
+1. **Allow critical messages:** Permit Path MTU discovery (Fragmentation Needed / Packet Too Big), Time Exceeded, and IPv6 NDP traffic.
+2. **Implement Rate Limiting:** Prevent ping floods and excessive CPU load on your routers without breaking functionality. 
+3. **Avoid dogmatic security:** Security isn't about blocking everything you don't understand. Know what you're filtering.
