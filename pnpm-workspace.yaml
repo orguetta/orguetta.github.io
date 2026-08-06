@@ -1,3 +1,6 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
 overrides:
   ajv@>=7.0.0-alpha.0 <8.18.0: '>=8.18.0'
   devalue@<5.6.4: '>=5.6.4'

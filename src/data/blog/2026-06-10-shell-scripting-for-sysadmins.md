@@ -9,7 +9,8 @@ draft: false
 description: A practical guide to shell scripting, covering variables, control
   structures, and automation for system administrators.
 ---
-I see shell scripting everywhere in my work, from managing cloud infrastructure to automating simple daily tasks. 
+
+I see shell scripting everywhere in my work, from managing cloud infrastructure to automating simple daily tasks.
 
 For many, shell scripting is the bridge between just "using" a system and actually "managing" it. It is how you move from manual tasks to reliable, repeatable automation.
 
@@ -23,7 +24,7 @@ A shell script is just a text file with commands. The key is the first line—th
 #!/bin/bash
 ```
 
-Once written, don't forget the execution bit: 
+Once written, don't forget the execution bit:
 `chmod +x script.sh`
 
 ## Part 2: Variables and Input
@@ -91,7 +92,7 @@ The goal is to stop running scripts manually. `cron` is the standard tool for sc
 0 3 * * * /path/to/script.sh
 ```
 
-*(Runs at 3 AM every day)*
+_(Runs at 3 AM every day)_
 
 ## NetScaler and Infrastructure Note
 
@@ -103,6 +104,6 @@ When you are automating infrastructure—like I do with NetScaler or cloud APIs�
 
 ## Final takeaway
 
-Shell scripting isn't about being a "developer." It's about being a "sysadmin" who values their time. 
+Shell scripting isn't about being a "developer." It's about being a "sysadmin" who values their time.
 
 Master the basics: variables, conditionals, loops, and error checking. If you automate your manual work, you free yourself to focus on architecture and strategy instead of maintenance.

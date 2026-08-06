@@ -11,7 +11,7 @@ description: DNS isn't just a phonebook. It's the most critical part of your inf
 
 ## The DNS Rabbit Hole
 
-I recently hit the classic infrastructure wall: I pointed a domain to a new server, updated the A record, and then sat through three hours of "Why isn't this working?" before remembering how TTL propagation actually functions. 
+I recently hit the classic infrastructure wall: I pointed a domain to a new server, updated the A record, and then sat through three hours of "Why isn't this working?" before remembering how TTL propagation actually functions.
 
 Most people see DNS as "it translates domains to IPs." If you want to run your own infrastructure, that's not enough. You need to understand it as a referral chain.
 
@@ -35,7 +35,9 @@ Stop overcomplicating it. In 90% of your infra setup, these are the only ones th
 - **MX**: Mail delivery. Priority matters—lower is tried first.
 
 ## Authoritative vs. Recursive
+
 Don't confuse them:
+
 - **Recursive Resolver**: The messenger (e.g., 1.1.1.1). It does the hard work of traversing the hierarchy for you.
 - **Authoritative Nameserver**: The source of truth. It holds the final record for a domain.
 
@@ -48,6 +50,7 @@ Don't confuse them:
 When it doesn't work, stop guessing. Use these tools to see what the system actually sees:
 
 ### Querying
+
 ```bash
 # Detailed lookup
 dig example.com
@@ -58,6 +61,7 @@ dig @1.1.1.1 example.com
 ```
 
 ### Clearing the Stale Cache
+
 If you need to force a refresh:
 
 ```bash
@@ -69,6 +73,7 @@ sudo systemd-resolve --flush-caches
 ```
 
 ## Why it Matters
+
 DNS is a tool for systems design, not just a static lookup. Use **Round-Robin** for basic load distribution, **GeoDNS** for latency optimization, and health-check-based record updates for automated failover.
 
 Understand the resolution process—Browser → OS → Router → Resolver → Root → TLD → Authoritative—and you'll know exactly which hop is causing your migration headache.
