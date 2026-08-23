@@ -1,0 +1,10 @@
+packages:
+  - "."
+
+allowBuilds:
+  esbuild: true
+  puppeteer: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - eslint@10.8.0

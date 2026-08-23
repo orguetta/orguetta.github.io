@@ -1,0 +1,2 @@
+policy: https://guetta.tech/privacy#dnt
+contact: mailto:privacy@guetta.tech

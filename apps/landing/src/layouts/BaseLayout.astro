@@ -1,0 +1,113 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const { title, description, image, canonical } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <BaseHead title={title} description={description} image={image} canonical={canonical} />
+    </head>
+    <body>
+        <Header />
+        <main class="container page-shell">
+            <slot />
+        </main>
+        <Footer />
+
+        <script is:inline>
+            (function() {
+                const tools = [
+                    {
+                        name: "get_about_info",
+                        description: "Get information about Or Guetta, including professional expertise, focus areas, and experience.",
+                        inputSchema: {
+                            type: "object",
+                            properties: {}
+                        },
+                        execute: async () => {
+                            return {
+                                content: [
+                                    {
+                                        type: "text",
+                                        text: "Or Guetta is a cybersecurity expert specializing in Cloud Security and Application Delivery Controllers (ADC) / Web Application Firewalls (WAF). He builds minimal, resilient, and defensible systems."
+                                    }
+                                ]
+                            };
+                        }
+                    },
+                    {
+                        name: "get_contact_info",
+                        description: "Get contact details for Or Guetta, including email, security reporting, and blog link.",
+                        inputSchema: {
+                            type: "object",
+                            properties: {}
+                        },
+                        execute: async () => {
+                            return {
+                                content: [
+                                    {
+                                        type: "text",
+                                        text: "Email: or@guetta.tech. Security contact: security@guetta.tech. Blog posts: https://or.guetta.tech/posts."
+                                    }
+                                ]
+                            };
+                        }
+                    }
+                ];
+
+                let registered = false;
+
+                function tryRegister() {
+                    if (registered) return true;
+                    if (typeof navigator !== 'undefined' && navigator.modelContext) {
+                        try {
+                            if (typeof navigator.modelContext.provideContext === 'function') {
+                                navigator.modelContext.provideContext({ tools });
+                                console.log("WebMCP tools registered via provideContext");
+                                registered = true;
+                                return true;
+                            } else if (typeof navigator.modelContext.registerTool === 'function') {
+                                for (const tool of tools) {
+                                    navigator.modelContext.registerTool(tool);
+                                }
+                                console.log("WebMCP tools registered via registerTool");
+                                registered = true;
+                                return true;
+                            }
+                        } catch (err) {
+                            console.error("Failed to register WebMCP tools:", err);
+                        }
+                    }
+                    return false;
+                }
+
+                // 1. Try immediately
+                tryRegister();
+
+                // 2. Try on DOMContentLoaded & load events
+                if (typeof window !== 'undefined') {
+                    window.addEventListener('DOMContentLoaded', tryRegister);
+                    window.addEventListener('load', tryRegister);
+
+                    // 3. Robust polling fallback for asynchronously injected context (e.g. headless/extension testing)
+                    let attempts = 0;
+                    const interval = setInterval(function() {
+                        attempts++;
+                        if (tryRegister() || attempts > 30) {
+                            clearInterval(interval);
+                        }
+                    }, 100);
+                }
+            })();
+        </script>
+    </body>
+</html>
+
+<style>
+	.page-shell {
+		padding-top: 0;
+	}
+</style>

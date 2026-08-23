@@ -1,0 +1,12 @@
+{
+  "subject": "acct:or@guetta.tech",
+  "aliases": [
+    "https://sso.guetta.tech/"
+  ],
+  "links": [
+    {
+      "rel": "http://openid.net/specs/connect/1.0/issuer",
+      "href": "https://sso.guetta.tech/application/o/tailscale/"
+    }
+  ]
+}

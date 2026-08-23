@@ -1,0 +1,5 @@
+# Ignore this file
+/pnpm-lock.yaml
+/pnpm-workspace.yaml
+/node_modules
+/public/fonts
