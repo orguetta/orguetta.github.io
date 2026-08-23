@@ -6,7 +6,6 @@
 - **Styling**: Tailwind CSS 4 via `@tailwindcss/vite` plugin (no config file; use `@apply` in CSS or utility classes)
 - **Search**: Pagefind static search (requires full build to index content)
 - **OG Images**: Dynamic generation via satori + @resvg/resvg-js (`src/utils/og-templates/*.js`)
-- **Analytics**: Umami integration (`@yeskunall/astro-umami`)
 - **Content focus**: Cybersecurity, NetScaler, application security how-to articles
 
 ## Content Model & Publishing
@@ -99,19 +98,11 @@
 - Tags are auto-slugified when displayed/filtered
 - Path segments are slugified by `getPath`
 
-## Environment & Analytics
+## Environment
 
 **Public env vars** (declared in `astro.config.ts` env schema):
 
 - `PUBLIC_GOOGLE_SITE_VERIFICATION`: Google Search Console verification
-- `PUBLIC_UMAMI_WEBSITE_ID`: Umami analytics site ID
-- `PUBLIC_UMAMI_URL`: Umami tracker endpoint
-
-**Umami config** (in `astro.config.ts`):
-
-- ID: `0e73fa08-4ca0-4e4e-9e70-a0f39bea1081`
-- Endpoint: `https://umami.guetta.tech`
-- Script name: `script.js` (served from `public/script.js`)
 
 ## Scripts & Workflows
 

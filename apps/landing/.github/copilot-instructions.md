@@ -11,12 +11,11 @@ Personal website and blog built with **Astro 5** (static site generator) deploye
 - **Framework**: Astro 5 with SSR adapter (`@astrojs/cloudflare`)
 - **Deployment**: Cloudflare Workers via Wrangler
 - **Content**: Type-safe content collections using Astro's glob loader
-- **Analytics**: Umami (self-hosted at `umami.guetta.tech`)
 - **Styling**: Custom CSS with CSS variables, no framework
 
 ### Key Files
 
-- [astro.config.mjs](../astro.config.mjs): Cloudflare adapter with `imageService: "compile"`, sitemap, and Umami integration
+- [astro.config.mjs](../astro.config.mjs): Cloudflare adapter with `imageService: "compile"` and sitemap
 - [wrangler.json](../wrangler.json): Routes for both apex and www domains, observability enabled
 - [src/consts.ts](../src/consts.ts): Site-wide constants (`SITE_TITLE`, `SITE_DESCRIPTION`)
 - [src/content.config.ts](../src/content.config.ts): Content collection schema (blog posts use `pubDate`, `updatedDate`, `heroImage`, `category`)
@@ -107,7 +106,6 @@ Site runs on **both** `guetta.tech` and `www.guetta.tech` (see [wrangler.json](.
 
 ### External Services
 
-- **Umami Analytics**: ID `dc55a6e7-af95-461b-96ee-0db172b4c30b`, `doNotTrack: true` enabled
 - **Cloudflare Observability**: Upload source maps enabled for debugging
 - **RSS Feed**: Generated at [src/pages/rss.xml.js](../src/pages/rss.xml.js)
 

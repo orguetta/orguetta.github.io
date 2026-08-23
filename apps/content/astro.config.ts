@@ -9,7 +9,6 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import { transformerFileName } from "./src/utils/transformers/fileName";
-import umami from "@yeskunall/astro-umami";
 import { SITE } from "./src/config";
 
 // https://astro.build/config
@@ -18,12 +17,6 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
-    }),
-    umami({
-      id: "0e73fa08-4ca0-4e4e-9e70-a0f39bea1081",
-      endpointUrl: "https://umami.guetta.tech",
-      trackerScriptName: "script.js",
-      hostUrl: "https://umami.guetta.tech",
     }),
   ],
   markdown: {
@@ -58,16 +51,6 @@ export default defineConfig({
   env: {
     schema: {
       PUBLIC_GOOGLE_SITE_VERIFICATION: envField.string({
-        access: "public",
-        context: "client",
-        optional: true,
-      }),
-      PUBLIC_UMAMI_WEBSITE_ID: envField.string({
-        access: "public",
-        context: "client",
-        optional: true,
-      }),
-      PUBLIC_UMAMI_URL: envField.string({
         access: "public",
         context: "client",
         optional: true,
