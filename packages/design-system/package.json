@@ -1,0 +1,18 @@
+{
+  "name": "@guetta/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared tokens, fonts, theme contract, and navigation URLs for the Guetta web properties",
+  "exports": {
+    "./tokens.css": "./src/styles/tokens.css",
+    "./fonts.css": "./src/styles/fonts.css",
+    "./navigation": "./src/navigation.ts"
+  },
+  "scripts": {
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

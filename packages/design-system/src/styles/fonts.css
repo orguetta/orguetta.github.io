@@ -1,0 +1,21 @@
+/*
+ * Guetta Design System — font faces.
+ * Files are resolved by Vite from this package and emitted per app,
+ * so no public/ copies are required in the applications.
+ */
+
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-Regular.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/GeistMono-Regular.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

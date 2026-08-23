@@ -1,6 +1,8 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
+// Import the design system first, then the app stylesheet, so that
+// both are included on all pages through the use of <BaseHead />.
+import "@guetta/design-system/tokens.css";
+import "@guetta/design-system/fonts.css";
 import "../styles/global.css";
 import { SITE_TITLE } from "../consts";
 
