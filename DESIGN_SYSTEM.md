@@ -1,7 +1,7 @@
 # Design System — Or Guetta
 
-> Version: 2.0  
-> Last Updated: 2026-04-04
+> Version: 3.0  
+> Last Updated: 2026-08-21
 
 This document defines a unified design system for both websites:
 
@@ -61,69 +61,80 @@ Goal: **feel like one website**, even though there are two projects and two diff
 
 ## 3) Design Tokens (Source of Truth)
 
-> These colors match what is already defined in `src/styles/global.css` in the main project.
+> Monochrome OKLCH palette. Border-driven elevation. No colored accent.
 
 ### Color Tokens
 
-| Token         | Light     | Dark      | Usage                      |
-| :------------ | :-------- | :-------- | :------------------------- |
-| `--surface-1` | `#FAFAF0` | `#121212` | Page background            |
-| `--surface-2` | `#F3F2E7` | `#171A20` | Cards/Panels               |
-| `--surface-3` | `#ECEBDD` | `#1F2430` | Elevated surfaces          |
-| `--text-1`    | `#1F2430` | `#ECEFF6` | Primary text               |
-| `--text-2`    | `#4B5260` | `#C5CBDA` | Secondary text             |
-| `--text-3`    | `#727A89` | `#99A2B6` | Muted text                 |
-| `--primary`   | `#1B2B4D` | `#FAFAF0` | Headings/brand anchors     |
-| `--accent`    | `#7B8A4B` | `#7B8A4B` | Links/buttons/active state |
-| `--border`    | `#D1D1CA` | `#333333` | Borders/dividers           |
+| Token         | Light                  | Dark                   | Usage                      |
+| :------------ | :--------------------- | :--------------------- | :------------------------- |
+| `--surface-1` | `oklch(1 0 0)`        | `oklch(0.145 0 0)`    | Page background            |
+| `--surface-2` | `oklch(0.97 0 0)`     | `oklch(0.205 0 0)`    | Cards/Panels               |
+| `--surface-3` | `oklch(0.922 0 0)`    | `oklch(0.269 0 0)`    | Elevated surfaces          |
+| `--text-1`    | `oklch(0.145 0 0)`    | `oklch(0.985 0 0)`    | Primary text               |
+| `--text-2`    | `oklch(0.556 0 0)`    | `oklch(0.708 0 0)`    | Secondary text             |
+| `--text-3`    | `oklch(0.708 0 0)`    | `oklch(0.556 0 0)`    | Muted text                 |
+| `--primary`   | `oklch(0.205 0 0)`    | `oklch(0.985 0 0)`    | Brand anchor               |
+| `--accent`    | `oklch(0.556 0 0)`    | `oklch(0.708 0 0)`    | Accent (monochrome)        |
+| `--border`    | `oklch(0.922 0 0)`    | `oklch(0.269 0 0)`    | Borders/dividers           |
 
 ### Semantic Tokens
 
-| Token       | Light     | Dark      | Purpose               |
-| :---------- | :-------- | :-------- | :-------------------- |
-| `--success` | `#2E7D32` | `#66BB6A` | Positive status       |
-| `--warning` | `#B26A00` | `#F2A93B` | Warning state         |
-| `--danger`  | `#C62828` | `#EF5350` | Risk/error state      |
-| `--info`    | `#1565C0` | `#64B5F6` | Informational notices |
+| Token       | Light                  | Dark                   | Purpose               |
+| :---------- | :--------------------- | :--------------------- | :-------------------- |
+| `--success` | `oklch(0.6 0.17 162.48)` | same | Positive status       |
+| `--warning` | `oklch(0.769 0.188 70.08)` | same | Warning state         |
+| `--danger`  | `oklch(0.577 0.245 27.325)` | same | Risk/error state      |
+| `--info`    | `oklch(0.488 0.243 264.376)` | same | Informational notices |
 
 ### Typography Tokens
 
-| Role    | Token            | Font       |
-| :------ | :--------------- | :--------- |
-| Heading | `--font-heading` | Montserrat |
-| Body    | `--font-body`    | Inter      |
-| Code    | `--font-mono`    | Fira Code  |
+| Role    | Token            | Font                              |
+| :------ | :--------------- | :-------------------------------- |
+| Heading | `--font-heading` | Geist (self-hosted, weight 300)   |
+| Body    | `--font-body`    | Geist (self-hosted, variable)     |
+| Code    | `--font-mono`    | Geist Mono (self-hosted)          |
 
 ### Spacing, Radius, Motion
 
-| Token             | Value      |
-| :---------------- | :--------- |
-| `--space-1`       | `0.25rem`  |
-| `--space-2`       | `0.5rem`   |
-| `--space-3`       | `0.75rem`  |
-| `--space-4`       | `1rem`     |
-| `--space-5`       | `1.5rem`   |
-| `--space-6`       | `2rem`     |
-| `--radius-sm`     | `0.375rem` |
-| `--radius-md`     | `0.625rem` |
-| `--radius-lg`     | `0.875rem` |
-| `--duration-fast` | `120ms`    |
-| `--duration-base` | `200ms`    |
+| Token             | Value                           |
+| :---------------- | :------------------------------ |
+| `--space-1`       | `0.25rem`                       |
+| `--space-2`       | `0.5rem`                        |
+| `--space-3`       | `0.75rem`                       |
+| `--space-4`       | `1rem`                          |
+| `--space-5`       | `1.5rem`                        |
+| `--space-6`       | `2rem`                          |
+| `--radius-sm`     | `calc(0.625rem - 4px)`          |
+| `--radius-md`     | `calc(0.625rem - 2px)`          |
+| `--radius-lg`     | `0.625rem`                      |
+| `--radius-xl`     | `calc(0.625rem + 4px)`          |
+| `--duration-fast` | `300ms`                         |
+| `--duration-base` | `500ms`                         |
+| `--shadow-sm`     | `none`                          |
+| `--shadow-md`     | `none`                          |
 
-Motion rule: subtle only. No heavy animations.
+Motion rule: subtle only. No heavy animations. `prefers-reduced-motion` fully supported.
 
 ---
 
 ## 4) Theming Rules (Light/Dark)
 
 1. Light and Dark must maintain proper contrast (at least WCAG AA).
-2. Accent (`#7B8A4B`) stays fixed to preserve brand recognition.
+2. All colors are achromatic (OKLCH chroma = 0) except semantic tokens.
 3. Dark mode should not become "neon"; keep a low-noise professional UI.
 4. Focus states must always be visible (keyboard-first support).
+5. Dark mode toggled via `data-theme` attribute on `<html>`.
 
 ---
 
 ## 5) Component System
+
+### Design Language
+
+- **Border-driven elevation**: cards and surfaces use 1px borders, no shadows
+- **Hover feedback**: border-color change (not color fill or lift)
+- **Buttons**: primary (filled text-1), secondary (bordered), ghost (text only)
+- **Tags/chips**: transparent bg + 1px border, hover border-color change
 
 ### Core UI Components
 
@@ -137,16 +148,16 @@ Motion rule: subtle only. No heavy animations.
    - privacy/security links
 
 3. **Buttons**
-   - Primary: Accent background + high contrast text
-   - Secondary: Outline (accent/border)
-   - Ghost: minimal action
+   - Primary: text-1 background + surface-1 text
+   - Secondary: border only, hover border-color change
+   - Ghost: text color change only
 
 4. **Cards**
-   - surface-2 + border + subtle hover-lift
-   - Consistent use for post/link cards
+   - Transparent background + 1px border
+   - Hover: border-color darkens (no shadow, no lift)
 
 5. **Code Blocks**
-   - Fira Code
+   - Geist Mono
    - copy button
    - filename meta where applicable
 
@@ -184,8 +195,8 @@ Every technical article should follow this structure when possible:
 ### Shared (must match)
 
 - Brand name usage
-- Color tokens
-- Typography stack
+- Color tokens (monochrome OKLCH)
+- Typography stack (Geist)
 - Favicon/logo style
 - CTA/button styles
 - Social links
@@ -212,7 +223,7 @@ Every technical article should follow this structure when possible:
 ## 9) Accessibility Baseline
 
 - Contrast AA minimum
-- Visible focus ring
+- Visible focus ring (1px solid text-3)
 - Full keyboard navigation
 - `prefers-reduced-motion` respected
 - Semantic HTML in every foundational component

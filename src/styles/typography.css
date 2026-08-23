@@ -6,8 +6,8 @@
   }
 
   .ui-prose :is(h1, h2, h3) {
-    color: var(--primary);
-    letter-spacing: 0.01em;
+    color: var(--text-1);
+    letter-spacing: -0.02em;
   }
 
   .ui-prose p {
@@ -20,7 +20,6 @@
     line-height: 1.75;
   }
 
-  /* ===== Override default Tailwind Typography styles ===== */
   .app-prose,
   .reading-prose {
     max-width: none;
@@ -55,17 +54,13 @@
 
     a {
       overflow-wrap: break-word;
-      color: var(--accent);
-      text-decoration-line: underline;
-      text-decoration-color: color-mix(in srgb, var(--accent), transparent 70%);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
-      transition-property: color, text-decoration-color;
-      transition-duration: 150ms;
+      color: var(--text-1);
+      text-decoration: none;
+      transition: opacity 150ms ease;
     }
 
     a:hover {
-      text-decoration-color: var(--accent);
+      opacity: 0.6;
     }
 
     a:focus-visible {
@@ -77,7 +72,7 @@
     }
 
     li::marker {
-      color: var(--accent);
+      color: var(--text-3);
     }
 
     hr {
@@ -122,8 +117,8 @@
     }
 
     code {
-      border-radius: 0.25rem;
-      background-color: color-mix(in srgb, var(--muted), transparent 25%);
+      border-radius: var(--radius-sm);
+      background-color: var(--surface-2);
       padding: 0.25rem;
       overflow-wrap: break-word;
       color: var(--foreground);
@@ -141,15 +136,11 @@
     }
 
     blockquote {
-      border-inline-start-width: 1px;
+      border-inline-start-width: 2px;
       border-inline-start-style: solid;
-      border-inline-start-color: color-mix(
-        in srgb,
-        var(--accent),
-        transparent 20%
-      );
+      border-inline-start-color: var(--border);
       overflow-wrap: break-word;
-      opacity: 0.8;
+      color: var(--text-2);
     }
 
     details {
@@ -169,7 +160,7 @@
     }
 
     summary:focus-visible {
-      outline-color: var(--accent);
+      outline-color: var(--text-3);
       outline-style: dashed;
       text-decoration-line: none;
     }
@@ -181,7 +172,7 @@
 
     pre:focus-visible {
       border-color: transparent;
-      outline-color: var(--accent);
+      outline-color: var(--text-3);
       outline-style: dashed;
     }
   }
@@ -190,12 +181,11 @@
     scroll-margin-top: 1.5rem;
   }
 
-  /* ===== Domain-specific content blocks ===== */
   .app-prose .risk-control,
   .reading-prose .risk-control {
     border: 1px solid color-mix(in srgb, var(--danger), transparent 75%);
     background: color-mix(in srgb, var(--danger), transparent 94%);
-    border-radius: 0.625rem;
+    border-radius: var(--radius-lg);
     padding: 0.9rem 1rem;
     margin-block: 1rem;
   }
@@ -209,7 +199,7 @@
   .reading-prose .hardening-checklist {
     border: 1px solid color-mix(in srgb, var(--success), transparent 72%);
     background: color-mix(in srgb, var(--success), transparent 94%);
-    border-radius: 0.625rem;
+    border-radius: var(--radius-lg);
     padding: 0.9rem 1rem;
     margin-block: 1rem;
   }
@@ -226,8 +216,8 @@
     padding: 0.4rem 0.75rem;
     border: 1px solid var(--border);
     border-bottom: none;
-    border-radius: 0.625rem 0.625rem 0 0;
-    background: color-mix(in srgb, var(--surface-3), var(--background) 30%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background: var(--surface-2);
     font-size: 0.85rem;
     color: var(--text-2);
   }
@@ -235,10 +225,9 @@
   .app-prose .cli-snippet-title + pre,
   .reading-prose .cli-snippet-title + pre {
     margin-top: 0;
-    border-radius: 0 0 0.625rem 0.625rem;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   }
 
-  /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
     display: flex;
     border-width: 1px;
@@ -262,8 +251,6 @@
     color: var(--shiki-dark);
   }
 
-  /* Styles for Shiki transformers */
-  /* https://shiki.style/packages/transformers */
   .astro-code {
     .line.diff.add {
       position: relative;

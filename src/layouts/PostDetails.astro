@@ -102,7 +102,7 @@ const nextPost =
   >
     <h1
       transition:name={slugifyStr(title)}
-      class="inline-block text-2xl font-bold tracking-tight text-primary sm:text-3xl"
+      class="inline-block text-primary"
     >
       {title}
     </h1>
@@ -179,7 +179,7 @@ const nextPost =
               <IconChevronLeft class="inline-block flex-none rtl:rotate-180" />
               <div>
                 <span class="text-sm text-text-2">Previous Post</span>
-                <div class="text-sm text-accent/85">{prevPost.title}</div>
+                <div class="text-sm text-text-1">{prevPost.title}</div>
               </div>
             </a>
           )
@@ -192,7 +192,7 @@ const nextPost =
             >
               <div>
                 <span class="text-sm text-text-2">Next Post</span>
-                <div class="text-sm text-accent/85">{nextPost.title}</div>
+                <div class="text-sm text-text-1">{nextPost.title}</div>
               </div>
               <IconChevronRight class="inline-block flex-none rtl:rotate-180" />
             </a>
@@ -215,7 +215,7 @@ const nextPost =
 
     // Create the progress bar div
     const progressBar = document.createElement("div");
-    progressBar.className = "progress-bar h-1 w-0 bg-accent";
+    progressBar.className = "progress-bar h-1 w-0 bg-text-2";
     progressBar.id = "myBar";
 
     // Append the progress bar to the progress container

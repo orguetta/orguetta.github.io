@@ -118,7 +118,6 @@ const structuredData = {
     />
 
     <!-- Enable RSS feed auto-discovery  -->
-    <!-- https://docs.astro.build/en/recipes/rss/#enabling-rss-feed-auto-discovery -->
     <link
       rel="alternate"
       type="application/rss+xml"
@@ -129,9 +128,6 @@ const structuredData = {
     <meta name="theme-color" content="" />
 
     {
-      // If googleSiteVerification is set in the environment variable,
-      // include google-site-verification tag in the heading
-      // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
       googleSiteVerification && (
         <meta
           name="google-site-verification"
@@ -141,14 +137,6 @@ const structuredData = {
     }
 
     <script is:inline src="/toggle-theme.js"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <slot />
@@ -156,10 +144,26 @@ const structuredData = {
 </html>
 
 <style is:global>
+  @font-face {
+    font-family: "Geist";
+    src: url("/geist-sans/Geist-Regular.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Geist Mono";
+    src: url("/geist-mono/GeistMono-Regular.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
-    --font-heading: "Montserrat", sans-serif;
-    --font-body: "Inter", sans-serif;
-    --font-mono: "Fira Code", monospace;
+    --font-heading: "Geist", "Inter", system-ui, sans-serif;
+    --font-body: "Geist", "Inter", system-ui, sans-serif;
+    --font-mono: "Geist Mono", "Fira Code", ui-monospace, monospace;
   }
 
   html,
@@ -176,8 +180,28 @@ const structuredData = {
   h4,
   h5,
   h6 {
+    margin: 0;
     font-family: var(--font-heading);
-    font-weight: 700;
+    font-weight: 300;
+    color: var(--text-1);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    margin-bottom: var(--space-md);
+  }
+
+  h2 {
+    font-size: clamp(1.875rem, 3vw, 2.5rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
   }
 
   code,

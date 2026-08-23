@@ -5,61 +5,95 @@
 
 :root,
 html[data-theme="light"] {
-  --surface-1: #fafaf0;
-  --surface-2: #f3f2e7;
-  --surface-3: #ecebdd;
-  --text-1: #1f2430;
-  --text-2: #4b5260;
-  --text-3: #727a89;
-  --background: #fafaf0;
+  color-scheme: light;
+
+  /* Surfaces */
+  --surface-1: oklch(1 0 0);
+  --surface-2: oklch(0.97 0 0);
+  --surface-3: oklch(0.922 0 0);
+
+  /* Text */
+  --text-1: oklch(0.145 0 0);
+  --text-2: oklch(0.556 0 0);
+  --text-3: oklch(0.708 0 0);
+
+  /* Brand (monochrome) */
+  --primary: oklch(0.205 0 0);
+  --accent: oklch(0.556 0 0);
+  --border: oklch(0.922 0 0);
+
+  /* Semantic */
+  --success: oklch(0.6 0.17 162.48);
+  --warning: oklch(0.769 0.188 70.08);
+  --danger: oklch(0.577 0.245 27.325);
+  --info: oklch(0.488 0.243 264.376);
+
+  /* Aliases */
+  --background: var(--surface-1);
   --foreground: var(--text-1);
-  --primary: #1b2b4d;
-  --accent: #7b8a4b;
-  --muted: #f5f5ef;
-  --border: #d1d1ca;
-  --success: #2e7d32;
-  --warning: #b26a00;
-  --danger: #c62828;
-  --info: #1565c0;
+  --muted: var(--surface-2);
+
+  /* Spacing */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
   --space-5: 1.5rem;
   --space-6: 2rem;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 0.875rem;
-  --shadow-sm: 0 2px 10px rgb(16 22 38 / 0.06);
-  --shadow-md: 0 12px 34px rgb(16 22 38 / 0.12);
-  --duration-fast: 120ms;
-  --duration-base: 200ms;
-  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 60%);
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Radius */
+  --radius-sm: calc(0.625rem - 4px);
+  --radius-md: calc(0.625rem - 2px);
+  --radius-lg: 0.625rem;
+  --radius-xl: calc(0.625rem + 4px);
+
+  /* Motion */
+  --duration-fast: 300ms;
+  --duration-base: 500ms;
+
+  /* Layout */
+  --content-width: 56rem;
+  --content-narrow: 42rem;
+
+  /* Shadows — border-driven design */
+  --shadow-sm: none;
+  --shadow-md: none;
+
+  --focus-ring: 0 0 0 1px var(--text-3);
 }
 
 html[data-theme="dark"] {
-  --surface-1: #121212;
-  --surface-2: #171a20;
-  --surface-3: #1f2430;
-  --text-1: #eceff6;
-  --text-2: #c5cbda;
-  --text-3: #99a2b6;
-  --background: #121212;
+  color-scheme: dark;
+
+  --surface-1: oklch(0.145 0 0);
+  --surface-2: oklch(0.205 0 0);
+  --surface-3: oklch(0.269 0 0);
+
+  --text-1: oklch(0.985 0 0);
+  --text-2: oklch(0.708 0 0);
+  --text-3: oklch(0.556 0 0);
+
+  --primary: oklch(0.985 0 0);
+  --accent: oklch(0.708 0 0);
+  --border: oklch(0.269 0 0);
+
+  --background: var(--surface-1);
   --foreground: var(--text-1);
-  --primary: #fafaf0;
-  --accent: #7b8a4b;
-  --muted: #2a2a2a;
-  --border: #333333;
-  --success: #66bb6a;
-  --warning: #f2a93b;
-  --danger: #ef5350;
-  --info: #64b5f6;
-  --shadow-sm: 0 2px 10px rgb(0 0 0 / 0.2);
-  --shadow-md: 0 12px 34px rgb(0 0 0 / 0.34);
-  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 50%);
+  --muted: var(--surface-2);
+
+  --shadow-sm: none;
+  --shadow-md: none;
+
+  --focus-ring: 0 0 0 1px var(--text-3);
 }
 
 @theme inline {
+  --font-sans: "Geist", "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Fira Code", ui-monospace, monospace;
+  --font-heading: "Geist", "Inter", system-ui, sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -90,28 +124,17 @@ html[data-theme="dark"] {
   }
 
   body {
-    @apply flex min-h-svh flex-col bg-background font-sans text-foreground antialiased selection:bg-accent/30 selection:text-foreground;
-    background-image:
-      radial-gradient(
-        1200px 560px at 84% -12%,
-        color-mix(in srgb, var(--accent), transparent 82%),
-        transparent
-      ),
-      radial-gradient(
-        900px 460px at 2% -18%,
-        color-mix(in srgb, var(--primary), transparent 88%),
-        transparent
-      );
-    background-attachment: fixed;
+    @apply flex min-h-svh flex-col bg-background font-sans text-foreground antialiased selection:bg-text-3/20 selection:text-foreground;
   }
 
   a:not(.ui-control) {
-    color: color-mix(in srgb, var(--accent), var(--primary) 18%);
-    text-decoration-color: color-mix(in srgb, var(--accent), transparent 55%);
+    color: var(--text-1);
+    text-decoration: none;
+    transition: opacity var(--duration-fast) ease;
   }
 
   a:not(.ui-control):hover {
-    color: var(--accent);
+    opacity: 0.6;
   }
 
   a,
@@ -125,7 +148,9 @@ html[data-theme="dark"] {
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    box-shadow: var(--focus-ring);
+    outline: 1px solid var(--text-3);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
     text-decoration-line: none;
   }
 
@@ -142,7 +167,7 @@ html[data-theme="dark"] {
 
 @layer components {
   .ui-control {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-transparent px-3 py-2 font-medium transition-colors duration-(--duration-base);
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-transparent px-3 py-2 font-medium transition-colors duration-(--duration-fast);
   }
 
   .ui-control--icon {
@@ -150,57 +175,52 @@ html[data-theme="dark"] {
   }
 
   .ui-control--secondary {
-    @apply border-border bg-surface-3 text-foreground hover:border-accent/55 hover:text-accent;
+    @apply border-border bg-surface-3 text-foreground;
+  }
+
+  .ui-control--secondary:hover {
+    border-color: var(--text-3);
+    opacity: 1;
   }
 
   .ui-control--ghost {
-    @apply text-foreground hover:bg-surface-2 hover:text-accent;
+    @apply text-text-2;
+  }
+
+  .ui-control--ghost:hover {
+    color: var(--text-1);
+    opacity: 1;
   }
 
   .ui-panel {
-    @apply rounded-lg border border-border bg-surface-3 shadow-sm;
+    @apply rounded-lg border border-border bg-surface-3;
   }
 
   .ui-surface {
-    background-color: color-mix(
-      in srgb,
-      var(--surface-2),
-      var(--background) 20%
-    );
-    border: 1px solid color-mix(in srgb, var(--border), transparent 10%);
-    box-shadow: var(--shadow-sm);
-    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
   }
 
   .ui-surface--soft {
-    background-color: color-mix(
-      in srgb,
-      var(--surface-1),
-      var(--background) 50%
-    );
-    border: 1px solid color-mix(in srgb, var(--border), transparent 18%);
+    background: transparent;
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
   }
 
   .ui-hover-lift {
-    transition-property: transform, border-color, box-shadow;
-    transition-duration: var(--duration-base);
+    transition-property: border-color;
+    transition-duration: var(--duration-fast);
   }
 
   .ui-hover-lift:hover {
-    transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--accent), transparent 55%);
-    box-shadow: var(--shadow-md);
+    border-color: var(--text-3);
   }
 
   .ui-chip {
     @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium;
-    background-color: color-mix(
-      in srgb,
-      var(--background),
-      var(--surface-2) 55%
-    );
-    border: 1px solid color-mix(in srgb, var(--border), transparent 8%);
+    background: transparent;
+    border: 1px solid var(--border);
     color: var(--text-2);
     letter-spacing: 0.01em;
   }
@@ -217,7 +237,7 @@ html[data-theme="dark"] {
 }
 
 .active-nav {
-  @apply text-accent;
+  @apply text-text-1;
   font-weight: 600;
   text-decoration: none;
   position: relative;
@@ -229,12 +249,7 @@ html[data-theme="dark"] {
   left: 0.25rem;
   right: 0.25rem;
   bottom: 0.15rem;
-  border-bottom: 2px solid color-mix(in srgb, var(--accent), transparent 35%);
-}
-
-html[data-theme="dark"] .ui-surface,
-html[data-theme="dark"] .ui-surface--soft {
-  backdrop-filter: blur(4px);
+  border-bottom: 2px solid var(--text-3);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -248,8 +263,6 @@ html[data-theme="dark"] .ui-surface--soft {
   }
 }
 
-/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 1rem;
 }

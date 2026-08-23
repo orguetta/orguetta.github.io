@@ -13,7 +13,7 @@ const { tag, tagName, size = "sm" } = Astro.props;
     href={`/tags/${tag}/`}
     transition:name={tag}
     class:list={[
-      "ui-chip flex items-center border-accent/25 bg-accent/8 text-accent transition-all hover:border-accent hover:bg-accent hover:text-surface-1",
+      "ui-chip flex items-center transition-all hover:border-text-3 hover:text-text-1",
       size === "sm"
         ? "px-2 py-0.5 text-xs"
         : "px-3 py-1.5 text-base font-medium",
