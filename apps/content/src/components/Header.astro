@@ -1,0 +1,174 @@
+---
+import Hr from "./Hr.astro";
+import IconX from "@/assets/icons/IconX.svg";
+import IconMoon from "@/assets/icons/IconMoon.svg";
+import IconSearch from "@/assets/icons/IconSearch.svg";
+import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
+import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
+import LinkButton from "./LinkButton.astro";
+import { SITE } from "@/config";
+import { NAV } from "@guetta/design-system/navigation";
+
+const { pathname } = Astro.url;
+
+const currentPath =
+  pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+
+const isActive = (path: string) => {
+  const currentPathArray = currentPath.split("/").filter(p => p.trim());
+  const pathArray = path.split("/").filter(p => p.trim());
+
+  return currentPath === path || currentPathArray[0] === pathArray[0];
+};
+---
+
+<header>
+  <a
+    id="skip-to-content"
+    href="#main-content"
+    class="absolute inset-s-16 -top-full z-50 bg-background px-3 py-2 text-text-1 backdrop-blur-lg transition-all focus:top-4"
+  >
+    Skip to content
+  </a>
+  <div
+    id="nav-container"
+    class="mx-auto flex max-w-app flex-col items-center justify-between sm:flex-row"
+  >
+    <div
+      id="top-nav-wrap"
+      class="relative flex w-full items-baseline justify-between bg-background p-4 sm:items-center sm:py-6"
+    >
+      <a
+        href="/"
+        class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
+      >
+        {SITE.title}
+      </a>
+      <nav
+        id="nav-menu"
+        class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
+      >
+        <button
+          id="menu-btn"
+          class="ui-control ui-control--ghost self-end sm:hidden"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          aria-controls="menu-items"
+        >
+          <IconX id="close-icon" class="hidden" />
+          <IconMenuDeep id="menu-icon" />
+        </button>
+        <ul
+          id="menu-items"
+          class:list={[
+            "ui-panel mt-3 hidden w-full flex-col gap-1 p-3",
+            "[&>li>a]:block [&>li>a]:rounded-md [&>li>a]:px-4 [&>li>a]:py-2.5 [&>li>a]:font-medium [&>li>a]:text-foreground [&>li>a]:transition-colors [&>li>a]:hover:text-text-1",
+            "sm:mt-0 sm:flex sm:w-auto sm:flex-row sm:items-center sm:gap-4 sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:[&>li>a]:px-2 sm:[&>li>a]:py-1",
+          ]}
+        >
+          <li>
+            <a href={NAV.home}> Home </a>
+          </li>
+          <li>
+            <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
+              Posts
+            </a>
+          </li>
+          <li>
+            <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
+              Tags
+            </a>
+          </li>
+          <li>
+            <a href="/tools" class:list={{ "active-nav": isActive("/tools") }}>
+              Tools
+            </a>
+          </li>
+          <li>
+            <a href="/now" class:list={{ "active-nav": isActive("/now") }}>
+              Now
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://guetta.tech/resume"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+          </li>
+          <li>
+            <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
+              About
+            </a>
+          </li>
+          <li
+            class="mt-1 border-t border-border pt-2 sm:mt-0 sm:border-0 sm:pt-0"
+          >
+            <div class="flex items-center gap-2">
+              <LinkButton
+                href="/search"
+                variant="secondary"
+                size="sm"
+                class:list={[
+                  "w-full justify-center sm:w-auto",
+                  { "text-text-1 [&>svg]:stroke-text-1": isActive("/search") },
+                ]}
+                ariaLabel="search"
+                title="Search"
+              >
+                <IconSearch />
+                <span>Search</span>
+              </LinkButton>
+              {
+                SITE.lightAndDarkMode && (
+                  <button
+                    id="theme-btn"
+                    class="ui-control ui-control--secondary ui-control--icon relative"
+                    title="Toggles light & dark"
+                    aria-label="auto"
+                    aria-live="polite"
+                  >
+                    <IconMoon class="absolute top-[50%] left-[50%] -translate-[50%] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                    <IconSunHigh class="absolute top-[50%] left-[50%] -translate-[50%] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                  </button>
+                )
+              }
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <Hr />
+</header>
+
+<script>
+  function initNavToggle() {
+    const menuBtn = document.querySelector("#menu-btn");
+    const menuItems = document.querySelector("#menu-items");
+    const menuIcon = document.querySelector("#menu-icon");
+    const closeIcon = document.querySelector("#close-icon");
+
+    if (!menuBtn || !menuItems || !menuIcon || !closeIcon) return;
+    if ((menuBtn as HTMLElement).dataset.bound === "true") return;
+
+    menuBtn.addEventListener("click", () => {
+      const openMenu = menuBtn.getAttribute("aria-expanded") === "true";
+
+      menuBtn.setAttribute("aria-expanded", openMenu ? "false" : "true");
+      menuBtn.setAttribute("aria-label", openMenu ? "Open Menu" : "Close Menu");
+
+      menuItems.classList.toggle("hidden");
+      menuIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+    });
+
+    (menuBtn as HTMLElement).dataset.bound = "true";
+  }
+
+  initNavToggle();
+
+  document.addEventListener("astro:after-swap", initNavToggle);
+</script>

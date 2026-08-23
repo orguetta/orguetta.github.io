@@ -1,65 +1,62 @@
-# Or Guetta - Cybersecurity Blog 🔐
+# guetta-web
 
-A professional cybersecurity blog built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/), focusing on practical security implementations, NetScaler configurations, and application security best practices.
+Unified monorepo for the Or Guetta web presence. Two independently
+deployable Astro applications, one shared design system.
 
-## 🎯 About This Blog
+| Site                    | URL                    | App            | Hosting                            |
+| ----------------------- | ---------------------- | -------------- | ---------------------------------- |
+| Professional landing    | https://guetta.tech    | `apps/landing` | Cloudflare Workers (`guetta-tech`) |
+| Writing & knowledge hub | https://or.guetta.tech | `apps/content` | GitHub Pages (custom domain)       |
 
-This blog serves as a knowledge-sharing platform for cybersecurity professionals, featuring:
+## Structure
 
-- **NetScaler Configuration Guides** - Advanced setup, security hardening, and optimization
-- **Application Security** - Practical implementation guides and best practices
-- **Automation & Scripting** - API integration and DevSecOps workflows
-- **Real-world Case Studies** - Lessons learned from actual security implementations
-
-## � Features
-
-- [x] Fast performance with Astro SSG
-- [x] SEO-optimized for technical content
-- [x] Responsive design (mobile to desktop)
-- [x] Light & dark mode support
-- [x] Fuzzy search functionality
-- [x] Organized by security topics and tags
-- [x] RSS feed for updates
-- [x] Dynamic OG image generation
-- [x] Accessibility features built-in
-
-## 📝 Content Topics
-
-Current focus areas include:
-
-- **NetScaler Security**: WAF configuration, rate limiting, SSL/TLS hardening
-- **Authentication Systems**: Multi-factor authentication, OTP implementation
-- **API Security**: REST API best practices, authentication, rate limiting
-- **Performance Optimization**: Load balancing, caching strategies
-- **Automation**: Python scripts, API integration, infrastructure as code
-
-## 🛠️ Built With
-
-- **Framework**: [Astro](https://astro.build/) for static site generation
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) for responsive design
-- **Search**: [Pagefind](https://pagefind.app/) for static search
-- **Icons**: Custom SVG icons optimized for performance
-- **Hosting**: Designed for GitHub Pages deployment
-
-## 🚀 Development
-
-To run this blog locally:
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start development server
-pnpm run dev
-
-# Build for production
-pnpm run build
+```text
+guetta-web/
+├── apps/
+│   ├── landing/        # guetta.tech — Astro 7, server output on Workers
+│   └── content/        # or.guetta.tech — Astro 6, static on GitHub Pages
+├── packages/
+│   └── design-system/  # tokens, fonts, theme contract, navigation URLs
+└── .github/workflows/  # single validate-and-deploy workflow
 ```
 
-## 📧 Contact
+## Commands
 
-For cybersecurity consultations or questions about any of the articles, feel free to reach out through the social links on the blog.
+```sh
+pnpm install            # from repository root
+pnpm dev:landing        # landing dev server
+pnpm dev:content        # content dev server
+pnpm build              # build both applications
+pnpm check              # typecheck/build checks for all packages
+pnpm lint               # eslint (root config)
+pnpm format             # prettier (root config)
+```
 
----
+## Deployment
 
-_Making the web more secure, one implementation at a time._ 🔐
+A single workflow (`.github/workflows/deploy.yml`):
+
+- Pull requests run quality gates only.
+- Pushes to `main` deploy the content hub to GitHub Pages and the
+  landing Worker to Cloudflare. Deployments require the
+  `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` secrets.
+
+## Migration provenance
+
+This repository continues `orguetta/orguetta.github.io` in place;
+its full git history is preserved.
+
+| Source                        | Last migrated commit                                  |
+| ----------------------------- | ----------------------------------------------------- |
+| `orguetta/orguetta.github.io` | `908f421` (Auto-generate resume PDF)                  |
+| `orguetta/www-guetta-tech`    | `63a317f` (feat: add resume generation functionality) |
+
+The landing application was imported as a working-tree copy; its
+history remains available in the source repository, which is retained
+(read-only) after cutover.
+
+## Design system
+
+`docs/DESIGN_SYSTEM.md` is the normative visual specification.
+Shared tokens, fonts, and cross-domain navigation live in
+`packages/design-system`.

@@ -1,0 +1,489 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import Hr from "@/components/Hr.astro";
+
+const colorTokens = {
+  light: {
+    "surface-1": "oklch(1 0 0)",
+    "surface-2": "oklch(0.97 0 0)",
+    "surface-3": "oklch(0.922 0 0)",
+    "text-1": "oklch(0.145 0 0)",
+    "text-2": "oklch(0.556 0 0)",
+    "text-3": "oklch(0.708 0 0)",
+    primary: "oklch(0.205 0 0)",
+    accent: "oklch(0.556 0 0)",
+    border: "oklch(0.922 0 0)",
+  },
+  dark: {
+    "surface-1": "oklch(0.145 0 0)",
+    "surface-2": "oklch(0.205 0 0)",
+    "surface-3": "oklch(0.269 0 0)",
+    "text-1": "oklch(0.985 0 0)",
+    "text-2": "oklch(0.708 0 0)",
+    "text-3": "oklch(0.556 0 0)",
+    primary: "oklch(0.985 0 0)",
+    accent: "oklch(0.708 0 0)",
+    border: "oklch(0.269 0 0)",
+  },
+};
+
+const semanticTokens = {
+  light: {
+    success: "oklch(0.6 0.17 162.48)",
+    warning: "oklch(0.769 0.188 70.08)",
+    danger: "oklch(0.577 0.245 27.325)",
+    info: "oklch(0.488 0.243 264.376)",
+  },
+  dark: {
+    success: "oklch(0.6 0.17 162.48)",
+    warning: "oklch(0.769 0.188 70.08)",
+    danger: "oklch(0.577 0.245 27.325)",
+    info: "oklch(0.488 0.243 264.376)",
+  },
+};
+
+const spacingTokens = [
+  { name: "space-1", value: "0.25rem", px: "4px" },
+  { name: "space-2", value: "0.5rem", px: "8px" },
+  { name: "space-3", value: "0.75rem", px: "12px" },
+  { name: "space-4", value: "1rem", px: "16px" },
+  { name: "space-5", value: "1.5rem", px: "24px" },
+  { name: "space-6", value: "2rem", px: "32px" },
+];
+
+const radiusTokens = [
+  { name: "radius-sm", value: "calc(0.625rem - 4px)" },
+  { name: "radius-md", value: "calc(0.625rem - 2px)" },
+  { name: "radius-lg", value: "0.625rem" },
+  { name: "radius-xl", value: "calc(0.625rem + 4px)" },
+];
+
+const fonts = [
+  {
+    name: "Geist",
+    usage: "Headings & Body",
+    family: "Geist, system-ui, sans-serif",
+  },
+  {
+    name: "Geist Mono",
+    usage: "Code blocks",
+    family: "Geist Mono, ui-monospace, monospace",
+  },
+];
+---
+
+<Layout
+  title="Design System"
+  description="Complete design system documentation"
+>
+  <main class="space-y-12">
+    <section>
+      <h1 class="text-text-1">Design System</h1>
+      <p class="mt-2 text-text-2">
+        Or Guetta v3.0 — Monochrome, border-driven visual language
+      </p>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Color Palette — Light Mode</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          Object.entries(colorTokens.light).map(([name, hex]) => (
+            <div class="rounded-lg border border-border p-4 transition-all hover:border-text-3">
+              <div
+                class="mb-4 h-24 rounded-md border border-border"
+                style={{ backgroundColor: hex }}
+              />
+              <p class="font-mono text-sm font-semibold text-text-1">
+                --{name}
+              </p>
+              <p class="font-mono text-xs text-text-3">{hex}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-6 text-text-1">Color Palette — Dark Mode</h2>
+      <div class="rounded-lg border border-border bg-surface-3 p-8">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            Object.entries(colorTokens.dark).map(([name, hex]) => (
+              <div class="rounded-lg border border-border bg-surface-2 p-4 transition-all hover:border-text-3">
+                <div
+                  class="mb-4 h-24 rounded-md border border-border"
+                  style={{ backgroundColor: hex }}
+                />
+                <p class="font-mono text-sm font-semibold text-text-1">
+                  --{name}
+                </p>
+                <p class="font-mono text-xs text-text-3">{hex}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-6 text-text-1">Semantic Tokens</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div>
+          <h3 class="mb-4 text-text-1">Light Mode</h3>
+          <div class="space-y-3">
+            {
+              Object.entries(semanticTokens.light).map(([name, hex]) => (
+                <div class="flex items-center gap-4 rounded-lg border border-border p-3">
+                  <div
+                    class="h-12 w-16 rounded-md border border-border"
+                    style={{ backgroundColor: hex }}
+                  />
+                  <div>
+                    <p class="font-mono text-sm font-semibold text-text-1">
+                      --{name}
+                    </p>
+                    <p class="font-mono text-xs text-text-3">{hex}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="rounded-lg border border-border bg-surface-3 p-8">
+          <h3 class="mb-4 text-text-1">Dark Mode</h3>
+          <div class="space-y-3">
+            {
+              Object.entries(semanticTokens.dark).map(([name, hex]) => (
+                <div class="flex items-center gap-4 rounded-lg border border-border bg-surface-2 p-3">
+                  <div
+                    class="h-12 w-16 rounded-md border border-border"
+                    style={{ backgroundColor: hex }}
+                  />
+                  <div>
+                    <p class="font-mono text-sm font-semibold text-text-1">
+                      --{name}
+                    </p>
+                    <p class="font-mono text-xs text-text-3">{hex}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Typography</h2>
+      <div class="grid gap-4 lg:grid-cols-2">
+        {
+          fonts.map(font => (
+            <div class="ui-surface p-6">
+              <h3 class="text-text-1">
+                <span style={{ fontFamily: font.family }}>{font.name}</span>
+              </h3>
+              <p class="mt-2 text-sm text-text-2">{font.usage}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-8 space-y-6">
+        <div>
+          <p class="mb-2 text-sm font-semibold text-text-2">
+            Heading Example (Geist Light, weight 300)
+          </p>
+          <h2
+            style={{
+              fontFamily: "Geist, system-ui, sans-serif",
+              fontWeight: "300",
+              letterSpacing: "-0.02em",
+            }}
+            class="text-text-1"
+          >
+            The quick brown fox jumps over the lazy dog
+          </h2>
+        </div>
+
+        <div>
+          <p class="mb-2 text-sm font-semibold text-text-2">
+            Body Example (Geist Regular, 1.65 line height)
+          </p>
+          <p
+            class="text-base leading-[1.65] text-text-1"
+            style={{ fontFamily: "Geist, system-ui, sans-serif" }}
+          >
+            The quick brown fox jumps over the lazy dog. Clarity over
+            noise—every screen should be understandable within 3–5 seconds.
+            Defensive by design, practical depth.
+          </p>
+        </div>
+
+        <div>
+          <p class="mb-2 text-sm font-semibold text-text-2">
+            Code Example (Geist Mono)
+          </p>
+          <pre
+            class="overflow-x-auto rounded-md border border-border bg-surface-2 p-4 font-mono text-sm text-text-1"
+            style={{
+              fontFamily: "Geist Mono, ui-monospace, monospace",
+            }}><code>const token = '--surface-1'; /* Clarity over noise */</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Spacing Scale</h2>
+      <div class="space-y-4">
+        {
+          spacingTokens.map(token => (
+            <div class="flex items-center gap-4">
+              <div class="w-32">
+                <p class="font-mono text-sm font-semibold text-text-1">
+                  --{token.name}
+                </p>
+                <p class="font-mono text-xs text-text-3">
+                  {token.value} ({token.px})
+                </p>
+              </div>
+              <div
+                class="rounded-md border border-border bg-surface-3"
+                style={{ width: token.px, height: "32px" }}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Border Radius</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          radiusTokens.map(token => (
+            <div>
+              <p class="mb-3 font-mono text-sm font-semibold text-text-1">
+                --{token.name}
+              </p>
+              <div
+                class="h-24 border-2 border-border bg-surface-3"
+                style={{ borderRadius: token.value }}
+              />
+              <p class="mt-2 font-mono text-xs text-text-3">{token.value}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Button Variants</h2>
+      <div class="space-y-8">
+        <div>
+          <p class="mb-3 text-sm font-semibold text-text-2">
+            Primary (Filled Dark)
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <LinkButton href="#" variant="primary" size="md">
+              Primary Button
+            </LinkButton>
+            <LinkButton href="#" variant="primary" size="md" disabled>
+              Disabled
+            </LinkButton>
+          </div>
+        </div>
+
+        <div>
+          <p class="mb-3 text-sm font-semibold text-text-2">
+            Secondary (Outline)
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <LinkButton href="#" variant="secondary" size="md">
+              Secondary Button
+            </LinkButton>
+            <LinkButton href="#" variant="secondary" size="md" disabled>
+              Disabled
+            </LinkButton>
+          </div>
+        </div>
+
+        <div>
+          <p class="mb-3 text-sm font-semibold text-text-2">Ghost (Minimal)</p>
+          <div class="flex flex-wrap gap-3">
+            <LinkButton href="#" variant="ghost" size="md">
+              Ghost Button
+            </LinkButton>
+            <LinkButton href="#" variant="ghost" size="md" disabled>
+              Disabled
+            </LinkButton>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-6 text-text-1">Card Surfaces</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="ui-surface p-6 transition-all hover:border-text-3">
+          <h3 class="text-text-1">.ui-surface</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Border-driven elevation, no shadows
+          </p>
+        </div>
+
+        <div class="ui-surface--soft p-6 transition-all hover:border-text-3">
+          <h3 class="text-text-1">.ui-surface--soft</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Softer surface for secondary content
+          </p>
+        </div>
+
+        <div class="ui-surface ui-hover-lift cursor-pointer p-6">
+          <h3 class="text-text-1">.ui-surface.ui-hover-lift</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Border-color change on hover (no lift)
+          </p>
+        </div>
+
+        <div class="ui-panel p-6">
+          <h3 class="text-text-1">.ui-panel</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Panel for grouped content with border
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-6 text-text-1">Tags & Chips</h2>
+      <div class="flex flex-wrap gap-3">
+        <span class="ui-chip">cybersecurity</span>
+        <span class="ui-chip">netscaler</span>
+        <span class="ui-chip">cloud-security</span>
+        <span class="ui-chip">infrastructure</span>
+        <span class="ui-chip">automation</span>
+        <span class="ui-chip">waf</span>
+      </div>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Motion & Duration</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="ui-surface p-6">
+          <p class="mb-2 font-semibold text-text-1">--duration-fast: 300ms</p>
+          <p class="text-sm text-text-2">
+            Used for quick interactions, hover states, brief feedback
+          </p>
+        </div>
+        <div class="ui-surface p-6">
+          <p class="mb-2 font-semibold text-text-1">--duration-base: 500ms</p>
+          <p class="text-sm text-text-2">
+            Standard transition duration for most UI changes
+          </p>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-text-3">
+        Motion rule: subtle only. No heavy animations. Reduced motion fully
+        supported.
+      </p>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Focus & Accessibility</h2>
+      <div class="space-y-4">
+        <div class="ui-surface p-6">
+          <p class="mb-3 font-semibold text-text-1">
+            Focus States (Tab to test)
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <button
+              class="ui-control ui-control"
+              style="background-color: var(--text-1); color: var(--surface-1);"
+            >
+              Focus this button
+            </button>
+            <a
+              href="#focus-link"
+              class="ui-control ui-control"
+              style="background-color: var(--text-1); color: var(--surface-1);"
+            >
+              Focus this link
+            </a>
+            <input
+              type="text"
+              placeholder="Focus this input"
+              class="rounded-md border border-border px-3 py-2 focus:border-text-3"
+            />
+          </div>
+        </div>
+        <p class="text-xs text-text-3">
+          Focus ring: 1px solid text-3. All interactive elements have keyboard
+          support.
+        </p>
+      </div>
+    </section>
+
+    <Hr />
+
+    <section>
+      <h2 class="mb-6 text-text-1">Brand Principles</h2>
+      <div class="grid gap-4 lg:grid-cols-3">
+        <div class="ui-panel p-6">
+          <h3 class="text-text-1">Clarity over Noise</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Every screen should be understandable within 3–5 seconds
+          </p>
+        </div>
+        <div class="ui-panel p-6">
+          <h3 class="text-text-1">Defensive by Design</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Convey trust, stability, and professional accountability
+          </p>
+        </div>
+        <div class="ui-panel p-6">
+          <h3 class="text-text-1">Practical Depth</h3>
+          <p class="mt-2 text-sm text-text-2">
+            Fewer buzzwords, more playbooks, checklists, real configs
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12 text-center">
+      <p class="text-sm text-text-3">
+        Design System v3.0 — Monochrome, border-driven
+      </p>
+      <p class="mt-1 text-xs text-text-3">
+        This page is not linked in navigation (hidden but accessible)
+      </p>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: 3rem auto;
+    max-width: 96rem;
+    padding: 0 1rem;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
+</style>

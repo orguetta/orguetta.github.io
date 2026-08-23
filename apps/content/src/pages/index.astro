@@ -1,0 +1,108 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import LinkButton from "@/components/LinkButton.astro";
+import Card from "@/components/Card.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import Hr from "@/components/Hr.astro";
+import getSortedPosts from "@/utils/getSortedPosts";
+import IconRss from "@/assets/icons/IconRss.svg";
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
+import { SITE } from "@/config";
+
+const posts = await getCollection("blog");
+
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const featuredPreviewPosts = featuredPosts.slice(0, 1);
+const recentPreviewPosts = recentPosts.slice(0, Math.min(SITE.postPerIndex, 4));
+---
+
+<Layout>
+  <Header />
+  <main id="main-content" data-layout="index">
+    <section id="hero" class="ui-prose pt-10 pb-6">
+      <SectionHeader
+        level="h1"
+        title="Or Guetta"
+        subtitle="Practical security engineering notes on hardening, application delivery, and defensive automation."
+      >
+        <a
+          slot="action"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="/rss.xml"
+          class="ui-control ui-control--secondary ui-control--icon"
+          aria-label="rss feed"
+          title="RSS Feed"
+        >
+          <IconRss width={20} height={20} class="stroke-3 rtl:-rotate-90" />
+          <span class="sr-only">RSS Feed</span>
+        </a>
+      </SectionHeader>
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <LinkButton href="/posts" variant="primary">Read Guides</LinkButton>
+        <LinkButton href="/tools" variant="secondary">Explore Tools</LinkButton>
+        <a
+          href="https://guetta.tech/resume"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center justify-center gap-2 rounded-md border border-transparent px-4 py-2 font-medium text-text-2 transition-colors duration-[var(--duration-fast)] hover:text-text-1"
+          >View Resume</a
+        >
+      </div>
+    </section>
+
+    <Hr />
+
+    {
+      featuredPreviewPosts.length > 0 && (
+        <>
+          <section id="featured" class="pt-10 pb-6">
+            <SectionHeader title="Featured" />
+            <ul>
+              {featuredPreviewPosts.map(data => (
+                <Card variant="post" {...data} />
+              ))}
+            </ul>
+          </section>
+          {recentPosts.length > 0 && <Hr />}
+        </>
+      )
+    }
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts" class="pt-10 pb-6">
+          <SectionHeader title="Recent Posts" />
+          <ul>
+            {recentPreviewPosts.map(data => (
+              <Card variant="compact" {...data} />
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="my-8 text-center">
+      <LinkButton href="/posts/" variant="secondary">
+        All Posts
+        <IconArrowRight class="inline-block rtl:-rotate-180" />
+      </LinkButton>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const indexLayout = (document.querySelector("#main-content") as HTMLElement)
+      ?.dataset?.layout;
+    if (indexLayout) {
+      sessionStorage.setItem("backUrl", "/");
+    }
+  });
+</script>

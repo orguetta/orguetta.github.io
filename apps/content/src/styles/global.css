@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import "./typography.css";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/*
+ * Design tokens (light/dark) are provided by @guetta/design-system.
+ * This file keeps only content-app aliases and the Tailwind theme
+ * mapping on top of the shared primitives.
+ */
+
+:root,
+html[data-theme="light"] {
+  /* Aliases */
+  --background: var(--surface-1);
+  --foreground: var(--text-1);
+  --muted: var(--surface-2);
+  --focus-ring: 0 0 0 1px var(--text-3);
+}
+
+[data-theme="dark"],
+.dark {
+  --background: var(--surface-1);
+  --foreground: var(--text-1);
+  --muted: var(--surface-2);
+  --focus-ring: 0 0 0 1px var(--text-3);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Inter", system-ui, sans-serif;
+  --font-mono: "Geist Mono", "Fira Code", ui-monospace, monospace;
+  --font-heading: "Geist", "Inter", system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-accent/75;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-muted) transparent;
+  }
+
+  html {
+    @apply overflow-y-scroll scroll-smooth;
+  }
+
+  body {
+    @apply flex min-h-svh flex-col bg-background font-sans text-foreground antialiased selection:bg-text-3/20 selection:text-foreground;
+  }
+
+  a:not(.ui-control) {
+    color: var(--text-1);
+    text-decoration: none;
+    transition: opacity var(--duration-fast) ease;
+  }
+
+  a:not(.ui-control):hover {
+    opacity: 0.6;
+  }
+
+  a,
+  button {
+    @apply outline-none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 1px solid var(--text-3);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+    text-decoration-line: none;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  section,
+  footer {
+    @apply mx-auto max-w-app px-4;
+  }
+}
+
+@layer components {
+  .ui-control {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-transparent px-3 py-2 font-medium transition-colors duration-(--duration-fast);
+  }
+
+  .ui-control--icon {
+    @apply size-10 px-0 py-0;
+  }
+
+  .ui-control--secondary {
+    @apply border-border bg-surface-3 text-foreground;
+  }
+
+  .ui-control--secondary:hover {
+    border-color: var(--text-3);
+    opacity: 1;
+  }
+
+  .ui-control--ghost {
+    @apply text-text-2;
+  }
+
+  .ui-control--ghost:hover {
+    color: var(--text-1);
+    opacity: 1;
+  }
+
+  .ui-panel {
+    @apply rounded-lg border border-border bg-surface-3;
+  }
+
+  .ui-surface {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+
+  .ui-surface--soft {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+
+  .ui-hover-lift {
+    transition-property: border-color;
+    transition-duration: var(--duration-fast);
+  }
+
+  .ui-hover-lift:hover {
+    border-color: var(--text-3);
+  }
+
+  .ui-chip {
+    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    letter-spacing: 0.01em;
+  }
+}
+
+@utility max-w-app {
+  width: min(100% - 2rem, 96rem);
+}
+
+@media (width >= 1536px) {
+  .max-w-app {
+    width: min(100% - 3rem, 108rem);
+  }
+}
+
+.active-nav {
+  @apply text-text-1;
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+}
+
+.active-nav::after {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.15rem;
+  border-bottom: 2px solid var(--text-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:target {
+  scroll-margin-block: 1rem;
+}

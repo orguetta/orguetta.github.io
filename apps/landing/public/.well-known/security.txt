@@ -1,0 +1,4 @@
+Contact: mailto:security@guetta.tech
+Policy: https://guetta.tech/security
+Acknowledgments: https://guetta.tech/security#hall-of-fame
+Preferred-Languages: en, he

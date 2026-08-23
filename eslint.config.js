@@ -15,8 +15,15 @@ export default [
   },
   { rules: { "no-console": "error" } },
   {
-    files: ["scripts/**/*.mjs"],
+    files: ["**/scripts/**/*.{js,mjs}"],
     rules: { "no-console": "off" },
   },
-  { ignores: ["dist/**", "public/pagefind/**", ".astro/**"] },
+  {
+    ignores: [
+      "**/dist/**",
+      "**/.astro/**",
+      "**/.wrangler/**",
+      "**/public/pagefind/**",
+    ],
+  },
 ];

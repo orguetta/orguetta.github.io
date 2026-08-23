@@ -1,0 +1,24 @@
+---
+export interface Props {
+  tag: string;
+  tagName: string;
+  size?: "sm" | "lg";
+}
+
+const { tag, tagName, size = "sm" } = Astro.props;
+---
+
+<li class:list={["group inline-block", size === "sm" ? "m-1" : "m-2"]}>
+  <a
+    href={`/tags/${tag}/`}
+    transition:name={tag}
+    class:list={[
+      "ui-chip flex items-center transition-all hover:border-text-3 hover:text-text-1",
+      size === "sm"
+        ? "px-2 py-0.5 text-xs"
+        : "px-3 py-1.5 text-base font-medium",
+    ]}
+  >
+    <span>{tagName}</span>
+  </a>
+</li>

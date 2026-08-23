@@ -1,0 +1,23 @@
+{
+  "name": "guetta-tech",
+  "compatibility_date": "2026-08-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "routes": [
+    {
+      "pattern": "guetta.tech",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.guetta.tech",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true
+}
