@@ -74,6 +74,14 @@ function htmlToMarkdown(html: string): string {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  // Canonical domain: redirect www.guetta.tech to the apex, preserving path and query.
+  const host = context.request.headers.get("host") ?? "";
+  if (host.toLowerCase() === "www.guetta.tech") {
+    const target = new URL(context.request.url);
+    target.hostname = "guetta.tech";
+    return Response.redirect(target.toString(), 308);
+  }
+
   const acceptHeader = context.request.headers.get("accept") || "";
   const wantsMarkdown = acceptHeader.includes("text/markdown");
 
