@@ -90,13 +90,9 @@ function htmlToMarkdown(html: string): string {
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  // Canonical domain: redirect www.guetta.tech to the apex, preserving path and query.
-  const host = context.request.headers.get("host") ?? "";
-  if (host.toLowerCase() === "www.guetta.tech") {
-    const target = new URL(context.request.url);
-    target.hostname = "guetta.tech";
-    return Response.redirect(target.toString(), 308);
-  }
+  // NOTE: canonical-domain redirects are currently enforced at the
+  // Cloudflare zone level (apex -> www). Do not add a host redirect
+  // here without removing that rule first — the two would loop.
 
   const acceptHeader = context.request.headers.get("accept") || "";
   const wantsMarkdown = acceptHeader.includes("text/markdown");
