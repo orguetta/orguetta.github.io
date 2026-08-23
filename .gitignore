@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+.wrangler/
+
+# Generated types
+worker-configuration.d.ts
+
+# Environment
+.env*
+!.env.example
+
+# Dev credentials
+.dev.vars*
+!.dev.vars.example
+
+# Pagefind search index (generated)
+public/pagefind/
+apps/content/public/pagefind/
+
+# Logs, caches, OS
+logs/
+*.log
+.DS_Store
+.eslintcache
+*.tsbuildinfo
+.cache/
+
+# Editors
+.idea/

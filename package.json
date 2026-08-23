@@ -1,0 +1,30 @@
+{
+  "name": "guetta-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "pnpm@10.11.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev:landing": "pnpm --filter landing dev",
+    "dev:content": "pnpm --filter content dev",
+    "build": "pnpm build:landing && pnpm build:content",
+    "build:landing": "pnpm --filter landing build",
+    "build:content": "pnpm --filter content build",
+    "check": "pnpm -r check",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "eslint": "10.8.0",
+    "eslint-plugin-astro": "^3.0.1",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "typescript-eslint": "^8.65.0"
+  }
+}

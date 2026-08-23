@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
+    "build": "astro check && astro build && pagefind --site dist",
     "preview": "astro preview",
-    "check": "astro check",
+    "check": "astro check && astro build",
     "sync": "astro sync",
     "astro": "astro",
     "format:check": "prettier --check .",
