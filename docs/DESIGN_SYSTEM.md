@@ -65,53 +65,53 @@ Goal: **feel like one website**, even though there are two projects and two diff
 
 ### Color Tokens
 
-| Token         | Light                  | Dark                   | Usage                      |
-| :------------ | :--------------------- | :--------------------- | :------------------------- |
-| `--surface-1` | `oklch(1 0 0)`        | `oklch(0.145 0 0)`    | Page background            |
-| `--surface-2` | `oklch(0.97 0 0)`     | `oklch(0.205 0 0)`    | Cards/Panels               |
-| `--surface-3` | `oklch(0.922 0 0)`    | `oklch(0.269 0 0)`    | Elevated surfaces          |
-| `--text-1`    | `oklch(0.145 0 0)`    | `oklch(0.985 0 0)`    | Primary text               |
-| `--text-2`    | `oklch(0.556 0 0)`    | `oklch(0.708 0 0)`    | Secondary text             |
-| `--text-3`    | `oklch(0.708 0 0)`    | `oklch(0.556 0 0)`    | Muted text                 |
-| `--primary`   | `oklch(0.205 0 0)`    | `oklch(0.985 0 0)`    | Brand anchor               |
-| `--accent`    | `oklch(0.556 0 0)`    | `oklch(0.708 0 0)`    | Accent (monochrome)        |
-| `--border`    | `oklch(0.922 0 0)`    | `oklch(0.269 0 0)`    | Borders/dividers           |
+| Token         | Light              | Dark               | Usage               |
+| :------------ | :----------------- | :----------------- | :------------------ |
+| `--surface-1` | `oklch(1 0 0)`     | `oklch(0.145 0 0)` | Page background     |
+| `--surface-2` | `oklch(0.97 0 0)`  | `oklch(0.205 0 0)` | Cards/Panels        |
+| `--surface-3` | `oklch(0.922 0 0)` | `oklch(0.269 0 0)` | Elevated surfaces   |
+| `--text-1`    | `oklch(0.145 0 0)` | `oklch(0.985 0 0)` | Primary text        |
+| `--text-2`    | `oklch(0.556 0 0)` | `oklch(0.708 0 0)` | Secondary text      |
+| `--text-3`    | `oklch(0.708 0 0)` | `oklch(0.556 0 0)` | Muted text          |
+| `--primary`   | `oklch(0.205 0 0)` | `oklch(0.985 0 0)` | Brand anchor        |
+| `--accent`    | `oklch(0.556 0 0)` | `oklch(0.708 0 0)` | Accent (monochrome) |
+| `--border`    | `oklch(0.922 0 0)` | `oklch(0.269 0 0)` | Borders/dividers    |
 
 ### Semantic Tokens
 
-| Token       | Light                  | Dark                   | Purpose               |
-| :---------- | :--------------------- | :--------------------- | :-------------------- |
-| `--success` | `oklch(0.6 0.17 162.48)` | same | Positive status       |
-| `--warning` | `oklch(0.769 0.188 70.08)` | same | Warning state         |
-| `--danger`  | `oklch(0.577 0.245 27.325)` | same | Risk/error state      |
+| Token       | Light                        | Dark | Purpose               |
+| :---------- | :--------------------------- | :--- | :-------------------- |
+| `--success` | `oklch(0.6 0.17 162.48)`     | same | Positive status       |
+| `--warning` | `oklch(0.769 0.188 70.08)`   | same | Warning state         |
+| `--danger`  | `oklch(0.577 0.245 27.325)`  | same | Risk/error state      |
 | `--info`    | `oklch(0.488 0.243 264.376)` | same | Informational notices |
 
 ### Typography Tokens
 
-| Role    | Token            | Font                              |
-| :------ | :--------------- | :-------------------------------- |
-| Heading | `--font-heading` | Geist (self-hosted, weight 300)   |
-| Body    | `--font-body`    | Geist (self-hosted, variable)     |
-| Code    | `--font-mono`    | Geist Mono (self-hosted)          |
+| Role    | Token            | Font                            |
+| :------ | :--------------- | :------------------------------ |
+| Heading | `--font-heading` | Geist (self-hosted, weight 300) |
+| Body    | `--font-body`    | Geist (self-hosted, variable)   |
+| Code    | `--font-mono`    | Geist Mono (self-hosted)        |
 
 ### Spacing, Radius, Motion
 
-| Token             | Value                           |
-| :---------------- | :------------------------------ |
-| `--space-1`       | `0.25rem`                       |
-| `--space-2`       | `0.5rem`                        |
-| `--space-3`       | `0.75rem`                       |
-| `--space-4`       | `1rem`                          |
-| `--space-5`       | `1.5rem`                        |
-| `--space-6`       | `2rem`                          |
-| `--radius-sm`     | `calc(0.625rem - 4px)`          |
-| `--radius-md`     | `calc(0.625rem - 2px)`          |
-| `--radius-lg`     | `0.625rem`                      |
-| `--radius-xl`     | `calc(0.625rem + 4px)`          |
-| `--duration-fast` | `300ms`                         |
-| `--duration-base` | `500ms`                         |
-| `--shadow-sm`     | `none`                          |
-| `--shadow-md`     | `none`                          |
+| Token             | Value                  |
+| :---------------- | :--------------------- |
+| `--space-1`       | `0.25rem`              |
+| `--space-2`       | `0.5rem`               |
+| `--space-3`       | `0.75rem`              |
+| `--space-4`       | `1rem`                 |
+| `--space-5`       | `1.5rem`               |
+| `--space-6`       | `2rem`                 |
+| `--radius-sm`     | `calc(0.625rem - 4px)` |
+| `--radius-md`     | `calc(0.625rem - 2px)` |
+| `--radius-lg`     | `0.625rem`             |
+| `--radius-xl`     | `calc(0.625rem + 4px)` |
+| `--duration-fast` | `300ms`                |
+| `--duration-base` | `500ms`                |
+| `--shadow-sm`     | `none`                 |
+| `--shadow-md`     | `none`                 |
 
 Motion rule: subtle only. No heavy animations. `prefers-reduced-motion` fully supported.
 

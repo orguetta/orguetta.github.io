@@ -35,9 +35,7 @@ const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
         </span>
       </h1>
     ) : (
-      <h1 class="text-primary">
-        {props.pageTitle}
-      </h1>
+      <h1 class="text-primary">{props.pageTitle}</h1>
     )
   }
   <p class="mt-2 mb-8 max-w-3xl text-text-2">{props.pageDesc}</p>

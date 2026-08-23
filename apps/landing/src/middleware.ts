@@ -26,7 +26,7 @@ function htmlToMarkdown(html: string): string {
   // Links: <a href="url">text</a> -> [text](url)
   content = content.replace(
     /<a\s+[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,
-    "[$2]($1)",
+    "[$2]($1)"
   );
 
   // Lists and list items
@@ -54,7 +54,7 @@ function htmlToMarkdown(html: string): string {
   content = content.replace(/&#39;/g, "'");
 
   // Split, trim lines, and rejoin
-  let lines = content.split("\n").map((line) => line.trim());
+  const lines = content.split("\n").map(line => line.trim());
 
   // Reconstruct clean lines
   let result = "";
@@ -100,7 +100,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
       // Add Link headers for discoverability on standard HTML pages
       response.headers.set(
         "Link",
-        '</.well-known/api-catalog>; rel="api-catalog", </auth.md>; rel="registration", </.well-known/agent-skills/index.json>; rel="agent-skills"',
+        '</.well-known/api-catalog>; rel="api-catalog", </auth.md>; rel="registration", </.well-known/agent-skills/index.json>; rel="agent-skills"'
       );
     }
   }

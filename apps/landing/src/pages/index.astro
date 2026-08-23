@@ -4,777 +4,826 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<nav class="side-nav" aria-label="Section navigation">
-		<div class="side-nav-dots">
-			{["intro", "expertise", "posts", "connect"].map((section) => (
-				<button
-					data-section={section}
-					class="nav-dot"
-					aria-label={`Navigate to ${section}`}
-				></button>
-			))}
-		</div>
-	</nav>
+  <nav class="side-nav" aria-label="Section navigation">
+    <div class="side-nav-dots">
+      {
+        ["intro", "expertise", "posts", "connect"].map(section => (
+          <button
+            data-section={section}
+            class="nav-dot"
+            aria-label={`Navigate to ${section}`}
+          />
+        ))
+      }
+    </div>
+  </nav>
 
-	<main class="main-content">
-		<!-- INTRO -->
-		<section id="intro" class="scroll-section intro-section" data-animate>
-			<div class="intro-grid">
-				<div class="intro-left">
-					<div class="space-y-sm">
-						<div class="mono-label">PORTFOLIO / 2026</div>
-						<h1 class="hero-name">
-							Or
-							<br />
-							<span class="text-muted">Guetta</span>
-						</h1>
-					</div>
+  <main class="main-content">
+    <!-- INTRO -->
+    <section id="intro" class="scroll-section intro-section" data-animate>
+      <div class="intro-grid">
+        <div class="intro-left">
+          <div class="space-y-sm">
+            <div class="mono-label">PORTFOLIO / 2026</div>
+            <h1 class="hero-name">
+              Or
+              <br />
+              <span class="text-muted">Guetta</span>
+            </h1>
+          </div>
 
-					<div class="intro-body">
-						<p class="lead-text">
-							Cybersecurity expert crafting defensible systems at the intersection of
-							<span class="text-foreground"> cloud security</span>,
-							<span class="text-foreground"> application hardening</span>, and
-							<span class="text-foreground"> clear writing</span>.
-						</p>
+          <div class="intro-body">
+            <p class="lead-text">
+              Cybersecurity expert crafting defensible systems at the
+              intersection of
+              <span class="text-foreground"> cloud security</span>,
+              <span class="text-foreground"> application hardening</span>, and
+              <span class="text-foreground"> clear writing</span>.
+            </p>
 
-						<div class="status-row">
-							<div class="status-item">
-								<div class="pulse-dot"></div>
-								Available for consulting
-							</div>
-							<div class="status-item">Israel</div>
-						</div>
-					</div>
-				</div>
+            <div class="status-row">
+              <div class="status-item">
+                <div class="pulse-dot"></div>
+                Available for consulting
+              </div>
+              <div class="status-item">Israel</div>
+            </div>
+          </div>
+        </div>
 
-				<div class="intro-right">
-					<div class="info-block">
-						<div class="mono-label">CURRENTLY</div>
-						<div class="info-content">
-							<div class="text-foreground">Security Engineer</div>
-							<div class="text-muted">Cloud & ADC/WAF</div>
-							<div class="text-xs text-muted">Focus areas</div>
-						</div>
-					</div>
+        <div class="intro-right">
+          <div class="info-block">
+            <div class="mono-label">CURRENTLY</div>
+            <div class="info-content">
+              <div class="text-foreground">Security Engineer</div>
+              <div class="text-muted">Cloud & ADC/WAF</div>
+              <div class="text-xs text-muted">Focus areas</div>
+            </div>
+          </div>
 
-					<div class="info-block">
-						<div class="mono-label">FOCUS</div>
-						<div class="tag-list">
-							{["Cloud Security", "WAF/ADC", "Threat Mitigation", "Zero Trust", "Hardening"].map((skill) => (
-								<span class="tag">{skill}</span>
-							))}
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+          <div class="info-block">
+            <div class="mono-label">FOCUS</div>
+            <div class="tag-list">
+              {
+                [
+                  "Cloud Security",
+                  "WAF/ADC",
+                  "Threat Mitigation",
+                  "Zero Trust",
+                  "Hardening",
+                ].map(skill => <span class="tag">{skill}</span>)
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-		<!-- EXPERTISE -->
-		<section id="expertise" class="scroll-section" data-animate>
-			<div class="section-inner">
-				<div class="section-header">
-					<h2>Expertise</h2>
-					<div class="mono-label">2018 — PRESENT</div>
-				</div>
+    <!-- EXPERTISE -->
+    <section id="expertise" class="scroll-section" data-animate>
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Expertise</h2>
+          <div class="mono-label">2018 — PRESENT</div>
+        </div>
 
-				<div class="timeline">
-					{[
-						{
-							period: "2023+",
-							role: "Cloud Security Engineering",
-							company: "Defensible architecture",
-							description: "Building minimal, resilient cloud security systems with clean architecture and sharp playbooks.",
-							tech: ["AWS", "Cloudflare", "Terraform", "Docker"],
-						},
-						{
-							period: "2021",
-							role: "ADC/WAF Hardening",
-							company: "Application delivery security",
-							description: "Securing application delivery controllers and web application firewalls under real workloads.",
-							tech: ["F5", "NGINX", "ModSecurity", "Cloudflare WAF"],
-						},
-						{
-							period: "2019",
-							role: "Security Documentation",
-							company: "Practical security writing",
-							description: "Creating clear, actionable hardening guides and operational playbooks for security teams.",
-							tech: ["Technical Writing", "Playbooks", "Checklists"],
-						},
-						{
-							period: "2018",
-							role: "Cybersecurity Foundations",
-							company: "Threat mitigation & analysis",
-							description: "Reducing attack surface, tightening control paths, and making the secure path the easy path.",
-							tech: ["Pen Testing", "SIEM", "Network Security"],
-						},
-					].map((item) => (
-						<div class="timeline-item">
-							<div class="timeline-period">{item.period}</div>
-							<div class="timeline-main">
-								<div>
-									<h3 class="timeline-role">{item.role}</h3>
-									<div class="text-muted">{item.company}</div>
-								</div>
-								<p class="text-muted">{item.description}</p>
-							</div>
-							<div class="timeline-tags">
-								{item.tech.map((t) => (
-									<span class="tag">{t}</span>
-								))}
-							</div>
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
+        <div class="timeline">
+          {
+            [
+              {
+                period: "2023+",
+                role: "Cloud Security Engineering",
+                company: "Defensible architecture",
+                description:
+                  "Building minimal, resilient cloud security systems with clean architecture and sharp playbooks.",
+                tech: ["AWS", "Cloudflare", "Terraform", "Docker"],
+              },
+              {
+                period: "2021",
+                role: "ADC/WAF Hardening",
+                company: "Application delivery security",
+                description:
+                  "Securing application delivery controllers and web application firewalls under real workloads.",
+                tech: ["F5", "NGINX", "ModSecurity", "Cloudflare WAF"],
+              },
+              {
+                period: "2019",
+                role: "Security Documentation",
+                company: "Practical security writing",
+                description:
+                  "Creating clear, actionable hardening guides and operational playbooks for security teams.",
+                tech: ["Technical Writing", "Playbooks", "Checklists"],
+              },
+              {
+                period: "2018",
+                role: "Cybersecurity Foundations",
+                company: "Threat mitigation & analysis",
+                description:
+                  "Reducing attack surface, tightening control paths, and making the secure path the easy path.",
+                tech: ["Pen Testing", "SIEM", "Network Security"],
+              },
+            ].map(item => (
+              <div class="timeline-item">
+                <div class="timeline-period">{item.period}</div>
+                <div class="timeline-main">
+                  <div>
+                    <h3 class="timeline-role">{item.role}</h3>
+                    <div class="text-muted">{item.company}</div>
+                  </div>
+                  <p class="text-muted">{item.description}</p>
+                </div>
+                <div class="timeline-tags">
+                  {item.tech.map(t => (
+                    <span class="tag">{t}</span>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
 
-		<!-- POSTS -->
-		<section id="posts" class="scroll-section" data-animate>
-			<div class="section-inner">
-				<h2>Recent Writing</h2>
+    <!-- POSTS -->
+    <section id="posts" class="scroll-section" data-animate>
+      <div class="section-inner">
+        <h2>Recent Writing</h2>
 
-				<div class="posts-grid">
-					{[
-						{
-							title: "Cloud Security Hardening Checklist",
-							excerpt: "A practical guide to reducing attack surface in cloud environments.",
-							date: "2026",
-							readTime: "8 min",
-						},
-						{
-							title: "WAF Rules That Actually Work",
-							excerpt: "Lessons from deploying web application firewalls in production.",
-							date: "2025",
-							readTime: "12 min",
-						},
-						{
-							title: "Zero Trust Architecture Patterns",
-							excerpt: "Building identity-first security for modern infrastructure.",
-							date: "2025",
-							readTime: "10 min",
-						},
-						{
-							title: "The Art of Security Playbooks",
-							excerpt: "Why operational clarity beats theoretical frameworks every time.",
-							date: "2024",
-							readTime: "6 min",
-						},
-					].map((post) => (
-						<a href="https://or.guetta.tech/posts" class="post-card-link">
-							<article class="post-card">
-								<div class="post-card-inner">
-									<div class="post-meta">
-										<span>{post.date}</span>
-										<span>{post.readTime}</span>
-									</div>
-									<h3 class="post-title">{post.title}</h3>
-									<p class="text-muted">{post.excerpt}</p>
-									<div class="post-link">
-										<span>Read more</span>
-										<svg
-											class="arrow-icon"
-											fill="none"
-											stroke="currentColor"
-											viewBox="0 0 24 24"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												strokeWidth={2}
-												d="M17 8l4 4m0 0l-4 4m4-4H3"
-											/>
-										</svg>
-									</div>
-								</div>
-							</article>
-						</a>
-					))}
-				</div>
-			</div>
-		</section>
+        <div class="posts-grid">
+          {
+            [
+              {
+                title: "Cloud Security Hardening Checklist",
+                excerpt:
+                  "A practical guide to reducing attack surface in cloud environments.",
+                date: "2026",
+                readTime: "8 min",
+              },
+              {
+                title: "WAF Rules That Actually Work",
+                excerpt:
+                  "Lessons from deploying web application firewalls in production.",
+                date: "2025",
+                readTime: "12 min",
+              },
+              {
+                title: "Zero Trust Architecture Patterns",
+                excerpt:
+                  "Building identity-first security for modern infrastructure.",
+                date: "2025",
+                readTime: "10 min",
+              },
+              {
+                title: "The Art of Security Playbooks",
+                excerpt:
+                  "Why operational clarity beats theoretical frameworks every time.",
+                date: "2024",
+                readTime: "6 min",
+              },
+            ].map(post => (
+              <a href="https://or.guetta.tech/posts" class="post-card-link">
+                <article class="post-card">
+                  <div class="post-card-inner">
+                    <div class="post-meta">
+                      <span>{post.date}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h3 class="post-title">{post.title}</h3>
+                    <p class="text-muted">{post.excerpt}</p>
+                    <div class="post-link">
+                      <span>Read more</span>
+                      <svg
+                        class="arrow-icon"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
 
-		<!-- CONNECT -->
-		<section id="connect" class="scroll-section" data-animate>
-			<div class="connect-grid">
-				<div class="connect-left">
-					<h2>Let's Connect</h2>
+    <!-- CONNECT -->
+    <section id="connect" class="scroll-section" data-animate>
+      <div class="connect-grid">
+        <div class="connect-left">
+          <h2>Let's Connect</h2>
 
-					<div class="connect-body">
-						<p class="lead-text">
-							Always interested in security conversations, collaborations, and opportunities to make systems more defensible.
-						</p>
+          <div class="connect-body">
+            <p class="lead-text">
+              Always interested in security conversations, collaborations, and
+              opportunities to make systems more defensible.
+            </p>
 
-						<div class="connect-email">
-							<a href="mailto:or@guetta.tech" class="email-link">
-								<span>or@guetta.tech</span>
-								<svg
-									class="arrow-icon"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24"
-								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={2}
-										d="M17 8l4 4m0 0l-4 4m4-4H3"
-									/>
-								</svg>
-							</a>
-						</div>
-					</div>
-				</div>
+            <div class="connect-email">
+              <a href="mailto:or@guetta.tech" class="email-link">
+                <span>or@guetta.tech</span>
+                <svg
+                  class="arrow-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
 
-				<div class="connect-right">
-					<div class="mono-label">ELSEWHERE</div>
+        <div class="connect-right">
+          <div class="mono-label">ELSEWHERE</div>
 
-					<div class="social-grid">
-						<a href="https://github.com/orguetta" target="_blank" rel="noopener noreferrer" class="social-card">
-							<div class="text-foreground">GitHub</div>
-							<div class="text-sm text-muted">@orguetta</div>
-						</a>
-						<a href="https://or.guetta.tech/posts" class="social-card">
-							<div class="text-foreground">Blog</div>
-							<div class="text-sm text-muted">or.guetta.tech</div>
-						</a>
-						<a href="https://linkedin.com/in/orguetta" target="_blank" rel="noopener noreferrer" class="social-card">
-							<div class="text-foreground">LinkedIn</div>
-							<div class="text-sm text-muted">orguetta</div>
-						</a>
-						<a href="https://x.com/Guetta_Or" target="_blank" rel="noopener noreferrer" class="social-card">
-							<div class="text-foreground">X</div>
-							<div class="text-sm text-muted">@Guetta_Or</div>
-						</a>
-						<a href="https://www.youtube.com/@or_guetta" target="_blank" rel="noopener noreferrer" class="social-card">
-							<div class="text-foreground">YouTube</div>
-							<div class="text-sm text-muted">@or_guetta</div>
-						</a>
-						<a href="mailto:or@guetta.tech" class="social-card">
-							<div class="text-foreground">Email</div>
-							<div class="text-sm text-muted">or@guetta.tech</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
+          <div class="social-grid">
+            <a
+              href="https://github.com/orguetta"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-card"
+            >
+              <div class="text-foreground">GitHub</div>
+              <div class="text-sm text-muted">@orguetta</div>
+            </a>
+            <a href="https://or.guetta.tech/posts" class="social-card">
+              <div class="text-foreground">Blog</div>
+              <div class="text-sm text-muted">or.guetta.tech</div>
+            </a>
+            <a
+              href="https://linkedin.com/in/orguetta"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-card"
+            >
+              <div class="text-foreground">LinkedIn</div>
+              <div class="text-sm text-muted">orguetta</div>
+            </a>
+            <a
+              href="https://x.com/Guetta_Or"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-card"
+            >
+              <div class="text-foreground">X</div>
+              <div class="text-sm text-muted">@Guetta_Or</div>
+            </a>
+            <a
+              href="https://www.youtube.com/@or_guetta"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-card"
+            >
+              <div class="text-foreground">YouTube</div>
+              <div class="text-sm text-muted">@or_guetta</div>
+            </a>
+            <a href="mailto:or@guetta.tech" class="social-card">
+              <div class="text-foreground">Email</div>
+              <div class="text-sm text-muted">or@guetta.tech</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-	<div class="bottom-fade"></div>
+  <div class="bottom-fade"></div>
 
-	<script is:inline>
-		(function () {
-			const sections = document.querySelectorAll(".scroll-section");
-			const dots = document.querySelectorAll(".nav-dot");
-			let activeId = "";
+  <script is:inline>
+    (function () {
+      const sections = document.querySelectorAll(".scroll-section");
+      const dots = document.querySelectorAll(".nav-dot");
+      let activeId = "";
 
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("animate-fade-in-up");
-							activeId = entry.target.id;
-							dots.forEach((dot) => {
-								dot.classList.toggle("active", dot.dataset.section === activeId);
-							});
-						}
-					});
-				},
-				{ threshold: 0.3, rootMargin: "0px 0px -20% 0px" }
-			);
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-in-up");
+              activeId = entry.target.id;
+              dots.forEach(dot => {
+                dot.classList.toggle(
+                  "active",
+                  dot.dataset.section === activeId
+                );
+              });
+            }
+          });
+        },
+        { threshold: 0.3, rootMargin: "0px 0px -20% 0px" }
+      );
 
-			sections.forEach((s) => observer.observe(s));
+      sections.forEach(s => observer.observe(s));
 
-			dots.forEach((dot) => {
-				dot.addEventListener("click", () => {
-					const target = document.getElementById(dot.dataset.section);
-					if (target) target.scrollIntoView({ behavior: "smooth" });
-				});
-			});
-		})();
-	</script>
+      dots.forEach(dot => {
+        dot.addEventListener("click", () => {
+          const target = document.getElementById(dot.dataset.section);
+          if (target) target.scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    })();
+  </script>
 </BaseLayout>
 
 <style>
-	.main-content {
-		max-width: min(56rem, calc(100vw - 3rem));
-		margin: 0 auto;
-		padding: 0 var(--space-4);
-	}
-
-	/* Side nav */
-	.side-nav {
-		position: fixed;
-		left: 2rem;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 10;
-	}
-
-	.side-nav-dots {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.nav-dot {
-		width: 0.5rem;
-		height: 2rem;
-		border-radius: 999px;
-		border: none;
-		background: var(--text-3);
-		opacity: 0.3;
-		cursor: pointer;
-		transition:
-			opacity var(--duration-base) ease,
-			background var(--duration-base) ease;
-		padding: 0;
-	}
-
-	.nav-dot:hover {
-		opacity: 0.6;
-	}
-
-	.nav-dot.active {
-		background: var(--text-1);
-		opacity: 1;
-	}
-
-	@media (max-width: 1024px) {
-		.side-nav {
-			display: none;
-		}
-	}
-
-	/* Scroll sections */
-	.scroll-section {
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-		padding: 4rem 0;
-		opacity: 0;
-	}
-
-	.scroll-section.animate-fade-in-up {
-		opacity: 1;
-	}
-
-	/* Intro section */
-	.intro-grid {
-		display: grid;
-		gap: 3rem;
-		width: 100%;
-	}
-
-	@media (min-width: 1024px) {
-		.intro-grid {
-			grid-template-columns: 3fr 2fr;
-			gap: 4rem;
-		}
-	}
-
-	.space-y-sm {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		margin-bottom: 1.5rem;
-	}
-
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: 0.75rem;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--text-3);
-	}
-
-	.hero-name {
-		font-size: clamp(3rem, 6vw, 4.5rem);
-		font-weight: 300;
-		letter-spacing: -0.02em;
-		line-height: 1.05;
-		margin: 0;
-	}
-
-	.text-muted {
-		color: var(--text-3);
-	}
-
-	.text-foreground {
-		color: var(--text-1);
-	}
-
-	.text-xs {
-		font-size: 0.75rem;
-	}
-
-	.text-sm {
-		font-size: 0.875rem;
-	}
-
-	.intro-body {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-		max-width: 28rem;
-	}
-
-	.lead-text {
-		font-size: 1.125rem;
-		line-height: 1.7;
-		color: var(--text-2);
-	}
-
-	.status-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		font-size: 0.875rem;
-		color: var(--text-3);
-	}
-
-	.status-item {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.pulse-dot {
-		width: 0.5rem;
-		height: 0.5rem;
-		background: var(--success);
-		border-radius: 999px;
-		animation: pulse 2s ease-in-out infinite;
-	}
-
-	@keyframes pulse {
-		0%, 100% { opacity: 1; }
-		50% { opacity: 0.4; }
-	}
-
-	.intro-right {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		margin-top: 2rem;
-	}
-
-	@media (min-width: 1024px) {
-		.intro-right {
-			justify-content: flex-end;
-			margin-top: 0;
-		}
-	}
-
-	.info-block {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
-
-	.info-content {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-	}
-
-	.tag-list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.tag {
-		padding: 0.25rem 0.75rem;
-		font-size: 0.75rem;
-		border: 1px solid var(--border);
-		border-radius: 999px;
-		color: var(--text-2);
-		transition: border-color var(--duration-fast) ease;
-	}
-
-	.tag:hover {
-		border-color: var(--text-3);
-	}
-
-	/* Section inner */
-	.section-inner {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
-	}
-
-	.section-header {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	@media (min-width: 640px) {
-		.section-header {
-			flex-direction: row;
-			align-items: baseline;
-			justify-content: space-between;
-		}
-	}
-
-	/* Timeline */
-	.timeline {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.timeline-item {
-		display: grid;
-		gap: 1rem;
-		padding: 1.5rem 0;
-		border-bottom: 1px solid var(--border);
-		transition: border-color var(--duration-fast) ease;
-	}
-
-	.timeline-item:hover {
-		border-color: var(--text-3);
-	}
-
-	@media (min-width: 1024px) {
-		.timeline-item {
-			grid-template-columns: 5rem 1fr auto;
-			gap: 2rem;
-			align-items: start;
-		}
-	}
-
-	.timeline-period {
-		font-size: 1.25rem;
-		font-weight: 300;
-		color: var(--text-3);
-		transition: color var(--duration-fast) ease;
-	}
-
-	.timeline-item:hover .timeline-period {
-		color: var(--text-1);
-	}
-
-	.timeline-main {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
-
-	.timeline-role {
-		font-size: 1.125rem;
-		font-weight: 500;
-		margin: 0;
-	}
-
-	.timeline-tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-top: 0.5rem;
-	}
-
-	@media (min-width: 1024px) {
-		.timeline-tags {
-			justify-content: flex-end;
-			margin-top: 0;
-		}
-	}
-
-	/* Posts grid */
-	.posts-grid {
-		display: grid;
-		gap: 1.5rem;
-	}
-
-	@media (min-width: 1024px) {
-		.posts-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	.post-card-link {
-		text-decoration: none;
-		color: inherit;
-	}
-
-	.post-card-link:hover {
-		opacity: 1;
-		text-decoration: none;
-	}
-
-	.post-card {
-		border: 1px solid var(--border);
-		border-radius: var(--radius-lg);
-		padding: 1.5rem;
-		height: 100%;
-		transition:
-			border-color var(--duration-fast) ease,
-			box-shadow var(--duration-fast) ease;
-	}
-
-	.post-card:hover {
-		border-color: var(--text-3);
-		box-shadow: 0 4px 24px oklch(0 0 0 / 0.06);
-	}
-
-	.post-card-inner {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
-
-	.post-meta {
-		display: flex;
-		justify-content: space-between;
-		font-family: var(--font-mono);
-		font-size: 0.75rem;
-		color: var(--text-3);
-	}
-
-	.post-title {
-		font-size: 1.125rem;
-		font-weight: 500;
-		margin: 0;
-		transition: color var(--duration-fast) ease;
-	}
-
-	.post-card:hover .post-title {
-		color: var(--text-3);
-	}
-
-	.post-link {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		font-size: 0.875rem;
-		color: var(--text-3);
-		transition: color var(--duration-fast) ease;
-	}
-
-	.post-card:hover .post-link {
-		color: var(--text-1);
-	}
-
-	.arrow-icon {
-		width: 1rem;
-		height: 1rem;
-		transition: transform var(--duration-fast) ease;
-	}
-
-	.post-card:hover .arrow-icon {
-		transform: translateX(4px);
-	}
-
-	/* Connect section */
-	.connect-grid {
-		display: grid;
-		gap: 3rem;
-		width: 100%;
-	}
-
-	@media (min-width: 1024px) {
-		.connect-grid {
-			grid-template-columns: 1fr 1fr;
-			gap: 4rem;
-		}
-	}
-
-	.connect-left {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.connect-body {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.connect-email {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
-
-	.email-link {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.75rem;
-		font-size: 1.125rem;
-		color: var(--text-1);
-		transition: color var(--duration-fast) ease;
-	}
-
-	.email-link:hover {
-		color: var(--text-3);
-		opacity: 1;
-	}
-
-	.email-link .arrow-icon {
-		transition: transform var(--duration-fast) ease;
-	}
-
-	.email-link:hover .arrow-icon {
-		transform: translateX(4px);
-	}
-
-	.connect-right {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.social-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 0.75rem;
-	}
-
-	@media (min-width: 640px) {
-		.social-grid {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	.social-card {
-		padding: 1rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-lg);
-		text-decoration: none;
-		color: inherit;
-		transition:
-			border-color var(--duration-fast) ease,
-			box-shadow var(--duration-fast) ease;
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.social-card:hover {
-		border-color: var(--text-3);
-		box-shadow: 0 2px 12px oklch(0 0 0 / 0.04);
-		opacity: 1;
-		text-decoration: none;
-	}
-
-	/* Bottom fade */
-	.bottom-fade {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 6rem;
-		background: linear-gradient(to top, var(--surface-1), transparent);
-		pointer-events: none;
-		z-index: 5;
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.scroll-section {
-			opacity: 1;
-		}
-	}
+  .main-content {
+    max-width: min(56rem, calc(100vw - 3rem));
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+
+  /* Side nav */
+  .side-nav {
+    position: fixed;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .side-nav-dots {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-dot {
+    width: 0.5rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: none;
+    background: var(--text-3);
+    opacity: 0.3;
+    cursor: pointer;
+    transition:
+      opacity var(--duration-base) ease,
+      background var(--duration-base) ease;
+    padding: 0;
+  }
+
+  .nav-dot:hover {
+    opacity: 0.6;
+  }
+
+  .nav-dot.active {
+    background: var(--text-1);
+    opacity: 1;
+  }
+
+  @media (max-width: 1024px) {
+    .side-nav {
+      display: none;
+    }
+  }
+
+  /* Scroll sections */
+  .scroll-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 0;
+    opacity: 0;
+  }
+
+  .scroll-section.animate-fade-in-up {
+    opacity: 1;
+  }
+
+  /* Intro section */
+  .intro-grid {
+    display: grid;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .intro-grid {
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+    }
+  }
+
+  .space-y-sm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  .hero-name {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .text-muted {
+    color: var(--text-3);
+  }
+
+  .text-foreground {
+    color: var(--text-1);
+  }
+
+  .text-xs {
+    font-size: 0.75rem;
+  }
+
+  .text-sm {
+    font-size: 0.875rem;
+  }
+
+  .intro-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 28rem;
+  }
+
+  .lead-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--text-2);
+  }
+
+  .status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: var(--text-3);
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .pulse-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--success);
+    border-radius: 999px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  .intro-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .intro-right {
+      justify-content: flex-end;
+      margin-top: 0;
+    }
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-2);
+    transition: border-color var(--duration-fast) ease;
+  }
+
+  .tag:hover {
+    border-color: var(--text-3);
+  }
+
+  /* Section inner */
+  .section-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-header {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline-item {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: border-color var(--duration-fast) ease;
+  }
+
+  .timeline-item:hover {
+    border-color: var(--text-3);
+  }
+
+  @media (min-width: 1024px) {
+    .timeline-item {
+      grid-template-columns: 5rem 1fr auto;
+      gap: 2rem;
+      align-items: start;
+    }
+  }
+
+  .timeline-period {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--text-3);
+    transition: color var(--duration-fast) ease;
+  }
+
+  .timeline-item:hover .timeline-period {
+    color: var(--text-1);
+  }
+
+  .timeline-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .timeline-role {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .timeline-tags {
+      justify-content: flex-end;
+      margin-top: 0;
+    }
+  }
+
+  /* Posts grid */
+  .posts-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .post-card-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-card-link:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  .post-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    height: 100%;
+    transition:
+      border-color var(--duration-fast) ease,
+      box-shadow var(--duration-fast) ease;
+  }
+
+  .post-card:hover {
+    border-color: var(--text-3);
+    box-shadow: 0 4px 24px oklch(0 0 0 / 0.06);
+  }
+
+  .post-card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-3);
+  }
+
+  .post-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+    transition: color var(--duration-fast) ease;
+  }
+
+  .post-card:hover .post-title {
+    color: var(--text-3);
+  }
+
+  .post-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-3);
+    transition: color var(--duration-fast) ease;
+  }
+
+  .post-card:hover .post-link {
+    color: var(--text-1);
+  }
+
+  .arrow-icon {
+    width: 1rem;
+    height: 1rem;
+    transition: transform var(--duration-fast) ease;
+  }
+
+  .post-card:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  /* Connect section */
+  .connect-grid {
+    display: grid;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .connect-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .connect-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .connect-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .connect-email {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.125rem;
+    color: var(--text-1);
+    transition: color var(--duration-fast) ease;
+  }
+
+  .email-link:hover {
+    color: var(--text-3);
+    opacity: 1;
+  }
+
+  .email-link .arrow-icon {
+    transition: transform var(--duration-fast) ease;
+  }
+
+  .email-link:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  .connect-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .social-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .social-card {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      border-color var(--duration-fast) ease,
+      box-shadow var(--duration-fast) ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .social-card:hover {
+    border-color: var(--text-3);
+    box-shadow: 0 2px 12px oklch(0 0 0 / 0.04);
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  /* Bottom fade */
+  .bottom-fade {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6rem;
+    background: linear-gradient(to top, var(--surface-1), transparent);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-section {
+      opacity: 1;
+    }
+  }
 </style>

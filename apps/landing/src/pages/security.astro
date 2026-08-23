@@ -2,67 +2,71 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Security" description="Vulnerability reporting and security practices">
-	<section class="section">
-		<div class="mono-label">Disclosure</div>
-		<h1>Security</h1>
-		<p class="intro">
-			If you believe you've found a vulnerability or sensitive issue in this site, please report it
-			responsibly. Helpful reports beat dramatic ones.
-		</p>
-	</section>
+<BaseLayout
+  title="Security"
+  description="Vulnerability reporting and security practices"
+>
+  <section class="section">
+    <div class="mono-label">Disclosure</div>
+    <h1>Security</h1>
+    <p class="intro">
+      If you believe you've found a vulnerability or sensitive issue in this
+      site, please report it responsibly. Helpful reports beat dramatic ones.
+    </p>
+  </section>
 
-	<section class="section stack">
-		<div class="content-card">
-			<h2>Report a vulnerability</h2>
-			<p>
-				Email <a href="mailto:security@guetta.tech">security@guetta.tech</a> with reproduction steps,
-				affected paths, and impact.
-			</p>
-			<ul>
-				<li>Include the affected domain and endpoint.</li>
-				<li>Avoid accessing data that is not yours.</li>
-				<li>Give time for investigation before disclosure.</li>
-			</ul>
-		</div>
+  <section class="section stack">
+    <div class="content-card">
+      <h2>Report a vulnerability</h2>
+      <p>
+        Email <a href="mailto:security@guetta.tech">security@guetta.tech</a> with
+        reproduction steps, affected paths, and impact.
+      </p>
+      <ul>
+        <li>Include the affected domain and endpoint.</li>
+        <li>Avoid accessing data that is not yours.</li>
+        <li>Give time for investigation before disclosure.</li>
+      </ul>
+    </div>
 
-		<div class="content-card">
-			<h2>Scope</h2>
-			<p>
-				Public endpoints on <code>guetta.tech</code> are in scope. Third-party services should be
-				reported to their vendor.
-			</p>
-		</div>
+    <div class="content-card">
+      <h2>Scope</h2>
+      <p>
+        Public endpoints on <code>guetta.tech</code> are in scope. Third-party services
+        should be reported to their vendor.
+      </p>
+    </div>
 
-		<div class="content-card">
-			<h2>Responsible disclosure</h2>
-			<p>
-				Valid reports will be acknowledged. If a fix is required, we will prioritize remediation and
-				share timing as clearly as possible.
-			</p>
-		</div>
+    <div class="content-card">
+      <h2>Responsible disclosure</h2>
+      <p>
+        Valid reports will be acknowledged. If a fix is required, we will
+        prioritize remediation and share timing as clearly as possible.
+      </p>
+    </div>
 
-		<div class="content-card" id="hall-of-fame">
-			<h2>Hall of fame</h2>
-			<p>
-				Acknowledgments live in <a href="/.well-known/security.txt">security.txt</a>. This section
-				will be expanded as reports come in.
-			</p>
-		</div>
-	</section>
+    <div class="content-card" id="hall-of-fame">
+      <h2>Hall of fame</h2>
+      <p>
+        Acknowledgments live in <a href="/.well-known/security.txt"
+          >security.txt</a
+        >. This section will be expanded as reports come in.
+      </p>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: 0.75rem;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--text-3);
-		margin-bottom: 0.5rem;
-	}
-	.intro {
-		max-width: 38rem;
-		font-size: 1.125rem;
-	}
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 0.5rem;
+  }
+  .intro {
+    max-width: 38rem;
+    font-size: 1.125rem;
+  }
 </style>

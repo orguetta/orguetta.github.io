@@ -3,73 +3,76 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Privacy" description="Privacy policy for guetta.tech">
-	<section class="section">
-		<div class="mono-label">Policy</div>
-		<h1>Privacy Policy</h1>
-		<p class="intro">
-			This site keeps data collection minimal: enough to operate the site, measure aggregate usage,
-			and respond to direct requests.
-		</p>
-	</section>
+  <section class="section">
+    <div class="mono-label">Policy</div>
+    <h1>Privacy Policy</h1>
+    <p class="intro">
+      This site keeps data collection minimal: enough to operate the site,
+      measure aggregate usage, and respond to direct requests.
+    </p>
+  </section>
 
-	<section class="section stack">
-		<div class="content-card">
-			<h2>What we collect</h2>
-			<ul>
-				<li>Basic server logs for diagnostics and security.</li>
-				<li>Anonymous, cookie-less analytics via Umami.</li>
-				<li>Email content you choose to send us.</li>
-			</ul>
-		</div>
+  <section class="section stack">
+    <div class="content-card">
+      <h2>What we collect</h2>
+      <ul>
+        <li>Basic server logs for diagnostics and security.</li>
+        <li>Anonymous, cookie-less analytics via Umami.</li>
+        <li>Email content you choose to send us.</li>
+      </ul>
+    </div>
 
-		<div class="content-card">
-			<h2>How we use it</h2>
-			<ul>
-				<li>To keep the site reliable and secure.</li>
-				<li>To understand aggregate usage patterns.</li>
-				<li>To answer privacy or security requests.</li>
-			</ul>
-		</div>
+    <div class="content-card">
+      <h2>How we use it</h2>
+      <ul>
+        <li>To keep the site reliable and secure.</li>
+        <li>To understand aggregate usage patterns.</li>
+        <li>To answer privacy or security requests.</li>
+      </ul>
+    </div>
 
-		<div class="content-card" id="dnt">
-			<h2>Do Not Track</h2>
-			<p>
-				We honor Do Not Track. See the <a href="/.well-known/dnt-policy.txt">DNT policy</a>.
-			</p>
-		</div>
+    <div class="content-card" id="dnt">
+      <h2>Do Not Track</h2>
+      <p>
+        We honor Do Not Track. See the <a href="/.well-known/dnt-policy.txt"
+          >DNT policy</a
+        >.
+      </p>
+    </div>
 
-		<div class="content-card">
-			<h2>Your rights</h2>
-			<p>
-				You can request access, correction, or deletion of personal data by emailing
-				<a href="mailto:privacy@guetta.tech">privacy@guetta.tech</a>.
-			</p>
-		</div>
-	</section>
+    <div class="content-card">
+      <h2>Your rights</h2>
+      <p>
+        You can request access, correction, or deletion of personal data by
+        emailing
+        <a href="mailto:privacy@guetta.tech">privacy@guetta.tech</a>.
+      </p>
+    </div>
+  </section>
 
-	<section class="section">
-		<div class="content-card">
-			<h2>Changes</h2>
-			<p>
-				We may update this policy to reflect changes in our practices. Material updates will
-				appear on this page.
-			</p>
-			<p class="text-small text-muted"><em>Last updated: April 4, 2026</em></p>
-		</div>
-	</section>
+  <section class="section">
+    <div class="content-card">
+      <h2>Changes</h2>
+      <p>
+        We may update this policy to reflect changes in our practices. Material
+        updates will appear on this page.
+      </p>
+      <p class="text-small text-muted"><em>Last updated: April 4, 2026</em></p>
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
-	.mono-label {
-		font-family: var(--font-mono);
-		font-size: 0.75rem;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--text-3);
-		margin-bottom: 0.5rem;
-	}
-	.intro {
-		max-width: 38rem;
-		font-size: 1.125rem;
-	}
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 0.5rem;
+  }
+  .intro {
+    max-width: 38rem;
+    font-size: 1.125rem;
+  }
 </style>

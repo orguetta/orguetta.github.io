@@ -3,10 +3,10 @@
 Unified monorepo for the Or Guetta web presence. Two independently
 deployable Astro applications, one shared design system.
 
-| Site | URL | App | Hosting |
-| --- | --- | --- | --- |
-| Professional landing | https://guetta.tech | `apps/landing` | Cloudflare Workers (`guetta-tech`) |
-| Writing & knowledge hub | https://or.guetta.tech | `apps/content` | GitHub Pages (custom domain) |
+| Site                    | URL                    | App            | Hosting                            |
+| ----------------------- | ---------------------- | -------------- | ---------------------------------- |
+| Professional landing    | https://guetta.tech    | `apps/landing` | Cloudflare Workers (`guetta-tech`) |
+| Writing & knowledge hub | https://or.guetta.tech | `apps/content` | GitHub Pages (custom domain)       |
 
 ## Structure
 
@@ -46,10 +46,10 @@ A single workflow (`.github/workflows/deploy.yml`):
 This repository continues `orguetta/orguetta.github.io` in place;
 its full git history is preserved.
 
-| Source | Last migrated commit |
-| --- | --- |
-| `orguetta/orguetta.github.io` | `908f421` (Auto-generate resume PDF) |
-| `orguetta/www-guetta-tech` | `63a317f` (feat: add resume generation functionality) |
+| Source                        | Last migrated commit                                  |
+| ----------------------------- | ----------------------------------------------------- |
+| `orguetta/orguetta.github.io` | `908f421` (Auto-generate resume PDF)                  |
+| `orguetta/www-guetta-tech`    | `63a317f` (feat: add resume generation functionality) |
 
 The landing application was imported as a working-tree copy; its
 history remains available in the source repository, which is retained

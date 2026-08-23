@@ -93,8 +93,8 @@ Take the following steps to ensure a high score on the SSL Labs test. 
   - Intermediate certificates are provided by the vendor that provides the server certificate, often in a ‘certificate bundle.’ They can usually be found on the vendor’s public site. 
   - You may need to install and link multiple intermediate certificates. For the server certificate to function, the NetScaler must send all certificates required for the client to have a complete chain. A complete chain ends with a certificate signed by one of the client’s trusted root CAs. 
   - As the client already has the trusted root CA, you don’t need to install and link it on the NetScaler. 
-  - To install an intermediate certificate, go to ***Traffic Management > SSL > Certificates > CA Certificates*** and choose *Install* 
-  - Link an intermediate by selecting the certificate and choosing *link* from the action menu 
+  - To install an intermediate certificate, go to _**Traffic Management > SSL > Certificates > CA Certificates**_ and choose _Install_ 
+  - Link an intermediate by selecting the certificate and choosing _link_ from the action menu 
   - If the correct intermediate certificate is installed, it is automatically populated in the linking menu
 
 <img src="https://media.invisioncic.com/m329563/monthly_2025_01/image.png.0090ee12ee73b43968593fc9e6029366.png" alt="image.png" title="" class="ipsImage ipsImage_thumbnailed" style="margin: 0px; padding: 0px; box-sizing: border-box; min-width: 0px; min-height: 0px; border: 0px; display: inline-block; max-width: 100%; height: auto; vertical-align: top; cursor: zoom-in;" width="462" height="392.7">  
@@ -104,7 +104,7 @@ Take the following steps to ensure a high score on the SSL Labs test. 
 <img src="https://media.invisioncic.com/m329563/monthly_2025_01/image.png.ee5252896505422764cb14d0bebc7fe0.png" alt="image.png" title="" class="ipsImage ipsImage_thumbnailed" style="margin: 0px; padding: 0px; box-sizing: border-box; min-width: 0px; min-height: 0px; border: 0px; display: inline-block; max-width: 100%; height: auto; vertical-align: top; cursor: zoom-in;" width="438" height="205.86">  
 
 - Create a custom cipher group that provides Forward Secrecy (FS) 
-  - Go to ***Traffic Management > SSL > Cipher Groups*** and choose **Add** 
+  - Go to _**Traffic Management > SSL > Cipher Groups**_ and choose **Add** 
   - Name the cipher group “SSL_Labs_Cipher_Group_Q1_2025” 
   - Click **Add** , then expand the **ALL** section - select the following cipher suites: 
     - TLS1.3-AES256-GCM-SHA384 
@@ -114,7 +114,7 @@ Take the following steps to ensure a high score on the SSL Labs test. 
     - TLS1.2-ECDHE-ECDSA-AES128-GCM-SHA256 
     - TLS1.2-ECDHE-RSA-AES256-GCM-SHA384 
 
-  - Click the **\>** right arrow to move the ciphers from the *Available* column to the *Configured* column 
+  - Click the **\>** right arrow to move the ciphers from the _Available_ column to the _Configured_ column 
   - Click **Create**
 
 <img src="https://media.invisioncic.com/m329563/monthly_2025_01/image.png.cdca14ce08ae682b4fda8f766843952e.png" alt="image.png" title="" class="ipsImage ipsImage_thumbnailed" style="margin: 0px; padding: 0px; box-sizing: border-box; min-width: 0px; min-height: 0px; border: 0px; display: inline-block; max-width: 100%; height: auto; vertical-align: top; cursor: zoom-in;" width="790" height="410.8">  
@@ -123,7 +123,7 @@ Navigate to **Traffic Management > SSL > Change advanced SSL settings**, scrol
 
 <img src="https://media.invisioncic.com/m329563/monthly_2025_01/image.png.9637542a9765c3659e549dbd3f1b93fb.png" alt="image.png" title="" class="ipsImage ipsImage_thumbnailed" style="margin: 0px; padding: 0px; box-sizing: border-box; min-width: 0px; min-height: 0px; border: 0px; display: inline-block; max-width: 100%; height: auto; vertical-align: top; cursor: zoom-in;" width="790" height="221.2">
 
-SSL Profiles sets *all* SSL virtual servers to use the default profile when first enabled. As existing per-virtual-server SSL settings are removed, NetScaler will prompt you to confirm. 
+SSL Profiles sets _all_ SSL virtual servers to use the default profile when first enabled. As existing per-virtual-server SSL settings are removed, NetScaler will prompt you to confirm. 
 
 <img src="https://media.invisioncic.com/m329563/monthly_2025_01/image.png.415329aeb61d2c8b9f6d273476177692.png" alt="image.png" title="" class="ipsImage ipsImage_thumbnailed" style="margin: 0px; padding: 0px; box-sizing: border-box; min-width: 0px; min-height: 0px; border: 0px; display: inline-block; max-width: 100%; height: auto; vertical-align: top; cursor: zoom-in;" width="790" height="339.7">  
 
@@ -274,7 +274,7 @@ We propose including a secure DHE cipher with modern features (GCM mode, SHA384)
 
 **Enable DHE cipher suites in the GUI** 
 
-- Go **to *Traffic Management > SSL*** and **select Create Diffie-Hellman (DH) key** 
+- Go **to _Traffic Management > SSL_** and **select Create Diffie-Hellman (DH) key** 
 
 <img src="https://media.invisioncic.com/m329563/monthly_2025_01/image.png.fc7773bc22293e84a43fd372319030ca.png" alt="image.png" title="" class="ipsImage ipsImage_thumbnailed" style="margin: 0px; padding: 0px; box-sizing: border-box; min-width: 0px; min-height: 0px; border: 0px; display: inline-block; max-width: 100%; height: auto; vertical-align: top; cursor: zoom-in;" width="383" height="268.1">  
 
