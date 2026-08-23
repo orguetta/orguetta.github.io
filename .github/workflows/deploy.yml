@@ -41,8 +41,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Verify pandoc (required by landing resume build)
-        run: pandoc --version
+      - name: Install pandoc (required by landing resume build)
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends pandoc
 
       - name: Cache Puppeteer Chromium
         uses: actions/cache@v4
@@ -133,8 +133,8 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
 
-      - name: Verify pandoc (required by resume PDF generation)
-        run: pandoc --version
+      - name: Install pandoc (required by resume PDF generation)
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends pandoc
 
       - name: Cache Puppeteer Chromium
         uses: actions/cache@v4

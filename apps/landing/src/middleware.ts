@@ -5,9 +5,13 @@ function htmlToMarkdown(html: string): string {
   const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
   let content = mainMatch ? mainMatch[1] : html;
 
-  // Clean up styles and scripts
-  content = content.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "");
-  content = content.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "");
+  // Remove complete style/script elements (tolerating whitespace variants),
+  // then strip any orphan opening/closing tags of those element types.
+  content = content.replace(
+    /<\s*(style|script)\b[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi,
+    "",
+  );
+  content = content.replace(/<\s*\/?\s*(style|script)\b[^>]*>/gi, "");
 
   // Convert headings
   content = content.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, "\n# $1\n");
@@ -42,16 +46,23 @@ function htmlToMarkdown(html: string): string {
   // Strip all other HTML tags
   content = content.replace(/<\/?[a-z0-9]+[^>]*>/gi, "");
 
-  // Convert HTML entities
-  content = content.replace(/&bull;/g, "•");
-  content = content.replace(/&ndash;/g, "–");
-  content = content.replace(/&mdash;/g, "—");
-  content = content.replace(/&middot;/g, "·");
-  content = content.replace(/&amp;/g, "&");
-  content = content.replace(/&lt;/g, "<");
-  content = content.replace(/&gt;/g, ">");
-  content = content.replace(/&quot;/g, '"');
-  content = content.replace(/&#39;/g, "'");
+  // Decode HTML entities in a single pass to avoid double-unescaping
+  // (e.g. "&amp;lt;" must not become "<").
+  const entities: Record<string, string> = {
+    "&bull;": "•",
+    "&ndash;": "–",
+    "&mdash;": "—",
+    "&middot;": "·",
+    "&amp;": "&",
+    "&lt;": "<",
+    "&gt;": ">",
+    "&quot;": '"',
+    "&#39;": "'",
+  };
+  content = content.replace(
+    /&(?:bull|ndash|mdash|middot|amp|lt|gt|quot|#39);/g,
+    (match) => entities[match] ?? match,
+  );
 
   // Split, trim lines, and rejoin
   const lines = content.split("\n").map(line => line.trim());
