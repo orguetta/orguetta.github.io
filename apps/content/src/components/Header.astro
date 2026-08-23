@@ -7,6 +7,7 @@ import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
+import { NAV } from "@guetta/design-system/navigation";
 
 const { pathname } = Astro.url;
 
@@ -66,7 +67,7 @@ const isActive = (path: string) => {
           ]}
         >
           <li>
-            <a href="https://www.guetta.tech" rel="noopener noreferrer">
+            <a href={NAV.home}>
               Home
             </a>
           </li>

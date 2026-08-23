@@ -1,11 +1,11 @@
 media:
-  input: public
+  input: apps/content/public
   output: /
 content:
   - name: posts
     label: Posts
     type: collection
-    path: src/data/blog
+    path: apps/content/src/data/blog
     view:
       fields: [title, draft, date]
     fields:
@@ -22,7 +22,7 @@ content:
   - name: about
     label: About page
     type: file
-    path: src/pages/about.md
+    path: apps/content/src/pages/about.md
     fields:
       - {
           name: layout,
@@ -35,12 +35,12 @@ content:
           name: body,
           label: Body,
           type: rich-text,
-          options: { input: public/assets, output: /assets },
+          options: { input: apps/content/public/assets, output: /assets },
         }
   - name: now
     label: now page
     type: file
-    path: src/data/now.md
+    path: apps/content/src/data/now.md
     fields:
       - {
           name: layout,
@@ -53,5 +53,5 @@ content:
           name: body,
           label: Body,
           type: rich-text,
-          options: { input: public/assets, output: /assets },
+          options: { input: apps/content/public/assets, output: /assets },
         }

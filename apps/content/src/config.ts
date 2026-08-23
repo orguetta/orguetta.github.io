@@ -1,7 +1,7 @@
 export const SITE = {
   website: "https://or.guetta.tech/", // replace this with your deployed domain
   author: "Or Guetta",
-  profile: "https://or.guetta.tech/",
+  profile: "https://guetta.tech/",
   desc: "Cybersecurity and infrastructure engineering hub. Deep dives into NetScaler, ADC hardening, WAF architecture, and defensive security systems.",
   title: "Or Guetta",
   ogImage: "orguetta-cybersecurity-og.jpg",
@@ -14,7 +14,7 @@ export const SITE = {
   editPost: {
     enabled: true,
     text: "Edit page",
-    url: "https://github.com/orguetta/orguetta.github.io/edit/main/",
+    url: "https://github.com/orguetta/orguetta.github.io/edit/main/apps/content/",
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
