@@ -22,7 +22,7 @@
     "@guetta/design-system": "workspace:*",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "4.3.3",
-    "astro": "^7.2.4",
+    "astro": "^7.2.9",
     "dayjs": "1.11.23",
     "gray-matter": "^4.0.3",
     "lodash.kebabcase": "^4.1.1",
