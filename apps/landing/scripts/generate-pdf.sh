@@ -4,7 +4,7 @@
 cd "$(dirname "$0")/.."
 
 # Generate HTML first
-pandoc src/content/resume.md -f markdown -t html -c public/resume-stylesheet.css -s -o public/resume.html
+pandoc src/content/resume.md -f markdown -t html -c resume-stylesheet.css -s -o public/resume.html
 
 # Use puppeteer to convert HTML to PDF
 node scripts/generate-pdf.js

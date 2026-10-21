@@ -1,5 +1,5 @@
 ---
-title: Or Guetta
+pagetitle: Or Guetta
 ---
 
 # Or Guetta
@@ -60,6 +60,8 @@ Cybersecurity and infrastructure engineer with over 7 years of experience across
 **Industrial Engineering, Information Systems Engineering & Management**
 : **The Open University of Israel**
 : **2021 — Present**
+
+<!-- -->
 
 **DevSecOps Engineer**
 : **Bar-Ilan University**
