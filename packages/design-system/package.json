@@ -16,9 +16,6 @@
   "scripts": {
     "check": "tsc --noEmit"
   },
-  "peerDependencies": {
-    "astro": ">=5"
-  },
   "devDependencies": {
     "typescript": "~6.0.3"
   }

@@ -1,37 +1,30 @@
-# guetta.tech
+# guetta.tech — `apps/landing`
 
-Professional landing site for Or Guetta. Built with [Astro](https://astro.build) and deployed on [Cloudflare Workers](https://workers.cloudflare.com). Long-form writing is published separately at [or.guetta.tech](https://or.guetta.tech).
+Or Guetta's profile site: who he is, experience, selected writing and contact. Built with [Astro](https://astro.build) and deployed on [Cloudflare Workers](https://workers.cloudflare.com). Long-form writing lives in `apps/content` (or.guetta.tech).
 
-## Features
+Design, header, footer and theme come from `packages/design-system`. Keep only page content and landing-specific layout here.
 
-- Minimalist, token-driven design system
-- High performance static + edge deployment
-- Resume generated from Markdown
-- Cloudflare Workers deployment
+## Structure
 
-## 🚀 Project Structure
+```text
+apps/landing/
+├── public/              # favicon, profile photo, resume.pdf, .well-known files
+├── scripts/             # resume PDF generation (Puppeteer)
+└── src/
+    ├── components/      # BaseHead (meta tags)
+    ├── content/         # resume.md, the source for the resume page, PDF and home copy
+    ├── layouts/         # BaseLayout (shared header and footer)
+    ├── pages/           # home, resume, privacy, security, robots, .well-known endpoints
+    ├── styles/          # landing-only styles on top of the design system
+    └── middleware.ts    # canonical apex domain
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+## Commands
 
-/
-├── public/
-├── src/
-│ ├── components/
-│ ├── content/
-│ ├── layouts/
-│ ├── pages/
-│ └── styles/
-└── package.json
+Run from the repository root:
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-- `pnpm install` — installs workspace dependencies
-- `pnpm dev:landing` — starts the local development server
-- `pnpm build:landing` — generates the resume PDF and builds the Worker
-- `pnpm --filter landing check` — builds, type-checks, and runs a Wrangler dry-run
-- `pnpm --filter landing preview` — previews the Worker locally
-- `pnpm --filter landing deploy` — deploys the production Worker
+- `pnpm dev:landing`: start the dev server
+- `pnpm build:landing`: generate the resume PDF and build the Worker
+- `pnpm --filter landing check`: build, type-check and run a Wrangler dry run
+- `pnpm --filter landing preview`: preview the Worker locally
+- `pnpm --filter landing deploy`: deploy the production Worker

@@ -2,22 +2,22 @@
 
 The single source of design for every site on `guetta.tech` and its subdomains. The visual rules are in [DESIGN.md](./DESIGN.md); this package is how those rules reach code.
 
-| Site | App | Status |
-| --- | --- | --- |
-| guetta.tech | `apps/landing` | uses the system |
+| Site           | App            | Status          |
+| -------------- | -------------- | --------------- |
+| guetta.tech    | `apps/landing` | uses the system |
 | or.guetta.tech | `apps/content` | uses the system |
 
 ## What it provides
 
-| Export | What it is |
-| --- | --- |
-| `tokens.css` | Colours (light and dark), type stacks, spacing, radius, motion, layout widths |
-| `fonts.css` | Geist and Geist Mono font faces |
-| `base.css` | Element defaults (body, headings, links, focus, selection) and shared `g-` classes: `g-container`, `g-label`, `g-tag`, `g-button`, `g-button--quiet`, `g-icon-button`, `g-sr-only` |
-| `navigation` | `BRAND`, `DOMAINS`, `NAV`, `PRIMARY_NAV`, `SOCIALS`, `localizeHref()` |
-| `components/ThemeHead.astro` | Theme before first paint, theme-color, and the toggle wiring |
-| `components/SiteHeader.astro` | Shared header: wordmark, primary nav, contact, theme toggle, `actions` slot |
-| `components/SiteFooter.astro` | Shared footer: site links, profiles, contact, privacy, security |
+| Export                        | What it is                                                                                                                                                                         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tokens.css`                  | Colours (light and dark), type stacks, spacing, radius, motion, layout widths                                                                                                      |
+| `fonts.css`                   | Geist and Geist Mono font faces                                                                                                                                                    |
+| `base.css`                    | Element defaults (body, headings, links, focus, selection) and shared `g-` classes: `g-container`, `g-label`, `g-tag`, `g-button`, `g-button--quiet`, `g-icon-button`, `g-sr-only` |
+| `navigation`                  | `BRAND`, `DOMAINS`, `NAV`, `PRIMARY_NAV`, `SOCIALS`, `localizeHref()`                                                                                                              |
+| `components/ThemeHead.astro`  | Theme before first paint, theme-color, and the toggle wiring                                                                                                                       |
+| `components/SiteHeader.astro` | Shared header: wordmark, primary nav, contact, theme toggle, `actions` slot                                                                                                        |
+| `components/SiteFooter.astro` | Shared footer: site links, profiles, contact, privacy, security                                                                                                                    |
 
 ## Adding a new guetta.tech site
 
@@ -41,6 +41,7 @@ The single source of design for every site on `guetta.tech` and its subdomains. 
    import SiteHeader from "@guetta/design-system/components/SiteHeader.astro";
    import SiteFooter from "@guetta/design-system/components/SiteFooter.astro";
    ---
+
    <html lang="en">
      <head>
        <meta charset="utf-8" />
@@ -49,7 +50,9 @@ The single source of design for every site on `guetta.tech` and its subdomains. 
      </head>
      <body>
        <SiteHeader />
-       <main id="main-content" class="g-container"><slot /></main>
+       <main id="main-content" class="g-container">
+         <slot />
+       </main>
        <SiteFooter />
      </body>
    </html>

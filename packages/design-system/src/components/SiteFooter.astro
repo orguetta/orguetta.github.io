@@ -3,13 +3,7 @@
  * Shared site footer for every guetta.tech property.
  * Slot (default): an optional extra line, for example an RSS link.
  */
-import {
-  BRAND,
-  NAV,
-  PRIMARY_NAV,
-  SOCIALS,
-  localizeHref,
-} from "../navigation";
+import { BRAND, NAV, PRIMARY_NAV, SOCIALS, localizeHref } from "../navigation";
 
 const site = Astro.site;
 const year = new Date().getFullYear();
@@ -31,46 +25,44 @@ const legal = [
       <div>
         <p class="g-label">Site</p>
         <ul>
-          {
-            primary.map(link => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))
-          }
+          {primary.map(link => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
         </ul>
       </div>
       <div>
         <p class="g-label">Elsewhere</p>
         <ul>
-          {
-            SOCIALS.map(link => (
-              <li>
-                <a href={link.href} target="_blank" rel="noopener noreferrer">
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
+          {SOCIALS.map(link => (
+            <li>
+              <a href={link.href} target="_blank" rel="noopener noreferrer">
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
       <div>
         <p class="g-label">Contact</p>
         <ul>
-          <li><a href={`mailto:${BRAND.email}`}>{BRAND.email}</a></li>
-          {
-            legal.map(link => (
-              <li>
-                <a href={link.href}>{link.label}</a>
-              </li>
-            ))
-          }
+          <li>
+            <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+          </li>
+          {legal.map(link => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
 
     <div class="bottom">
-      <p>© {year} {BRAND.name}</p>
+      <p>
+        © {year} {BRAND.name}
+      </p>
       <slot />
     </div>
   </div>

@@ -11,26 +11,34 @@
 ---
 
 <meta name="color-scheme" content="light dark" />
-<meta name="theme-color" content="#fbf9f4" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#121418" media="(prefers-color-scheme: dark)" />
+<meta
+  name="theme-color"
+  content="#fbf9f4"
+  media="(prefers-color-scheme: light)"
+/>
+<meta
+  name="theme-color"
+  content="#121418"
+  media="(prefers-color-scheme: dark)"
+/>
 
 <script is:inline>
   (function () {
-    var KEY = "theme";
-    var media = window.matchMedia("(prefers-color-scheme: dark)");
+    const KEY = "theme";
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
 
     function stored() {
       try {
         return localStorage.getItem(KEY);
-      } catch (e) {
+      } catch {
         return null;
       }
     }
 
-    var theme = stored() || (media.matches ? "dark" : "light");
+    let theme = stored() || (media.matches ? "dark" : "light");
 
     function applyTo(doc, value) {
-      var root = doc.documentElement;
+      const root = doc.documentElement;
       root.setAttribute("data-theme", value);
       root.classList.toggle("dark", value === "dark");
     }
@@ -44,7 +52,7 @@
           theme = theme === "dark" ? "light" : "dark";
           try {
             localStorage.setItem(KEY, theme);
-          } catch (e) {}
+          } catch {}
           applyTo(document, theme);
           syncButtons();
         });

@@ -1,12 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../consts";
-import {
-  BRAND,
-  DOMAINS,
-  NAV,
-  SOCIALS,
-} from "@guetta/design-system/navigation";
+import { BRAND, DOMAINS, NAV, SOCIALS } from "@guetta/design-system/navigation";
 
 const experience = [
   {
@@ -55,7 +50,8 @@ const experience = [
 // routes under /posts; re-check them when a post is renamed.
 const writing = [
   {
-    title: "NetScaler Security Best Practices: WAF, Rate Limiting, and Hardening",
+    title:
+      "NetScaler Security Best Practices: WAF, Rate Limiting, and Hardening",
     href: `${NAV.posts}/netscaler-security-best-practices`,
   },
   {
@@ -123,24 +119,25 @@ const personJsonLd = {
     type="application/ld+json"
     is:inline
     set:html={JSON.stringify(personJsonLd)}
-  />
-
+  ></script>
   <nav class="side-nav" aria-label="Section navigation">
     <div class="side-nav-dots">
-      {
-        sections.map(section => (
-          <button
-            type="button"
-            data-section={section.id}
-            class="nav-dot"
-            aria-label={`Go to ${section.label}`}
-          />
-        ))
-      }
+      {sections.map(section => (
+        <button
+          type="button"
+          data-section={section.id}
+          class="nav-dot"
+          aria-label={`Go to ${section.label}`}
+        />
+      ))}
     </div>
   </nav>
 
-  <section id="intro" class="hero scroll-section reveal" aria-labelledby="hero-title">
+  <section
+    id="intro"
+    class="hero scroll-section reveal"
+    aria-labelledby="hero-title"
+  >
     <p class="g-label">Security engineer · Israel</p>
     <h1 id="hero-title">Or Guetta</h1>
     <p class="lead">
@@ -154,75 +151,97 @@ const personJsonLd = {
     </div>
 
     <div class="actions">
-      <a class="g-button" href={NAV.posts}>Read the writing</a>
-      <a class="g-button g-button--quiet" href={NAV.resume}>Resume</a>
-      <a class="g-button g-button--quiet" href={NAV.tools}>Tools</a>
+      <a class="g-button" href={NAV.posts}>
+        Read the writing
+      </a>
+      <a class="g-button g-button--quiet" href={NAV.resume}>
+        Resume
+      </a>
+      <a class="g-button g-button--quiet" href={NAV.tools}>
+        Tools
+      </a>
     </div>
 
     <dl class="facts">
       <div>
         <dt>Now</dt>
-        <dd>Senior Network &amp; Cybersecurity Engineer at Integrity Software</dd>
+        <dd>
+          Senior Network &amp; Cybersecurity Engineer at Integrity Software
+        </dd>
       </div>
       <div>
         <dt>Focus</dt>
         <dd>
           <ul class="tags" aria-label="Focus areas">
-            {focus.map(item => <li class="g-tag">{item}</li>)}
+            {focus.map(item => (
+              <li class="g-tag">{item}</li>
+            ))}
           </ul>
         </dd>
       </div>
     </dl>
   </section>
 
-  <section id="experience" class="block scroll-section reveal" aria-labelledby="experience-title">
+  <section
+    id="experience"
+    class="block scroll-section reveal"
+    aria-labelledby="experience-title"
+  >
     <header class="block-head">
       <h2 id="experience-title">Experience</h2>
       <p class="g-label">2015 — Present</p>
     </header>
 
     <ol class="rows">
-      {
-        experience.map(item => (
-          <li class="row">
-            <p class="row-period">{item.period}</p>
-            <div class="row-main">
-              <h3>{item.role}</h3>
-              <p class="row-org">{item.org}</p>
-              <p class="row-summary">{item.summary}</p>
-              <ul class="tags">
-                {item.tags.map(t => (
-                  <li class="g-tag">{t}</li>
-                ))}
-              </ul>
-            </div>
-          </li>
-        ))
-      }
+      {experience.map(item => (
+        <li class="row">
+          <p class="row-period">{item.period}</p>
+          <div class="row-main">
+            <h3>{item.role}</h3>
+            <p class="row-org">{item.org}</p>
+            <p class="row-summary">{item.summary}</p>
+            <ul class="tags">
+              {item.tags.map(t => (
+                <li class="g-tag">{t}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
     </ol>
   </section>
 
-  <section id="writing" class="block scroll-section reveal" aria-labelledby="writing-title">
+  <section
+    id="writing"
+    class="block scroll-section reveal"
+    aria-labelledby="writing-title"
+  >
     <header class="block-head">
       <h2 id="writing-title">Writing</h2>
-      <a class="g-label link" href={NAV.posts}>All posts</a>
+      <a class="g-label link" href={NAV.posts}>
+        All posts
+      </a>
     </header>
 
     <ul class="rows">
-      {
-        writing.map(post => (
-          <li>
-            <a class="post-row" href={post.href}>
-              <span>{post.title}</span>
-              <span class="arrow" aria-hidden="true">→</span>
-            </a>
-          </li>
-        ))
-      }
+      {writing.map(post => (
+        <li>
+          <a class="post-row" href={post.href}>
+            <span>{post.title}</span>
+            <span class="arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
 
-  <section id="contact" class="block scroll-section reveal" aria-labelledby="contact-title">
+  <section
+    id="contact"
+    class="block scroll-section reveal"
+    aria-labelledby="contact-title"
+  >
     <header class="block-head">
       <h2 id="contact-title">Contact</h2>
     </header>
@@ -237,15 +256,13 @@ const personJsonLd = {
     </p>
 
     <ul class="links" aria-label="Elsewhere">
-      {
-        SOCIALS.map(link => (
-          <li>
-            <a href={link.href} target="_blank" rel="noopener noreferrer">
-              {link.label}
-            </a>
-          </li>
-        ))
-      }
+      {SOCIALS.map(link => (
+        <li>
+          <a href={link.href} target="_blank" rel="noopener noreferrer">
+            {link.label}
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
 

@@ -6,12 +6,7 @@
  * Slot "actions": extra controls shown before the theme toggle
  * (for example a search link on the writing hub).
  */
-import {
-  BRAND,
-  NAV,
-  PRIMARY_NAV,
-  localizeHref,
-} from "../navigation";
+import { BRAND, NAV, PRIMARY_NAV, localizeHref } from "../navigation";
 
 interface Props {
   /** id of the main landmark, for the skip link */
@@ -25,8 +20,7 @@ const path = Astro.url.pathname.replace(/\/$/, "") || "/";
 const links = PRIMARY_NAV.map(link => {
   const href = localizeHref(link.href, site);
   const local = href.startsWith("/");
-  const active =
-    local && (path === href || path.startsWith(`${href}/`));
+  const active = local && (path === href || path.startsWith(`${href}/`));
   return { ...link, href, active, external: !local };
 });
 
@@ -34,25 +28,27 @@ const home = localizeHref(NAV.home, site);
 ---
 
 <header class="site-header">
-  <a class="skip-link" href={`#${mainId}`}>Skip to content</a>
+  <a class="skip-link" href={`#${mainId}`}>
+    Skip to content
+  </a>
   <div class="bar">
-    <a class="wordmark" href={home}>{BRAND.name}</a>
+    <a class="wordmark" href={home}>
+      {BRAND.name}
+    </a>
 
     <nav aria-label="Primary">
       <ul class="links">
-        {
-          links.map(link => (
-            <li>
-              <a
-                href={link.href}
-                aria-current={link.active ? "page" : undefined}
-                class:list={{ active: link.active }}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))
-        }
+        {links.map(link => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={link.active ? "page" : undefined}
+              class:list={{ active: link.active }}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
         <li>
           <a href={`mailto:${BRAND.email}`}>Contact</a>
         </li>
@@ -95,9 +91,7 @@ const home = localizeHref(NAV.home, site);
           aria-hidden="true"
         >
           <circle cx="12" cy="12" r="4"></circle>
-          <path
-            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-          ></path>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
         </svg>
       </button>
     </div>

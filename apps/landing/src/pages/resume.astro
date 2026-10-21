@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const files = import.meta.glob("../content/resume.md", {
+const files = import.meta.glob<string>("../content/resume.md", {
   query: "?raw",
+  import: "default",
   eager: true,
 });
-const rawMd = (files["../content/resume.md"] as { default: string }).default;
+const rawMd = files["../content/resume.md"];
 
 function mdToHtml(md: string): string {
   let html = md;

@@ -152,7 +152,6 @@ html[data-theme="light"] {
   width: min(100%, var(--content-width) + 2rem);
 }
 
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
