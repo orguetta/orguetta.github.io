@@ -1,333 +1,278 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../consts";
+import {
+  BRAND,
+  DOMAINS,
+  NAV,
+  SOCIALS,
+} from "@guetta/design-system/navigation";
+
+const experience = [
+  {
+    period: "2022 — Present",
+    role: "Senior Network & Cybersecurity Engineer",
+    org: "Integrity Software",
+    summary:
+      "Secure web access and identity for enterprise and government clients: NetScaler Gateway, SSO, MFA and load balancing, from design through customer training.",
+    tags: ["NetScaler", "SSO", "MFA", "Load Balancing"],
+  },
+  {
+    period: "2021 — 2022",
+    role: "CyberArk & PKI Specialist",
+    org: "Securenet Solutions",
+    summary:
+      "CyberArk PAS integration for regulated organisations, PKI stacks on Microsoft ADCS and EJBCA, and OS and server hardening.",
+    tags: ["CyberArk PAS", "PKI", "ADCS", "EJBCA"],
+  },
+  {
+    period: "2019 — 2020",
+    role: "System & Security Admin",
+    org: "Altshuler Shaham",
+    summary:
+      "Managed over 600 virtual servers on VMware. Built PKI, MDM and IAM platforms from the ground up and automated operations with PowerShell.",
+    tags: ["VMware", "PKI", "MDM", "PowerShell"],
+  },
+  {
+    period: "2018 — 2019",
+    role: "System Administrator",
+    org: "EDP Group Israel",
+    summary:
+      "Infrastructure and firewall support for SMB clients: terminal servers, VPN access, FortiGate firewalls and tier 2 escalations.",
+    tags: ["FortiGate", "VPN", "Terminal Servers"],
+  },
+  {
+    period: "2015 — 2018",
+    role: "Military IT & Network Security Specialist",
+    org: "Israeli Air Force",
+    summary:
+      "Secure communications and IT operations in classified environments. Defined and enforced security policy for mission-critical systems.",
+    tags: ["Network Security", "Monitoring"],
+  },
+];
+
+// Published posts only (draft: false in apps/content). Slugs match the built
+// routes under /posts; re-check them when a post is renamed.
+const writing = [
+  {
+    title: "NetScaler Security Best Practices: WAF, Rate Limiting, and Hardening",
+    href: `${NAV.posts}/netscaler-security-best-practices`,
+  },
+  {
+    title: "NetScaler ADC Hardening Best Practices Guide",
+    href: `${NAV.posts}/NetScaler-ADC-Hardening-Best-Practices-Guide`,
+  },
+  {
+    title: "Protecting AAA and NetScaler Gateway with WAF",
+    href: `${NAV.posts}/2024-06-30-protecting-aaa-and-netscaler-gateway-with-waf`,
+  },
+  {
+    title: "NetScaler KCD Configuration Guide (Kerberos SSO Step by Step)",
+    href: `${NAV.posts}/netscaler-kcd-configuration-guide`,
+  },
+  {
+    title: "Configuring SMS OTP for Web Authentication on NetScaler",
+    href: `${NAV.posts}/configuring-sms-otp-for-web-authentication-on-netscaler`,
+  },
+  {
+    title: "Automating NetScaler Management with APIs and Scripting",
+    href: `${NAV.posts}/automating-netscaler-management-with-apis-and-scripting`,
+  },
+];
+
+const sections = [
+  { id: "intro", label: "Intro" },
+  { id: "experience", label: "Experience" },
+  { id: "writing", label: "Writing" },
+  { id: "contact", label: "Contact" },
+];
+
+const focus = [
+  "NetScaler",
+  "Identity & SSO",
+  "PKI",
+  "CyberArk PAM",
+  "Cloud Security",
+  "Terraform & Ansible",
+];
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: BRAND.name,
+  url: SITE_URL,
+  jobTitle: "Senior Network & Cybersecurity Engineer",
+  description: SITE_DESCRIPTION,
+  email: `mailto:${BRAND.email}`,
+  knowsAbout: [
+    "NetScaler",
+    "Application delivery controllers",
+    "Web application firewalls",
+    "Single sign-on",
+    "PKI",
+    "Identity and access management",
+    "Cloud security",
+  ],
+  sameAs: [...SOCIALS.map(s => s.href), DOMAINS.content, NAV.resume],
+  worksFor: { "@type": "Organization", name: "Integrity Software" },
+};
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(personJsonLd)}
+  />
+
   <nav class="side-nav" aria-label="Section navigation">
     <div class="side-nav-dots">
       {
-        ["intro", "expertise", "posts", "connect"].map(section => (
+        sections.map(section => (
           <button
-            data-section={section}
+            type="button"
+            data-section={section.id}
             class="nav-dot"
-            aria-label={`Navigate to ${section}`}
+            aria-label={`Go to ${section.label}`}
           />
         ))
       }
     </div>
   </nav>
 
-  <main class="main-content">
-    <!-- INTRO -->
-    <section id="intro" class="scroll-section intro-section" data-animate>
-      <div class="intro-grid">
-        <div class="intro-left">
-          <div class="space-y-sm">
-            <div class="mono-label">PORTFOLIO / 2026</div>
-            <h1 class="hero-name">
-              Or
-              <br />
-              <span class="text-muted">Guetta</span>
-            </h1>
-          </div>
+  <section id="intro" class="hero scroll-section reveal" aria-labelledby="hero-title">
+    <p class="g-label">Security engineer · Israel</p>
+    <h1 id="hero-title">Or Guetta</h1>
+    <p class="lead">
+      I build and harden secure access: NetScaler, single sign-on, PKI and the
+      cloud controls around them. I write up what works in production.
+    </p>
 
-          <div class="intro-body">
-            <p class="lead-text">
-              Cybersecurity expert crafting defensible systems at the
-              intersection of
-              <span class="text-foreground"> cloud security</span>,
-              <span class="text-foreground"> application hardening</span>, and
-              <span class="text-foreground"> clear writing</span>.
-            </p>
+    <div class="status">
+      <span class="dot" aria-hidden="true"></span>
+      Available for security consulting
+    </div>
 
-            <div class="status-row">
-              <div class="status-item">
-                <div class="pulse-dot"></div>
-                Available for consulting
-              </div>
-              <div class="status-item">Israel</div>
-            </div>
-          </div>
-        </div>
+    <div class="actions">
+      <a class="g-button" href={NAV.posts}>Read the writing</a>
+      <a class="g-button g-button--quiet" href={NAV.resume}>Resume</a>
+      <a class="g-button g-button--quiet" href={NAV.tools}>Tools</a>
+    </div>
 
-        <div class="intro-right">
-          <div class="info-block">
-            <div class="mono-label">CURRENTLY</div>
-            <div class="info-content">
-              <div class="text-foreground">Security Engineer</div>
-              <div class="text-muted">Cloud & ADC/WAF</div>
-              <div class="text-xs text-muted">Focus areas</div>
-            </div>
-          </div>
-
-          <div class="info-block">
-            <div class="mono-label">FOCUS</div>
-            <div class="tag-list">
-              {
-                [
-                  "Cloud Security",
-                  "WAF/ADC",
-                  "Threat Mitigation",
-                  "Zero Trust",
-                  "Hardening",
-                ].map(skill => <span class="tag">{skill}</span>)
-              }
-            </div>
-          </div>
-        </div>
+    <dl class="facts">
+      <div>
+        <dt>Now</dt>
+        <dd>Senior Network &amp; Cybersecurity Engineer at Integrity Software</dd>
       </div>
-    </section>
-
-    <!-- EXPERTISE -->
-    <section id="expertise" class="scroll-section" data-animate>
-      <div class="section-inner">
-        <div class="section-header">
-          <h2>Expertise</h2>
-          <div class="mono-label">2018 — PRESENT</div>
-        </div>
-
-        <div class="timeline">
-          {
-            [
-              {
-                period: "2023+",
-                role: "Cloud Security Engineering",
-                company: "Defensible architecture",
-                description:
-                  "Building minimal, resilient cloud security systems with clean architecture and sharp playbooks.",
-                tech: ["AWS", "Cloudflare", "Terraform", "Docker"],
-              },
-              {
-                period: "2021",
-                role: "ADC/WAF Hardening",
-                company: "Application delivery security",
-                description:
-                  "Securing application delivery controllers and web application firewalls under real workloads.",
-                tech: ["F5", "NGINX", "ModSecurity", "Cloudflare WAF"],
-              },
-              {
-                period: "2019",
-                role: "Security Documentation",
-                company: "Practical security writing",
-                description:
-                  "Creating clear, actionable hardening guides and operational playbooks for security teams.",
-                tech: ["Technical Writing", "Playbooks", "Checklists"],
-              },
-              {
-                period: "2018",
-                role: "Cybersecurity Foundations",
-                company: "Threat mitigation & analysis",
-                description:
-                  "Reducing attack surface, tightening control paths, and making the secure path the easy path.",
-                tech: ["Pen Testing", "SIEM", "Network Security"],
-              },
-            ].map(item => (
-              <div class="timeline-item">
-                <div class="timeline-period">{item.period}</div>
-                <div class="timeline-main">
-                  <div>
-                    <h3 class="timeline-role">{item.role}</h3>
-                    <div class="text-muted">{item.company}</div>
-                  </div>
-                  <p class="text-muted">{item.description}</p>
-                </div>
-                <div class="timeline-tags">
-                  {item.tech.map(t => (
-                    <span class="tag">{t}</span>
-                  ))}
-                </div>
-              </div>
-            ))
-          }
-        </div>
+      <div>
+        <dt>Focus</dt>
+        <dd>
+          <ul class="tags" aria-label="Focus areas">
+            {focus.map(item => <li class="g-tag">{item}</li>)}
+          </ul>
+        </dd>
       </div>
-    </section>
+    </dl>
+  </section>
 
-    <!-- POSTS -->
-    <section id="posts" class="scroll-section" data-animate>
-      <div class="section-inner">
-        <h2>Recent Writing</h2>
+  <section id="experience" class="block scroll-section reveal" aria-labelledby="experience-title">
+    <header class="block-head">
+      <h2 id="experience-title">Experience</h2>
+      <p class="g-label">2015 — Present</p>
+    </header>
 
-        <div class="posts-grid">
-          {
-            [
-              {
-                title: "Cloud Security Hardening Checklist",
-                excerpt:
-                  "A practical guide to reducing attack surface in cloud environments.",
-                date: "2026",
-                readTime: "8 min",
-              },
-              {
-                title: "WAF Rules That Actually Work",
-                excerpt:
-                  "Lessons from deploying web application firewalls in production.",
-                date: "2025",
-                readTime: "12 min",
-              },
-              {
-                title: "Zero Trust Architecture Patterns",
-                excerpt:
-                  "Building identity-first security for modern infrastructure.",
-                date: "2025",
-                readTime: "10 min",
-              },
-              {
-                title: "The Art of Security Playbooks",
-                excerpt:
-                  "Why operational clarity beats theoretical frameworks every time.",
-                date: "2024",
-                readTime: "6 min",
-              },
-            ].map(post => (
-              <a href="https://or.guetta.tech/posts" class="post-card-link">
-                <article class="post-card">
-                  <div class="post-card-inner">
-                    <div class="post-meta">
-                      <span>{post.date}</span>
-                      <span>{post.readTime}</span>
-                    </div>
-                    <h3 class="post-title">{post.title}</h3>
-                    <p class="text-muted">{post.excerpt}</p>
-                    <div class="post-link">
-                      <span>Read more</span>
-                      <svg
-                        class="arrow-icon"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </article>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- CONNECT -->
-    <section id="connect" class="scroll-section" data-animate>
-      <div class="connect-grid">
-        <div class="connect-left">
-          <h2>Let's Connect</h2>
-
-          <div class="connect-body">
-            <p class="lead-text">
-              Always interested in security conversations, collaborations, and
-              opportunities to make systems more defensible.
-            </p>
-
-            <div class="connect-email">
-              <a href="mailto:or@guetta.tech" class="email-link">
-                <span>or@guetta.tech</span>
-                <svg
-                  class="arrow-icon"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                </svg>
-              </a>
+    <ol class="rows">
+      {
+        experience.map(item => (
+          <li class="row">
+            <p class="row-period">{item.period}</p>
+            <div class="row-main">
+              <h3>{item.role}</h3>
+              <p class="row-org">{item.org}</p>
+              <p class="row-summary">{item.summary}</p>
+              <ul class="tags">
+                {item.tags.map(t => (
+                  <li class="g-tag">{t}</li>
+                ))}
+              </ul>
             </div>
-          </div>
-        </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
 
-        <div class="connect-right">
-          <div class="mono-label">ELSEWHERE</div>
+  <section id="writing" class="block scroll-section reveal" aria-labelledby="writing-title">
+    <header class="block-head">
+      <h2 id="writing-title">Writing</h2>
+      <a class="g-label link" href={NAV.posts}>All posts</a>
+    </header>
 
-          <div class="social-grid">
-            <a
-              href="https://github.com/orguetta"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-card"
-            >
-              <div class="text-foreground">GitHub</div>
-              <div class="text-sm text-muted">@orguetta</div>
+    <ul class="rows">
+      {
+        writing.map(post => (
+          <li>
+            <a class="post-row" href={post.href}>
+              <span>{post.title}</span>
+              <span class="arrow" aria-hidden="true">→</span>
             </a>
-            <a href="https://or.guetta.tech/posts" class="social-card">
-              <div class="text-foreground">Blog</div>
-              <div class="text-sm text-muted">or.guetta.tech</div>
-            </a>
-            <a
-              href="https://linkedin.com/in/orguetta"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-card"
-            >
-              <div class="text-foreground">LinkedIn</div>
-              <div class="text-sm text-muted">orguetta</div>
-            </a>
-            <a
-              href="https://x.com/Guetta_Or"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-card"
-            >
-              <div class="text-foreground">X</div>
-              <div class="text-sm text-muted">@Guetta_Or</div>
-            </a>
-            <a
-              href="https://www.youtube.com/@or_guetta"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-card"
-            >
-              <div class="text-foreground">YouTube</div>
-              <div class="text-sm text-muted">@or_guetta</div>
-            </a>
-            <a href="mailto:or@guetta.tech" class="social-card">
-              <div class="text-foreground">Email</div>
-              <div class="text-sm text-muted">or@guetta.tech</div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
-  <div class="bottom-fade"></div>
+  <section id="contact" class="block scroll-section reveal" aria-labelledby="contact-title">
+    <header class="block-head">
+      <h2 id="contact-title">Contact</h2>
+    </header>
+
+    <p class="lead">
+      Happy to talk about secure access, NetScaler, identity, or how to make a
+      system defensible without slowing the team down.
+    </p>
+
+    <p class="email">
+      <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+    </p>
+
+    <ul class="links" aria-label="Elsewhere">
+      {
+        SOCIALS.map(link => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener noreferrer">
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
   <script is:inline>
     (function () {
+      document.documentElement.classList.add("js");
+
       const sections = document.querySelectorAll(".scroll-section");
       const dots = document.querySelectorAll(".nav-dot");
-      let activeId = "";
 
       const observer = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("animate-fade-in-up");
-              activeId = entry.target.id;
-              dots.forEach(dot => {
-                dot.classList.toggle(
-                  "active",
-                  dot.dataset.section === activeId
-                );
-              });
-            }
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            dots.forEach(dot => {
+              dot.classList.toggle(
+                "active",
+                dot.dataset.section === entry.target.id
+              );
+            });
           });
         },
-        { threshold: 0.3, rootMargin: "0px 0px -20% 0px" }
+        { threshold: 0.25, rootMargin: "0px 0px -15% 0px" }
       );
 
-      sections.forEach(s => observer.observe(s));
+      sections.forEach(section => observer.observe(section));
 
       dots.forEach(dot => {
         dot.addEventListener("click", () => {
@@ -340,13 +285,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 </BaseLayout>
 
 <style>
-  .main-content {
-    max-width: min(56rem, calc(100vw - 3rem));
-    margin: 0 auto;
-    padding: 0 var(--space-4);
-  }
-
-  /* Side nav */
+  /* Side navigation: fixed dots that follow the section in view */
   .side-nav {
     position: fixed;
     left: 2rem;
@@ -369,10 +308,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
     background: var(--text-3);
     opacity: 0.3;
     cursor: pointer;
+    padding: 0;
     transition:
       opacity var(--duration-base) ease,
       background var(--duration-base) ease;
-    padding: 0;
   }
 
   .nav-dot:hover {
@@ -380,450 +319,259 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
   }
 
   .nav-dot.active {
-    background: var(--text-1);
+    background: var(--signal);
     opacity: 1;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     .side-nav {
       display: none;
     }
   }
 
-  /* Scroll sections */
+  /* Sections fill the viewport and rise into place as they enter */
   .scroll-section {
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    padding: 4rem 0;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .js .reveal {
     opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity var(--duration-base) ease,
+      transform var(--duration-base) ease;
   }
 
-  .scroll-section.animate-fade-in-up {
+  .js .reveal.is-visible {
     opacity: 1;
+    transform: none;
   }
 
-  /* Intro section */
-  .intro-grid {
+  .hero {
+    padding: clamp(3rem, 10vh, 6rem) 0 var(--space-7);
+  }
+
+  .g-label {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    margin: var(--space-3) 0 var(--space-5);
+  }
+
+  .lead {
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--text-2);
+    max-width: 38rem;
+    margin: 0 0 var(--space-5);
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--text-2);
+  }
+
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--signal);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-5) 0 var(--space-6);
+  }
+
+  .facts {
     display: grid;
-    gap: 3rem;
-    width: 100%;
+    gap: var(--space-5);
+    margin: 0;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--border);
   }
 
-  @media (min-width: 1024px) {
-    .intro-grid {
-      grid-template-columns: 3fr 2fr;
-      gap: 4rem;
+  @media (min-width: 40rem) {
+    .facts {
+      grid-template-columns: 1fr 1fr;
     }
   }
 
-  .space-y-sm {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .mono-label {
+  .facts dt {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-3);
+    margin-bottom: var(--space-2);
   }
 
-  .hero-name {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    font-weight: 300;
+  .facts dd {
+    margin: 0;
+    color: var(--text-1);
+  }
+
+  .tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    margin: var(--space-3) 0 0;
+  }
+
+  .g-tag {
+    margin: 0;
+  }
+
+  .block {
+    padding: var(--space-7) 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .block-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
     letter-spacing: -0.02em;
-    line-height: 1.05;
     margin: 0;
   }
 
-  .text-muted {
-    color: var(--text-3);
-  }
-
-  .text-foreground {
-    color: var(--text-1);
-  }
-
-  .text-xs {
-    font-size: 0.75rem;
-  }
-
-  .text-sm {
-    font-size: 0.875rem;
-  }
-
-  .intro-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 28rem;
-  }
-
-  .lead-text {
-    font-size: 1.125rem;
-    line-height: 1.7;
+  .link {
     color: var(--text-2);
   }
 
-  .status-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 0.875rem;
-    color: var(--text-3);
-  }
-
-  .status-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .pulse-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    background: var(--success);
-    border-radius: 999px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.4;
-    }
-  }
-
-  .intro-right {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    .intro-right {
-      justify-content: flex-end;
-      margin-top: 0;
-    }
-  }
-
-  .info-block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .info-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tag {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--text-2);
-    transition: border-color var(--duration-fast) ease;
-  }
-
-  .tag:hover {
-    border-color: var(--text-3);
-  }
-
-  /* Section inner */
-  .section-inner {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-  }
-
-  .section-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  @media (min-width: 640px) {
-    .section-header {
-      flex-direction: row;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-  }
-
-  /* Timeline */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .timeline-item {
-    display: grid;
-    gap: 1rem;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: border-color var(--duration-fast) ease;
-  }
-
-  .timeline-item:hover {
-    border-color: var(--text-3);
-  }
-
-  @media (min-width: 1024px) {
-    .timeline-item {
-      grid-template-columns: 5rem 1fr auto;
-      gap: 2rem;
-      align-items: start;
-    }
-  }
-
-  .timeline-period {
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: var(--text-3);
-    transition: color var(--duration-fast) ease;
-  }
-
-  .timeline-item:hover .timeline-period {
-    color: var(--text-1);
-  }
-
-  .timeline-main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .timeline-role {
-    font-size: 1.125rem;
-    font-weight: 500;
+  .rows {
+    list-style: none;
+    padding: 0;
     margin: 0;
   }
 
-  .timeline-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  @media (min-width: 1024px) {
-    .timeline-tags {
-      justify-content: flex-end;
-      margin-top: 0;
-    }
-  }
-
-  /* Posts grid */
-  .posts-grid {
+  .row {
     display: grid;
-    gap: 1.5rem;
+    gap: var(--space-2);
+    padding: var(--space-5) 0;
+    border-top: 1px solid var(--border);
   }
 
-  @media (min-width: 1024px) {
-    .posts-grid {
-      grid-template-columns: repeat(2, 1fr);
+  .row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  @media (min-width: 40rem) {
+    .row {
+      grid-template-columns: 9rem 1fr;
+      gap: var(--space-5);
     }
   }
 
-  .post-card-link {
-    text-decoration: none;
-    color: inherit;
+  .row-period {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--text-3);
+    margin: 0;
   }
 
-  .post-card-link:hover {
-    opacity: 1;
-    text-decoration: none;
+  .row h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-1);
   }
 
-  .post-card {
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    height: 100%;
-    transition:
-      border-color var(--duration-fast) ease,
-      box-shadow var(--duration-fast) ease;
+  .row-org {
+    margin: 0.15rem 0 var(--space-2);
+    color: var(--text-2);
+    font-size: 0.9375rem;
   }
 
-  .post-card:hover {
-    border-color: var(--text-3);
-    box-shadow: 0 4px 24px oklch(0 0 0 / 0.06);
+  .row-summary {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 0.9375rem;
+    line-height: 1.6;
   }
 
-  .post-card-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .post-meta {
+  .post-row {
     display: flex;
     justify-content: space-between;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--text-3);
-  }
-
-  .post-title {
-    font-size: 1.125rem;
+    align-items: baseline;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-1);
     font-weight: 500;
+  }
+
+  .post-row:hover {
+    opacity: 1;
+    color: var(--signal);
+  }
+
+  .post-row .arrow {
+    color: var(--text-3);
+    transition: transform var(--duration-fast) ease;
+  }
+
+  .post-row:hover .arrow {
+    transform: translateX(3px);
+    color: var(--signal);
+  }
+
+  .email {
+    font-size: 1.25rem;
+    margin: var(--space-4) 0 var(--space-5);
+  }
+
+  .email a {
+    color: var(--text-1);
+    border-bottom: 1px solid var(--signal);
+  }
+
+  .links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    padding: 0;
     margin: 0;
-    transition: color var(--duration-fast) ease;
   }
 
-  .post-card:hover .post-title {
-    color: var(--text-3);
+  .links a {
+    color: var(--text-2);
   }
 
-  .post-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-    color: var(--text-3);
-    transition: color var(--duration-fast) ease;
-  }
-
-  .post-card:hover .post-link {
-    color: var(--text-1);
-  }
-
-  .arrow-icon {
-    width: 1rem;
-    height: 1rem;
-    transition: transform var(--duration-fast) ease;
-  }
-
-  .post-card:hover .arrow-icon {
-    transform: translateX(4px);
-  }
-
-  /* Connect section */
-  .connect-grid {
-    display: grid;
-    gap: 3rem;
-    width: 100%;
-  }
-
-  @media (min-width: 1024px) {
-    .connect-grid {
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-  }
-
-  .connect-left {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .connect-body {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .connect-email {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .email-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.125rem;
-    color: var(--text-1);
-    transition: color var(--duration-fast) ease;
-  }
-
-  .email-link:hover {
-    color: var(--text-3);
+  .links a:hover {
+    color: var(--signal);
     opacity: 1;
-  }
-
-  .email-link .arrow-icon {
-    transition: transform var(--duration-fast) ease;
-  }
-
-  .email-link:hover .arrow-icon {
-    transform: translateX(4px);
-  }
-
-  .connect-right {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .social-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  @media (min-width: 640px) {
-    .social-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .social-card {
-    padding: 1rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    text-decoration: none;
-    color: inherit;
-    transition:
-      border-color var(--duration-fast) ease,
-      box-shadow var(--duration-fast) ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .social-card:hover {
-    border-color: var(--text-3);
-    box-shadow: 0 2px 12px oklch(0 0 0 / 0.04);
-    opacity: 1;
-    text-decoration: none;
-  }
-
-  /* Bottom fade */
-  .bottom-fade {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 6rem;
-    background: linear-gradient(to top, var(--surface-1), transparent);
-    pointer-events: none;
-    z-index: 5;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .scroll-section {
+    .js .reveal {
       opacity: 1;
+      transform: none;
+      transition: none;
     }
   }
 </style>

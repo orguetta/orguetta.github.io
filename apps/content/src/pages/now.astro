@@ -34,27 +34,28 @@ const pageDesc =
   <Main pageTitle={pageTitle} pageDesc={pageDesc}>
     {updatedAt && <p class="text-sm opacity-70">Last updated: {updatedAt}</p>}
 
-    {
-      rendered ? (
-        <article class="app-prose mt-6 space-y-6">
-          <rendered.Content />
-        </article>
-      ) : (
-        <p class="mt-6 text-sm opacity-80">
-          This now page is not ready yet. Add <code>src/data/now.md</code> to
-          publish it.
-        </p>
-      )
-    }
+    {rendered ? (
+      <article class="app-prose mt-6 space-y-6">
+        <rendered.Content />
+      </article>
+    ) : (
+      <p class="mt-6 text-sm opacity-80">
+        This now page is not ready yet. Add <code>src/data/now.md</code> to
+        publish it.
+      </p>
+    )}
 
     <section class="mt-10 space-y-3">
       <Hr />
       <p class="text-sm opacity-75">
-        Inspired by the <a
+        Inspired by the{" "}
+        <a
           href="https://nownownow.com/about"
           class="underline underline-offset-4 hover:opacity-60"
-          >now page movement</a
-        >—a simple snapshot of what I’d tell a friend I haven’t seen in a while.
+        >
+          now page movement
+        </a>
+        —a simple snapshot of what I’d tell a friend I haven’t seen in a while.
       </p>
     </section>
   </Main>

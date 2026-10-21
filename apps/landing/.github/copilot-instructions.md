@@ -2,81 +2,66 @@
 
 ## Project Overview
 
-Personal website and blog built with **Astro 5** (static site generator) deployed to **Cloudflare Workers** (not Cloudflare Pages despite README). Uses content collections for markdown blog posts with minimalist design principles.
+Professional landing site built with **Astro 7** and deployed to **Cloudflare Workers**. Long-form writing lives in the separate `apps/content` application.
 
 ## Architecture
 
 ### Tech Stack
 
-- **Framework**: Astro 5 with SSR adapter (`@astrojs/cloudflare`)
+- **Framework**: Astro 7 with the SSR adapter (`@astrojs/cloudflare`)
 - **Deployment**: Cloudflare Workers via Wrangler
-- **Content**: Type-safe content collections using Astro's glob loader
-- **Styling**: Custom CSS with CSS variables, no framework
+- **Content**: Resume Markdown loaded directly by `src/pages/resume.astro`
+- **Styling**: Shared design-system tokens and local CSS
 
 ### Key Files
 
 - [astro.config.mjs](../astro.config.mjs): Cloudflare adapter with `imageService: "compile"` and sitemap
 - [wrangler.json](../wrangler.json): Routes for both apex and www domains, observability enabled
 - [src/consts.ts](../src/consts.ts): Site-wide constants (`SITE_TITLE`, `SITE_DESCRIPTION`)
-- [src/content.config.ts](../src/content.config.ts): Content collection schema (blog posts use `pubDate`, `updatedDate`, `heroImage`, `category`)
+- [src/content/resume.md](../src/content/resume.md): canonical resume content
 
-### Content Collections Pattern
-
-Blog posts in [src/content/blog/](../src/content/blog/) use the glob loader pattern:
-
-```typescript
-loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" });
-```
-
-- Frontmatter schema enforces `title`, `description`, `pubDate` (coerced to Date)
-- Optional: `updatedDate`, `heroImage`, `category`
-- Dynamic routes via [src/pages/blog/[...slug].astro](../src/pages/blog/%5B...slug%5D.astro) with `getStaticPaths()`
+There are no Astro content collections in the landing application.
 
 ## Development Workflow
 
-### Commands (npm scripts)
+### Commands (pnpm workspace scripts)
 
-- `npm run dev` - Local dev server (port 4321)
-- `npm run build` - Build for production to `./dist/`
-- `npm run preview` - Build + Wrangler local preview (tests Worker compatibility)
-- `npm run check` - Full validation: build + TypeScript + Wrangler dry-run
-- `npm run deploy` - Deploy to Cloudflare Workers
-- `npm run cf-typegen` - Generate Worker types from Wrangler config
+- `pnpm dev:landing` - Local development server
+- `pnpm build:landing` - Resume PDF generation and production build
+- `pnpm --filter landing preview` - Build + Wrangler local preview
+- `pnpm --filter landing check` - Build + TypeScript + Wrangler dry-run
+- `pnpm --filter landing deploy` - Deploy to Cloudflare Workers
+- `pnpm --filter landing cf-typegen` - Generate Worker types
 
 ### Testing Before Deploy
 
-Always run `npm run preview` (not just `build`) to catch Worker-specific issues. The Cloudflare adapter outputs to `dist/_worker.js/index.js` (see [wrangler.json](../wrangler.json) `main` field).
+Run `pnpm --filter landing check` and a local preview before deployment. The generated Wrangler configuration is `dist/server/wrangler.json`.
 
 ## Styling Conventions
 
 ### CSS Architecture
 
 - **Global**: [src/styles/global.css](../src/styles/global.css) defines CSS variables, imported in [src/components/BaseHead.astro](../src/components/BaseHead.astro)
-- **Color Palette**: `--color-primary` (#1B2B4D), `--color-secondary` (#7B8A4B), light bg (#FAFAF0)
-- **Typography**: Montserrat (headings), Inter (body), Fira Code (mono) loaded from Google Fonts
+- **Color Palette**: defined by shared tokens in `packages/design-system`
+- **Typography**: locally hosted Geist and Geist Mono
 - **Spacing**: `--space-xs` to `--space-xl` (0.5rem to 8rem)
-- **Dark Mode**: `.dark` class override defined but not implemented yet
+- **Dark Mode**: shared token overrides follow the configured theme
 
 ### Component Styling
 
 - Scoped `<style>` blocks in `.astro` components
-- `:global()` selector for styling slotted content (see [src/layouts/BlogPost.astro](../src/layouts/BlogPost.astro) `.prose :global(h2)`)
 - Animations: Use `.fade-in` with `.delay-1`, `.delay-2` classes (see [src/pages/index.astro](../src/pages/index.astro))
 
 ## Astro Patterns
 
 ### Layouts
 
-Two primary layouts in [src/layouts/](../src/layouts/):
-
-1. **BaseLayout.astro**: Page wrapper with Header/Footer
-2. **BlogPost.astro**: Extends BaseLayout, adds article structure with FormattedDate component
+**BaseLayout.astro** is the page wrapper with shared metadata, header, and footer.
 
 ### Data Flow
 
 - Site constants from [src/consts.ts](../src/consts.ts) imported directly
-- Blog collection: `await getCollection("blog")` then sort by `pubDate.valueOf()`
-- Render content with `await render(post)` pattern in dynamic routes
+- Resume Markdown is loaded directly with `import.meta.glob`.
 
 ### Image Handling
 
@@ -88,55 +73,32 @@ Using `imageService: "compile"` in Cloudflare adapter (not Cloudflare's CDN imag
 
 - Astro components: PascalCase (e.g., `BaseHead.astro`, `FormattedDate.astro`)
 - Pages: kebab-case for multi-word routes (e.g., `privacy.astro`)
-- Dynamic routes: Astro bracket syntax `[...slug].astro`
-
-### Content Requirements
-
-Blog posts must include in frontmatter:
-
-- `title`, `description`: strings
-- `pubDate`: ISO date string (auto-coerced)
-- Optional but recommended: `heroImage`, `category`
 
 ### Deployment Targets
 
-Site runs on **both** `guetta.tech` and `www.guetta.tech` (see [wrangler.json](../wrangler.json) routes). Test both domains after deployment.
+Cloudflare accepts both hosts and redirects the apex host to the canonical **www.guetta.tech** domain. Test both hosts after deployment.
 
 ## Integration Points
 
 ### External Services
 
 - **Cloudflare Observability**: Upload source maps enabled for debugging
-- **RSS Feed**: Generated at [src/pages/rss.xml.js](../src/pages/rss.xml.js)
 
 ### Cloudflare Worker Context
 
-- Compatibility date: 2025-12-17
+- Compatibility date: 2026-08-20
 - `nodejs_compat` flag enabled
 - Assets binding available as `ASSETS` in Worker runtime
 - Platform proxy enabled in dev mode for testing Worker APIs
 
 ## Common Tasks
 
-### Adding a New Blog Post
-
-1. Create `.md`/`.mdx` in [src/content/blog/](../src/content/blog/)
-2. Add required frontmatter (title, description, pubDate)
-3. File name becomes the slug (e.g., `my-post.md` → `/blog/my-post`)
-4. Run `npm run dev` to preview
-
 ### Updating Styles
 
 - Global variables: Edit [src/styles/global.css](../src/styles/global.css)
 - Component-specific: Add scoped `<style>` in `.astro` file
-- Typography uses existing Google Fonts - avoid adding new font imports
+- Typography uses the shared local fonts; avoid adding remote font imports
 
 ### Dependency Updates
 
-Recent outdated packages (as of Jan 2026):
-
-- `@astrojs/rss`, `@astrojs/sitemap` (minor versions behind)
-- `astro` (5.16.2 → 5.16.12 patch available)
-- `wrangler` (4.51.0 → 4.59.3 minor update)
-
-Run `npm outdated` before suggesting updates. Test with `npm run check` after upgrading.
+Run `pnpm outdated -r` before suggesting updates. Validate with `pnpm check`, `pnpm lint`, and `pnpm format:check` after upgrading.

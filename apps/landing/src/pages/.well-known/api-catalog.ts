@@ -2,21 +2,21 @@ export function GET() {
   const data = {
     linkset: [
       {
-        anchor: "https://guetta.tech/",
+        anchor: "https://www.guetta.tech/",
         "service-doc": [
           {
-            href: "https://guetta.tech/security",
+            href: "https://www.guetta.tech/security",
             type: "text/html",
           },
         ],
         "api-catalog": [
           {
-            href: "https://guetta.tech/.well-known/api-catalog",
+            href: "https://www.guetta.tech/.well-known/api-catalog",
           },
         ],
         status: [
           {
-            href: "https://guetta.tech/robots.txt",
+            href: "https://www.guetta.tech/robots.txt",
           },
         ],
       },

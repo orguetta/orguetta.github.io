@@ -1,0 +1,75 @@
+---
+/**
+ * Put inside <head> on every page. Sets the theme before first paint and
+ * wires every [data-theme-toggle] button on the page.
+ *
+ * The theme is written both as `data-theme` on <html> and as the `.dark`
+ * class, so tokens.css works whichever selector an app relies on. The
+ * choice is stored under the "theme" key; without one, the system
+ * preference is followed and kept in sync.
+ */
+---
+
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#fbf9f4" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#121418" media="(prefers-color-scheme: dark)" />
+
+<script is:inline>
+  (function () {
+    var KEY = "theme";
+    var media = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function stored() {
+      try {
+        return localStorage.getItem(KEY);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    var theme = stored() || (media.matches ? "dark" : "light");
+
+    function applyTo(doc, value) {
+      var root = doc.documentElement;
+      root.setAttribute("data-theme", value);
+      root.classList.toggle("dark", value === "dark");
+    }
+
+    function syncButtons() {
+      document.querySelectorAll("[data-theme-toggle]").forEach(function (btn) {
+        btn.setAttribute("aria-pressed", String(theme === "dark"));
+        if (btn.dataset.themeBound) return;
+        btn.dataset.themeBound = "true";
+        btn.addEventListener("click", function () {
+          theme = theme === "dark" ? "light" : "dark";
+          try {
+            localStorage.setItem(KEY, theme);
+          } catch (e) {}
+          applyTo(document, theme);
+          syncButtons();
+        });
+      });
+    }
+
+    applyTo(document, theme);
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", syncButtons);
+    } else {
+      syncButtons();
+    }
+
+    // Astro view transitions: carry the theme into the incoming document.
+    document.addEventListener("astro:before-swap", function (event) {
+      applyTo(event.newDocument, theme);
+    });
+    document.addEventListener("astro:after-swap", syncButtons);
+
+    media.addEventListener("change", function (event) {
+      if (stored()) return;
+      theme = event.matches ? "dark" : "light";
+      applyTo(document, theme);
+      syncButtons();
+    });
+  })();
+</script>

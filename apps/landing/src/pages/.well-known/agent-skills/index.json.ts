@@ -7,7 +7,7 @@ export function GET() {
         type: "skill-md",
         description:
           "Allows agents to navigate and query Or Guetta's professional portfolio site.",
-        url: "https://guetta.tech/.well-known/agent-skills/webmcp-navigation.md",
+        url: "https://www.guetta.tech/.well-known/agent-skills/webmcp-navigation.md",
         digest:
           "sha256:273f359ea82cd84ca667e82f5d08088fb33133d679def3aa51cbfe62e7aac7e1",
       },

@@ -64,31 +64,10 @@ html[data-theme="light"] {
     @apply flex min-h-svh flex-col bg-background font-sans text-foreground antialiased selection:bg-text-3/20 selection:text-foreground;
   }
 
+  /* Link colour, hover (signal) and the focus ring come from base.css. */
   a:not(.ui-control) {
     color: var(--text-1);
     text-decoration: none;
-    transition: opacity var(--duration-fast) ease;
-  }
-
-  a:not(.ui-control):hover {
-    opacity: 0.6;
-  }
-
-  a,
-  button {
-    @apply outline-none;
-  }
-
-  a:focus-visible,
-  button:focus-visible,
-  [role="button"]:focus-visible,
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    outline: 1px solid var(--text-3);
-    outline-offset: 3px;
-    border-radius: var(--radius-sm);
-    text-decoration-line: none;
   }
 
   button:not(:disabled),
@@ -97,7 +76,7 @@ html[data-theme="light"] {
   }
 
   section,
-  footer {
+  footer:not(.site-footer) {
     @apply mx-auto max-w-app px-4;
   }
 }
@@ -154,40 +133,25 @@ html[data-theme="light"] {
     border-color: var(--text-3);
   }
 
+  /* Mirrors .g-tag in base.css */
   .ui-chip {
-    @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium;
+    @apply inline-flex items-center font-mono text-xs;
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text-2);
-    letter-spacing: 0.01em;
   }
 }
 
+/*
+ * Same column as the shared header and footer: --content-width of content,
+ * plus the px-4 gutter that sections and footers add on each side.
+ */
 @utility max-w-app {
-  width: min(100% - 2rem, 96rem);
+  width: min(100%, var(--content-width) + 2rem);
 }
 
-@media (width >= 1536px) {
-  .max-w-app {
-    width: min(100% - 3rem, 108rem);
-  }
-}
-
-.active-nav {
-  @apply text-text-1;
-  font-weight: 600;
-  text-decoration: none;
-  position: relative;
-}
-
-.active-nav::after {
-  content: "";
-  position: absolute;
-  left: 0.25rem;
-  right: 0.25rem;
-  bottom: 0.15rem;
-  border-bottom: 2px solid var(--text-3);
-}
 
 @media (prefers-reduced-motion: reduce) {
   *,

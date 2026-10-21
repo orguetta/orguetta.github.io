@@ -1,11 +1,12 @@
 /*
  * Landing application styles.
- * Design tokens and font faces come from @guetta/design-system.
+ * Tokens, fonts and base element styles (body, headings, links, focus,
+ * selection) come from @guetta/design-system. Keep only page-level
+ * layout and landing-specific classes here.
  */
 
 html {
   box-sizing: border-box;
-  font-size: 16px;
   scroll-behavior: smooth;
 }
 
@@ -16,21 +17,10 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-body);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--surface-1);
-  color: var(--text-1);
-  line-height: 1.65;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  transition:
-    background-color var(--duration-fast) ease,
-    color var(--duration-fast) ease;
 }
 
 main {
@@ -38,7 +28,6 @@ main {
   padding-bottom: var(--space-8);
 }
 
-/* Typography */
 h1,
 h2,
 h3,
@@ -46,11 +35,6 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-family: var(--font-heading);
-  font-weight: 300;
-  color: var(--text-1);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
 }
 
 h1 {
@@ -59,54 +43,24 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.875rem, 3vw, 2.5rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   margin-bottom: var(--space-sm);
 }
 
 h3 {
   font-size: 1.125rem;
-  font-weight: 500;
   margin-bottom: var(--space-xs);
 }
 
 p {
   margin: 0 0 var(--space-sm) 0;
   color: var(--text-2);
-  line-height: 1.7;
-}
-
-a {
-  color: var(--text-1);
-  text-decoration: none;
-  transition:
-    color var(--duration-fast) ease,
-    opacity var(--duration-fast) ease;
-  font-weight: 400;
-}
-
-a:hover {
-  opacity: 0.6;
-  text-decoration: none;
-}
-
-a:focus-visible,
-button:focus-visible,
-[role="button"]:focus-visible {
-  outline: 1px solid var(--text-3);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-::selection {
-  background: oklch(0.556 0 0 / 0.2);
-  color: var(--text-1);
 }
 
 /* Utilities */
 .container {
-  max-width: min(var(--content-width), calc(100vw - 3rem));
-  margin: 0 auto;
-  padding: 0 var(--space-4);
+  width: min(100% - 2rem, var(--content-width));
+  margin-inline: auto;
 }
 
 .grid {

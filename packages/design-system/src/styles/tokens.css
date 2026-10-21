@@ -1,6 +1,9 @@
 /*
  * Guetta Design System — core tokens
- * Source of truth: guetta.tech landing visual language.
+ * Source of truth for the visual rules: packages/design-system/DESIGN.md
+ * ("Signal on Paper"). Both apps read these tokens, so colour, type and
+ * spacing stay identical across guetta.tech and or.guetta.tech.
+ *
  * Dark mode is applied via [data-theme="dark"] (content hub) or
  * the .dark class (landing); both selectors are supported.
  */
@@ -8,20 +11,21 @@
 :root {
   color-scheme: light;
 
-  /* Surfaces */
-  --surface-1: oklch(1 0 0);
-  --surface-2: oklch(0.97 0 0);
-  --surface-3: oklch(0.922 0 0);
+  /* Surfaces — warm paper, never pure white */
+  --surface-1: oklch(0.982 0.006 85);
+  --surface-2: oklch(0.955 0.008 85);
+  --surface-3: oklch(0.92 0.01 85);
 
-  /* Text */
-  --text-1: oklch(0.145 0 0);
-  --text-2: oklch(0.556 0 0);
-  --text-3: oklch(0.708 0 0);
+  /* Text — ink with a faint cool cast so it reads as print, not a screen */
+  --text-1: oklch(0.2 0.01 260);
+  --text-2: oklch(0.42 0.01 260);
+  --text-3: oklch(0.52 0.01 260);
 
-  /* Brand (monochrome) */
-  --primary: oklch(0.205 0 0);
-  --accent: oklch(0.556 0 0);
-  --border: oklch(0.922 0 0);
+  /* Brand — one signal colour, used sparingly */
+  --signal: oklch(0.5 0.12 160);
+  --primary: var(--text-1);
+  --accent: var(--signal);
+  --border: oklch(0.88 0.008 85);
 
   /* Semantic */
   --success: oklch(0.6 0.17 162.48);
@@ -51,15 +55,15 @@
   --space-lg: var(--space-8);
   --space-xl: 8rem;
 
-  /* Radius */
-  --radius-sm: calc(0.625rem - 4px);
-  --radius-md: calc(0.625rem - 2px);
-  --radius-lg: 0.625rem;
-  --radius-xl: calc(0.625rem + 4px);
+  /* Radius — tight, not pill-shaped */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
 
   /* Motion */
-  --duration-fast: 300ms;
-  --duration-base: 500ms;
+  --duration-fast: 200ms;
+  --duration-base: 400ms;
 
   /* Layout */
   --content-width: 56rem;
@@ -74,17 +78,18 @@
 .dark {
   color-scheme: dark;
 
-  --surface-1: oklch(0.145 0 0);
-  --surface-2: oklch(0.205 0 0);
-  --surface-3: oklch(0.269 0 0);
+  --surface-1: oklch(0.17 0.008 260);
+  --surface-2: oklch(0.21 0.008 260);
+  --surface-3: oklch(0.25 0.008 260);
 
-  --text-1: oklch(0.985 0 0);
-  --text-2: oklch(0.708 0 0);
-  --text-3: oklch(0.556 0 0);
+  --text-1: oklch(0.95 0.005 85);
+  --text-2: oklch(0.78 0.008 85);
+  --text-3: oklch(0.62 0.01 260);
 
-  --primary: oklch(0.985 0 0);
-  --accent: oklch(0.708 0 0);
-  --border: oklch(0.269 0 0);
+  --signal: oklch(0.78 0.13 160);
+  --primary: var(--text-1);
+  --accent: var(--signal);
+  --border: oklch(0.3 0.01 260);
 
   --shadow-sm: none;
   --shadow-md: none;

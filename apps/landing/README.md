@@ -1,12 +1,12 @@
 # guetta.tech
 
-Personal website and writing hub for Or Guetta. Built with [Astro](https://astro.build) and deployed on [Cloudflare Workers](https://workers.cloudflare.com).
+Professional landing site for Or Guetta. Built with [Astro](https://astro.build) and deployed on [Cloudflare Workers](https://workers.cloudflare.com). Long-form writing is published separately at [or.guetta.tech](https://or.guetta.tech).
 
 ## Features
 
 - Minimalist, token-driven design system
 - High performance static + edge deployment
-- Markdown & MDX blog support
+- Resume generated from Markdown
 - Cloudflare Workers deployment
 
 ## 🚀 Project Structure
@@ -29,8 +29,9 @@ Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
 
 All commands are run from the root of the project, from a terminal:
 
-- `npm install` — installs dependencies
-- `npm run dev` — starts the local dev server at `localhost:4321`
-- `npm run build` — builds the production site to `./dist/`
-- `npm run preview` — previews the build locally before deploying
-- `npm run deploy` — deploys the production site to Cloudflare Workers
+- `pnpm install` — installs workspace dependencies
+- `pnpm dev:landing` — starts the local development server
+- `pnpm build:landing` — generates the resume PDF and builds the Worker
+- `pnpm --filter landing check` — builds, type-checks, and runs a Wrangler dry-run
+- `pnpm --filter landing preview` — previews the Worker locally
+- `pnpm --filter landing deploy` — deploys the production Worker

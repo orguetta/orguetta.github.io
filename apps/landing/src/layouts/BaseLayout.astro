@@ -1,7 +1,8 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import ThemeHead from "@guetta/design-system/components/ThemeHead.astro";
+import SiteHeader from "@guetta/design-system/components/SiteHeader.astro";
+import SiteFooter from "@guetta/design-system/components/SiteFooter.astro";
 
 const { title, description, image, canonical } = Astro.props;
 ---
@@ -14,13 +15,14 @@ const { title, description, image, canonical } = Astro.props;
       image={image}
       canonical={canonical}
     />
+    <ThemeHead />
   </head>
   <body>
-    <Header />
-    <main class="page-shell container">
+    <SiteHeader />
+    <main id="main-content" class="page-shell g-container">
       <slot />
     </main>
-    <Footer />
+    <SiteFooter />
 
     <script is:inline>
       /* eslint-disable no-console -- WebMCP registration diagnostics */
@@ -39,7 +41,7 @@ const { title, description, image, canonical } = Astro.props;
                 content: [
                   {
                     type: "text",
-                    text: "Or Guetta is a cybersecurity expert specializing in Cloud Security and Application Delivery Controllers (ADC) / Web Application Firewalls (WAF). He builds minimal, resilient, and defensible systems.",
+                    text: "Or Guetta is a security engineer in Israel, currently Senior Network & Cybersecurity Engineer at Integrity Software. He works on secure access: NetScaler Gateway, SSO and MFA, PKI, CyberArk PAM and cloud security, and writes hands-on guides at https://or.guetta.tech/posts.",
                   },
                 ],
               };

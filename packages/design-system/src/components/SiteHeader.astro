@@ -1,0 +1,202 @@
+---
+/**
+ * Shared site header for every guetta.tech property.
+ * Requires <ThemeHead /> in <head> for the theme toggle to work.
+ *
+ * Slot "actions": extra controls shown before the theme toggle
+ * (for example a search link on the writing hub).
+ */
+import {
+  BRAND,
+  NAV,
+  PRIMARY_NAV,
+  localizeHref,
+} from "../navigation";
+
+interface Props {
+  /** id of the main landmark, for the skip link */
+  mainId?: string;
+}
+
+const { mainId = "main-content" } = Astro.props;
+const site = Astro.site;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const links = PRIMARY_NAV.map(link => {
+  const href = localizeHref(link.href, site);
+  const local = href.startsWith("/");
+  const active =
+    local && (path === href || path.startsWith(`${href}/`));
+  return { ...link, href, active, external: !local };
+});
+
+const home = localizeHref(NAV.home, site);
+---
+
+<header class="site-header">
+  <a class="skip-link" href={`#${mainId}`}>Skip to content</a>
+  <div class="bar">
+    <a class="wordmark" href={home}>{BRAND.name}</a>
+
+    <nav aria-label="Primary">
+      <ul class="links">
+        {
+          links.map(link => (
+            <li>
+              <a
+                href={link.href}
+                aria-current={link.active ? "page" : undefined}
+                class:list={{ active: link.active }}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={`mailto:${BRAND.email}`}>Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="tools">
+      <slot name="actions" />
+      <button
+        type="button"
+        class="g-icon-button"
+        data-theme-toggle
+        aria-label="Dark mode"
+        aria-pressed="false"
+      >
+        <svg
+          class="icon-moon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="square"
+          aria-hidden="true"
+        >
+          <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"></path>
+        </svg>
+        <svg
+          class="icon-sun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="square"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path
+            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-1);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 50;
+    padding: 0.5rem 0.75rem;
+    background: var(--text-1);
+    color: var(--surface-1);
+    border-radius: var(--radius-sm);
+  }
+
+  .skip-link:focus {
+    top: 0.75rem;
+    color: var(--surface-1);
+  }
+
+  .bar {
+    width: min(100% - 2rem, var(--content-width));
+    margin-inline: auto;
+    padding: var(--space-4) 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-5);
+  }
+
+  .wordmark {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9375rem;
+  }
+
+  .links li {
+    margin: 0;
+  }
+
+  .links a {
+    color: var(--text-2);
+  }
+
+  .links a:hover {
+    color: var(--signal);
+  }
+
+  .links a.active {
+    color: var(--text-1);
+    text-decoration: underline;
+    text-decoration-color: var(--signal);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+
+  .tools {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .icon-sun {
+    display: none;
+  }
+
+  :global(.dark) .icon-sun {
+    display: block;
+  }
+
+  :global(.dark) .icon-moon {
+    display: none;
+  }
+
+  @media (max-width: 40rem) {
+    nav {
+      order: 3;
+      width: 100%;
+    }
+  }
+</style>

@@ -14,7 +14,7 @@ deployable Astro applications, one shared design system.
 guetta-web/
 ├── apps/
 │   ├── landing/        # guetta.tech — Astro 7, server output on Workers
-│   └── content/        # or.guetta.tech — Astro 6, static on GitHub Pages
+│   └── content/        # or.guetta.tech — Astro 7, static on GitHub Pages
 ├── packages/
 │   └── design-system/  # tokens, fonts, theme contract, navigation URLs
 └── .github/workflows/  # single validate-and-deploy workflow

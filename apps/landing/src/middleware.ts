@@ -120,7 +120,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
       // Add Link headers for discoverability on standard HTML pages
       response.headers.set(
         "Link",
-        '</.well-known/api-catalog>; rel="api-catalog", </auth.md>; rel="registration", </.well-known/agent-skills/index.json>; rel="agent-skills"'
+        '</.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="agent-skills"'
       );
     }
   }

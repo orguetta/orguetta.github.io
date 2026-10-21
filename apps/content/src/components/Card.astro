@@ -56,59 +56,57 @@ const anchorClass = {
 }[variant];
 ---
 
-{
-  isPostCard ? (
-    <li class={cardWrapperClass}>
-      {(() => {
-        const post = props as PostCardProps;
-        const { title, description, pubDatetime, modDatetime, timezone } =
-          post.data;
-        const href = getPath(post.id, post.filePath);
-        const headingProps = {
-          style: { viewTransitionName: slugifyStr(title) },
-        };
+{isPostCard ? (
+  <li class={cardWrapperClass}>
+    {(() => {
+      const post = props as PostCardProps;
+      const { title, description, pubDatetime, modDatetime, timezone } =
+        post.data;
+      const href = getPath(post.id, post.filePath);
+      const headingProps = {
+        style: { viewTransitionName: slugifyStr(title) },
+      };
 
-        return (
-          <>
-            {headingTag === "h2" ? (
-              <h2 {...headingProps} class={titleClass}>
-                <a href={href} class={anchorClass}>
-                  {title}
-                </a>
-              </h2>
-            ) : (
-              <h3 {...headingProps} class={titleClass}>
-                <a href={href} class={anchorClass}>
-                  {title}
-                </a>
-              </h3>
-            )}
-            <Datetime {pubDatetime} {modDatetime} {timezone} />
-            <p class="mt-2 text-text-2">{description}</p>
-          </>
-        );
-      })()}
-    </li>
-  ) : (
-    <li class={cardWrapperClass}>
-      {(() => {
-        const tool = props as ToolCardProps;
-        return (
-          <>
-            <h3 class={titleClass}>
-              <a
-                href={tool.href}
-                class={anchorClass}
-                target={tool.external ? "_blank" : undefined}
-                rel={tool.external ? "noopener noreferrer" : undefined}
-              >
-                {tool.title}
+      return (
+        <>
+          {headingTag === "h2" ? (
+            <h2 {...headingProps} class={titleClass}>
+              <a href={href} class={anchorClass}>
+                {title}
+              </a>
+            </h2>
+          ) : (
+            <h3 {...headingProps} class={titleClass}>
+              <a href={href} class={anchorClass}>
+                {title}
               </a>
             </h3>
-            <p class="mt-2 text-sm text-text-2">{tool.description}</p>
-          </>
-        );
-      })()}
-    </li>
-  )
-}
+          )}
+          <Datetime {pubDatetime} {modDatetime} {timezone} />
+          <p class="mt-2 text-text-2">{description}</p>
+        </>
+      );
+    })()}
+  </li>
+) : (
+  <li class={cardWrapperClass}>
+    {(() => {
+      const tool = props as ToolCardProps;
+      return (
+        <>
+          <h3 class={titleClass}>
+            <a
+              href={tool.href}
+              class={anchorClass}
+              target={tool.external ? "_blank" : undefined}
+              rel={tool.external ? "noopener noreferrer" : undefined}
+            >
+              {tool.title}
+            </a>
+          </h3>
+          <p class="mt-2 text-sm text-text-2">{tool.description}</p>
+        </>
+      );
+    })()}
+  </li>
+)}

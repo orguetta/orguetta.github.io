@@ -90,9 +90,25 @@ const fonts = [
     <section>
       <h2 class="mb-6 text-text-1">Color Palette — Light Mode</h2>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {
-          Object.entries(colorTokens.light).map(([name, hex]) => (
-            <div class="rounded-lg border border-border p-4 transition-all hover:border-text-3">
+        {Object.entries(colorTokens.light).map(([name, hex]) => (
+          <div class="rounded-lg border border-border p-4 transition-all hover:border-text-3">
+            <div
+              class="mb-4 h-24 rounded-md border border-border"
+              style={{ backgroundColor: hex }}
+            />
+            <p class="font-mono text-sm font-semibold text-text-1">--{name}</p>
+            <p class="font-mono text-xs text-text-3">{hex}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-6 text-text-1">Color Palette — Dark Mode</h2>
+      <div class="rounded-lg border border-border bg-surface-3 p-8">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {Object.entries(colorTokens.dark).map(([name, hex]) => (
+            <div class="rounded-lg border border-border bg-surface-2 p-4 transition-all hover:border-text-3">
               <div
                 class="mb-4 h-24 rounded-md border border-border"
                 style={{ backgroundColor: hex }}
@@ -102,29 +118,7 @@ const fonts = [
               </p>
               <p class="font-mono text-xs text-text-3">{hex}</p>
             </div>
-          ))
-        }
-      </div>
-    </section>
-
-    <section>
-      <h2 class="mb-6 text-text-1">Color Palette — Dark Mode</h2>
-      <div class="rounded-lg border border-border bg-surface-3 p-8">
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {
-            Object.entries(colorTokens.dark).map(([name, hex]) => (
-              <div class="rounded-lg border border-border bg-surface-2 p-4 transition-all hover:border-text-3">
-                <div
-                  class="mb-4 h-24 rounded-md border border-border"
-                  style={{ backgroundColor: hex }}
-                />
-                <p class="font-mono text-sm font-semibold text-text-1">
-                  --{name}
-                </p>
-                <p class="font-mono text-xs text-text-3">{hex}</p>
-              </div>
-            ))
-          }
+          ))}
         </div>
       </div>
     </section>
@@ -135,43 +129,39 @@ const fonts = [
         <div>
           <h3 class="mb-4 text-text-1">Light Mode</h3>
           <div class="space-y-3">
-            {
-              Object.entries(semanticTokens.light).map(([name, hex]) => (
-                <div class="flex items-center gap-4 rounded-lg border border-border p-3">
-                  <div
-                    class="h-12 w-16 rounded-md border border-border"
-                    style={{ backgroundColor: hex }}
-                  />
-                  <div>
-                    <p class="font-mono text-sm font-semibold text-text-1">
-                      --{name}
-                    </p>
-                    <p class="font-mono text-xs text-text-3">{hex}</p>
-                  </div>
+            {Object.entries(semanticTokens.light).map(([name, hex]) => (
+              <div class="flex items-center gap-4 rounded-lg border border-border p-3">
+                <div
+                  class="h-12 w-16 rounded-md border border-border"
+                  style={{ backgroundColor: hex }}
+                />
+                <div>
+                  <p class="font-mono text-sm font-semibold text-text-1">
+                    --{name}
+                  </p>
+                  <p class="font-mono text-xs text-text-3">{hex}</p>
                 </div>
-              ))
-            }
+              </div>
+            ))}
           </div>
         </div>
         <div class="rounded-lg border border-border bg-surface-3 p-8">
           <h3 class="mb-4 text-text-1">Dark Mode</h3>
           <div class="space-y-3">
-            {
-              Object.entries(semanticTokens.dark).map(([name, hex]) => (
-                <div class="flex items-center gap-4 rounded-lg border border-border bg-surface-2 p-3">
-                  <div
-                    class="h-12 w-16 rounded-md border border-border"
-                    style={{ backgroundColor: hex }}
-                  />
-                  <div>
-                    <p class="font-mono text-sm font-semibold text-text-1">
-                      --{name}
-                    </p>
-                    <p class="font-mono text-xs text-text-3">{hex}</p>
-                  </div>
+            {Object.entries(semanticTokens.dark).map(([name, hex]) => (
+              <div class="flex items-center gap-4 rounded-lg border border-border bg-surface-2 p-3">
+                <div
+                  class="h-12 w-16 rounded-md border border-border"
+                  style={{ backgroundColor: hex }}
+                />
+                <div>
+                  <p class="font-mono text-sm font-semibold text-text-1">
+                    --{name}
+                  </p>
+                  <p class="font-mono text-xs text-text-3">{hex}</p>
                 </div>
-              ))
-            }
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -182,16 +172,14 @@ const fonts = [
     <section>
       <h2 class="mb-6 text-text-1">Typography</h2>
       <div class="grid gap-4 lg:grid-cols-2">
-        {
-          fonts.map(font => (
-            <div class="ui-surface p-6">
-              <h3 class="text-text-1">
-                <span style={{ fontFamily: font.family }}>{font.name}</span>
-              </h3>
-              <p class="mt-2 text-sm text-text-2">{font.usage}</p>
-            </div>
-          ))
-        }
+        {fonts.map(font => (
+          <div class="ui-surface p-6">
+            <h3 class="text-text-1">
+              <span style={{ fontFamily: font.family }}>{font.name}</span>
+            </h3>
+            <p class="mt-2 text-sm text-text-2">{font.usage}</p>
+          </div>
+        ))}
       </div>
 
       <div class="mt-8 space-y-6">
@@ -233,7 +221,8 @@ const fonts = [
             class="overflow-x-auto rounded-md border border-border bg-surface-2 p-4 font-mono text-sm text-text-1"
             style={{
               fontFamily: "Geist Mono, ui-monospace, monospace",
-            }}><code>const token = '--surface-1'; /* Clarity over noise */</code></pre>
+            }}
+          ><code>const token = '--surface-1'; /* Clarity over noise */</code></pre>
         </div>
       </div>
     </section>
@@ -243,24 +232,22 @@ const fonts = [
     <section>
       <h2 class="mb-6 text-text-1">Spacing Scale</h2>
       <div class="space-y-4">
-        {
-          spacingTokens.map(token => (
-            <div class="flex items-center gap-4">
-              <div class="w-32">
-                <p class="font-mono text-sm font-semibold text-text-1">
-                  --{token.name}
-                </p>
-                <p class="font-mono text-xs text-text-3">
-                  {token.value} ({token.px})
-                </p>
-              </div>
-              <div
-                class="rounded-md border border-border bg-surface-3"
-                style={{ width: token.px, height: "32px" }}
-              />
+        {spacingTokens.map(token => (
+          <div class="flex items-center gap-4">
+            <div class="w-32">
+              <p class="font-mono text-sm font-semibold text-text-1">
+                --{token.name}
+              </p>
+              <p class="font-mono text-xs text-text-3">
+                {token.value} ({token.px})
+              </p>
             </div>
-          ))
-        }
+            <div
+              class="rounded-md border border-border bg-surface-3"
+              style={{ width: token.px, height: "32px" }}
+            />
+          </div>
+        ))}
       </div>
     </section>
 
@@ -269,20 +256,18 @@ const fonts = [
     <section>
       <h2 class="mb-6 text-text-1">Border Radius</h2>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {
-          radiusTokens.map(token => (
-            <div>
-              <p class="mb-3 font-mono text-sm font-semibold text-text-1">
-                --{token.name}
-              </p>
-              <div
-                class="h-24 border-2 border-border bg-surface-3"
-                style={{ borderRadius: token.value }}
-              />
-              <p class="mt-2 font-mono text-xs text-text-3">{token.value}</p>
-            </div>
-          ))
-        }
+        {radiusTokens.map(token => (
+          <div>
+            <p class="mb-3 font-mono text-sm font-semibold text-text-1">
+              --{token.name}
+            </p>
+            <div
+              class="h-24 border-2 border-border bg-surface-3"
+              style={{ borderRadius: token.value }}
+            />
+            <p class="mt-2 font-mono text-xs text-text-3">{token.value}</p>
+          </div>
+        ))}
       </div>
     </section>
 
