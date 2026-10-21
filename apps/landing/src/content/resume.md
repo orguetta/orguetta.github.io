@@ -65,6 +65,17 @@ Cybersecurity and infrastructure engineer with over 7 years of experience across
 : **Bar-Ilan University**
 : **2023 — 2024**
 
+## Certifications
+
+- Citrix Certified Associate – App Delivery and Security (CCA-AppDS)
+- CyberArk PAM Install and Configure (self-paced)
+- CyberArk PAM Administration for Partners (self-paced)
+
+## Languages
+
+- Hebrew (native or bilingual)
+- English (full professional)
+
 ## Skills
 
-`NetScaler` `CyberArk PAM` `PKI` `IAM` `SSO` `DevSecOps` `Cloud Security` `Terraform` `Ansible` `Automation`
+`NetScaler` `WAF` `CyberArk PAM` `PKI` `IAM` `SSO` `DevSecOps` `Cloud Security` `Terraform` `Ansible` `Automation`

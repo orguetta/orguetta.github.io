@@ -76,18 +76,47 @@ const writing = [
   },
 ];
 
+// Credentials follow resume.md and the LinkedIn profile.
+const certifications = [
+  "Citrix Certified Associate – App Delivery and Security (CCA-AppDS)",
+  "CyberArk PAM Install and Configure (self-paced)",
+  "CyberArk PAM Administration for Partners (self-paced)",
+];
+
+const education = [
+  {
+    title: "DevSecOps Engineer",
+    org: "Bar-Ilan University",
+    period: "2023 — 2024",
+  },
+  {
+    title:
+      "Industrial Engineering, Information Systems Engineering & Management",
+    org: "The Open University of Israel",
+    period: "2021 — Present",
+  },
+];
+
+const languages = [
+  "Hebrew (native or bilingual)",
+  "English (full professional)",
+];
+
 const sections = [
   { id: "intro", label: "Intro" },
   { id: "experience", label: "Experience" },
+  { id: "credentials", label: "Credentials" },
   { id: "writing", label: "Writing" },
   { id: "contact", label: "Contact" },
 ];
 
 const focus = [
   "NetScaler",
+  "WAF",
   "Identity & SSO",
   "PKI",
   "CyberArk PAM",
+  "DevSecOps",
   "Cloud Security",
   "Terraform & Ansible",
 ];
@@ -111,6 +140,15 @@ const personJsonLd = {
   ],
   sameAs: [...SOCIALS.map(s => s.href), DOMAINS.content, NAV.resume],
   worksFor: { "@type": "Organization", name: "Integrity Software" },
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "Bar-Ilan University" },
+    { "@type": "CollegeOrUniversity", name: "The Open University of Israel" },
+  ],
+  hasCredential: certifications.map(name => ({
+    "@type": "EducationalOccupationalCredential",
+    name,
+  })),
+  knowsLanguage: ["he", "en"],
 };
 ---
 
@@ -147,7 +185,7 @@ const personJsonLd = {
 
     <div class="status">
       <span class="dot" aria-hidden="true"></span>
-      Available for security consulting
+      Open to security engineering, DevSecOps and consulting roles
     </div>
 
     <div class="actions">
@@ -209,6 +247,48 @@ const personJsonLd = {
         </li>
       ))}
     </ol>
+  </section>
+
+  <section
+    id="credentials"
+    class="block scroll-section reveal"
+    aria-labelledby="credentials-title"
+  >
+    <header class="block-head">
+      <h2 id="credentials-title">Credentials</h2>
+    </header>
+
+    <div class="creds">
+      <div>
+        <h3 class="g-label">Certifications</h3>
+        <ul class="plain">
+          {certifications.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="g-label">Education</h3>
+        <ul class="plain">
+          {education.map(item => (
+            <li>
+              <span class="cred-title">{item.title}</span>
+              <span class="cred-meta">
+                {item.org} · {item.period}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3 class="g-label">Languages</h3>
+        <ul class="plain">
+          {languages.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
   </section>
 
   <section
@@ -476,6 +556,45 @@ const personJsonLd = {
 
   .link {
     color: var(--text-2);
+  }
+
+  .creds {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 48rem) {
+    .creds {
+      grid-template-columns: 1.4fr 1.4fr 1fr;
+    }
+  }
+
+  .creds h3 {
+    margin: 0 0 var(--space-3);
+  }
+
+  .plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-3);
+    font-size: 0.9375rem;
+    color: var(--text-1);
+  }
+
+  .plain li {
+    margin: 0;
+  }
+
+  .cred-title {
+    display: block;
+  }
+
+  .cred-meta {
+    display: block;
+    color: var(--text-3);
+    font-size: 0.875rem;
   }
 
   .rows {

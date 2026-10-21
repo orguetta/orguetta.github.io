@@ -23,6 +23,12 @@ My approach to engineering is driven by three core principles:
 2. **Defensive by Design** - Security is not an afterthought; applications must be built and delivered within a secure-by-default architecture.
 3. **Operational Efficiency** - Technical depth should be paired with automation to ensure security is scalable and maintainable.
 
+## Background
+
+I started in military IT and network security in the Israeli Air Force, then worked in system administration, financial organizations and security consulting before focusing on secure access. I'm a Citrix Certified Associate in App Delivery and Security (CCA-AppDS), and I've completed CyberArk PAM install, configure and administration courses. I studied DevSecOps at Bar-Ilan University and information systems engineering at The Open University of Israel.
+
+Outside work I train CrossFit and build side projects that mix cloud, scripting and security.
+
 ## What I Share Here
 
 This site serves as a technical knowledge base for engineers. You will find:
