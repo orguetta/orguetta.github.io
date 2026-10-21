@@ -3,6 +3,7 @@
 // both are included on all pages through the use of <BaseHead />.
 import "@guetta/design-system/tokens.css";
 import "@guetta/design-system/fonts.css";
+import "@guetta/design-system/base.css";
 import "../styles/global.css";
 import { SITE_TITLE } from "../consts";
 
@@ -18,7 +19,7 @@ const canonicalURL = new URL(
   Astro.site
 );
 
-const { title, description, image = "/blog-placeholder-1.jpg" } = Astro.props;
+const { title, description, image = "/or-profile.jpg" } = Astro.props;
 const metaTitle = title.includes(SITE_TITLE)
   ? title
   : `${title} | ${SITE_TITLE}`;
@@ -29,19 +30,7 @@ const metaTitle = title.includes(SITE_TITLE)
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-<meta name="color-scheme" content="light dark" />
-<meta
-  name="theme-color"
-  content="#fafaf0"
-  media="(prefers-color-scheme: light)"
-/>
-<meta
-  name="theme-color"
-  content="#121212"
-  media="(prefers-color-scheme: dark)"
-/>
-
-<!-- Geist fonts loaded via @font-face in global.css -->
+<!-- color-scheme and theme-color come from <ThemeHead /> -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -53,7 +42,7 @@ const metaTitle = title.includes(SITE_TITLE)
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:title" content={metaTitle} />
 <meta property="og:description" content={description} />
@@ -61,7 +50,7 @@ const metaTitle = title.includes(SITE_TITLE)
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={metaTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />

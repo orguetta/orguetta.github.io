@@ -1,27 +1,45 @@
 ---
 author: Or Guetta
-pubDatetime: 2025-12-09
-modDatetime: 2025-12-09
-title: Securing Your NetScaler Gateway against Brute Force Protection and Rate
-  Limiting
-ogImage: Securing Your NetScaler Gateway against Brute Force Protection and Rate
-  Limiting
-slug: secure-ns-gw
+pubDatetime: 2026-09-23
+modDatetime: 2026-09-23
+title: Password Spraying on NetScaler Gateway - What Rate Limiting Misses
+ogImage: Password Spraying on NetScaler Gateway - What Rate Limiting Misses
+slug: password-spraying-netscaler-gateway
 featured: false
 draft: true
-description: Brute force attacks on NetScaler Gateways can be mitigated by
-  implementing rate limiting and intelligent policies. This involves configuring
-  the gateway to block requests that don’t match the FQDN, target specific URLs
-  with suspicious cookies, or exceed a defined request rate. By combining these
-  measures, organizations can effectively protect their gateways from
-  unauthorized access attempts while maintaining optimal performance.
+description: Password spraying is designed to evade ordinary account lockouts and request rate limits. A practical NetScaler Gateway strategy needs MFA, behavior detection and safe enforcement around real traffic patterns.
 ---
 
-In today’s landscape, external-facing systems like NetScaler Gateways are prime targets for brute force and denial-of-service (DoS) attacks.
+External-facing NetScaler Gateways are prime targets for brute force, password spraying and denial-of-service attacks.
 
-Brute force attacks on external gateways can compromise security, leading to unauthorized access and potential data breaches. Implementing rate limiting and intelligent policies on your NetScaler Gateway is a proactive way to mitigate these threats.
+Rate limiting is a useful control, but it is not a complete answer. Password spraying deliberately stays below the thresholds that account lockouts and simple per-IP limits usually watch.
 
-This blog demonstrates how to configure your NetScaler Gateway to block brute force attempts and enforce rate limiting to protect against malicious activity while maintaining optimal performance.
+This article explains how to combine baseline Gateway hardening with behavior-based detection, while avoiding the false positives that can lock out legitimate users behind shared egress addresses.
+
+## Password Spraying Is Not Ordinary Brute Force
+
+Traditional brute force attacks repeat many passwords against one account. Password spraying reverses the pattern: an attacker tries a small set of likely passwords across many identities, often over hours or days.
+
+That behavior can look harmless when every control is evaluated in isolation. A single account has few failures. A single source IP stays below a basic request threshold. The useful signal is the relationship between them: a client rotating across many usernames without successful authentication.
+
+MFA remains the control that changes the outcome of a stolen password. Gateway detection is a complementary layer that can expose or interrupt suspicious behavior before it becomes a successful session.
+
+## Build a Layered Response
+
+1. **Reduce single-factor exposure.** Enforce MFA wherever the access flow supports it and prioritize privileged accounts.
+2. **Detect identity rotation.** Monitor repeated failed authentication attempts that move across usernames from the same source over a meaningful time window.
+3. **Enforce safely.** Use explicit allowlists for corporate NAT, proxy and VPN egress ranges before automatically blocking a source.
+4. **Keep it observable.** Record why a source was blocked and give operations a controlled way to investigate or release false positives.
+
+The goal is not to copy a clever policy into production. It is to define the behavior worth stopping, understand the traffic path, and make the response safe to operate.
+
+## Where Good Controls Cause Bad Outages
+
+Shared source IPs are the hard part. Corporate proxies, carrier NAT, cloud egress gateways and VPN concentrators can legitimately represent many users behind one address. A control that only sees username rotation can lock out a real office faster than it blocks an attacker.
+
+Test the threshold with representative traffic. Confirm the bypass process. In high-availability deployments, also understand what happens to state during failover. A security control that is not designed around operational reality eventually becomes a support incident.
+
+## Baseline Gateway Hardening
 
 #### **Understanding the Threat**
 

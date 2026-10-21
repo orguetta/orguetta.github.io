@@ -1,0 +1,183 @@
+/*
+ * Guetta Design System — base element styles and shared classes.
+ *
+ * Everything sits in `@layer base`, so:
+ *  - in a Tailwind app, import this AFTER the stylesheet that imports
+ *    "tailwindcss": it then overrides Preflight but loses to utilities;
+ *  - in a plain-CSS app, any unlayered app rule still wins over it.
+ *
+ * Shared classes are prefixed `g-` so they never collide with app classes.
+ */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--surface-1);
+    color: var(--text-1);
+    font-family: var(--font-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-1);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--duration-fast) ease;
+  }
+
+  a:hover {
+    color: var(--signal);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--signal) 25%, transparent);
+    color: var(--text-1);
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: var(--font-mono);
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Layout */
+  .g-container {
+    width: min(100% - 2rem, var(--content-width));
+    margin-inline: auto;
+  }
+
+  /* Mono label: section eyebrows, dates, metadata */
+  .g-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  /* Tag */
+  .g-tag {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-2);
+  }
+
+  /* Buttons */
+  .g-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--text-1);
+    border-radius: var(--radius-md);
+    background: var(--text-1);
+    color: var(--surface-1);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.2;
+    cursor: pointer;
+    transition:
+      opacity var(--duration-fast) ease,
+      border-color var(--duration-fast) ease;
+  }
+
+  .g-button:hover {
+    color: var(--surface-1);
+    opacity: 0.85;
+  }
+
+  .g-button--quiet {
+    background: transparent;
+    color: var(--text-1);
+    border-color: var(--border);
+  }
+
+  .g-button--quiet:hover {
+    color: var(--text-1);
+    border-color: var(--text-3);
+    opacity: 1;
+  }
+
+  .g-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-2);
+    cursor: pointer;
+    transition: border-color var(--duration-fast) ease;
+  }
+
+  .g-icon-button:hover {
+    border-color: var(--text-3);
+    color: var(--text-1);
+  }
+
+  .g-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @layer base {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

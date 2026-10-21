@@ -28,7 +28,7 @@ const recentPreviewPosts = recentPosts.slice(0, Math.min(SITE.postPerIndex, 4));
       <SectionHeader
         level="h1"
         title="Or Guetta"
-        subtitle="Practical security engineering notes on hardening, application delivery, and defensive automation."
+        subtitle="Security engineer writing about NetScaler, secure access, identity and PKI, and the hardening work behind them. Profile and resume at guetta.tech."
       >
         <a
           slot="action"
@@ -44,48 +44,49 @@ const recentPreviewPosts = recentPosts.slice(0, Math.min(SITE.postPerIndex, 4));
         </a>
       </SectionHeader>
       <div class="mt-6 flex flex-wrap items-center gap-3">
-        <LinkButton href="/posts" variant="primary">Read Guides</LinkButton>
-        <LinkButton href="/tools" variant="secondary">Explore Tools</LinkButton>
+        <LinkButton href="/posts" variant="primary">
+          Read Guides
+        </LinkButton>
+        <LinkButton href="/tools" variant="secondary">
+          Explore Tools
+        </LinkButton>
         <a
           href="https://guetta.tech/resume"
           target="_blank"
           rel="noopener noreferrer"
           class="group inline-flex items-center justify-center gap-2 rounded-md border border-transparent px-4 py-2 font-medium text-text-2 transition-colors duration-[var(--duration-fast)] hover:text-text-1"
-          >View Resume</a
         >
+          View Resume
+        </a>
       </div>
     </section>
 
     <Hr />
 
-    {
-      featuredPreviewPosts.length > 0 && (
-        <>
-          <section id="featured" class="pt-10 pb-6">
-            <SectionHeader title="Featured" />
-            <ul>
-              {featuredPreviewPosts.map(data => (
-                <Card variant="post" {...data} />
-              ))}
-            </ul>
-          </section>
-          {recentPosts.length > 0 && <Hr />}
-        </>
-      )
-    }
-
-    {
-      recentPosts.length > 0 && (
-        <section id="recent-posts" class="pt-10 pb-6">
-          <SectionHeader title="Recent Posts" />
+    {featuredPreviewPosts.length > 0 && (
+      <>
+        <section id="featured" class="pt-10 pb-6">
+          <SectionHeader title="Featured" />
           <ul>
-            {recentPreviewPosts.map(data => (
-              <Card variant="compact" {...data} />
+            {featuredPreviewPosts.map(data => (
+              <Card variant="post" {...data} />
             ))}
           </ul>
         </section>
-      )
-    }
+        {recentPosts.length > 0 && <Hr />}
+      </>
+    )}
+
+    {recentPosts.length > 0 && (
+      <section id="recent-posts" class="pt-10 pb-6">
+        <SectionHeader title="Recent Posts" />
+        <ul>
+          {recentPreviewPosts.map(data => (
+            <Card variant="compact" {...data} />
+          ))}
+        </ul>
+      </section>
+    )}
 
     <div class="my-8 text-center">
       <LinkButton href="/posts/" variant="secondary">

@@ -1,21 +1,11 @@
 export function GET() {
-  const data = {
-    serverInfo: {
-      name: "guetta-tech-mcp",
-      version: "1.0.0",
-    },
-    endpoint: "https://guetta.tech/mcp",
-    capabilities: {
-      tools: {},
-      resources: {},
-      prompts: {},
-    },
-  };
+  const data = { error: "mcp_server_not_available" };
 
   return new Response(JSON.stringify(data, null, 2), {
+    status: 404,
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "Cache-Control": "public, max-age=3600",
+      "Cache-Control": "public, max-age=300",
     },
   });
 }

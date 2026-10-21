@@ -14,11 +14,18 @@ deployable Astro applications, one shared design system.
 guetta-web/
 ├── apps/
 │   ├── landing/        # guetta.tech — Astro 7, server output on Workers
-│   └── content/        # or.guetta.tech — Astro 6, static on GitHub Pages
+│   └── content/        # or.guetta.tech — Astro 7, static on GitHub Pages
 ├── packages/
-│   └── design-system/  # tokens, fonts, theme contract, navigation URLs
-└── .github/workflows/  # single validate-and-deploy workflow
+│   └── design-system/  # DESIGN.md, tokens, base styles, header, footer,
+│                       # theme and navigation shared by every site
+├── .github/            # CI workflow, Dependabot, PR template, Copilot notes
+├── .vscode/            # editor settings, dev-server launchers, post snippets
+├── CLAUDE.md           # rules for agents working in this repo
+└── .pages.yml          # Pages CMS config for posts, about and now
 ```
+
+Each app has its own README with its structure and commands. New
+guetta.tech sites go in `apps/` (see the design-system README).
 
 ## Commands
 
@@ -57,6 +64,6 @@ history remains available in the source repository, which is retained
 
 ## Design system
 
-`docs/DESIGN_SYSTEM.md` is the normative visual specification.
-Shared tokens, fonts, and cross-domain navigation live in
-`packages/design-system`.
+`packages/design-system/DESIGN.md` is the visual specification for
+every guetta.tech site. `packages/design-system/README.md` lists what
+the package provides and how a new site adopts it.

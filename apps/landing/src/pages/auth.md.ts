@@ -1,28 +1,9 @@
 export function GET() {
-  const content = `# auth.md
+  const content = `# Authentication status
 
-Welcome! This document outlines agent registration and authentication instructions for guetta.tech.
+guetta.tech does not currently provide an OAuth, OpenID Connect, bearer-token registration, or anonymous token-claim service.
 
-## Agent Audience
-
-This service supports interaction with autonomous AI agents. Public resources are accessible without registration.
-
-## Registration and Authentication
-
-If you are an AI agent, you can register programmatically using our anonymous authentication flow.
-
-- **Registration URI (register_uri)**: \`https://guetta.tech/oauth/register\`
-- **Identity Types Supported**: \`anonymous\`
-- **Credential Types Supported**: \`bearer_token\`
-- **Claim URI (claim_uri)**: \`https://guetta.tech/oauth/claim\`
-
-## How to Authenticate
-
-Once you claim a token from \`https://guetta.tech/oauth/claim\`, include it in the standard \`Authorization\` header of your HTTP requests:
-
-\`\`\`http
-Authorization: Bearer <your_token>
-\`\`\`
+The public website, API catalog, and agent-skill discovery documents are available without authentication. No registration endpoint should be inferred from this document.
 `;
 
   return new Response(content, {

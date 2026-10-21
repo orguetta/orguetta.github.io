@@ -1,13 +1,17 @@
 {
   "name": "@guetta/design-system",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Shared tokens, fonts, theme contract, and navigation URLs for the Guetta web properties",
+  "description": "Shared tokens, fonts, base styles, header, footer, theme and navigation for every guetta.tech site",
   "exports": {
     "./tokens.css": "./src/styles/tokens.css",
     "./fonts.css": "./src/styles/fonts.css",
-    "./navigation": "./src/navigation.ts"
+    "./base.css": "./src/styles/base.css",
+    "./navigation": "./src/navigation.ts",
+    "./components/ThemeHead.astro": "./src/components/ThemeHead.astro",
+    "./components/SiteHeader.astro": "./src/components/SiteHeader.astro",
+    "./components/SiteFooter.astro": "./src/components/SiteFooter.astro"
   },
   "scripts": {
     "check": "tsc --noEmit"

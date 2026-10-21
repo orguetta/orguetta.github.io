@@ -1,10 +1,10 @@
 export const SITE = {
-  website: "https://or.guetta.tech/", // replace this with your deployed domain
+  website: "https://or.guetta.tech/",
   author: "Or Guetta",
   profile: "https://guetta.tech/",
-  desc: "Cybersecurity and infrastructure engineering hub. Deep dives into NetScaler, ADC hardening, WAF architecture, and defensive security systems.",
+  desc: "Writing by Or Guetta, security engineer. Hands-on guides on NetScaler, secure access and SSO, PKI, WAF hardening and cloud security, from production work.",
   title: "Or Guetta",
-  ogImage: "orguetta-cybersecurity-og.jpg",
+  ogImage: "og.png",
   lightAndDarkMode: true,
   postPerIndex: 5,
   postPerPage: 10,

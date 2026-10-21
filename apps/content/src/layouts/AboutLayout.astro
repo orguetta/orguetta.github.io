@@ -19,8 +19,10 @@ const { frontmatter } = Astro.props;
   <Header />
   <Main
     pageTitle={frontmatter.title}
-    pageDesc={frontmatter.description ??
-      "Background, technical focus, and practical engineering principles."}
+    pageDesc={
+      frontmatter.description ??
+      "Background, technical focus, and practical engineering principles."
+    }
   >
     <section id="about" class="app-prose prose-img:border-0">
       <slot />

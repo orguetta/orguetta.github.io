@@ -32,31 +32,29 @@ const variantClass = {
 }[variant];
 ---
 
-{
-  disabled ? (
-    <span
-      id={id}
-      class:list={[
-        baseClass,
-        sizeClass,
-        variantClass,
-        "cursor-not-allowed opacity-50",
-        className,
-      ]}
-      title={title}
-      aria-disabled={disabled}
-    >
-      <slot />
-    </span>
-  ) : (
-    <a
-      id={id}
-      {href}
-      class:list={[baseClass, sizeClass, variantClass, className]}
-      aria-label={ariaLabel}
-      title={title}
-    >
-      <slot />
-    </a>
-  )
-}
+{disabled ? (
+  <span
+    id={id}
+    class:list={[
+      baseClass,
+      sizeClass,
+      variantClass,
+      "cursor-not-allowed opacity-50",
+      className,
+    ]}
+    title={title}
+    aria-disabled={disabled}
+  >
+    <slot />
+  </span>
+) : (
+  <a
+    id={id}
+    {href}
+    class:list={[baseClass, sizeClass, variantClass, className]}
+    aria-label={ariaLabel}
+    title={title}
+  >
+    <slot />
+  </a>
+)}
