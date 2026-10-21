@@ -5,7 +5,7 @@ title: Or Guetta
 # Or Guetta
 
 <div style="text-align: center">
-[guetta.tech](https://www.guetta.tech) | [orguetta@icloud.com](mailto:orguetta@icloud.com) | [+972542407406](tel:+972542407406) | [LinkedIn](https://linkedin.com/in/orguetta) | [GitHub](https://github.com/orguetta)
+[guetta.tech](https://www.guetta.tech) | [or@guetta.tech](mailto:or@guetta.tech) | [LinkedIn](https://linkedin.com/in/orguetta) | [GitHub](https://github.com/orguetta)
 </div>
 
 Cybersecurity and infrastructure engineer with over 7 years of experience across enterprise environments. Specializing in secure access solutions (NetScaler, CyberArk, PKI), IAM architecture, and cloud infrastructure security. Combining deep technical expertise with a delivery mindset to implement scalable, secure-by-design systems. Background spans military IT, financial organizations, and security consulting. Passionate about automation (Terraform, Ansible), secure architecture, and enabling fast-moving teams to stay secure without friction.
@@ -65,6 +65,17 @@ Cybersecurity and infrastructure engineer with over 7 years of experience across
 : **Bar-Ilan University**
 : **2023 — 2024**
 
+## Certifications
+
+- Citrix Certified Associate – App Delivery and Security (CCA-AppDS)
+- CyberArk PAM Install and Configure (self-paced)
+- CyberArk PAM Administration for Partners (self-paced)
+
+## Languages
+
+- Hebrew (native or bilingual)
+- English (full professional)
+
 ## Skills
 
-`NetScaler` `CyberArk PAM` `PKI` `IAM` `SSO` `DevSecOps` `Cloud Security` `Terraform` `Ansible` `Automation`
+`NetScaler` `WAF` `CyberArk PAM` `PKI` `IAM` `SSO` `DevSecOps` `Cloud Security` `Terraform` `Ansible` `Automation`
